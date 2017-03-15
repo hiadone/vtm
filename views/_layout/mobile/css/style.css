@@ -127,7 +127,7 @@
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
-.open .dropdown-toggle.btn-primary {color: #fff;background-color: #2670b7;border-color: #2670b7;}
+.open .dropdown-toggle.btn-primary {color: #fff;}
 .btn-primary.disabled,
 .btn-primary[disabled],
 fieldset[disabled] .btn-primary,
