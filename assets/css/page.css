@@ -5,7 +5,7 @@
 .info{padding:30% 3% 0 3%;}
 .info .title{width:100%; border-bottom: 2px solid #231b26; padding-bottom:1%; margin-bottom:3%;}
 .info .title h2{font-size: 18px; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; display: inline-block;}
-.info .title h2 span{font-size: 15px;font-weight: bold;color:#ccc;}
+.info .title h2 span{font-size: 15px; color:#c20e58;}
 .info .title p{font-size:10px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif; display: inline-block; float: right; margin-top:2%;}
 .info .title p span{font-size:12px; color:#c20e58;}
 .info .list01 li{width:49%; margin-right:2%; float: left; margin-bottom:5%;}
