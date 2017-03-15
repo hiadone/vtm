@@ -1,0 +1,72 @@
+@charset "utf-8";
+/* page */
+.wrap > div{display: inline-block; width:100%; box-sizing: border-box; z-index: 8888;}
+/*info 영역*/
+.info{padding:30% 3% 0 3%;}
+.info .title{width:100%; border-bottom: 2px solid #231b26; padding-bottom:1%; margin-bottom:3%;}
+.info .title h2{font-size: 18px; font-family: 'Noto Sans KR', sans-serif; font-weight: bold; display: inline-block;}
+.info .title h2 span{font-size: 15px;font-weight: bold;color:#ccc;}
+.info .title p{font-size:10px; font-weight: bold; font-family: 'Noto Sans KR', sans-serif; display: inline-block; float: right; margin-top:2%;}
+.info .title p span{font-size:12px; color:#c20e58;}
+.info .list01 li{width:49%; margin-right:2%; float: left; margin-bottom:5%;}
+.info .list01 li:nth-child(2n){margin-right:0;}
+.info .list01 li figure img{width:100%; border:1px solid #d9d1d4; box-sizing: border-box; margin-bottom:4%;}
+.info .list01 li figure figcaption h2{font-weight: bold; font-size:14px; font-family: 'Noto Sans KR', sans-serif; margin-bottom:4%;}
+.info .list01 li figure figcaption p{font-family: 'Noto Sans KR', sans-serif;  font-size:13px; line-height: 15px; margin-bottom:3%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.info .list01 li figure figcaption span{font-family: 'Noto Sans KR', sans-serif; font-size:10px; font-weight:bold;}
+
+.info .list02 li{width:100%; padding:2%; box-sizing: border-box; border:1px solid #d9d1d4; margin-bottom:2%;}
+.info .list02 li:nth-child(2n){background-color: #f8f2f5;}
+.info .list02 li:last-child{margin-bottom:5%;}
+.info .list02 li h2{font-weight: bold; font-size:14px; font-family: 'Noto Sans KR', sans-serif; margin-bottom:4%;}
+.info .list02 li h2 span{font-size:10px; float: right; margin-top: 2%; font-weight: normal;}
+.info .list02 li p{font-family: 'Noto Sans KR', sans-serif; font-size:13px; line-height: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.info h3{font-size: 13px; text-align: right; margin-bottom:2%; font-family: 'Noto Sans KR', sans-serif; font-weight:bold;}
+
+
+.info .list03 li{width:100%; margin-bottom:2%;}
+.info .list03 li:last-child{margin-bottom:5%;}
+.info .list03 li a{ display: inline-block; width:100%; box-sizing: border-box; border:1px solid #d9d1d4;}
+.info .list03 li a img{float:left;width:40%;}
+.info .list03 li a div {padding:2%;width:55%;float:right}
+.info .list03 li a div h2{font-weight: bold; font-size:14px; font-family: 'Noto Sans KR', sans-serif; margin-bottom:4%;}
+.info .list03 li a div p{font-family: 'Noto Sans KR', sans-serif; font-size:13px; line-height: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  white-space: normal; height: 3.6em; text-align: left; word-wrap: break-word; 
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;}
+.info .list03 li a div span{font-size:10px; float: right; margin-top: 2%; font-weight: bold;}
+
+
+
+/*info04 영역*/
+.info .list04 li{width:100%;box-sizing: border-box; border:1px solid #d9d1d4; display: block; margin-bottom:1%;}
+.info .list04 li:last-child{margin-bottom:5%;}
+
+.info .list04 li h2{margin:1.5%; margin-bottom:0;  font-size:16px; padding:3% 0%; font-family: 'Noto Sans KR', sans-serif; }
+.info .list04 li h2 img{width:6.5%; padding-right:2%;vertical-align:middle}
+.info .list04 li span{font-size:10px;margin-top: 2%; font-weight: bold; text-align: right; display: block;}
+.info .list04 li p{font-family: 'Noto Sans KR', sans-serif; color:#4a4a4a; font-size:13px; background-color: #dddddd; line-height: 15px; padding:2%; display: none; padding-top:4%;}
+.info .list04 .rota_img p{display: block;}
+
+
+
+/*detail 영역*/
+.detail{padding:30% 3% 0 3%; }
+.detail h2{font-weight: bold; font-size:16px; font-family: 'Noto Sans KR', sans-serif; margin-bottom:4%; text-align:center;}
+.detail ul{ width:80%; margin-left: 10%; border: 1px solid  #d9d1d4; box-sizing: border-box; display: inline-block; margin-bottom:3%;}
+.detail ul li{width:25%; float: left; border-right: 1px solid #d9d1d4;  box-sizing: border-box; }
+.detail ul li a{width:100%; display: inline-block; text-align: center; padding-top:42%; font-family: 'Noto Sans KR', sans-serif; font-size:11px; color:#282224; line-height: 13px; font-weight: bold;}
+.detail ul li:last-child{border-right:0}
+.detail ul li:nth-child(1) a{background: url(../images/temp/detail_01.png) no-repeat center 2px; background-size: 40%;}
+.detail ul li:nth-child(2) a{background: url(../images/temp/detail_02.png) no-repeat center 2px; background-size: 40%;}
+.detail ul li:nth-child(3) a{background: url(../images/temp/detail_03.png) no-repeat center 2px; background-size: 40%;}
+.detail ul li:nth-child(4) a{background: url(../images/temp/detail_04.png) no-repeat center 2px; background-size: 40%;}
+.detail img{width:100%; margin-bottom:1%;}
+.detail img:last-child{margin-bottom:5%;}
+
+
+/*map 영역*/
+.map{padding:30% 3% 0 3%;}
+.map h2{font-weight: bold; text-align:left; font-size:16px; font-family: 'Noto Sans KR', sans-serif; margin-bottom:1%;}
+.map p{font-family: 'Noto Sans KR', sans-serif; font-size:13px; line-height: 15px; text-align:left; margin-bottom:4%;}
+.map img{width:100%; margin-bottom:4%; border:1px solid #d9d1d4 ; box-sizing: border-box;}
+

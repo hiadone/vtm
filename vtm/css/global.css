@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* global */
+body,html{font-family: 'Noto Sans KR', sans-serif;}
+a{text-decoration:none; color:#000;}
+.wrap{width:100%; max-width:414px; min-width: 320px; margin:0 auto; }
+
+/*header 의 로고영역*/
+header{position:fixed;  width:100%; max-width: 414px; min-width:320px;}
+header h1{ box-sizing: border-box; width:100%; padding:2%; padding-bottom:0;  position: relative; background-color: #231b26;}
+header h1 a{width:65%; display: inline-block;}
+header h1 a img{width:100%; position: relative; bottom:-3px;}
+
+/*header 의 지역선택하기 영역*/
+.wrap > header h1 span{display: inline-block;  width:30%; float:right; position: relative; text-align:left; margin-top:5%;border:1px solid #c20e58; box-sizing: border-box; font-weight: bold;
+						background:url(../images/temp/search.png) no-repeat  92% center; background-size:12%; padding-left: 1%; background-color: #fff;}
+.wrap > header h1 span label{font-size:10px; color:#231b26;}
+.wrap > header h1 span select{width:100%; position: absolute; top:0; left: 0; background-color: transparent; color: transparent; border:0; border-radius: 0; outline: none;}
+.wrap > header h1 span select option{color:#000; outline: none;}
+
+
+/*mainmenu 영역*/
+.wrap > header{z-index: 9999; background-color:#231b26; }
+.wrap > header .mainmenu{background-color:#231b26; position: relative;}
+.wrap > header .mainmenu ul{width:100%; display: inline-block; position: relative;}
+.wrap > header .mainmenu ul li{width:25%; float: left; text-align: center; box-sizing:border-box;}
+.wrap > header .mainmenu ul li:last-child{border:0;}
+.wrap > header .mainmenu ul li a {font-size:14px; border-bottom:0; padding:15% 0 5% 0; box-sizing: border-box;  font-weight: bold; color:#fff; width:100%; display: inline-block; font-family: 'Noto Sans KR', sans-serif;}
+.wrap > header .mainmenu div{width:6px; height: 6px; background-color: #fff; position: absolute; top:15%; z-index: 9999; border-radius: 50%; }
+
+/*submenu 영역*/
+
+.info .submenu{width:100%; display: inline-block; border:1px solid #d9d1d4; background-color: #fff; margin-bottom:3%; box-sizing: border-box;}
+.info .submenu li{width:25%; text-align: center; box-sizing: border-box; line-height: 13px; float: left; border-right: 1px solid  #d9d1d4; font-family: 'Noto Sans KR', sans-serif; font-size:11px; color:#231b26; font-weight:bold;display: inline-block; padding:8% 0 1%;}
+.info .submenu li:last-child , .info .submenu li:nth-child(4) {border-right:0;}
+.info .submenu li:nth-child(1),.info .submenu li:nth-child(2),.info .submenu li:nth-child(3),.info .submenu li:nth-child(4){border-bottom:1px solid #d9d1d4; box-sizing: border-box;}
+.info .submenu li:nth-child(1){background: url(../images/temp/submenu01.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(2){background: url(../images/temp/submenu02.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(3){background: url(../images/temp/submenu03.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(4){background: url(../images/temp/submenu04.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(5){background: url(../images/temp/submenu05.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(6){background: url(../images/temp/submenu06.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(7){background: url(../images/temp/submenu07.png) no-repeat center 2px; background-size: 30%;}
+.info .submenu li:nth-child(8){background: url(../images/temp/submenu08.png) no-repeat center 2px; background-size: 30%;}
+
+/*footer 영역*/
+footer{width:100%; background-color:#282224; color:#fff; text-align: center;}
+footer h2{padding:4%; font-size:12px; font-family: 'Noto Sans KR', sans-serif;}
+footer h2 span{font-size:10px; display: block; margin-bottom:3%; line-height: 13px;}

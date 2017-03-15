@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>vietnam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="css/import.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+
+<script>
+	$(document).ready(function(){
+
+		//지역선택하기 
+		var select = $("#sel");
+    	select.change(function(){
+        var select_name = $(this).children("option:selected").text();
+        $(this).siblings("label").text(select_name);
+        $("label").css("color" , "#231b26");
+   		 });
+
+		// 메인메뉴 의 높이가 자동 설정
+		var hei = $('.wrap > header .mainmenu ul').height() - 2;
+			$('.wrap > header .mainmenu ul ').css('height' , hei);
+
+		//선택된 메인메뉴 설정 
+			$('.wrap > header .mainmenu ul li:nth-child(3)').css('background-color' , '#c20e58');
+			$('.wrap > header .mainmenu ul li:nth-child(3) a').css('color' , '#fff');
+			$('.wrap > header .mainmenu div').css('left' , '61.5%');
+		
+		//로딩후 서브메뉴의 선택 설정 
+			$('.submenu li:nth-child(1)').css('background-color' , '#efd0de');
+
+		//서브메뉴 클릭시 색상 변경
+			$('.submenu li').click(function(){
+				$('.submenu li').css('background-color' , '#fff');
+				$(this).css('background-color' , '#efd0de');
+			});
+
+		});
+</script>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="wrap">
+<!-- header -->
+<header>
+	<h1>
+	<!-- 로고 영역 -->
+		<a href="index.html"><img src="images/temp/logo.png" alt="logo"></a>
+
+	<!-- 지역선택하기 영역 -->	
+		<span>
+		<label for="select">지역선택하기</label>
+			<select id="sel">
+				<option>전체</option>
+				<option>하노이</option>
+				<option>다낭</option>
+				<option>나짱</option>
+				<option>호치민</option>
+			</select>
+		</span>
+	</h1>
+
+	<nav class="mainmenu">
+			<div></div>
+				<ul>
+					<li><a href="index.html">업소정보</a></li>
+					<li><a href="index02.html">업소후기</a></li>
+					<li><a href="index03.html">골프장</a></li>
+					<li><a href="index04.html">Q&A</a></li>			
+				</ul>
+
+	</nav>
+</header>
+<!-- -->
+
+<div class="info">
+<!-- 타이틀 영역 -->
+		<div class="title">
+			<h2>골프장</h2>
+			<p>총 <span>54개</span>의 업소가 있습니다.</p>
+		</div>
+<!-- -->
+
+<!--리스트03 영역 -->
+	<ul class="list03">
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+		<li>
+			<a href="index07.html">
+				<h2>[골프장] 하노이 골프장</h2>
+				<p>베트남 사회주의 공화국, 약칭 베트남은 동남아시아 인도차이나 반도<br/> 가장 동쪽에 있는 공산주의 국가이며, 수도는 하노이, 공용어는 베트남어, 민족은 킨족이 다수다.</p>
+				<span>PM12:00 ~ AM06:00</span>
+			</a>
+		</li>
+	</ul>
+<!-- -->
+</div>
+
+<footer>
+	<h2>
+		<span>
+			이 사이트는 베트남에 거주하는 한글을 사용하는<br/>
+			사용자들을 위한 성인전용 서비스이며, 미성년자의 출입을 금지합니다.
+		</span>
+	Copyright © Vietnam. ALL Rights Reserved.
+		
+	</h2>
+</footer>
+
+
+</div>
+</body>
+</html>
