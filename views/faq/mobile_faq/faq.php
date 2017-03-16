@@ -31,9 +31,9 @@ if (element('list', element('data', $view))) {
             
             <h2 class="heading" id="heading_<?php echo $i; ?>" onclick="return faq_open(<?php echo $i; ?>);">
             <img id="arrow_<?php echo $i; ?>" src="<?php echo base_url('assets/images/temp/arrow03.png'); ?>"><?php echo element('title', $result); ?></h2>
-            <p class="answer" id="answer_<?php echo $i; ?>">
+            <div class="answer" id="answer_<?php echo $i; ?>">
                 <?php echo element('content', $result); ?>
-            </p>
+            </div>
         </li>
 <?php
         $i++;

@@ -208,8 +208,8 @@ if (element('menu', $layout)) {
             <img src="<?php echo element('thumb_url', $result); ?>" alt="<?php echo html_escape(element('title', $result)); ?>" title="<?php echo html_escape(element('title', $result)); ?>"/>
             <?php if (element('category', $result)) { ?><span class="label label-default">[<?php echo html_escape(element('bca_value', element('category', $result))); ?>]</span><?php } ?>
             <div>
-                <h2><?php echo html_escape(element('title', $result)); ?></h2>
-                <p><?php echo element('post_content', $result); ?></p>
+                <h2 class="info_subject"><?php echo html_escape(element('title', $result)); ?></h2>
+                <p class="sub_subject"><?php if(element('sub_subject',element('extravars', $result))) echo element('sub_subject',element('extravars', $result)); ?></p>
                 <span>
                 <?php if (element('extravars', $result)) { 
                     echo  element('open_time',element('extravars', $result));
@@ -226,6 +226,9 @@ if (element('menu', $layout)) {
                     $open = false;
                 }
             }
+        } else {
+
+            echo '<div class="table-answer nopost">내용이 없습니다</div>';
         }
         if ($open) {
             echo '</ul>';

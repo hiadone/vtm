@@ -172,9 +172,8 @@ function geocodeResult(results, status) {
                             <td></td>
                         </tr>
                         <tr>
-                            <th>코드</th>
-                            <td><textarea id="map_code" name="map_code" class="form-control" placeholder="생성된 지도코드를 복사하여 붙여넣어 주세요"></textarea></td>
-                            <td><button type="button" class="btn btn-primary" onclick="geocode_submit()">생성</button></td>
+                            <td colspan=2 style="text-align:center"><button type="button" class="btn btn-primary" onclick="geocode_submit()">등록</button> <button type="button" class="btn btn-danger" onclick="self.close()">닫기</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -201,7 +200,7 @@ function geocode_submit() {
 
     var map_code = "{지도:" + code_geo + code_marker + "}";
 
-    document.getElementById('map_code').value = map_code;
+    opener.document.getElementById('google_map').value = code_lat + "," + code_lng + "," + code_zoom;
 }
 
 addLoadEvent(function() {

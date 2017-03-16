@@ -34,11 +34,7 @@
         <li>
             <span>제목</span>
             <input type="text" class="input per95" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
-            <?php if (element('use_google_map', element('board', $view))) { ?>
-                <span class="map_btn">
-                    <button type="button" class="btn btn-sm btn-default" id="btn_google_map" onClick="open_google_map();" >지도</button>
-                </span>
-            <?php } ?>
+         
         </li>
         <?php if (element('can_post_notice', element('post', $view)) OR element('can_post_secret', element('post', $view)) OR element('can_post_receive_email', element('post', $view))) { ?>
             <li>
@@ -97,14 +93,18 @@
         <?php } ?>
         <?php
         if (element('extra_content', $view)) {
-            foreach (element('extra_content', $view) as $key => $value) {
+           foreach (element('extra_content', $view) as $key => $value) {
+
         ?>
-            <li>
-                <span><?php echo element('display_name', $value); ?></span>
-                <?php echo element('input', $value); ?>
-            </li>
+           <li>
+               <span><?php echo element('display_name', $value); ?></span>
+               <?php echo element('input', $value); ?>
+               <?php if(element('field_name', $value)=="google_map") {?>
+                   <button type="button" class="btn btn-sm btn-default" id="btn_google_map" onClick="open_google_map();" >지도검색</button>
+               <?php } ?>
+           </li>
         <?php
-            }
+           }
         }
         ?>
         <?php if ( ! element('use_dhtml', element('board', $view)) AND (element('post_min_length', element('board', $view)) OR element('post_max_length', element('board', $view)))) { ?>

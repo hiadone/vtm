@@ -116,6 +116,9 @@ class Document extends CB_Controller
         $view['view']['extravars'] = $this->Post_extra_vars_model->get_all_meta($post_id);
         $board = $this->board->item_all(element('brd_id', $post));
         $view['view']['board_key'] = element('brd_key', $board);
+        $view['view']['post'] = $post;
+
+
 
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);

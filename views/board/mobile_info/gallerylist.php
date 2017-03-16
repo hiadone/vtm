@@ -1,5 +1,6 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
+
 <?php 
 $menuName="";
 $board_key_arr=explode("_",element('board_key', $view));
@@ -21,6 +22,7 @@ if (element('menu', $layout)) {
 <?php echo element('headercontent', element('board', element('list', $view))); ?>
 
 <div class="info board">
+
     <div class="title">
         <h2><?php echo $menuName ." - <span>".html_escape(element('board_name', element('board', element('list', $view)))); ?></span></h2>
         <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소가 있습니다.</p>
@@ -206,15 +208,12 @@ if (element('menu', $layout)) {
                 <img src="<?php echo element('thumb_url', $result); ?>" alt="<?php echo html_escape(element('title', $result)); ?>" title="<?php echo html_escape(element('title', $result)); ?>"/>
             
                 <figcaption>
-                    <h2><?php echo html_escape(element('title', $result)); ?></h2>
+                    <h2 class="info_subject"><?php echo html_escape(element('title', $result)); ?></h2>
                     
-                    <p><?php echo element('post_content', $result); ?></p>
+                    <p class="sub_subject"><?php if(element('sub_subject',element('extravars', $result))) echo element('sub_subject',element('extravars', $result)); ?></p>
                     <span>
-                        <?php if (element('extravars', $result)) { 
-
+                        <?php if (element('open_time',element('extravars', $result))) { 
                            echo  element('open_time',element('extravars', $result));
-                                
-                            
                         }
                         ?>
                     </span>
@@ -231,6 +230,9 @@ if (element('menu', $layout)) {
                     $open = false;
                 }
             }
+        } else {
+
+            echo '<div class="table-answer nopost">내용이 없습니다</div>';
         }
         if ($open) {
             echo '</ul>';

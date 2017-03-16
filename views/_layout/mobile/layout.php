@@ -62,7 +62,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
             if (element('board_list', $view)) {
                 foreach (element('board_list', $view) as $key => $board) {
 
-                    if($key == element('region', $view)) echo '<option value='.board_url(element('brd_key', $board)).' selected>'.$board['brd_name'].'</option>';
+                    if(element('brd_key', $board) == $this->uri->segment(2)) echo '<option value='.board_url(element('brd_key', $board)).' selected>'.$board['brd_name'].'</option>';
                     else echo '<option value='.board_url(element('brd_key', $board)).'>'.$board['brd_name'].'</option>';
                 }
             }
@@ -230,12 +230,12 @@ $(document).ready(function(){
     //지역선택하기 
     var select = $("#region");
     select.change(function(){
-        // var select_name = $(this).children("option:selected").text();
-        // $(this).siblings("label").text(select_name);
+         //var select_name = $(this).children("option:selected").html();
+         //$("header h1 span label").html(select_name);
         // $("label").css("color" , "#231b26");
 
 
-    Cookies.set('region',$(this).children('option:selected').index(), { expires: 1 },cb_cookie_domain);
+    //Cookies.set('region',$(this).children('option:selected').index(), { expires: 1 },cb_cookie_domain);
         //set_cookie("region", '11', 0, cb_cookie_domain);        
        location.href=$(this).val();
     });

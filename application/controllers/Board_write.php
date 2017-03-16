@@ -66,6 +66,9 @@ class Board_write extends CB_Controller
             'group_id' => element('bgr_id', $board),
             'board_id' => element('brd_id', $board),
         );
+
+
+
         $this->accesslevel->check(
             element('access_write', $board),
             element('access_write_level', $board),
@@ -213,6 +216,20 @@ class Board_write extends CB_Controller
                 'group_id' => element('bgr_id', $board),
             )
         );
+
+        $where = array(
+            'bgr_id' => element('bgr_id', $board)
+        );
+        $board_id = $this->Board_model->get_board_list($where);
+        
+        $board_list = array();
+        if ($board_id && is_array($board_id)) {
+            foreach ($board_id as $key => $val) {
+                $board_list[] = $this->board->item_all(element('brd_id', $val));
+            }
+        }
+
+        $view['view']['board_list'] = $board_list;
 
         // 글 한개만 작성 가능
         if (element('use_only_one_post', $board) && $is_admin === false) {

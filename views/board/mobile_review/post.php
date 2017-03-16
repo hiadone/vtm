@@ -1,7 +1,22 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 <?php    $this->managelayout->add_js(base_url('plugin/zeroclipboard/ZeroClipboard.js')); ?>
-
 <?php
+$menuName="";
+$board_key_arr=explode("_",element('board_key', $view));
+if(count($board_key_arr) > 1) $menu_key=$board_key_arr[0]."_".$board_key_arr[1];
+else $menu_key=element('board_key', $view);
+
+if (element('menu', $layout)) {
+                $menu = element('menu', $layout);
+                if (element(0, $menu)) {
+                    foreach (element(0, $menu) as $mkey => $mval) {
+                        if(strpos($mval['men_link'],$menu_key) !==false) $menuName=html_escape(element('men_name', $mval));
+                    }
+                }
+            }
+
+
+
 if (element('syntax_highlighter', element('board', $view)) OR element('comment_syntax_highlighter', element('board', $view))) {
     $this->managelayout->add_css(base_url('assets/js/syntaxhighlighter/styles/shCore.css'));
     $this->managelayout->add_css(base_url('assets/js/syntaxhighlighter/styles/shThemeMidnight.css'));
@@ -42,12 +57,15 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
             </table>
         </div>몰
     <?php } */?>
-    <ul>
+    <div class="title">
+        <h2>[<?php echo $menuName ?>] <?php echo element('post_title', element('post',$view)) ?></h2>
+    </div>
+  <!--   <ul>
         <li><a href="<?php echo element('list_url', $view); ?>">목록보기</a></li>
-        <li><a href="<?php echo base_url('document/map'); ?>">위치확인</a></li>
+        <li><a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">위치확인</a></li>
         <li><a href="">문자전송</a></li>
         <li><a href="">전화하기</a></li>
-    </ul>
+    </ul> -->
     <div class="contents-view">
         <div class="contents-view-img">
             <?php

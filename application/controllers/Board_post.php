@@ -63,7 +63,7 @@ class Board_post extends CB_Controller
 
         $view['view']['list'] = $list = $this->_get_list($brd_key);
         $view['view']['board_key'] = element('brd_key', element('board', $list));
-        $view['view']['region'] = get_cookie("region");
+        
 
        
        
@@ -243,6 +243,21 @@ class Board_post extends CB_Controller
                 'group_id' => element('bgr_id', $board)
             )
         );
+
+
+       
+        $where = array(
+            'bgr_id' => element('bgr_id', $board)
+        );
+        $board_id = $this->Board_model->get_board_list($where);
+        $board_list = array();
+        if ($board_id && is_array($board_id)) {
+            foreach ($board_id as $key => $val) {
+                $board_list[] = $this->board->item_all(element('brd_id', $val));
+            }
+        }
+
+        $view['view']['board_list'] = $board_list;
         $view['view']['board_key'] = element('brd_key', $board);
 
         if (element('use_personal', $board) && $this->member->is_member() === false) {
