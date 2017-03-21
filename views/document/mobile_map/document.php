@@ -1,5 +1,5 @@
-<?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&sensor=true&language=ko'); ?>
-
+<?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&sensor=true&language=ko'); 
+?>
 <?php
 //설정값
 
@@ -20,7 +20,7 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
           [주소] <span id="formatedAddress"></span>
         </p>
         
-
+        <div id="directionsPanel"></div>
         <div id="map-canvas" style="width: 100%; height: 400px;margin-bottom:10px"></div>
 </div>
 <script type="text/javascript">
@@ -29,15 +29,22 @@ var geocoder;
 var centerChangedLast;
 var reverseGeocodedLast;
 var currentReverseGeocodeResponse;
+var mapstart
+var directionsDisplay;
+var directionsService = new google.maps.DirectionsService();
+
+
+
 
       function initialize()
       {
-        var mapLocation = new google.maps.LatLng("<?php echo $lat; ?>", "<?php echo $lng; ?>"); // 지도에서 가운데로 위치할 위도와 경도
+        directionsDisplay = new google.maps.DirectionsRenderer();
+        mapstart = new google.maps.LatLng("<?php echo $lat; ?>", "<?php echo $lng; ?>");// 지도에서 가운데로 위치할 위도와 경도
         var markLocation = new google.maps.LatLng("<?php echo $lat; ?>", "<?php echo $lng; ?>"); // 마커가 위치할 위도와 경도
          
         var mapOptions = {
-          center: mapLocation, // 지도에서 가운데로 위치할 위도와 경도(변수)
-          zoom: 18, // 지도 zoom단계
+          center: mapstart, // 지도에서 가운데로 위치할 위도와 경도(변수)
+          zoom: 14, // 지도 zoom단계
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         map = new google.maps.Map(document.getElementById("map-canvas"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
@@ -47,17 +54,17 @@ var currentReverseGeocodeResponse;
         var size_y = 60; // 마커로 사용할 이미지의 세로 크기
          
         // 마커로 사용할 이미지 주소
-        var image = new google.maps.MarkerImage( 'http://www.larva.re.kr/home/img/boximage3.png',
-                            new google.maps.Size(size_x, size_y),
-                            '',
-                            '',
-                            new google.maps.Size(size_x, size_y));
+        // var image = new google.maps.MarkerImage( 'http://www.larva.re.kr/home/img/boximage3.png',
+        //                     new google.maps.Size(si[ze_x, size_y),
+        //                     '',
+        //                     '',
+        //                     new google.maps.Size(size_x, size_y));
          
         var marker;
         marker = new google.maps.Marker({
                position: markLocation, // 마커가 위치할 위도와 경도(변수)
                map: map,
-               icon: image, // 마커로 사용할 이미지(변수)
+               //icon: image, // 마커로 사용할 이미지(변수)
 //             info: '말풍선 안에 들어갈 내용',
                title: '<?php echo element('post_title', element('post',$view)) ?>' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
         });
@@ -66,12 +73,15 @@ var currentReverseGeocodeResponse;
          
         // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
         var infowindow = new google.maps.InfoWindow({ content: content});
- 
+        
+        directionsDisplay.setMap(map);
+        directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+
         google.maps.event.addListener(marker, "click", function() {
             infowindow.open(map,marker);
+            onClickDistance()
         });
-         
- 
+        
         centerChanged();
       }
 
@@ -98,5 +108,66 @@ var currentReverseGeocodeResponse;
           }
       }
 
+      function onClickDistance() {
+        
+        var end = document.getElementById("end").value;
+        var request = {
+          origin:mapstart,
+          destination:end,
+          travelMode: google.maps.TravelMode.DRIVING
+        };
+        directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+          }
+        });
+      }
+
       google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
+
+
+      var neighborhoods = [
+  {lat: 52.511, lng: 13.447},
+  {lat: 52.549, lng: 13.422},
+  {lat: 52.497, lng: 13.396},
+  {lat: 52.517, lng: 13.394}
+];
+
+var markers = [];
+var map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: {lat: 52.520, lng: 13.410}
+  });
+}
+
+function drop() {
+  clearMarkers();
+  for (var i = 0; i < neighborhoods.length; i++) {
+    addMarkerWithTimeout(neighborhoods[i], i * 200);
+  }
+}
+
+function addMarkerWithTimeout(position, timeout) {
+  window.setTimeout(function() {
+    markers.push(new google.maps.Marker({
+      position: position,
+      map: map,
+      animation: google.maps.Animation.DROP
+    }));
+  }, timeout);
+}
+
+function clearMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = [];
+}
 </script>

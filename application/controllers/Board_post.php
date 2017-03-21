@@ -1129,6 +1129,12 @@ class Board_post extends CB_Controller
             );
         }
         
+        if(strpos($brd_key,'_review' )!==false){
+            $where = array(
+                'post_parent' => $this->input->get('post_parent', null, 0)
+            );   
+        }
+
         
         $where['post_del <>'] = 2;
         if (element('except_notice', $board)

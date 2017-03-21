@@ -40,7 +40,7 @@ class Document extends CB_Controller
      * 일반문서를 보여주는 함수입니다
      */
     public function index($doc_key = '',$post_id = 0)
-    {
+    {   
         // 이벤트 라이브러리를 로딩합니다
         $eventname = 'event_document_index';
         $this->load->event($eventname);
@@ -52,10 +52,7 @@ class Document extends CB_Controller
             show_404();
         }
 
-        $post_id = (int) $post_id;
-        if (empty($post_id) OR $post_id < 1) {
-            show_404();
-        }
+        
 
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before'] = Events::trigger('before', $eventname);
@@ -112,11 +109,16 @@ class Document extends CB_Controller
 
         $view['view']['canonical'] = document_url($doc_key);
 
-        $post = $this->Post_model->get_one($post_id);
-        $view['view']['extravars'] = $this->Post_extra_vars_model->get_all_meta($post_id);
-        $board = $this->board->item_all(element('brd_id', $post));
-        $view['view']['board_key'] = element('brd_key', $board);
-        $view['view']['post'] = $post;
+        $post_id = (int) $post_id;
+        if (!empty($post_id) && $post_id > 0) {
+            $post = $this->Post_model->get_one($post_id);
+            $view['view']['extravars'] = $this->Post_extra_vars_model->get_all_meta($post_id);
+            $board = $this->board->item_all(element('brd_id', $post));
+            $view['view']['board_key'] = element('brd_key', $board);
+            $view['view']['post'] = $post;
+        }
+
+        
 
 
 

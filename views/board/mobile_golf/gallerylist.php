@@ -6,15 +6,14 @@ if(count($board_key_arr) > 1) $menu_key=$board_key_arr[0]."_".$board_key_arr[1];
 else $menu_key=element('board_key', $view);
 
 if (element('menu', $layout)) {
-                $menu = element('menu', $layout);
-                if (element(0, $menu)) {
-                    foreach (element(0, $menu) as $mkey => $mval) {
-                        if(strpos($mval['men_link'],$menu_key) !==false) $menuName=html_escape(element('men_name', $mval));
-                    }
-                }
-            }
-            
- ?>
+    $menu = element('menu', $layout);
+    if (element(0, $menu)) {
+        foreach (element(0, $menu) as $mkey => $mval) {
+            if(strpos($mval['men_link'],$menu_key) !==false) $menuName=html_escape(element('men_name', $mval));
+        }
+    }
+}
+?>
 <?php echo element('headercontent', element('board', element('list', $view))); ?>
 
 <div class="info board">

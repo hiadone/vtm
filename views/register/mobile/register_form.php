@@ -10,6 +10,9 @@
             $attributes = array('class' => 'form-horizontal', 'name' => 'fregisterform', 'id' => 'fregisterform');
             echo form_open_multipart(current_full_url(), $attributes);
             ?>
+            <input type="hidden" name="mem_open_profile" id="mem_open_profile" value="1" >
+            <input type="hidden" name="mem_receive_email" id="mem_receive_email" value="1" >
+            <input type="hidden" name="mem_receive_sms" id="mem_receive_sms" value="1" >
             <ol class="registerform">
                 <?php
                 foreach (element('html_content', $view) as $key => $value) {
@@ -48,7 +51,7 @@
                 <?php
                 }
                 ?>
-                    <li>
+                    <!-- <li>
                         <span>정보공개</span>
                         <div class="form-text text-primary group">
                             <label for="mem_open_profile">
@@ -63,7 +66,7 @@
                             }
                             ?>
                         </div>
-                    </li>
+                    </li> -->
                     <?php
                     if ($this->cbconfig->item('use_note')) {
                     ?>
@@ -88,7 +91,7 @@
                     <?php
                     }
                     ?>
-                    <li>
+                   <!--  <li>
                         <span>이메일수신여부</span>
                         <div class="form-text text-primary group">
                             <div class="checkbox">
@@ -107,8 +110,8 @@
                             </label>
                             </div>
                         </div>
-                    </li>
-                    <li>
+                    </li> -->
+                    <!-- <li>
                         <?php if ($this->cbconfig->item('use_recaptcha')) { ?>
                             <span></span>
                             <div class="form-text text-primary group captcha" id="recaptcha"><button type="button" id="captcha"></button></div>
@@ -120,7 +123,7 @@
                                 <p class="help-block">좌측에 보이는 문자를 입력해주세요</p>
                             </div>
                         <?php } ?>
-                    </li>
+                    </li> -->
                     <li>
                         <span></span>
                         <div class="group">
@@ -168,7 +171,7 @@ $(function() {
             <?php if ($this->cbconfig->item('use_recaptcha')) { ?>
                 , recaptcha : {recaptchaKey:true}
             <?php } else { ?>
-                , captcha_key : {required: true, captchaKey:true}
+                , captcha_key : {required: false, captchaKey:true}
             <?php } ?>
         },
         messages: {
