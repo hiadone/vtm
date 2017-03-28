@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 메인 페이지를 담당하는 controller 입니다.
  */
-class Main extends CB_Controller
+class Index extends CB_Controller
 {
 
     /**
@@ -52,7 +52,8 @@ class Main extends CB_Controller
         $view['view']['event']['before'] = Events::trigger('before', $eventname);
 
         $where = array(
-            'brd_search' => 1
+            'brd_search' => 1,
+            'bgr_id' => 1,
         );
         $board_id = $this->Board_model->get_board_list($where);
         $board_list = array();
@@ -70,7 +71,6 @@ class Main extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
 
-        $view['view']['region_category'] = config_item('region_category');
         /**
          * 레이아웃을 정의합니다
          */
@@ -81,11 +81,11 @@ class Main extends CB_Controller
         $page_name = $this->cbconfig->item('site_page_name_main');
 
         $layoutconfig = array(
-            'path' => 'main',
+            'path' => 'index',
             'layout' => 'layout',
-            'skin' => 'main',
+            'skin' => 'index',
             'layout_dir' => $this->cbconfig->item('layout_main'),
-            'mobile_layout_dir' => $this->cbconfig->item('mobile_layout_main'),
+            'mobile_layout_dir' => 'mobile_index',
             'use_sidebar' => $this->cbconfig->item('sidebar_main'),
             'use_mobile_sidebar' => $this->cbconfig->item('mobile_sidebar_main'),
             'skin_dir' => $this->cbconfig->item('skin_main'),

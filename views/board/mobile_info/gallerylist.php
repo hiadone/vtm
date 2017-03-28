@@ -3,15 +3,20 @@
 
 <?php 
 $menuName="";
+$contentsId="";
 $board_key_arr=explode("_",element('board_key', $view));
 if(count($board_key_arr) > 1) $menu_key=$board_key_arr[0]."_".$board_key_arr[1];
 else $menu_key=element('board_key', $view);
+
 
 if (element('menu', $layout)) {
                 $menu = element('menu', $layout);
                 if (element(0, $menu)) {
                     foreach (element(0, $menu) as $mkey => $mval) {
-                        if(strpos($mval['men_link'],$menu_key) !==false) $menuName=html_escape(element('men_name', $mval));
+                        if(strpos($mval['men_link'],$menu_key) !==false) {
+                            $menuName=html_escape(element('men_name', $mval));
+                            $contentsId=$mkey;
+                        }
                     }
                 }
             }
@@ -24,7 +29,7 @@ if (element('menu', $layout)) {
 <div class="info board">
 
     <div class="title">
-        <h2><?php echo $menuName ." - <span>".html_escape(element('board_name', element('board', element('list', $view)))); ?></span></h2>
+        <h2><?php echo $menuName ." - <span>".html_escape(element(element('region', $view),element('region_category', $view))); ?></span></h2>
         <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소가 있습니다.</p>
     </div>
     <div class="table-top">
@@ -129,12 +134,12 @@ if (element('menu', $layout)) {
         $category = element('category', element('board', element('list', $view)));
     ?>
         <ul class="submenu">
-            <li onClick="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id='" role="presentation" <?php if ( ! $this->input->get('category_id')) { ?>class="active" <?php } ?>>전체</li>
+            <li onClick="contentsAjax('contents_<?php echo $contentsId?>','<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id=');" role="presentation" <?php if ( ! $this->input->get('category_id')) { ?>class="active" <?php } ?>>전체</li>
             <?php
             if (element(0, $category)) {
                 foreach (element(0, $category) as $ckey => $cval) {
             ?>
-                <li onClick="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id=<?php echo element('bca_key', $cval); ?>'" role="presentation" <?php if ($this->input->get('category_id') === element('bca_key', $cval)) { ?>class="active" <?php } ?>><?php echo html_escape(element('bca_value', $cval)); ?></li>
+                <li onClick="contentsAjax('contents_<?php echo $contentsId?>','<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id=<?php echo element('bca_key', $cval); ?>')" role="presentation" <?php if ($this->input->get('category_id') === element('bca_key', $cval)) { ?>class="active" <?php } ?>><?php echo html_escape(element('bca_value', $cval)); ?></li>
             <?php
                 }
             }

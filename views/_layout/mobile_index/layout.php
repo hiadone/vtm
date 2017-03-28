@@ -94,53 +94,10 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
         <!-- 로고 영역 -->
             <a href="<?php echo site_url(); ?>" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>"><?php echo $this->cbconfig->item('site_logo'); ?></a>
         <!-- 지역선택하기 영역 -->  
-            <span>
-                <label for="select">지역선택하기</label>
-                <select id="region">
-            <?php
             
-            if (element('region_category', $view)) {
-                foreach (element('region_category', $view) as $key => $value) {
-
-                    if($key == element('region', $view)) echo '<option value='.site_url().' selected>'.$value.'</option>';
-                    else echo '<option value='.site_url().'>'.$value.'</option>';
-                }
-            }
-            ?>
-                </select>
-            </span>
         </h1>
 
-       <!-- 메인메뉴 영역 -->
-        <nav class="mainmenu">
-        
-            <ul>
-            <?php
-            
-            
-
-            
-            $menuhtml="";
-            if (element('menu', $layout)) {
-                $menu = element('menu', $layout);
-                if (element(0, $menu)) {
-                    foreach (element(0, $menu) as $mkey => $mval) {
-                        
-                        $mlink = element('men_link', $mval) ? element('men_link', $mval) : 'javascript:;';
-                        $menuhtml .= '<li class=""><a ' . element('men_custom', $mval);
-                        if (element('men_target', $mval)) {
-                            $menuhtml .= ' target="' . element('men_target', $mval) . '"';
-                        }
-                        $menuhtml .= ' title="' . html_escape(element('men_name', $mval)) . '"><div class="_in"></div><br>' . html_escape(element('men_name', $mval)) . '</a></li>';
-                        
-                    }
-                }
-            }
-           echo $menuhtml;
-            ?>
-            </ul>
-        </nav>
-        <!-- 서브메뉴 영역 -->
+       
     </header>
 
 
@@ -269,14 +226,13 @@ $(document).ready(function(){
     Cookies.set('region',$(this).children('option:selected').index(), { expires: 1 },cb_cookie_domain);
        // set_cookie("region", '11', 0, cb_cookie_domain);     
 //       alert(js_mem_link[curnetIndex]);   
-       location.href=$(this).val()+"/main?curentContents="+curnetIndex;
+       location.href=$(this).val()+"?curentContents="+curnetIndex;
     });
 
     $("header .mainmenu ul li").click(function(){
 
-        $('div.c').eq($(this).index()).click();        
+        $('div.c').eq($(this).index()).click();
 
-      //  setTimeout( "reload_rg('"+js_swipe_contents[$(this).index()]+"')", 500);
     });
 
     // // 메인메뉴 의 높이가 자동 설정

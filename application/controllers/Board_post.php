@@ -42,7 +42,7 @@ class Board_post extends CB_Controller
      * 게시판 목록입니다.
      */
     
-    public function lists($brd_key = 'business_info_all')
+    public function lists($brd_key = 'business_info_0')
     {
 
         // 이벤트 라이브러리를 로딩합니다
@@ -62,6 +62,14 @@ class Board_post extends CB_Controller
 
 
         $view['view']['list'] = $list = $this->_get_list($brd_key);
+
+        if(strpos($brd_key,'_review' )!==false){
+
+           $post_parent=$this->Post_model->get_one($this->input->get('post_parent', null, 0));
+           $board_parent = $this->board->item_all(element('brd_id', $post_parent));
+           $view['view']['board_key_parent']=element('brd_key', $board_parent);
+        }
+         
         $view['view']['board_key'] = element('brd_key', element('board', $list));
         
 
@@ -107,6 +115,12 @@ class Board_post extends CB_Controller
 
         $view['view']['board_list'] = $board_list;
 
+        if(empty(get_cookie('region'))) $view['view']['region']=0;
+        else $view['view']['region'] = get_cookie('region');
+
+        
+        $view['view']['region_category'] = config_item('region_category');
+        
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
 
@@ -134,7 +148,8 @@ class Board_post extends CB_Controller
 
         $list_skin_file = element('use_gallery_list', element('board', $list)) ? 'gallerylist' : 'list';
         $layout_dir = element('board_layout', element('board', $list)) ? element('board_layout', element('board', $list)) : $this->cbconfig->item('layout_board');
-        $mobile_layout_dir = element('board_mobile_layout', element('board', $list)) ? element('board_mobile_layout', element('board', $list)) : $this->cbconfig->item('mobile_layout_board');
+        
+        $mobile_layout_dir = element('board_mobile_layout', element('board', $list)) ? element('board_mobile_layout', element('board', $list)) : 'mobile_board';
         $use_sidebar = element('board_sidebar', element('board', $list)) ? element('board_sidebar', element('board', $list)) : $this->cbconfig->item('sidebar_board');
         $use_mobile_sidebar = element('board_mobile_sidebar', element('board', $list)) ? element('board_mobile_sidebar', element('board', $list)) : $this->cbconfig->item('mobile_sidebar_board');
         $skin_dir = element('board_skin', element('board', $list)) ? element('board_skin', element('board', $list)) : $this->cbconfig->item('skin_board');
@@ -158,6 +173,7 @@ class Board_post extends CB_Controller
 
         $view['layout'] = $this->managelayout->front($layoutconfig, $this->cbconfig->get_device_view_type());
         $this->data = $view;
+        
         $this->layout = element('layout_skin_file', element('layout', $view));
         $this->view = element('view_skin_file', element('layout', $view));
 
@@ -258,6 +274,14 @@ class Board_post extends CB_Controller
         }
 
         $view['view']['board_list'] = $board_list;
+
+        if(strpos(element('brd_key', $board),'_review' )!==false){
+
+           $post_parent=$this->Post_model->get_one(element('post_parent',$post));
+           $board_parent = $this->board->item_all(element('brd_id', $post_parent));
+           $view['view']['board_key_parent']=element('brd_key', $board_parent);
+        }
+        
         $view['view']['board_key'] = element('brd_key', $board);
 
         if (element('use_personal', $board) && $this->member->is_member() === false) {
@@ -265,6 +289,11 @@ class Board_post extends CB_Controller
             return false;
         }
 
+        if(empty(get_cookie('region'))) $view['view']['region']=0;
+        else $view['view']['region'] = get_cookie('region');
+
+
+        $view['view']['region_category'] = config_item('region_category');
 
         if ($print && ! element('use_print', $board)) {
             alert('이 게시판은 프린트 기능을 지원하지 않습니다');
@@ -663,6 +692,9 @@ class Board_post extends CB_Controller
         $view['view']['write_url'] = '';
         if ($can_write === true) {
             $view['view']['write_url'] = write_url(element('brd_key', $board));
+            if(strpos(element('brd_key', $board),'_review' )!==false){
+                $view['view']['write_url'] .='?' . $param->output() ;
+            }
         } elseif ($this->cbconfig->get_device_view_type() !== 'mobile'
             && element('always_show_write_button', $board)) {
             $view['view']['write_url'] = 'javascript:alert(\'비회원은 글쓰기 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.\');';
@@ -680,6 +712,9 @@ class Board_post extends CB_Controller
 
         if ($skeyword) {
             $view['view']['list_url'] = board_url(element('brd_key', $board));
+            if(strpos(element('brd_key', $board),'_review' )!==false){
+                $view['view']['list_url'] = board_url(element('brd_key', $board) . '?' . $param->output());
+            }
             $view['view']['search_list_url'] = board_url(element('brd_key', $board) . '?' . $param->output());
         } else {
             $view['view']['list_url'] = board_url(element('brd_key', $board) . '?' . $param->output());
@@ -750,6 +785,11 @@ class Board_post extends CB_Controller
             }
             if (element('use_personal', $board) && $is_admin === false) {
                 $where['post.mem_id'] = $mem_id;
+            }
+            if(strpos(element('brd_key', $board),'_review' )!==false){
+                $where = array(
+                    'post_parent' => element('post_parent', $post)
+                );   
             }
             $sfield = $sfieldchk = $this->input->get('sfield', null, '');
             if ($sfield === 'post_both') {
@@ -993,7 +1033,7 @@ class Board_post extends CB_Controller
         }
         $offset = ($page - 1) * $per_page;
 
-        $this->Post_model->allow_search_field = array('post_id', 'post_title', 'post_content', 'post_both', 'post_category', 'post_userid', 'post_nickname'); // 검색이 가능한 필드
+        $this->Post_model->allow_search_field = array('post_id', 'post_title', 'post_content', 'post_both', 'post_category', 'post_userid', 'post_nickname','post_parent'); // 검색이 가능한 필드
         $this->Post_model->search_field_equal = array('post_id', 'post_userid', 'post_nickname'); // 검색중 like 가 아닌 = 검색을 하는 필드
 
         // 이벤트가 존재하면 실행합니다
@@ -1105,7 +1145,7 @@ class Board_post extends CB_Controller
          */
         $where_in=array();
         $where=array();
-        if(strpos($brd_key,'_all' )!==false){
+        if(strpos($brd_key,'_0' )!==false){
             $this->load->model('Board_model');
 
             $brdidwhere = array(
@@ -1156,8 +1196,11 @@ class Board_post extends CB_Controller
         $result = $this->Post_model
             ->get_post_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
         $list_num = $result['total_rows'] - ($page - 1) * $per_page;
+
         if (element('list', $result)) {
             foreach (element('list', $result) as $key => $val) {
+
+               
                 $result['list'][$key]['post_url'] = post_url(element('brd_key', $board), element('post_id', $val));
 
                 $result['list'][$key]['meta'] = $meta
@@ -1258,6 +1301,11 @@ class Board_post extends CB_Controller
                 }
             }
         }
+
+        
+        
+
+
 
         $return['data'] = $result;
         $return['notice_list'] = $noticeresult;
@@ -1399,6 +1447,9 @@ class Board_post extends CB_Controller
         $return['search_option'] = search_option($search_option, $sfield);
         if ($skeyword) {
             $return['list_url'] = board_url(element('brd_key', $board));
+            if(strpos(element('brd_key', $board),'_review' )!==false){
+                $return['list_url'] = board_url(element('brd_key', $board) . '?' . $param->output());
+            }
             $return['search_list_url'] = board_url(element('brd_key', $board) . '?' . $param->output());
         } else {
             $return['list_url'] = board_url(element('brd_key', $board) . '?' . $param->output());
@@ -1419,6 +1470,9 @@ class Board_post extends CB_Controller
         $return['write_url'] = '';
         if ($can_write === true) {
             $return['write_url'] = write_url($brd_key);
+            if(strpos($brd_key,'_review' )!==false){
+                $return['write_url'] .='?' . $param->output();
+            }
         } elseif ($this->cbconfig->get_device_view_type() !== 'mobile' && element('always_show_write_button', $board)) {
             $return['write_url'] = 'javascript:alert(\'비회원은 글쓰기 권한이 없습니다.\\n\\n회원이시라면 로그인 후 이용해 보십시오.\');';
         } elseif ($this->cbconfig->get_device_view_type() === 'mobile' && element('mobile_always_show_write_button', $board)) {

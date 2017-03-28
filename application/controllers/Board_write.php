@@ -292,6 +292,14 @@ class Board_write extends CB_Controller
             = element('use_post_receive_email', $board) ? true : false;
         $view['view']['post']['post_parent'] = $this->input->get('post_parent',null,0);
 
+        if(strpos(element('brd_key', $board),'_review' )!==false){
+
+           $post_parent=$this->Post_model->get_one($this->input->get('post_parent', null, 0));
+           $board_parent = $this->board->item_all(element('brd_id', $post_parent));
+           $view['view']['board_key_parent']=element('brd_key', $board_parent);
+        }
+
+
         $extravars = element('extravars', $board);
         $form = json_decode($extravars, true);
 
@@ -721,6 +729,7 @@ class Board_write extends CB_Controller
                 'post_updated_datetime' => cdate('Y-m-d H:i:s'),
                 'post_ip' => $this->input->ip_address(),
                 'brd_id' => element('brd_id', $board),
+                'post_parent' => $this->input->get('post_parent',null,0),
             );
 
             if ($mem_id) {
@@ -1104,7 +1113,7 @@ class Board_write extends CB_Controller
             /**
              * 게시물의 신규입력 또는 수정작업이 끝난 후 뷰 페이지로 이동합니다
              */
-            $redirecturl = post_url(element('brd_key', $board), $post_id);
+            $redirecturl = post_url(element('brd_key', $board), $post_id). '?' . $param->output();
             redirect($redirecturl);
         }
     }
@@ -1155,6 +1164,13 @@ class Board_write extends CB_Controller
 
         $view['view']['board'] = $board;
         $view['view']['board_key'] = element('brd_key', $board);
+
+        if(strpos(element('brd_key', $board),'_review' )!==false){
+
+           $post_parent=$this->Post_model->get_one($this->input->get('post_parent', null, 0));
+           $board_parent = $this->board->item_all(element('brd_id', $post_parent));
+           $view['view']['board_key_parent']=element('brd_key', $board_parent);
+        }
 
         $mem_id = (int) $this->member->item('mem_id');
 

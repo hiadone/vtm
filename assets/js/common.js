@@ -921,5 +921,33 @@ if (typeof(COMMON_JS) === 'undefined') {
                 // iframe을 넣은 element를 보이게 한다.
                 element_layer.style.display = 'block';
         }
-    }
+    };
+
+    var contentsAjax=function(id,url,data){
+        $.ajax({
+            type: "GET", 
+            async: true,
+            url: url, 
+            cache: false,
+            beforeSend: function () {
+                $("#div_ajax_load_image").show();
+                     
+            },
+            complete: function () {
+                        
+                $("#div_ajax_load_image").fadeOut();
+            },
+            success: function(data) 
+            {                     
+             // createFile(data.tag,value+'.php');
+
+
+                $("#"+id).html(data).promise().done(function(){
+                  $("#div_ajax_load_image").fadeOut();
+                  $('html , body').scrollTop('top' , '0');
+                });
+            },
+            error: function(xhr, status, error) { ; } 
+        });
+    };
 }

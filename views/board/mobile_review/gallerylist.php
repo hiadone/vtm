@@ -19,7 +19,7 @@ if (element('menu', $layout)) {
 
 <div class="info board">
     <div class="title">
-        <h2><?php echo $menuName ." - <span>".html_escape(element('board_name', element('board', element('list', $view)))); ?></span></h2>
+        <h2><?php echo $menuName; ?></h2>
         <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소가 있습니다.</p>
     </div>
     <div class="table-top">

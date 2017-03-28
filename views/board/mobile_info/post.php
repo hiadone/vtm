@@ -3,6 +3,7 @@
 
 <?php 
 $menuName="";
+
 $board_key_arr=explode("_",element('board_key', $view));
 if(count($board_key_arr) > 1) $menu_key=$board_key_arr[0]."_".$board_key_arr[1];
 else $menu_key=element('board_key', $view);
@@ -11,7 +12,10 @@ if (element('menu', $layout)) {
                 $menu = element('menu', $layout);
                 if (element(0, $menu)) {
                     foreach (element(0, $menu) as $mkey => $mval) {
-                        if(strpos($mval['men_link'],$menu_key) !==false) $menuName=html_escape(element('men_name', $mval));
+                        if(strpos($mval['men_link'],$menu_key) !==false) {
+                            $menuName=html_escape(element('men_name', $mval));
+                            
+                        }
                     }
                 }
             }
@@ -55,9 +59,9 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         <h2>[<?php echo $menuName ?>] <?php echo element('post_title', element('post',$view)) ?></h2>
     </div>
     <ul>
-        <li><a href="<?php echo element('list_url', $view); ?>">목록보기</a></li>
+        <li><a href="<?php echo base_url('/main?curentContents=0')?>">목록보기</a></li>
         <li><a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">위치확인</a></li>
-        <li><a href="sms:<?php echo $tel2 ?>">문자전송</a></li>
+        <li><a href="<?php echo base_url('/board/business_review?post_parent='.element('post_id', element('post', $view)))?>">후기 작성</a></li>
         <li><a href="tel:<?php echo $tel1 ?>">전화하기</a></li>
     </ul>
 
@@ -176,7 +180,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
             <?php    if (element('delete_url', $view)) { ?>
                 <button type="button" class="btn btn-default btn-sm btn-one-delete" data-one-delete-url="<?php echo element('delete_url', $view); ?>">삭제</button>
             <?php } ?>
-                <a href="<?php echo element('list_url', $view); ?>" class="btn btn-default btn-sm">목록</a>
+                <a href="<?php echo base_url('/main?curentContents=0')?>" class="btn btn-default btn-sm">목록</a>
             <?php if (element('search_list_url', $view)) { ?>
                     <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
             <?php } ?>

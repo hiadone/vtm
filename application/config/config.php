@@ -666,3 +666,4 @@ $config['version']  = 'latest';
 $config['region']   = 'ap-northeast-2';
 $config['bucket']   = 'vtm';
 $config['s3_url']   = 'https://s3-'.$config['region'].'.amazonaws.com/'.$config['bucket'].'/';
+
