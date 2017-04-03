@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>vietnam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="css/import.css" rel="stylesheet" type="text/css">
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/common.js"></script>
+<script>
+	$(document).ready(function(){
+	// 해당메뉴에 배경색 넣어주기 
+		$('header nav ul li:nth-child(7)').css('background-color' , '#c20e58');
+		$('header nav ul li:nth-child(7) a').css('color' , '#fff');
+
+	//메인메뉴 scroll left 0 으로 지정 
+		var position = $('header nav ul li:last-child').offset(); // 위치값을 변수로 설정
+		$('header nav').animate({scrollLeft : position.left});
+		
+	//회원 탈퇴하기 클릭시 팝업창 
+		$('.finish button').click(function(){
+			alert("회원탈퇴가 완료 되었습니다. 이용해 주셔서 감사합니다.")
+		});
+	});
+</script>
+
+
+</head>
+
+<body>
+<!-- header 영역 -->
+	<header>
+		<h1>
+			<a href="index.html">
+				<img src="images/logo.png" alt="logo">
+			</a>
+		</h1>
+
+		<ul>
+			<li style="float:right;  margin-top:25%;">
+				<a href="index.html">
+					<img src="images/info.png" alt="home">
+				</a>
+			</li>
+		</ul>
+
+		<nav>
+			<ul>
+				<li><a href="index02.html">가라오케</a></li>
+				<li><a href="index03.html">클 럽</a></li>
+				<li><a href="index04.html">마사지/이발소</a></li>
+				<li><a href="index05.html">호 텔</a></li>
+				<li><a href="index06.html">골 프</a></li>
+				<li><a href="index07.html">맛 집</a></li>
+				<li><a href="index08.html">내 정보</a></li>
+			</ul>
+		</nav>
+	</header>
+<!-- ===== -->
+
+<div class="wrap">
+	<!-- 회원탈퇴 타이틀-->
+		<section class="title02">
+			<h2>회원 탈퇴</h2>
+			<p><span>회원탈퇴</span>를 하실 수 있습니다</p>
+		</section>
+	<!-- ===== -->
+
+	<!-- 탈퇴 경고 메시지 영역 -->
+		<section class="logout">
+			<h2>
+				<img src="./images/stop.png" alt="stop">
+				정말 탈퇴 하시겠습니까?
+				<br/>
+				<span>
+				회원 탈퇴 시 모든 정보가 삭제되며,<br/>
+				어떠한 경우에도 복구되지 않습니다.<br/>
+				<br/>
+				탈퇴 시 동일한 아이디, 이메일의 재가입은<br/> 
+				1개월 이내로는 불가능하며<br/>
+				사용하신 모든 내역정보가 소멸됩니다.
+				<br/>
+				<br/>
+				그래도 탈퇴 하시겠습니까?
+
+				</span>
+			</h2>
+		</section>
+	<!-- ===== -->
+
+	<!-- 비밀번호 영역 -->
+		<section class="my_info01" style="margin-bottom:3%">
+			<h4>비밀번호 영역</h4>
+			<table >
+				<tr>
+					<td style="width:25%">비밀번호 입력</td>
+					<td>
+						<input type="text" value="비밀번호를 입력해 주세요" onclick="this.value=''">
+					</td>	
+				</tr>
+			</table>
+			<p>※ 위 사항을 모두 인지했습니다 .</p>
+		</section>
+	<!-- ===== -->
+
+	<!-- 탈퇴하기 버튼 영역 -->
+		<section class="finish">
+			<h4>탈퇴하기 버튼</h4>
+			<button>
+				회 원 탈 퇴 하 기
+			</button>
+		</section>
+	<!-- ===== -->
+
+	<!-- 광고 배너 영역 -->
+		<section class="ad">
+			<h4>ad</h4>
+			<a href="">
+				<img src="images/ad_04.png" alt="banner01">
+			</a>
+		</section>
+	<!-- ===== -->
+</div>
+
+
+<!-- footer 영역 -->
+	<footer>
+			<p>
+				이 사이트는 베트남에 거주하는 한글을 사용하는<br/>
+				사용자들을 위한 성인전용 서비스이며, 미성년자의 출입을 금지합니다.
+			</p>
+
+			<ul>
+				<li>
+					<a href="">
+						이용약관		
+					</a>
+				</li>
+
+				<li>
+					<a href="">
+						개인정보 취급 방침		
+					</a>
+				</li>
+				<li>
+					<a href="">
+						고객센터		
+					</a>
+				</li>
+			</ul>
+
+			<h2>Copyright ⓒ Vietnam. All Rights Reserved </h2>
+	</footer>
+<!-- ===== -->
+</body>
+</html>

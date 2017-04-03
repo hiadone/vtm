@@ -24,12 +24,14 @@ if (element('menu', $layout)) {
     if (element(0, $menu)) {
         foreach (element(0, $menu) as $mkey => $mval) {
 
+
          
-        $js_mem_link[]=element('men_link', $mval).'_'.element('region', $view);
-        $js_swipe_contents[]="contents_".$mkey;
+        $js_mem_link=array(element('men_link', $mval).'_'.element('region', $view));
+        $js_swipe_contents=array("contents_".$mkey);
         }
     }
 }
+
 ?>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -65,29 +67,10 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
 <script type="text/javascript" src="<?php echo base_url('assets/js/js.cookie.js'); ?>"></script>
 <?php echo $this->managelayout->display_js(); ?>
 
-<style>
-/* jssor slider thumbnail navigator skin 12 css *//*.jssort12 .p            (normal).jssort12 .p:hover      (normal mouseover).jssort12 .pav          (active).jssort12 .pav:hover    (active mouseover).jssort12 .pdn          (mousedown)*/
-.jssort12{  position:absolute; }
-
-
-#jssor_1{width:100%!important;  margin:0 auto; height:auto; overflow:hidden;   padding-top:0%;}
-#jssor_1 > div{width:100%!important; height:100%!important;   position:relative!important;}
-#jssor_1 > div > div{width:100%!important; height:100%;}
-#jssor_1 > div > div > div{width:100%!important;  height:100%!important; border:0!important; top:0px!important;}
-#jssor_1 > div > div > div > div{height:100%!important;}
-#jssor_1 > div > div > div:last-child{height:35px!important; top:6px!important;}
-
-.wrap_all {width:100%; max-width: 414px; min-width: 320px; height: 100%;}
-
-
-
-
-
-</style>
 </head>
 <body <?php echo isset($view) ? element('body_script', $view) : ''; ?>>
 
-<div class="wrap">
+<div>
 <!-- header -->
     <header>
         <h1>
@@ -96,7 +79,10 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
         <!-- 지역선택하기 영역 -->  
             
         </h1>
-
+        <ul>
+            <li>로그인</li>
+            <li><a href="index10.html">회원가입</a></li>
+        </ul>
        
     </header>
 

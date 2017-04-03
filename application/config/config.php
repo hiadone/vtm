@@ -424,7 +424,7 @@ $config['cache_query_string'] = FALSE;
  * CiBoard 주 : 아래의 값을 입력해주세요
  * 입력하신 값은 외부에 공개되지 않도록 주의해주세요
  */
-$config['encryption_key'] = 'vtm';
+$config['encryption_key'] = 'secret_vtm';
 
 /*
 |--------------------------------------------------------------------------
@@ -660,10 +660,10 @@ $config['ciboard_check_latest_version'] = 'http://api.ciboard.co.kr/version/chec
 
 //Aws S3 서비스 설정
 $config['use_file_storage']    = 'S3';
-$config['s3Key']    = 'AKIAI7IXBS6I4PC7T65Q';
-$config['s3Secret'] = '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';
+$config['s3Key']    = '';
+$config['s3Secret'] = '';
 $config['version']  = 'latest';
-$config['region']   = 'ap-northeast-2';
-$config['bucket']   = 'vtm';
+$config['region']   = 'ap-northeast-1';
+$config['bucket']   = 'secretvt';
 $config['s3_url']   = 'https://s3-'.$config['region'].'.amazonaws.com/'.$config['bucket'].'/';
 

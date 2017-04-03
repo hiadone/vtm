@@ -456,7 +456,17 @@ class Postact extends CB_Controller
         $this->load->helper('download');
 
         // Read the file's contents
-        $data = file_get_contents(config_item('uploads_dir') . '/post/' . element('pfi_filename', $file));
+        ;
+        
+         if(element('file_storage',$file)=='S3'){
+            $result = $this->aws->downloadObject(config_item('uploads_dir') . '/post/' .element('pfi_filename', $file),element('pfi_originname', $file));
+            if($result)
+            $data = file_get_contents('/tmp/'.element('pfi_originname', $file));
+            @unlink('/tmp/'.element('pfi_originname', $file));
+        } else{
+            $data = file_get_contents(config_item('uploads_dir') . '/post/' . element('pfi_filename', $file));            
+        }
+        
         $name = element('pfi_originname', $file);
         force_download($name, $data);
 

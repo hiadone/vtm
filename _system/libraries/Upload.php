@@ -401,12 +401,14 @@ class CI_Upload {
 			return FALSE;
 		}
 
-		// Is the upload path valid?
-		if ( ! $this->validate_upload_path())
-		{
-			// errors will already be set by validate_upload_path() so just return FALSE
-			return FALSE;
-		}
+		if(config_item('use_file_storage') != 'S3' || $field!='userfile'){
+            // Is the upload path valid?
+            if ( ! $this->validate_upload_path())
+            {
+                // errors will already be set by validate_upload_path() so just return FALSE
+                return FALSE;
+            }
+        }
 
 		// Was the file able to be uploaded? If not, determine the reason why.
 		if ( ! is_uploaded_file($_file['tmp_name']))
@@ -563,14 +565,20 @@ class CI_Upload {
 		 * we'll use move_uploaded_file(). One of the two should
 		 * reliably work in most environments
 		 */
-		if ( ! @copy($this->file_temp, $this->upload_path.$this->file_name))
-		{
-			if ( ! @move_uploaded_file($this->file_temp, $this->upload_path.$this->file_name))
-			{
-				$this->set_error('upload_destination_error', 'error');
-				return FALSE;
-			}
-		}
+		
+
+		if(config_item('use_file_storage') == "S3" && $field=='userfile'){
+             
+            $this->_CI->aws->putObject($this->upload_path.$this->file_name,$this->file_temp);
+
+        } else {
+            if ( ! @copy($this->file_temp, $this->upload_path.$this->file_name)){
+                if ( ! @move_uploaded_file($this->file_temp, $this->upload_path.$this->file_name)){
+                    $this->set_error('upload_destination_error', 'error');
+                    return FALSE;
+                }
+            }
+        }
 
 		/*
 		 * Set the finalized image dimensions
