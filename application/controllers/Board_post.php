@@ -42,7 +42,7 @@ class Board_post extends CB_Controller
      * 게시판 목록입니다.
      */
     
-    public function lists($brd_key = 'business_info_0')
+    public function lists($brd_key = 'vtn_karaoke_0')
     {
 
         // 이벤트 라이브러리를 로딩합니다
@@ -123,6 +123,14 @@ class Board_post extends CB_Controller
         
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
+
+        if(strpos($brd_key,'_review' )!==false && $this->input->get('post_parent')){
+            $post_parent = $this->Post_model->get_one($this->input->get('post_parent'));
+            $view['view']['post_parent_extravars'] = $this->Post_extra_vars_model->get_all_meta($this->input->get('post_parent'));
+            $view['view']['post_parent'] = $post_parent;
+            $view['view']['post_parent_url'] = post_url($brd_key, $this->input->get('post_parent'));
+        }
+
 
         /**
          * 레이아웃을 정의합니다
@@ -422,7 +430,7 @@ class Board_post extends CB_Controller
         $view_date_style_manual = ($this->cbconfig->get_device_view_type() === 'mobile')
             ? element('mobile_view_date_style_manual', $board)
             : element('view_date_style_manual', $board);
-
+            
         if (element('mem_id', $post) >= 0) {
             $dbmember = $this->Member_model
                 ->get_by_memid(element('mem_id', $post), 'mem_icon');
@@ -786,9 +794,34 @@ class Board_post extends CB_Controller
             && element('use_mobile_prev_next_post', $board)) {
             $use_prev_next = true;
         }
+
+        
         if ($use_prev_next) {
             $where = '';
-            $where['brd_id'] = element('brd_id', $post);
+            $where_in='';
+            if(empty(get_cookie('region')) || get_cookie('region')===0){
+                $this->load->model('Board_model');
+
+                $brdidwhere = array(
+                        'bgr_id' => element('bgr_id', $board),
+                    );
+
+                $brdidarr = $this->Board_model
+                        ->get('', 'brd_id', $brdidwhere, '', '', 'brd_id', 'ASC');
+
+                foreach ($brdidarr as $value) {
+                    $brd_id_arr[] = $value['brd_id'];
+                   
+                }
+                
+                $where_in=array(
+                    'brd_id' => $brd_id_arr,
+                );
+            } else {
+                $where['brd_id'] = element('brd_id', $post);
+            }
+
+            
             $where['post_del <>'] =2;
             $where['post_secret'] = 0;
             if (element('except_notice', $board)
@@ -812,6 +845,8 @@ class Board_post extends CB_Controller
                 $sfield = array('post_title', 'post_content');
             }
             $skeyword = $this->input->get('skeyword', null, '');
+
+
             $view['view']['next_post'] = $next_post
                 = $this->Post_model
                 ->get_prev_next_post(
@@ -820,7 +855,9 @@ class Board_post extends CB_Controller
                     'next',
                     $where,
                     $sfield,
-                    $skeyword
+                    $skeyword,
+                    '',
+                    $where_in
                 );
 
             if (element('post_id', $next_post)) {
@@ -835,7 +872,9 @@ class Board_post extends CB_Controller
                     'prev',
                     $where,
                     $sfield,
-                    $skeyword
+                    $skeyword,
+                    '',
+                    $where_in
                 );
             if (element('post_id', $prev_post)) {
                 $view['view']['prev_post']['url'] = post_url(element('brd_key', $board), element('post_id', $prev_post)) . '?' . $param->output();
@@ -869,6 +908,13 @@ class Board_post extends CB_Controller
 
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
+
+        if(strpos(element('brd_key', $board),'_review' )!==false && $this->input->get('post_parent')){
+            $post_parent = $this->Post_model->get_one($this->input->get('post_parent'));
+            $view['view']['post_parent_extravars'] = $this->Post_extra_vars_model->get_all_meta($this->input->get('post_parent'));
+            $view['view']['post_parent'] = $post_parent;
+            $view['view']['post_parent_url'] = post_url(element('brd_key', $board), $this->input->get('post_parent'));
+        }
 
         /**
          * 레이아웃을 정의합니다
@@ -1161,7 +1207,9 @@ class Board_post extends CB_Controller
          */
         $where_in=array();
         $where=array();
-        if(strpos($brd_key,'_0' )!==false){
+
+        if(empty(get_cookie('region')) || get_cookie('region')===0){
+        //if(strpos($brd_key,'_0' )!==false){
             $this->load->model('Board_model');
 
             $brdidwhere = array(

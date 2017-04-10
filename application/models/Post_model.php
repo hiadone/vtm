@@ -288,7 +288,7 @@ class Post_model extends CB_Model
     /**
      * List 페이지 커스테마이징 함수
      */
-    public function get_prev_next_post($post_id = 0, $post_num = 0, $type = '', $where = '', $sfield = '', $skeyword = '', $sop = 'OR')
+    public function get_prev_next_post($post_id = 0, $post_num = 0, $type = '', $where = '', $sfield = '', $skeyword = '', $sop = 'OR', $where_in='')
     {
         $post_id = (int) $post_id;
         if (empty($post_id) OR $post_id < 1) {
@@ -357,6 +357,9 @@ class Post_model extends CB_Model
 
         if ($where) {
             $this->db->where($where);
+        }
+        if ($where_in) {
+            $this->db->where_in(key($where_in),$where_in[key($where_in)]);
         }
         if ($search_where) {
             $this->db->where($search_where);
@@ -550,7 +553,7 @@ class Post_model extends CB_Model
             $this->db->where($where);
         }
         if ($where_in) {
-            $this->db->where_in('brd_id', $where_in);
+            $this->db->where_in(key($where_in),$where_in[key($where_in)]);
         }
         $this->db->order_by('post_num, post_reply');
         if ($limit) {

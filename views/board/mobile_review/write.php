@@ -1,8 +1,9 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 <?php echo element('headercontent', element('board', $view)); ?>
 
-<div class="info board">
-    <h3><?php echo html_escape(element('board_name', element('board', $view))); ?> 글쓰기</h3>
+<div class="wrap">
+
+    <!-- <h3><?php echo html_escape(element('board_name', element('board', $view))); ?> 글쓰기</h3> -->
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
     echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
@@ -22,14 +23,26 @@
                     <input type="password" class="input per95" name="post_password" id="post_password" />
                 </li>
             <?php } ?>
-            <li>
+            <!-- <li>
                 <span>이메일</span>
                 <input type="text" class="input per95" name="post_email" id="post_email" value="<?php echo set_value('post_email', element('post_email', element('post', $view))); ?>" />
             </li>
             <li>
                 <span>홈페이지</span>
                 <input type="text" class="input per95" name="post_homepage" id="post_homepage" value="<?php echo set_value('post_homepage', element('post_homepage', element('post', $view))); ?>" />
-            </li>
+            </li> -->
+        <?php } else { ?>
+        <!-- <li>
+            <section class="write">
+                <figure>
+                    <img src="<?php echo base_url('assets/images/temp/user.png');?>" alt="user">
+                    <figcaption>
+
+                        <?php echo $this->member->item('mem_nickname'); ?>
+                    </figcaption>
+                </figure>
+            </section>
+        </li> -->
         <?php } ?>
         <li>
             <span>제목</span>
@@ -118,12 +131,12 @@
             </div>
         <?php } ?>
         <div class="form-group mb20">
-            <?php if ( ! element('use_dhtml', element('board', $view))) { ?>
+            <!-- <?php if ( ! element('use_dhtml', element('board', $view))) { ?>
                 <div class="btn-group pull-right mb10">
                     <button type="button" class="btn btn-default btn-sm" onClick="resize_textarea('post_content', 'down');"><i class="fa fa-plus fa-lg"></i></button>
                     <button type="button" class="btn btn-default btn-sm" onClick="resize_textarea('post_content', 'up');"><i class="fa fa-minus fa-lg"></i></button>
                 </div>
-            <?php } ?>
+            <?php } ?> -->
 
             <?php echo display_dhtml_editor('post_content', set_value('post_content', element('post_content', element('post', $view))), $classname = 'dhtmleditor', $is_dhtml_editor = element('use_dhtml', element('board', $view)), $editor_type = $this->cbconfig->item('post_editor_type')); ?>
         </div>
@@ -150,7 +163,7 @@
         ?>
             <li>
                 <span>파일 #<?php echo $i+1; ?></span>
-                <input type="file" class="input" name="<?php echo $file_column; ?>" />
+                <input type="file" class="input per95" name="<?php echo $file_column; ?>" />
                 <?php if ($download_link) { ?>
                     <a href="<?php echo $download_link; ?>"><?php echo html_escape(element('pfi_originname', element($i, element('file', $view)))); ?></a>
                     <label for="<?php echo $del_column; ?>">
@@ -174,7 +187,7 @@
                 <?php } ?>
             </div>
         <?php } ?>
-            <div class="table-bottom text-center mt20">
+            <div class="table-bottom text-center mb10">
                 <button type="button" class="btn btn-default btn-sm btn-history-back">취소</button>
                 <button type="submit" class="btn btn-success btn-sm">작성완료</button>
             </div>
@@ -184,6 +197,10 @@
 
 <?php echo element('footercontent', element('board', $view)); ?>
 
+<section class="ad">
+    <h4>ad</h4>
+    <?php echo banner("review_write_banner_1") ?>
+</section>
 
 <script type="text/javascript">
 // 글자수 제한

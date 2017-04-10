@@ -11,14 +11,17 @@ if (element('list', element('data', $view))) {
             </div>
         <?php } ?>
         <div class="media-body">
-            <h4 class="media-heading">
+            <div>
                 <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_comment_id[]" value="<?php echo element('cmt_id', $result); ?>" /><?php } ?>
-                <?php echo element('display_name', $result); ?>
+                <?php echo element('content', $result); ?>
+            </div>
+            <h4 class="media-heading">
+                <?php echo element('display_name', $result); ?> | 
                 <span class="time"><i class="fa fa-clock-o"></i> <?php echo element('display_datetime', $result); ?></span>
                 <?php if (element('display_ip', $result)) { ?>
                     <span class="ip"><i class="fa fa-map-marker"></i> <?php echo element('display_ip', $result); ?></span>
                 <?php } ?>
-                <?php if (element('is_mobile', $result)) { ?><i class="fa fa-wifi"></i><?php } ?>
+                
                 <?php
                 if ( ! element('post_del', element('post', $view)) && ! element('cmt_del', $result)) {
                 ?>
@@ -58,7 +61,7 @@ if (element('list', element('data', $view))) {
                 }
                 ?>
             </h4>
-            <?php echo element('content', $result); ?>
+            
             <span id="edit_<?php echo element('cmt_id', $result); ?>"></span><!-- 수정 -->
             <span id="reply_<?php echo element('cmt_id', $result); ?>"></span><!-- 답변 -->
             <input type="hidden" value="<?php echo element('cmt_secret', $result); ?>" id="secret_comment_<?php echo element('cmt_id', $result); ?>" />

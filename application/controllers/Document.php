@@ -116,6 +116,7 @@ class Document extends CB_Controller
             $board = $this->board->item_all(element('brd_id', $post));
             $view['view']['board_key'] = element('brd_key', $board);
             $view['view']['post'] = $post;
+            $view['view']['post_url'] = post_url(element('brd_key', $board), $post_id);
         }
 
         

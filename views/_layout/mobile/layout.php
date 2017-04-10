@@ -87,32 +87,39 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
 </head>
 <body <?php echo isset($view) ? element('body_script', $view) : ''; ?>>
 
-<div class="wrap">
+<div>
 <!-- header -->
     <header>
         <h1>
         <!-- 로고 영역 -->
-            <a href="<?php echo site_url(); ?>" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>"><?php echo $this->cbconfig->item('site_logo'); ?></a>
-        <!-- 지역선택하기 영역 -->  
-            <span>
-                <label for="select">지역선택하기</label>
-                <select id="region">
-            <?php
-            
-            if (element('region_category', $view)) {
-                foreach (element('region_category', $view) as $key => $value) {
-
-                    if($key == element('region', $view)) echo '<option value='.site_url().' selected>'.$value.'</option>';
-                    else echo '<option value='.site_url().'>'.$value.'</option>';
-                }
-            }
-            ?>
-                </select>
-            </span>
+            <a href="<?php echo site_url(); ?>" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>"><?php echo $this->cbconfig->item('site_logo'); ?>
+            </a>
         </h1>
+        <ul>
+            <li><a href="<?php echo site_url('login'); ?>">로그인</a></li>
+            <li><a href="<?php echo site_url('register'); ?>">회원가입</a></li>
+        </ul>
+        <!-- 지역선택하기 영역 -->  
+        <span>
+            <label for="select">지역선택하기</label>
+            <select id="region">
+        <?php
+        
+        if (element('region_category', $view)) {
+            foreach (element('region_category', $view) as $key => $value) {
+
+                if($key == element('region', $view)) echo '<option value='.site_url().' selected>'.$value.'</option>';
+                else echo '<option value='.site_url().'>'.$value.'</option>';
+            }
+        }
+        ?>
+            </select>
+        </span>
+     
+        
 
        <!-- 메인메뉴 영역 -->
-        <nav class="mainmenu">
+        <nav id="mainmenu">
         
             <ul>
             <?php
@@ -131,7 +138,7 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
                         if (element('men_target', $mval)) {
                             $menuhtml .= ' target="' . element('men_target', $mval) . '"';
                         }
-                        $menuhtml .= ' title="' . html_escape(element('men_name', $mval)) . '"><div class="_in"></div><br>' . html_escape(element('men_name', $mval)) . '</a></li>';
+                        $menuhtml .= ' title="' . html_escape(element('men_name', $mval)) . '">' . html_escape(element('men_name', $mval)) . '</a></li>';
                         
                     }
                 }
@@ -272,7 +279,7 @@ $(document).ready(function(){
        location.href=$(this).val()+"/main?curentContents="+curnetIndex;
     });
 
-    $("header .mainmenu ul li").click(function(){
+    $("#mainmenu ul li").click(function(){
 
         $('div.c').eq($(this).index()).click();        
 

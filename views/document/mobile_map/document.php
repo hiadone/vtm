@@ -1,16 +1,142 @@
 <?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&sensor=true&language=ko'); 
-?>
-<?php
+
+$menuName="";
+
+$board_key_arr=explode("_",element('board_key', $view));
+if(count($board_key_arr) > 1) $menu_key=$board_key_arr[0]."_".$board_key_arr[1];
+else $menu_key=element('board_key', $view);
+$i=0;
+$curentContents="";
+if (element('menu', $layout)) {
+                $menu = element('menu', $layout);
+                if (element(0, $menu)) {
+                    foreach (element(0, $menu) as $mkey => $mval) {
+                        if(strpos($mval['men_link'],$menu_key) !==false) {
+                            $menuName=html_escape(element('men_name', $mval));
+                            $curentContents=$i;
+                        }
+                        $i++;
+                    }
+                }
+            }
+
+
+  
+ 
 //설정값
 
-
+$tel1=element('tel1',element('extravars', $view));
 $geo = element('google_map',element('extravars', $view));
 $marker = element('google_map',element('extravars', $view));
 $geo_arr = explode(',', $geo);
-$lat = $geo_arr[0] ? $geo_arr[0] : '37.566535';
-$lng = $geo_arr[1] ? $geo_arr[1] : '126.977969';
+$lat = !empty($geo_arr[0]) ? $geo_arr[0] : '37.566535';
+$lng = !empty($geo_arr[1]) ? $geo_arr[1] : '126.977969';
 $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
 ?>
+<div class="wrap">
+
+  <!-- title 영역 -->
+    <section class="title">
+      <h4>
+        title
+      </h4>
+      <h2 class="bottom_02">[<?php echo "업소정보";//$menuName ?>] <?php echo element('post_title', element('post',$view)) ?></h2>
+        <table>
+            <tr>
+                <td style="width:25%;">
+                    <a href="<?php echo element('post_url', $view); ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu12.png')?>" alt="sub01"> 
+                        업소정보
+                    </a>
+                </td>
+                <td style="width:25%;" class="active">
+                    <a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu10.png')?>" alt="sub02">
+                        위치확인
+                    </a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo base_url('/board/vtn_review?post_parent='.element('post_id', element('post', $view)))?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu13.png')?>" alt="sub03">
+                        업소후기
+                    </a>
+                </td>
+                <td style="width:25%;">
+                   <a href="tel:<?php echo $tel1 ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu11.png')?>" alt="sub04">
+                        전화걸기
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </section>
+  <!-- ===== -->
+
+  <!-- 이미지 영역 -->
+    <section class="store">
+      <h2>
+      하노이시 하노이동 하노이구 하노이 거리 136-66번지<br/>
+       내위치 로부터 <span>5km</span>
+      </h2>
+
+      <table>
+        <tr>
+          <td class="border">
+            <input type="text" value="내위치 · 하노이시 하노이동"> 
+            <img src="images/clear.png" alt="X">
+          </td>
+          <td rowspan="2">
+            길찾기
+          </td>
+        </tr>
+        <tr>
+          <td>다낭빈펄리조트</td>
+        </tr>
+      </table>
+    </section>
+  <!-- ===== -->
+
+  <!--method  영역 -->
+    <section class="method">
+      <h4>찾아가는 방법</h4>
+      <table>
+        <tr>
+          <td>
+            <figure>
+              <img src="images/traffic01.png" alt="traffic01">
+              <figcaption>
+                자동차
+              </figcaption>
+            </figure>
+          </td>
+
+          <td>
+            <figure>
+              <img src="images/traffic02.png" alt="sub01">
+              <figcaption>
+                대중교통
+              </figcaption>
+            </figure>
+          </td>
+        </tr>
+        </table>
+      <a href="index17.html">
+      <img src="images/road01.png" alt="road01">
+      </a>
+    </section>
+  <!-- ===== -->
+
+  <!-- 광고 배너 영역 -->
+    <section class="ad">
+      <h4>ad</h4>
+      <a href="">
+        <img src="images/ad_04.png" alt="banner01">
+      </a>
+    </section>
+  <!-- ===== -->
+
+</div>
+
 <div class="map">
         <h2>
             [위치확인] <?php echo element('post_title', element('post',$view)) ?>

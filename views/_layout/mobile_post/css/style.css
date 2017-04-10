@@ -367,7 +367,7 @@ padding: 3.5px;}
 
 .input {border: 1px solid #231b26; height: 20px;outline: 0 none;padding: 3px 12px;background-color: #FFFFFF;background-image: none;border-radius: 5px;}
 textarea.input{height:100px;}
-textarea.dhtmleditor {border: 1px solid #e5e6e7;outline: 0 none;padding: 2%;background-color: #FFFFFF;background-image: none;border-radius: 5px;width:96%;height:350px;}
+textarea.dhtmleditor {border: 1px solid #231b26;outline: 0 none;padding: 2%;background-color: #FFFFFF;background-image: none;border-radius: 5px;width:95%;height:350px;}
 select.input {height: 30px;}
 .form-text{padding-top: 4px;}
 .checkbox-group{padding-top: 5px;}

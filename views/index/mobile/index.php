@@ -1,7 +1,7 @@
 <?php $this->managelayout->add_js(base_url('assets/js/bxslider/jquery.bxslider.min.js')); ?>
 <?php $this->managelayout->add_js(base_url('assets/js/bxslider/plugins/jquery.fitvids.js')); ?>
 <script type="text/javascript">
-$(document).ready(function () {
+        $(document).ready(function () {
             $('.slide ul').bxSlider({
                 //work method
                 mode: 'horizontal', // 'horizontal' : 좌,우 'vertical' : 상,하 'fade' : fade in, out
@@ -52,10 +52,7 @@ $(document).ready(function () {
                 <ul >
                     <?php echo banner('index_bxslider','order',3,'<li>','</li>'); ?>
                 </ul>
-            <div class="newPager"></div>
-            <div class="newAutoControl"></div>
-            <span class="btn prev"></span>
-            <span class="btn next"></span>
+           
         </section>
 
     <!-- 대메뉴 리스트 영역 -->
@@ -63,7 +60,7 @@ $(document).ready(function () {
             <h4>main_list</h4>
             <ul>
                 <li>
-                    <a href="index02.html">
+                    <a href="<?php echo site_url('main').'?curentContents=0' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_01.png'); ?>" alt="main_01">
                             <figcaption>
@@ -75,7 +72,7 @@ $(document).ready(function () {
                 </li>
 
                 <li>
-                    <a href="index03.html">
+                    <a href="<?php echo site_url('main').'?curentContents=1' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_02.png'); ?>" alt="main_02">
                             <figcaption>
@@ -87,7 +84,7 @@ $(document).ready(function () {
                 </li>
 
                 <li>
-                    <a href="index04.html">
+                    <a href="<?php echo site_url('main').'?curentContents=2' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_03.png'); ?>" alt="main_03">
                             <figcaption>
@@ -99,7 +96,7 @@ $(document).ready(function () {
                 </li>
 
                 <li>
-                    <a href="index05.html">
+                    <a href="<?php echo site_url('main').'?curentContents=3' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_04.png'); ?>" alt="main_04">
                             <figcaption>
@@ -111,7 +108,7 @@ $(document).ready(function () {
                 </li>
 
                 <li>
-                    <a href="index06.html">
+                    <a href="<?php echo site_url('main').'?curentContents=4' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_05.png'); ?>" alt="main_05">
                             <figcaption>
@@ -123,7 +120,7 @@ $(document).ready(function () {
                 </li>
 
                 <li>
-                    <a href="index07.html">
+                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_06.png'); ?>" alt="main_06">
                             <figcaption>

@@ -11,6 +11,48 @@
 		}
 /* ===== */
 
+/*header 의 지역선택하기 영역*/
+header span{
+		display: inline-block;
+		width:30%;
+		float:right;
+		position: relative;
+		text-align:left;
+		margin-top:8%;
+		border:1px solid #c20e58;
+		box-sizing: border-box;
+		font-weight: bold;
+		background:url(../images/search.png) no-repeat  92% center;
+		background-size:10%;
+		padding: 1%;
+		background-color: #fff;
+		margin-right: 3%;
+	}
+
+header span label{
+		font-size:10px;
+		color:#231b26;
+	}
+
+header span select{
+	width:100%;
+	position: absolute;
+	top:0;
+	left: 0;
+	background-color: transparent;
+	color: transparent;
+	border:0;
+	border-radius: 0;
+	outline: none
+	}
+
+header span select option{
+	color:#000;
+	outline: none;
+	}
+
+
+
 /*이미지 슬라이드 css*/
 		.slide{
 			padding:0;

@@ -49,7 +49,7 @@ $(document).ready(function() {
 
         curnetIndex=slideIndex;
         $('html, body').animate({scrollTop : 0});
-        $("header .mainmenu ul li:nth-child("+(fromIndex+1)+")").removeClass('active')
+        $("#mainmenu ul li:nth-child("+(fromIndex+1)+")").removeClass('active')
         if(flag[slideIndex]){
             flag[slideIndex]=false;
             
@@ -74,7 +74,7 @@ $(document).ready(function() {
                     
                     $("#"+js_swipe_contents[slideIndex]).html(data).promise().done(function(){
                       $("#div_ajax_load_image").fadeOut();
-                      $("header .mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
+                      $("#mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
                       
                       $('html , body').scrollTop('top' , '0');
                     });
@@ -91,7 +91,7 @@ $(document).ready(function() {
             
         } else {
 
-            $("header .mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
+            $("#mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
             $('html , body').scrollTop('top' , '0');
             setTimeout( "reload_rg('"+js_swipe_contents[slideIndex]+"')", 100);
         }
@@ -115,8 +115,8 @@ function reload_rg(val){
 
   //if(!val2) return;
   console.log('val'+val);
-  $('#jssor_1').height($('#'+val).height()+53);
-  $('#jssor_1>div>div').height($('#'+val).height()+53);
+  $('#jssor_1').height($('#'+val).height()+5);
+  $('#jssor_1>div>div').height($('#'+val).height()+5);
 
 
 }

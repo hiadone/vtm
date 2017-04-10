@@ -17,6 +17,14 @@
 	//로딩후 두번째 서브메뉴 배경색상 변경
 	  $('.title table tr td').css('background-color' , '#fff');
       $('.title table tr td:nth-child(2)').css('background-color' , 'rgb(239, 208, 222)');
+
+    //지역선택하기 
+		var select = $("#sel");
+    	select.change(function(){
+        var select_name = $(this).children("option:selected").text();
+        $(this).siblings("label").text(select_name);
+        $("label").css("color" , "#231b26");
+   		 });
 	});
 </script>
 </head>
@@ -89,10 +97,17 @@
 				<img src="images/logo.png" alt="logo">
 			</a>
 		</h1>
-		<ul>
-			<li>로그인</li>
-			<li><a href="index10.html">회원가입</a></li>
-		</ul>
+	<!-- 지역선택하기 영역 -->	
+		<span>
+		<label for="select">지역선택하기</label>
+			<select id="sel">
+				<option>전체</option>
+				<option>하노이</option>
+				<option>다낭</option>
+				<option>나짱</option>
+				<option>호치민</option>
+			</select>
+		</span>
 
 		<nav>
 			<ul>

@@ -80,8 +80,8 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
             
         </h1>
         <ul>
-            <li>로그인</li>
-            <li><a href="index10.html">회원가입</a></li>
+            <li><a href="<?php echo site_url('login'); ?>">로그인</a></li>
+            <li><a href="<?php echo site_url('register'); ?>">회원가입</a></li>
         </ul>
        
     </header>
@@ -199,47 +199,7 @@ $(document).on('click', '.viewmobileversion', function(){
     Cookies.set('device_view_type', 'mobile', { expires: 1 });
 });
 
-$(document).ready(function(){
 
-    //지역선택하기 
-    var select = $("#region");
-    select.change(function(){
-         //var select_name = $(this).children("option:selected").html();
-         //$("header h1 span label").html(select_name);
-        // $("label").css("color" , "#231b26");
-
-
-    Cookies.set('region',$(this).children('option:selected').index(), { expires: 1 },cb_cookie_domain);
-       // set_cookie("region", '11', 0, cb_cookie_domain);     
-//       alert(js_mem_link[curnetIndex]);   
-       location.href=$(this).val()+"?curentContents="+curnetIndex;
-    });
-
-    $("header .mainmenu ul li").click(function(){
-
-        $('div.c').eq($(this).index()).click();
-
-    });
-
-    // // 메인메뉴 의 높이가 자동 설정
-    // var hei = $('.wrap > header .mainmenu ul').height() - 2;
-
-    // $('.wrap > header .mainmenu ul ').css('height' , hei);
-
-    //선택된 메인메뉴 설정 
-
-  //  $('.wrap > header .mainmenu div').css('left' , '11.5%');
-
-//     //로딩후 서브메뉴의 선택 설정 
-//     $('.submenu li:nth-child(1)').css('background-color' , '#efd0de');
-
-// //서브메뉴 클릭시 색상 변경
-//     $('.submenu li').click(function(){
-//         $('.submenu li').css('background-color' , '#fff');
-//         $(this).css('background-color' , '#efd0de');
-//     });
-
-});
 </script>
 <?php echo element('popup', $layout); ?>
 <?php echo $this->cbconfig->item('footer_script'); ?>

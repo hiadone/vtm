@@ -17,11 +17,45 @@ if (element('menu', $layout)) {
  ?>
 <?php echo element('headercontent', element('board', element('list', $view))); ?>
 
-<div class="info board">
-    <div class="title">
-        <h2><?php echo $menuName; ?></h2>
-        <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소가 있습니다.</p>
-    </div>
+<div class="wrap">
+    <section class="title">
+        <h2 class="bottom_02">[<?php echo "업소후기";//$menuName ?>] <?php echo element('post_title', element('post_parent',$view)) ?></h2>
+        <table>
+            <tr>
+                <td style="width:25%;">
+                    <a href="<?php echo element('post_parent_url', $view); ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu12.png')?>" alt="sub01"> 
+                        업소정보
+                    </a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo base_url('document/map/'.element('post_id', element('post_parent', $view))); ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu10.png')?>" alt="sub02">
+                        위치확인
+                    </a>
+                </td>
+                <td style="width:25%;" class="active">
+                    <a href="<?php echo base_url('/board/vtn_review?post_parent='.element('post_id', element('post_parent', $view)))?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu13.png')?>" alt="sub03">
+                        업소후기
+                    </a>
+                </td>
+                <td style="width:25%;">
+                   <a href="tel:<?php echo element('tel1', element('post_parent_extravars', $view)) ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu11.png')?>" alt="sub04">
+                        전화걸기
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section class="list">
+        <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소후기가 있습니다.</p>
+    <?php if (element('write_url', element('list', $view))) { ?>
+        <div class="pull-right">
+            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+        </div>
+    <?php } ?>
     <div class="table-top">
         <?php if ( ! element('access_list', element('board', element('list', $view))) && element('use_rss_feed', element('board', element('list', $view)))) { ?>
             <a href="<?php echo rss_url(element('brd_key', element('board', element('list', $view)))); ?>" class="btn btn-default btn-sm" title="<?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?> RSS 보기"><i class="fa fa-rss"></i></a>
@@ -124,7 +158,7 @@ if (element('menu', $layout)) {
     if (element('use_category', element('board', element('list', $view))) && element('cat_display_style', element('board', element('list', $view))) === 'tab') {
         $category = element('category', element('board', element('list', $view)));
     ?>
-        <ul class="submenu">
+        <ul >
             <li onClick="location.href='<?php echo board_url(element('brd_key', element('board', element('list', $view)))); ?>?findex=<?php echo html_escape($this->input->get('findex')); ?>&category_id='" role="presentation" <?php if ( ! $this->input->get('category_id')) { ?>class="active" <?php } ?>>전체</li>
             <?php
             if (element(0, $category)) {
@@ -142,11 +176,7 @@ if (element('menu', $layout)) {
     $attributes = array('name' => 'fboardlist', 'id' => 'fboardlist');
     echo form_open('', $attributes);
     ?>
-    <?php if (element('write_url', element('list', $view))) { ?>
-        <div class="pull-right">
-            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
-        </div>
-    <?php } ?>
+    
     <?php if (element('is_admin', $view)) { ?>
         <div><label for="all_boardlist_check"><input id="all_boardlist_check" onclick="if (this.checked) all_boardlist_checked(true); else all_boardlist_checked(false);" type="checkbox" /> 전체선택</label></div>
     <?php } ?>
@@ -201,18 +231,19 @@ if (element('menu', $layout)) {
                 $open = true;
             }
             $marginright = (($i+1)% $cols === 0) ? 0 : 2;
+            
     ?>
+
         <li class="gallery-box" style="width:<?php echo element('gallery_percent', element('board', element('list', $view))); ?>%;margin-right:<?php echo $marginright;?>%;">
             <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /><?php } ?>
             <a href="<?php echo element('post_url', $result); ?>" title="<?php echo html_escape(element('title', $result)); ?>">
            
-            <!-- <?php if (element('category', $result)) { ?><span class="label label-default">[<?php echo html_escape(element('bca_value', element('category', $result))); ?>]</span><?php } ?> -->
-            <h2 class="info_subject"> <?php echo html_escape(element('title', $result)); ?>
+                <!-- <?php if (element('category', $result)) { ?><span class="label label-default">[<?php echo html_escape(element('bca_value', element('category', $result))); ?>]</span><?php } ?> -->
+                <h2 class="info_subject"> <?php echo html_escape(element('title', $result)); ?></h2>
+                <?php echo element('post_content', $result); ?>
                 <span>
-                    <?php echo element('display_datetime', $result); ?>
+                    작성일 : <?php echo element('display_datetime', $result); ?>
                 </span>
-            </h2>
-            <p class="sub_subject"><?php if(element('sub_subject',element('extravars', $result))) echo element('sub_subject',element('extravars', $result)); ?></p>
             </a>
             </li>
         <?php
@@ -232,8 +263,19 @@ if (element('menu', $layout)) {
         }
         ?>
         </div>
+    <?php if (element('write_url', element('list', $view))) { ?>
+        <div class="pull-right">
+            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+        </div>
+    <?php } ?>
     <?php echo form_close(); ?>
 
+    </section>
+
+    <section class="ad">
+        <h4>ad</h4>
+        <?php echo banner("karaoke_post_banner_1") ?>
+    </section>
     <div class="border_button">
         <div class="pull-left mr10">
             <!-- <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a> -->

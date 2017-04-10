@@ -1,19 +1,6 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 <?php    $this->managelayout->add_js(base_url('plugin/zeroclipboard/ZeroClipboard.js')); ?>
 <?php
-$menuName="";
-$board_key_arr=explode("_",element('board_key', $view));
-if(count($board_key_arr) > 1) $menu_key=$board_key_arr[0]."_".$board_key_arr[1];
-else $menu_key=element('board_key', $view);
-
-if (element('menu', $layout)) {
-                $menu = element('menu', $layout);
-                if (element(0, $menu)) {
-                    foreach (element(0, $menu) as $mkey => $mval) {
-                        if(strpos($mval['men_link'],$menu_key) !==false) $menuName=html_escape(element('men_name', $mval));
-                    }
-                }
-            }
 
 
 
@@ -35,7 +22,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
 
 <?php echo element('headercontent', element('board', $view)); ?>
 
-<div class="detail board">
+<div class="wrap">
     <?php echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>'); ?>
    <!--  <h3>
         <?php if (element('category', element('post', $view))) { ?>[<?php echo html_escape(element('bca_value', element('category', element('post', $view)))); ?>] <?php } ?>
@@ -57,9 +44,37 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
             </table>
         </div>몰
     <?php } */?>
-    <div class="title">
-        <h2>[<?php echo $menuName ?>] <?php echo element('post_title', element('post',$view)) ?></h2>
-    </div>
+    <section class="title">
+        <h2 class="bottom_02">[업소후기] <?php echo element('post_title', element('post',$view)) ?></h2>
+        <table>
+            <tr>
+                <td style="width:25%;">
+                    <a href="<?php echo element('list_url', $view); ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu09.png')?>" alt="sub01"> 
+                        목록보기
+                    </a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo element('write_url', $view); ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu13.png')?>" alt="sub02">
+                        글쓰기
+                    </a>
+                </td>
+                <td style="width:25%;">
+                   <a href="tel:<?php echo element('tel1',element('post_parent_extravars', $view)) ?>">
+                        <img src="<?php echo base_url('assets/images/temp/submenu11.png')?>" alt="sub02">
+                        전화걸기
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </section>
+    <section class="title02" style="border-bottom:0; margin:0">
+        <h4>작성일</h4>
+        <p>작성일 : <?php echo element('display_datetime', element('post', $view)); ?></p>
+    </section>  
+
+    <section class="agree">
   <!--   <ul>
         <li><a href="<?php echo element('list_url', $view); ?>">목록보기</a></li>
         <li><a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">위치확인</a></li>
@@ -80,10 +95,14 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
 
         <!-- 본문 내용 시작 -->
-        <div id="post-content"><?php echo element('content', element('post', $view)); ?></div>
+        <div><?php echo element('content', element('post', $view)); ?></div>
         <!-- 본문 내용 끝 -->
     </div>
-
+    </section>
+    <section class="ad">
+        <h4>ad</h4>
+        <?php echo banner("review_post_banner_1") ?>
+    </section>
     <?php if ( ! element('post_del', element('post', $view)) && (element('use_post_like', element('board', $view)) OR element('use_post_dislike', element('board', $view)))) { ?>
         <div class="recommand">
             <?php if (element('use_post_like', element('board', $view))) { ?>
@@ -95,7 +114,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
     <?php } ?>
 
-    <div class="pull-right mt20 mb20 ">
+    <div class="pull-right">
         <?php if ( ! element('post_del', element('post', $view)) && element('use_scrap', element('board', $view))) { ?>
             <button type="button" class="btn btn-black" id="btn-scrap" onClick="post_scrap('<?php echo element('post_id', element('post', $view)); ?>', 'post-scrap');">스크랩 <span class="post-scrap"><?php echo element('scrap_count', element('post', $view)) ? '+' . number_format(element('scrap_count', element('post', $view))) : ''; ?></span></button>
         <?php } ?>
