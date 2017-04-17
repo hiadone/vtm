@@ -27,12 +27,12 @@ header span{
 		padding: 1%;
 		background-color: #fff;
 		margin-right: 3%;
-	}
+		}
 
 header span label{
 		font-size:10px;
 		color:#231b26;
-	}
+		}
 
 header span select{
 	width:100%;
@@ -400,13 +400,13 @@ header span select option{
 		margin-left:15%;
 		}
 
-	#popup_layer > h2{
+	#popup_layer > h2 , .enter > h2{
 		text-align:center;
 		line-height: 18px;
 		margin-bottom:5%
 		}
 
-	#popup_layer > h2 > span{
+	#popup_layer > h2 > span , .enter > h2 > span {
 		display: block;
 		margin-bottom:3%;
 		font-size:18px; 
@@ -423,14 +423,14 @@ header span select option{
 		font-size:13px;
 		}
 
-	#popup_layer > .signup{
+	#popup_layer > .signup , .enter > .signup02 {
 		width:100%;
 		margin:0 auto;
 		font-size:11px;
 		display: inline-block;
 		}
 
-	#popup_layer > .login {
+	#popup_layer > .login , .enter > .id{
 		width:80%;
 		height: 21px;
 		margin:0 auto;
@@ -439,7 +439,11 @@ header span select option{
 		font-size:12px;
 		}
 
-	#popup_layer > .login > h3{
+	.enter > .id{
+		width: 55%;
+	}
+
+	#popup_layer > .login > h3 , .enter > .id > h3{
 		display: inline-block;
 		font-size: 13px;
 		position: absolute;
@@ -449,7 +453,7 @@ header span select option{
 		font-weight: bold;
 		}
 
-	#popup_layer > .login > div{
+	#popup_layer > .login > div , .enter > .id > div {
 		width:70%;
 		height:22px;
 		float: right;
@@ -458,7 +462,7 @@ header span select option{
 		box-sizing: border-box;
 		}
 
-	#popup_layer >.login > div > input{
+	#popup_layer >.login > div > input , .enter > .id > div > input{
 		position: absolute;
 		top:2px;
 		left:2px;
@@ -469,7 +473,7 @@ header span select option{
 		width:95%;
 		}
 
-	#popup_layer >.login > .submit_btn{
+	#popup_layer >.login > .submit_btn , .enter > .id > .submit_btn{
 		width:100%;
 		height:25px;
 		background-color: #231b26;
@@ -479,7 +483,9 @@ header span select option{
 
 	#popup_layer > .login > input[type="text"],
 	.login > input[type="password"],
-	.login > input[type="submit"]{
+	.login > input[type="submit"],
+
+	.id > input[type="submit"]{
 		float:right;
 		width:100%;
 		line-height: 26px
@@ -502,7 +508,7 @@ header span select option{
 		top: 2px;
 		}
 
-	#popup_layer > div:nth-child(4){
+	#popup_layer > div:nth-child(4) , .enter > div:nth-child(4) {
 		text-align: center;
 		}
 
@@ -515,7 +521,7 @@ header span select option{
 		line-height: 17px;
 		}
 
-	#popup_layer > .signup > p {
+	#popup_layer > .signup > p , .enter > .signup02 > p  {
 		width:50%;
 		text-align: center;
 		font-size:11px;
@@ -526,11 +532,11 @@ header span select option{
 		line-height: 13px;
 		}
 
-	#popup_layer > .signup > p:last-child{
+	#popup_layer > .signup > p:last-child , .enter > .signup02 > p:last-child{
 		border:0;
 		}
 
-	#popup_layer > .signup > p > a{
+	#popup_layer > .signup > p > a , .enter > .signup02 > p > a {
 		margin-top:5%;
 		font-weight: bold;
 		font-size:14px;
@@ -681,7 +687,7 @@ header span select option{
 /* ===== */
 
 /*회원가입의 이용약관 영역 */
-	.agree p{
+	.agree p , .agree pre {
 		width:100%;
 		height: 200px;
 		border:1px solid #ededed;

@@ -18,7 +18,7 @@ class Document extends CB_Controller
     /**
      * 모델을 로딩합니다
      */
-    protected $models = array('Post', 'Document', 'Post_extra_vars');
+    protected $models = array('Post', 'Document', 'Post_extra_vars','Board');
 
     /**
      * 헬퍼를 로딩합니다
@@ -52,7 +52,7 @@ class Document extends CB_Controller
             show_404();
         }
 
-        
+
 
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before'] = Events::trigger('before', $eventname);
@@ -115,6 +115,88 @@ class Document extends CB_Controller
             $view['view']['extravars'] = $this->Post_extra_vars_model->get_all_meta($post_id);
             $board = $this->board->item_all(element('brd_id', $post));
             $view['view']['board_key'] = element('brd_key', $board);
+
+            
+            
+            $where_in=array();
+            $where=array();
+
+            if(empty(get_cookie('region')) || get_cookie('region')===0){
+            //if(strpos($brd_key,'_0' )!==false){
+                $this->load->model('Board_model');
+
+                $brdidwhere = array(
+                        'bgr_id' => element('bgr_id', $board),
+                    );
+
+                $brdidarr = $this->Board_model
+                        ->get('', 'brd_id', $brdidwhere, '', '', 'brd_id', 'ASC');
+
+                foreach ($brdidarr as $value) {
+                    $brd_id_arr[] = $value['brd_id'];
+                   
+                }
+                
+                $where_in=array(
+                    'brd_id' => $brd_id_arr,
+                );
+            } else {
+                $where = array(
+                    'brd_id' => $this->board->item_key('brd_id', $brd_key),
+                );
+            }
+            
+            if(strpos(element('brd_key', $board),'_review' )!==false){
+                $where = array(
+                    'post_parent' => $this->input->get('post_parent', null, 0)
+                );   
+            }
+
+            
+            $where['post_del <>'] = 2;
+            if (element('except_notice', $board)
+                && $this->cbconfig->get_device_view_type() !== 'mobile') {
+                $where['post_notice'] = 0;
+            }
+            if (element('mobile_except_notice', $board)
+                && $this->cbconfig->get_device_view_type() === 'mobile') {
+                $where['post_notice'] = 0;
+            }
+            if (element('use_personal', $board) && $is_admin === false) {
+                $where['post.mem_id'] = $mem_id;
+            }
+
+            $category_id = (int) $this->input->get('category_id');
+            if (empty($category_id) OR $category_id < 1) {
+                $category_id = '';
+            }
+            $result = $this->Post_model
+                ->get_post_list('', '', $where, '', '', '', '','',$where_in);            
+
+            if (element('list', $result)) {
+                foreach (element('list', $result) as $key => $val) {
+
+                   
+                    $result['list'][$key]['post_url'] = post_url(element('brd_key', $board), element('post_id', $val));
+
+                    
+
+                    $result['list'][$key]['extravars'] = $this->Post_extra_vars_model->get_all_meta(element('post_id', $val));
+
+                    if ($this->cbconfig->get_device_view_type() === 'mobile') {
+                        $result['list'][$key]['title'] = element('mobile_subject_length', $board)
+                            ? cut_str(element('post_title', $val), element('mobile_subject_length', $board))
+                            : element('post_title', $val);
+                    } else {
+                        $result['list'][$key]['title'] = element('subject_length', $board)
+                            ? cut_str(element('post_title', $val), element('subject_length', $board))
+                            : element('post_title', $val);
+                    }
+                    
+                    $result['list'][$key]['is_mobile'] = (element('post_device', $val) === 'mobile') ? true : false;
+                }
+            }
+            $view['view']['all_extravars'] = $result;
             $view['view']['post'] = $post;
             $view['view']['post_url'] = post_url(element('brd_key', $board), $post_id);
         }

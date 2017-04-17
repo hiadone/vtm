@@ -1,6 +1,6 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="provision">
+<div class="wrap">
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
     echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
@@ -9,30 +9,34 @@
     ?>
         <input type="hidden" name="register" value="1" />
         <div class="table-box">
-            <div class="table-heading">회원가입 약관</div>
-            <div class="table-body">
-                <ol class="registeragree">
-                    <li>
-                        <p><strong>회원가입약관</strong></p>
-                        <textarea class="input" rows="3" readonly="readonly"><?php echo html_escape(element('member_register_policy1', $view)); ?></textarea>
-                        <div class="checkbox">
-                            <label for="agree">
-                                <input type="checkbox" name="agree" id="agree" value="1" /> 회원가입약관의 내용에 동의합니다.
-                            </label>
-                        </div>
-                    </li>
-                    <li class="mt20">
-                        <p><strong>개인정보취급방침안내</strong></p>
-                        <textarea class="input" rows="3" readonly="readonly"><?php echo html_escape(element('member_register_policy2', $view)); ?></textarea>
-                        <div class="checkbox">
-                            <label for="agree2">
-                                <input type="checkbox" name="agree2" id="agree2" value="1" /> 개인정보취급방침안내의 내용에 동의합니다.
-                            </label>
-                        </div>
-                    </li>
-                    <li><button type="submit" class="btn btn-success">회원가입</button></li>
-                </ol>
-            </div>
+            <section class="title02">
+                <h2>회원가입 약관</h2>
+            </section>
+
+            <section class="agree">
+                <p><?php echo element('member_register_policy1', $view); ?></p>
+                 
+                <div class="check">
+                <input type="checkbox" name="agree" id="agree" value="1" /> 
+                <label>위 회원가입약관의 내용에 동의 합니다.</label>
+                </div>
+            </section>
+
+            <section class="title02">
+            <h2>개인정보 수집 및 이용동의</h2>
+            
+            </section>
+
+            <section class="agree">
+                <p><?php echo element('member_register_policy2', $view); ?></p>
+                <div class="check">
+                <input type="checkbox" name="agree2" id="agree2" value="1" /> 
+                <label>개인정보취급방침안내의 내용에 동의합니다</label>
+                </div>
+            </section>
+
+           <button type="submit" class="btn btn-success pull-right">회원가입</button></li>
+                
         </div>
     <?php echo form_close(); ?>
 </div>

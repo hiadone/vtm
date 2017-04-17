@@ -32,22 +32,30 @@
                 <input type="text" class="input per95" name="post_homepage" id="post_homepage" value="<?php echo set_value('post_homepage', element('post_homepage', element('post', $view))); ?>" />
             </li> -->
         <?php } else { ?>
-        <!-- <li>
+       
             <section class="write">
                 <figure>
                     <img src="<?php echo base_url('assets/images/temp/user.png');?>" alt="user">
                     <figcaption>
 
                         <?php echo $this->member->item('mem_nickname'); ?>
+                        <span><?php echo date("Y.m.d") ?></span>
                     </figcaption>
                 </figure>
             </section>
-        </li> -->
+      
+        <?php 
+
+         ?>
         <?php } ?>
-        <li>
-            <span>제목</span>
-            <input type="text" class="input per95" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
-        </li>
+        
+        <section  style="text-align:center;">
+            <label class="text_title">
+                제 목
+            </label>
+            <input type="text" class="text_title input" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
+        </section>
+       
         <?php if (element('can_post_notice', element('post', $view)) OR element('can_post_secret', element('post', $view)) OR element('can_post_receive_email', element('post', $view))) { ?>
             <li>
                 <span>옵션</span>
@@ -161,16 +169,25 @@
                 $file_column = $download_link ? 'post_file_update[' . element('pfi_id', element($i, element('file', $view))) . ']' : 'post_file[' . $i . ']';
                 $del_column = $download_link ? 'post_file_del[' . element('pfi_id', element($i, element('file', $view))) . ']' : '';
         ?>
-            <li>
-                <span>파일 #<?php echo $i+1; ?></span>
-                <input type="file" class="input per95" name="<?php echo $file_column; ?>" />
-                <?php if ($download_link) { ?>
+
+           
+                <section class="filebox bs3-primary preview-image">                    
+                    <label for="input_file<?php echo $i+1; ?>" class="text_title">
+                        업로드<?php echo $i+1; ?>
+                    </label>
+                    <input class="upload-name text_title" value="선택된 파일이 없습니다." disabled="disabled" >
+                    <input type="file" id="input_file<?php echo $i+1; ?>" class="upload-hidden text_title" name="<?php echo $file_column; ?>">
+                    <?php if ($download_link) { ?>
                     <a href="<?php echo $download_link; ?>"><?php echo html_escape(element('pfi_originname', element($i, element('file', $view)))); ?></a>
                     <label for="<?php echo $del_column; ?>">
                         <input type="checkbox" name="<?php echo $del_column; ?>" id="<?php echo $del_column; ?>" value="1" <?php echo set_checkbox($del_column, '1'); ?> /> 삭제
                     </label>
                 <?php } ?>
-            </li>
+                </section>
+
+                
+                
+            
         <?php
             }
         }
@@ -260,6 +277,25 @@ function submitContents(f) {
         return false;
     }
 }
+
+// 파일업로드
+        var fileTarget = $('.filebox .upload-hidden');
+
+        fileTarget.on('change', function(){
+            if(window.FileReader){
+            // 파일명 추출
+            var filename = $(this)[0].files[0].name;
+            } 
+
+            else {
+            // Old IE 파일명 추출
+            var filename = $(this).val().split('/').pop().split('\\').pop();
+            };
+
+        $(this).siblings('.upload-name').val(filename);
+        });
+
+  
 </script>
 
 <?php

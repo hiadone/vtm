@@ -27,6 +27,8 @@ class Board_post extends CB_Controller
 
     protected $bgr_key;
 
+    
+
     function __construct()
     {
         parent::__construct();

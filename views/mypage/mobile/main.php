@@ -1,21 +1,31 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="mypage">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="<?php echo site_url('mypage'); ?>" title="마이페이지">마이페이지</a></li>
-        <li><a href="<?php echo site_url('mypage/post'); ?>" title="나의 작성글">나의 작성글</a></li>
-        <?php if ($this->cbconfig->item('use_point')) { ?>
-            <li><a href="<?php echo site_url('mypage/point'); ?>" title="포인트">포인트</a></li>
-        <?php } ?>
-        <li><a href="<?php echo site_url('mypage/followinglist'); ?>" title="팔로우">팔로우</a></li>
-        <li><a href="<?php echo site_url('mypage/like_post'); ?>" title="내가 추천한 글">추천</a></li>
-        <li><a href="<?php echo site_url('mypage/scrap'); ?>" title="나의 스크랩">스크랩</a></li>
-        <li><a href="<?php echo site_url('mypage/loginlog'); ?>" title="나의 로그인기록">로그인기록</a></li>
-        <li><a href="<?php echo site_url('membermodify'); ?>" title="정보수정">정보수정</a></li>
-        <li><a href="<?php echo site_url('membermodify/memberleave'); ?>" title="탈퇴하기">탈퇴하기</a></li>
-    </ul>
+<div class="wrap mypage">
+    <section class="title">
+        <table>
+            <tr>
+                <td style="width:25%;" class="active">
+                    <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo site_url('membermodify'); ?>">정보수정</a>
+                </td>
+                <td style="width:25%;">
+                   <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
+                </td>
+            </tr>
+        </table>
+    </section>
+    
+    <section class="title02">
+        <h2>내 정보</h2>
+        <p><span>내 정보</span>를 확인&수정 하실 수 있습니다.</p>
+    </section>
 
-    <h3>마이페이지</h3>
+    
 
     <ol class="mypagemain">
         <li>
@@ -49,10 +59,6 @@
             </li>
         <?php } ?>
         <li>
-            <span>포인트</span>
-            <div class="form-text"><?php echo number_format($this->member->item('mem_point')); ?></div>
-        </li>
-        <li>
             <span>가입일</span>
             <div class="form-text"><?php echo display_datetime($this->member->item('mem_register_datetime'), 'full'); ?></div>
         </li>
@@ -62,8 +68,8 @@
         </li>
         <li class="mt20">
             <span></span>
-            <div class="group">
-                <a href="<?php echo site_url('membermodify'); ?>" class="btn btn-default btn-sm" title="회원정보 변경">회원정보 변경</a>
+            <div class="group" style="text-align:right">
+                <a href="<?php echo site_url('membermodify'); ?>" class="btn btn-default btn-sm"  title="회원정보 변경">회원정보 변경</a>
             </div>
         </li>
     </ol>

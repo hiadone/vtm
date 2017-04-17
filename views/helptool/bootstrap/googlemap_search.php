@@ -122,6 +122,11 @@ function reverseGeocodeResult(results, status) {
 
 function geocode() {
     var address = document.getElementById('address').value;
+
+    if(address=="") {
+        alert('검색할 도시 및 주소를 입력하세요');
+        return;
+    }
     geocoder.geocode({
         'address': address,
         'partialmatch': true}, geocodeResult);

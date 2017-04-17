@@ -1,10 +1,14 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="findarea">
+<div class="wrap findarea">
     <div class="table-box">
-        <div class="table-heading">계정 찾기</div>
+        <section class="title02">
+            <h2>계정 찾기</h2>
+        </section>
+
+        
         <div class="table-body">
-            <div class=" findaccount">
+            <div class=" ">
                 <?php
                 echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
                 echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
@@ -69,7 +73,12 @@
                 ?>
             </div>
         </div>
+        
     </div>
+    <section class="ad">
+        <h4>ad</h4>
+        <?php echo banner('findaccount_banner_1'); ?>
+    </section>
 </div>
 
 <script type="text/javascript">

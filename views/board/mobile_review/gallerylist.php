@@ -263,12 +263,8 @@ if (element('menu', $layout)) {
         }
         ?>
         </div>
-    <?php if (element('write_url', element('list', $view))) { ?>
-        <div class="pull-right">
-            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
-        </div>
-    <?php } ?>
-    <?php echo form_close(); ?>
+   
+    
 
     </section>
 
@@ -276,7 +272,8 @@ if (element('menu', $layout)) {
         <h4>ad</h4>
         <?php echo banner("karaoke_post_banner_1") ?>
     </section>
-    <div class="border_button">
+    <?php echo form_close(); ?>
+    <div class="border_button  mb20">
         <div class="pull-left mr10">
             <!-- <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a> -->
             <?php if (element('search_list_url', element('list', $view))) { ?>
@@ -304,7 +301,11 @@ if (element('menu', $layout)) {
                 </div>
             </div>
         <?php } ?>
-        
+         <?php if (element('write_url', element('list', $view))) { ?>
+        <div class="pull-right">
+            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+        </div>
+    <?php } ?>
     </div>
     <nav><?php echo element('paging', element('list', $view)); ?></nav>
 </div>

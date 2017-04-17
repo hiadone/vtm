@@ -1,26 +1,34 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="mypage">
-    <ul class="nav nav-tabs">
-        <li><a href="<?php echo site_url('mypage'); ?>" title="마이페이지">마이페이지</a></li>
-        <li class="active"><a href="<?php echo site_url('mypage/post'); ?>" title="나의 작성글">나의 작성글</a></li>
-        <?php if ($this->cbconfig->item('use_point')) { ?>
-            <li><a href="<?php echo site_url('mypage/point'); ?>" title="포인트">포인트</a></li>
-        <?php } ?>
-        <li><a href="<?php echo site_url('mypage/followinglist'); ?>" title="팔로우">팔로우</a></li>
-        <li><a href="<?php echo site_url('mypage/like_post'); ?>" title="내가 추천한 글">추천</a></li>
-        <li><a href="<?php echo site_url('mypage/scrap'); ?>" title="나의 스크랩">스크랩</a></li>
-        <li><a href="<?php echo site_url('mypage/loginlog'); ?>" title="나의 로그인기록">로그인기록</a></li>
-        <li><a href="<?php echo site_url('membermodify'); ?>" title="정보수정">정보수정</a></li>
-        <li><a href="<?php echo site_url('membermodify/memberleave'); ?>" title="탈퇴하기">탈퇴하기</a></li>
-    </ul>
+<div class="wrap mypage">
+    <section class="title">
+        <table>
+            <tr>
+                <td style="width:25%;" >
+                    <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
+                </td>
+                <td style="width:25%;" class="active">
+                    <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo site_url('membermodify'); ?>">정보수정</a>
+                </td>
+                <td style="width:25%;">
+                   <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
+                </td>
+            </tr>
+        </table>
+    </section>
 
-    <h3>나의 작성글</h3>
+    <!-- <section class="title02">
+        <h2>나의 작성글</h2>
+        <p><span>나의 작성글</span>를 확인 하실 수 있습니다.</p>
+    </section> -->
 
-    <ul class="table-top mb10">
+    <!-- <ul class="table-top mb10">
         <li><a href="<?php echo site_url('mypage/post'); ?>" class="btn btn-warning btn-sm" title="원글">원글</a></li>
         <li><a href="<?php echo site_url('mypage/comment'); ?>" class="btn btn-success btn-sm" title="댓글">댓글</a></li>
-    </ul>
+    </ul> -->
     <table class="table">
         <thead>
             <tr>

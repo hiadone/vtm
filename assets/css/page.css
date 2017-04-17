@@ -273,7 +273,7 @@ header span select option{
 		width:100%;
 		}
 
-	.ad:last-child{
+	.wrap section.ad:last-child{
 		margin-bottom:3%;
 		}
 /* ===== */	
@@ -400,13 +400,13 @@ header span select option{
 		margin-left:15%;
 		}
 
-	#popup_layer > h2{
+	#popup_layer > h2 , .enter > h2{
 		text-align:center;
 		line-height: 18px;
 		margin-bottom:5%
 		}
 
-	#popup_layer > h2 > span{
+	#popup_layer > h2 > span , .enter > h2 > span {
 		display: block;
 		margin-bottom:3%;
 		font-size:18px; 
@@ -423,23 +423,27 @@ header span select option{
 		font-size:13px;
 		}
 
-	#popup_layer > .signup{
+	#popup_layer > .signup , .enter > .signup02 {
 		width:100%;
 		margin:0 auto;
 		font-size:11px;
 		display: inline-block;
 		}
 
-	#popup_layer > .login {
+	#popup_layer > .login , .enter > .id{
 		width:80%;
-		height: 21px;
+		height: 23px;
 		margin:0 auto;
 		margin-bottom:3%;
 		position: relative;
 		font-size:12px;
 		}
 
-	#popup_layer > .login > h3{
+	.enter > .id{
+		width: 55%;
+	}
+
+	#popup_layer > .login > h3 , .enter > .id > h3{
 		display: inline-block;
 		font-size: 13px;
 		position: absolute;
@@ -449,7 +453,7 @@ header span select option{
 		font-weight: bold;
 		}
 
-	#popup_layer > .login > div{
+	#popup_layer > .login > div , .enter > .id > div {
 		width:70%;
 		height:22px;
 		float: right;
@@ -458,8 +462,8 @@ header span select option{
 		box-sizing: border-box;
 		}
 
-	#popup_layer >.login > div > input{
-		position: absolute;
+	#popup_layer >.login > div > input , .enter > .id > div > input{
+		height:15px;
 		top:2px;
 		left:2px;
 		background-color: transparent;
@@ -469,7 +473,7 @@ header span select option{
 		width:95%;
 		}
 
-	#popup_layer >.login > .submit_btn{
+	#popup_layer >.login > .submit_btn , .enter > .id > .submit_btn{
 		width:100%;
 		height:25px;
 		background-color: #231b26;
@@ -479,7 +483,9 @@ header span select option{
 
 	#popup_layer > .login > input[type="text"],
 	.login > input[type="password"],
-	.login > input[type="submit"]{
+	.login > input[type="submit"],
+
+	.id > input[type="submit"]{
 		float:right;
 		width:100%;
 		line-height: 26px
@@ -502,7 +508,7 @@ header span select option{
 		top: 2px;
 		}
 
-	#popup_layer > div:nth-child(4){
+	#popup_layer > div:nth-child(4) , .enter > div:nth-child(4) {
 		text-align: center;
 		}
 
@@ -515,7 +521,7 @@ header span select option{
 		line-height: 17px;
 		}
 
-	#popup_layer > .signup > p {
+	#popup_layer > .signup > p , .enter > .signup02 > p  {
 		width:50%;
 		text-align: center;
 		font-size:11px;
@@ -526,11 +532,11 @@ header span select option{
 		line-height: 13px;
 		}
 
-	#popup_layer > .signup > p:last-child{
+	#popup_layer > .signup > p:last-child , .enter > .signup02 > p:last-child{
 		border:0;
 		}
 
-	#popup_layer > .signup > p > a{
+	#popup_layer > .signup > p > a , .enter > .signup02 > p > a {
 		margin-top:5%;
 		font-weight: bold;
 		font-size:14px;
@@ -787,7 +793,7 @@ header span select option{
 		font-weight: normal;
 		}
 
-	.text_title label{
+	label.text_title {
 		float:left;
 		margin-right:3%;
 		width:18%;
@@ -801,7 +807,7 @@ header span select option{
 		color:#fff; 
 		}
 
-	.text_title input{
+	input.text_title{
 		width:77%;
 		margin-top: 1%;
 		padding:0.3% 0;
@@ -906,6 +912,11 @@ header span select option{
 		font-size: 13px;
 		}
 
+	.method table tr td.active{
+			background-color:rgb(239, 208, 222);
+		}
+
+
 	.method table tr td figure{
 		width:100%;
 		display: inline-block;
@@ -1000,3 +1011,10 @@ header span select option{
 		display: inline-block;
 		float:right;
 	}
+
+	.error{
+		font-size:11px;
+	}
+
+	.alert { font-size:12px; }
+

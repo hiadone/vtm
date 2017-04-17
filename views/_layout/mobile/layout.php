@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo html_escape(element('page_title', $layout)); ?></title>
+<link rel="icon" href="<?php echo base_url('assets/images/temp/favi.png'); ?>"/> 
 <?php if (element('meta_description', $layout)) { ?><meta name="description" content="<?php echo html_escape(element('meta_description', $layout)); ?>"><?php } ?>
 <?php if (element('meta_keywords', $layout)) { ?><meta name="keywords" content="<?php echo html_escape(element('meta_keywords', $layout)); ?>"><?php } ?>
 <?php if (element('meta_author', $layout)) { ?><meta name="author" content="<?php echo html_escape(element('meta_author', $layout)); ?>"><?php } ?>
@@ -25,7 +26,8 @@ if (element('menu', $layout)) {
         foreach (element(0, $menu) as $mkey => $mval) {
 
          
-        $js_mem_link[]=element('men_link', $mval).'_'.element('region', $view);
+        if(element('region', $view) > 0) $js_mem_link[]=element('men_link', $mval).'_'.element('region', $view); 
+        else $js_mem_link[]=element('men_link', $mval);
         $js_swipe_contents[]="contents_".$mkey;
         }
     }
@@ -96,8 +98,13 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
             </a>
         </h1>
         <ul>
-            <li><a href="<?php echo site_url('login'); ?>">로그인</a></li>
-            <li><a href="<?php echo site_url('register'); ?>">회원가입</a></li>
+            <?php if ($this->member->is_member()) { ?>
+                <li><a href="<?php echo site_url('login/logout?url=' . urlencode(current_full_url())); ?>" title="로그아웃">로그아웃</a></li>
+                <li><a href="<?php echo site_url('mypage'); ?>" title="My Page">My Page</a></li>
+            <?php } else { ?>
+                <li><a href="<?php echo site_url('login?url=' . urlencode(current_full_url())); ?>" title="로그인">로그인</a></li>
+                <li><a href="<?php echo site_url('register'); ?>" title="회원가입">회원가입</a></li>
+            <?php } ?>
         </ul>
         <!-- 지역선택하기 영역 -->  
         <span>
@@ -163,14 +170,17 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
 
     <!-- footer start -->
     <footer>
-        <h2>
-            <span>
-                이 사이트는 베트남에 거주하는 한글을 사용하는<br/>
-                사용자들을 위한 성인전용 서비스이며, 미성년자의 출입을 금지합니다.
-            </span>
-        Copyright © Vietnam. ALL Rights Reserved.
-            
-        </h2>
+        <p>
+            이 사이트는 베트남에 거주하는 한글을 사용하는<br/>
+            사용자들을 위한 성인전용 서비스이며, 미성년자의 출입을 금지합니다.
+        </p>
+        <ul>
+            <li><a href="<?php echo document_url('provision'); ?>" title="이용약관">이용약관</a></li>
+            <li><a href="<?php echo document_url('privacy'); ?>" title="개인정보 취급방침">개인정보 취급방침</a></li>
+            <li><?php echo mailto('reymonjung@gmail.com','고객센터'); ?> </li>
+        </ul>
+
+        <h2>Copyright ⓒ Vietnam. All Rights Reserved </h2>
     </footer>
     <!-- footer end -->
 </div>

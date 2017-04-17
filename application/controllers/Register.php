@@ -238,6 +238,8 @@ class Register extends CB_Controller
         $email_description = '';
         if ($this->cbconfig->item('use_register_email_auth')) {
             $email_description = '회원가입 후 인증메일이 발송됩니다. 인증메일을 확인하신 후에 사이트 이용이 가능합니다';
+        } else {
+            $email_description = '비밀번호 찾기 등에 이용되니 정확한 이메일을 입력해 주세요.';
         }
 
         $configbasic = array();
@@ -449,11 +451,11 @@ class Register extends CB_Controller
                 'rules' => 'trim|required|callback__check_recaptcha',
             );
         } else {
-            $config[] = array(
-                'field' => 'captcha_key',
-                'label' => '자동등록방지문자',
-                'rules' => 'trim|required|callback__check_captcha',
-            );
+            // $config[] = array(
+            //     'field' => 'captcha_key',
+            //     'label' => '자동등록방지문자',
+            //     'rules' => 'trim|required|callback__check_captcha',
+            // );
         }
         $this->form_validation->set_rules($config);
 
@@ -586,6 +588,7 @@ class Register extends CB_Controller
 
                     $html_content[$k]['field_name'] = element('field_name', $value);
                     $html_content[$k]['display_name'] = element('display_name', $value);
+                    $html_content[$k]['required'] = $required;
                     $html_content[$k]['input'] = '';
 
                     //field_type : text, url, email, phone, textarea, radio, select, checkbox, date

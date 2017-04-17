@@ -1,8 +1,11 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="register">
+<div class="wrap">
     <div class="table-box">
-        <div class="table-heading">회원 가입</div>
+    <section class="title02">
+            <h2>회원가입</h2>
+            <p><span>*</span>는 필수입력 사항 입니다.</p>
+        </section>
         <div class="table-body">
             <?php
             echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
@@ -18,7 +21,9 @@
                 foreach (element('html_content', $view) as $key => $value) {
                 ?>
                     <li>
-                        <span><?php echo element('display_name', $value); ?></span>
+                        <span><?php 
+                        if(element('required', $value)) echo '* ';
+                        echo element('display_name', $value); ?></span>
                         <div class="form-text text-primary group">
                             <?php echo element('input', $value); ?>
                             <?php if (element('description', $value)) { ?>
@@ -126,7 +131,7 @@
                     </li> -->
                     <li>
                         <span></span>
-                        <div class="group">
+                        <div class="group" style="text-align:right">
                             <button type="submit" class="btn btn-success">회원가입</button>
                             <a href="<?php echo site_url(); ?>" class="btn btn-default">취소</a>
                         </div>

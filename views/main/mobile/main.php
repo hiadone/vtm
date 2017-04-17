@@ -2,7 +2,7 @@
 <script type="text/javascript">
 var curentContents=<?php echo $this->input->get('curentContents',null,0);?>;
 var curnetIndex="";
-var flag = [true,true,true,true,true,true];
+var flag = [true,true,true,true,true,true,true];
 
 
 $(document).ready(function() { 
@@ -49,7 +49,7 @@ $(document).ready(function() {
 
         curnetIndex=slideIndex;
         $('html, body').animate({scrollTop : 0});
-        $("#mainmenu ul li:nth-child("+(fromIndex+1)+")").removeClass('active')
+        $("#mainmenu ul li:nth-child("+(fromIndex+1)+")").removeClass('active');
         if(flag[slideIndex]){
             flag[slideIndex]=false;
             
@@ -115,8 +115,8 @@ function reload_rg(val){
 
   //if(!val2) return;
   console.log('val'+val);
-  $('#jssor_1').height($('#'+val).height()+5);
-  $('#jssor_1>div>div').height($('#'+val).height()+5);
+  $('#jssor_1').height($('#'+val).height());
+  $('#jssor_1>div>div').height($('#'+val).height());
 
 
 }

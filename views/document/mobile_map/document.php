@@ -21,13 +21,21 @@ if (element('menu', $layout)) {
             }
 
 
-  
- 
+$vtn_marker="";
+foreach(element('list',element('all_extravars', $view)) as $key => $value){
+  $vtn_marker_geo = element('google_map',element('extravars', $value));
+  $vtn_marker_geo_arr = explode(',', $vtn_marker_geo);
+  if(!empty($vtn_marker_geo_arr[0]) && !empty($vtn_marker_geo_arr[1])){
+    $vtn_marker[]=array($value['post_title'],$vtn_marker_geo_arr[0],$vtn_marker_geo_arr[1],$key);  
+  }
+} 
+
+
 //설정값
 
 $tel1=element('tel1',element('extravars', $view));
 $geo = element('google_map',element('extravars', $view));
-$marker = element('google_map',element('extravars', $view));
+
 $geo_arr = explode(',', $geo);
 $lat = !empty($geo_arr[0]) ? $geo_arr[0] : '37.566535';
 $lng = !empty($geo_arr[1]) ? $geo_arr[1] : '126.977969';
@@ -74,23 +82,19 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
 
   <!-- 이미지 영역 -->
     <section class="store">
-      <h2>
-      하노이시 하노이동 하노이구 하노이 거리 136-66번지<br/>
-       내위치 로부터 <span>5km</span>
-      </h2>
-
       <table>
         <tr>
           <td class="border">
-            <input type="text" value="내위치 · 하노이시 하노이동"> 
-            <img src="images/clear.png" alt="X">
+            <span id="formatedAddress"></span></td>
+            <!-- <input type="text" value="내위치 · 하노이시 하노이동"> 
+            <img src="<?php echo base_url('assets/images/temp/clear.png')?>" alt="X"> -->
           </td>
           <td rowspan="2">
             길찾기
           </td>
         </tr>
         <tr>
-          <td>다낭빈펄리조트</td>
+          <td><span id=""></span></td>
         </tr>
       </table>
     </section>
@@ -101,9 +105,9 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
       <h4>찾아가는 방법</h4>
       <table>
         <tr>
-          <td>
+          <td class="active">
             <figure>
-              <img src="images/traffic01.png" alt="traffic01">
+              <img src="<?php echo base_url('assets/images/temp/traffic01.png')?>" alt="traffic01">
               <figcaption>
                 자동차
               </figcaption>
@@ -112,7 +116,7 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
 
           <td>
             <figure>
-              <img src="images/traffic02.png" alt="sub01">
+              <img src="<?php echo base_url('assets/images/temp/traffic02.png')?>" alt="traffic02">
               <figcaption>
                 대중교통
               </figcaption>
@@ -120,35 +124,26 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
           </td>
         </tr>
         </table>
-      <a href="index17.html">
-      <img src="images/road01.png" alt="road01">
-      </a>
     </section>
-  <!-- ===== -->
 
-  <!-- 광고 배너 영역 -->
-    <section class="ad">
-      <h4>ad</h4>
-      <a href="">
-        <img src="images/ad_04.png" alt="banner01">
-      </a>
-    </section>
   <!-- ===== -->
+ 
+  
 
 </div>
 
 <div class="map">
-        <h2>
-            [위치확인] <?php echo element('post_title', element('post',$view)) ?>
-        </h2>
 
-        <p>
-          [주소] <span id="formatedAddress"></span>
-        </p>
         
-        <div id="directionsPanel"></div>
-        <div id="map-canvas" style="width: 100%; height: 400px;margin-bottom:10px"></div>
+        <div id="map-canvas" style="width: 100%; height: 300px;margin-bottom:10px"></div>
+        <div id="directionsPanel" style="width: 100%; height: 400px;margin-bottom:10px"></div>
 </div>
+ <!-- 광고 배너 영역 -->
+  <section class="ad">
+      <h4>ad</h4>
+      <?php echo banner("google_map_banner_1") ?>
+  </section>
+  <!-- ===== -->
 <script type="text/javascript">
 var map;
 var geocoder;
@@ -156,17 +151,35 @@ var centerChangedLast;
 var reverseGeocodedLast;
 var currentReverseGeocodeResponse;
 var mapstart
-var directionsDisplay;
+var directionsDisplay= new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
+var vtn_marker = <?php echo json_encode($vtn_marker)?>;
+var lat = '<?php echo $lat ?>';
+var lng= '<?php echo $lng ?>';
+// var lat = '37.558166';
+// var lng= '126.928016';
+var size_x = 50; // 마커로 사용할 이미지의 가로 크기
+var size_y = 50; // 마커로 사용할 이미지의 세로 크기  
+var geolocation_flag=false;
 
-
-
-
-      function initialize()
+ 
+      function navilocation()
       {
-        directionsDisplay = new google.maps.DirectionsRenderer();
-        mapstart = new google.maps.LatLng("<?php echo $lat; ?>", "<?php echo $lng; ?>");// 지도에서 가운데로 위치할 위도와 경도
-        var markLocation = new google.maps.LatLng("<?php echo $lat; ?>", "<?php echo $lng; ?>"); // 마커가 위치할 위도와 경도
+        if (navigator.geolocation){
+          navigator.geolocation.getCurrentPosition(showPosition,showError);
+        }  else{
+          alert("Geolocation is not supported by this browser.");
+        }
+      }
+
+
+      function initialize(lat,lng)
+      {
+       
+        console.log(lat+"//"+lng);
+        
+        mapstart = new google.maps.LatLng(lat,lng);// 지도에서 가운데로 위치할 위도와 경도
+        
          
         var mapOptions = {
           center: mapstart, // 지도에서 가운데로 위치할 위도와 경도(변수)
@@ -176,46 +189,101 @@ var directionsService = new google.maps.DirectionsService();
         map = new google.maps.Map(document.getElementById("map-canvas"), // id: map-canvas, body에 있는 div태그의 id와 같아야 함
             mapOptions);
         geocoder = new google.maps.Geocoder();
-        var size_x = 60; // 마커로 사용할 이미지의 가로 크기
-        var size_y = 60; // 마커로 사용할 이미지의 세로 크기
-         
-        // 마커로 사용할 이미지 주소
+        
+
+
+
+
+
+
+          for(var i=0; i < vtn_marker.length; i++){
+            
+            
+
+
+            // if(i == 0) {
+            //   var image = new google.maps.MarkerImage( 'http://www.clker.com/cliparts/B/B/1/E/y/r/marker-pin-google.svg',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
+            // }
+
+            var compa = vtn_marker[i];
+
+            var image = new google.maps.MarkerImage( 'https://d30y9cdsu7xlg0.cloudfront.net/png/462-200.png',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
+
+            if(compa[0]=='내 위치'){
+              var image = new google.maps.MarkerImage( 'http://www.clker.com/cliparts/B/B/1/E/y/r/marker-pin-google.svg',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
+            }
+            
+            var bounds = new google.maps.LatLngBounds();
+            var myLatLng = new google.maps.LatLng(compa[1], compa[2]);
+
+            var marker = new google.maps.Marker({
+              position: myLatLng,
+              map: map,
+              icon : image,
+              title : compa[0],
+              content : compa[0],
+              zIndex : compa[3]
+            });
+
+            var infowindow = new google.maps.InfoWindow({disableAutoPan:true});
+            infowindow.setContent(marker.content);
+            
+            
+                    infowindow.open(map, marker);
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i, infowindow) {
+                return function () {
+                    // infowindow.setContent(this.content);
+                    // infowindow.open(map, this);
+                    onClickDistance(marker.position);
+                };
+            })(marker, i, infowindow));
+            // bounds.extend(marker.position);
+
+              //google.maps.event.trigger(marker, 'click');
+            // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
+            
+            
+            
+
+
+            //     google.maps.event.addListener(marker, "click", function() {
+                  
+            //       infowindow.setContent(marker.title);
+            //       infowindow.open(map, marker);
+            //    // onClickDistance(marker.position);
+            // });
+          } 
+            directionsDisplay.setMap(map);
+            directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+           // if(geolocation_flag) onClickDistance(new google.maps.LatLng('<?php echo $lat ?>','<?php echo $lng ?>'));
+
+        //마커로 사용할 이미지 주소
         // var image = new google.maps.MarkerImage( 'http://www.larva.re.kr/home/img/boximage3.png',
         //                     new google.maps.Size(si[ze_x, size_y),
         //                     '',
         //                     '',
         //                     new google.maps.Size(size_x, size_y));
          
-        var marker;
-        marker = new google.maps.Marker({
-               position: markLocation, // 마커가 위치할 위도와 경도(변수)
-               map: map,
-               //icon: image, // 마커로 사용할 이미지(변수)
-//             info: '말풍선 안에 들어갈 내용',
-               title: '<?php echo element('post_title', element('post',$view)) ?>' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
-        });
+//         var marker;
+//         marker = new google.maps.Marker({
+//                position: markLocation, // 마커가 위치할 위도와 경도(변수)
+//                map: map,
+//                icon: image, // 마커로 사용할 이미지(변수)
+// //             info: '말풍선 안에 들어갈 내용',
+//                title: '<?php echo element('post_title', element('post',$view)) ?>' // 마커에 마우스 포인트를 갖다댔을 때 뜨는 타이틀
+//         });
          
-        var content = "<?php echo element('post_title', element('post',$view)) ?>"; // 말풍선 안에 들어갈 내용
-         
-        // 마커를 클릭했을 때의 이벤트. 말풍선 뿅~
-        var infowindow = new google.maps.InfoWindow({ content: content});
         
-        directionsDisplay.setMap(map);
-        directionsDisplay.setPanel(document.getElementById("directionsPanel"));
 
-        google.maps.event.addListener(marker, "click", function() {
-            infowindow.open(map,marker);
-            onClickDistance()
-        });
+        
         
         centerChanged();
       }
 
       function centerChanged()
-      {
-       
-        
-        geocoder.geocode({latLng:map.getCenter()},reverseGeocodeResult);
+      { 
+        geocoder.geocode({latLng:new google.maps.LatLng(lat,lng)},reverseGeocodeResult);
         document.getElementById('formatedAddress').innerHTML = '';
         currentReverseGeocodeResponse = null;
       }
@@ -234,27 +302,58 @@ var directionsService = new google.maps.DirectionsService();
           }
       }
 
-      function onClickDistance() {
+      function onClickDistance(destination) {
         
-        var end = document.getElementById("end").value;
         var request = {
           origin:mapstart,
-          destination:end,
+          destination:destination,
           travelMode: google.maps.TravelMode.DRIVING
         };
         directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
+          } else {
+            window.alert('해당 주소는 길찾기 서비스가 제공되지 않습니다.');
           }
         });
       }
 
-      google.maps.event.addDomListener(window, 'load', initialize);
+      google.maps.event.addDomListener(window, 'load', navilocation);
 
 
+  function showError(error)
+  {
+    var text;
+    switch(error.code) 
+    {
+      case error.PERMISSION_DENIED:
+      text="User denied the request for Geolocation."//사용자가 위치정보에 대한 요청을 거부했을 때.
+      break;
+      case error.POSITION_UNAVAILABLE:
+      text="Location information is unavailable." //위치정보 사용이 불가능할 때(주로 PC에서 볼 때)
+      break;
+      case error.TIMEOUT:
+      text="The request to get user location timed out." //시간초과
+      break;
+      case error.UNKNOWN_ERROR:
+      text="An unknown error occurred." //알 수 없는 에러
+      break;
+    }
+    //alert(text);
+    geolocation_flag=true;
+    vtn_marker.push(['내 위치',lat,lng]);
+    initialize(lat,lng);
+  }
 
+  function showPosition(position)
+  {
+    lat=position.coords.latitude
+    lng=position.coords.longitude; //좌표를 "위도,경도" 형태로 만들어
 
-
+    geolocation_flag=true;
+    vtn_marker.push(['내 위치',lat,lng]);
+    initialize(lat,lng);
+  }
 
       var neighborhoods = [
   {lat: 52.511, lng: 13.447},
@@ -296,4 +395,22 @@ function clearMarkers() {
   }
   markers = [];
 }
+
+$('.method table tr td:nth-child(2)').click(function(){
+    alert('준비중입니다.');
+      //$('.method table tr td').removeClass('active');
+      //$(this).addClass('active');
+    });
+
+  // X 클릭시 돋보기 이미지로 변경
+    $('.store table tr td img').click(function(){
+      if($(this).attr('src').indexOf('clear.png')){
+        $(this).attr('src' , '<?php echo base_url('assets/images/temp/find.png') ?>');
+        $('.store table tr td input').attr('value' , '');
+      }
+      else{
+        $(this).attr('src' , '<?php echo base_url('assets/images/temp/clear.png') ?>');
+        $('.store table tr td input').attr('value' , '내위치 · 하노이시 하노이동');
+      }
+    });
 </script>

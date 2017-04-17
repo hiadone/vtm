@@ -286,13 +286,14 @@ if (element('menu', $layout)) {
         ?>
         </div>
     </section>
-    <?php echo form_close(); ?>
+    
     <!-- 광고 배너 영역 -->
     <section class="ad">
         <h4>ad</h4>
         <?php echo banner("msg_list_banner_2") ?>
     </section>
     <!-- ===== -->
+    <?php echo form_close(); ?>
     <div class="border_button">
         <div class="pull-left mr10">
             <!-- <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a> -->

@@ -365,7 +365,8 @@ padding: 3.5px;}
 .btn-default:active,
 .btn-default.active {background-color: #e0e0e0;border-color: #dbdbdb;}
 
-.input {border: 1px solid #231b26; height: 20px;outline: 0 none;padding: 3px 12px;background-color: #FFFFFF;background-image: none;border-radius: 5px;}
+.input {border: 1px solid #231b26; ;outline: 0 none;padding: 3px 12px;background-color: #FFFFFF;background-image: none;border-radius: 5px;}
+
 textarea.input{height:100px;}
 textarea.dhtmleditor {border: 1px solid #231b26;outline: 0 none;padding: 2%;background-color: #FFFFFF;background-image: none;border-radius: 5px;width:95%;height:350px;}
 select.input {height: 30px;}
@@ -455,7 +456,7 @@ box-sizing: border-box;
 .main {width: 94%;clear: both;padding: 3%;overflow: hidden;}
 .main_box1{width: 100%;}
 
-.table-box {margin-bottom: 20px;background-color: #fff;border-radius: 4px;-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);box-shadow: 0 1px 1px rgba(0,0,0,.05);border: 1px solid #ddd;overflow:hidden;margin: 0 auto 10px;}
+.table-box {margin-bottom: 20px;overflow:hidden;margin: 0 auto 10px;}
 .table-box .table-heading {color: #333;background-color: #f5f5f5;font-size: 14px;padding: 10px 15px;border-top-right-radius: 3px;border-top-left-radius: 3px;position:relative;}
 .table-body textarea {padding: 3%;background: #f7f7f7;font-size: 12px;margin-top: 10px;width: 93%;}
 .table{width:100%;border-collapse: collapse;border-spacing: 0;}

@@ -1,37 +1,61 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="mypage">
-    <ul class="nav nav-tabs">
-        <li><a href="<?php echo site_url('mypage'); ?>" title="마이페이지">마이페이지</a></li>
-        <li><a href="<?php echo site_url('mypage/post'); ?>" title="나의 작성글">나의 작성글</a></li>
-        <?php if ($this->cbconfig->item('use_point')) { ?>
-            <li><a href="<?php echo site_url('mypage/point'); ?>" title="포인트">포인트</a></li>
-        <?php } ?>
-        <li><a href="<?php echo site_url('mypage/followinglist'); ?>" title="팔로우">팔로우</a></li>
-        <li><a href="<?php echo site_url('mypage/like_post'); ?>" title="내가 추천한 글">추천</a></li>
-        <li><a href="<?php echo site_url('mypage/scrap'); ?>" title="나의 스크랩">스크랩</a></li>
-        <li><a href="<?php echo site_url('mypage/loginlog'); ?>" title="나의 로그인기록">로그인기록</a></li>
-        <li <?php if (uri_string() === 'membermodify') { ?>class="active" <?php } ?> ><a href="<?php echo site_url('membermodify'); ?>" title="정보수정">정보수정</a></li>
-        <li <?php if (uri_string() === 'membermodify/memberleave') { ?>class="active" <?php } ?>><a href="<?php echo site_url('membermodify/memberleave'); ?>" title="탈퇴하기">탈퇴하기</a></li>
-    </ul>
+<div class="wrap mypage">
+    <section class="title">
+        <table>
+            <tr>
+                <td style="width:25%;" >
+                    <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
+                </td>
+                <td style="width:25%;">
+                    <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
+                </td>
+                <td style="width:25%;" >
+                    <a href="<?php echo site_url('membermodify'); ?>" >정보수정</a>
+                </td>
+                <td style="width:25%;" class="active">
+                   <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
+                </td>
+            </tr>
+        </table>
+    </section>
 
-    <h3>회원 비밀번호 확인</h3>
+     <section class="title02">
+        <h2>회원 비민번호 확인</h2>
+    </section>
 
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
     echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-warning"><button type="button" class="close alertclose" >&times;</button>', '</div>');
     ?>
-
+    
     <div class="form-horizontal mt20">
         <?php
         $attributes = array('class' => 'form-horizontal', 'name' => 'fconfirmpassword', 'id' => 'fconfirmpassword', 'onsubmit' => 'return confirmleave()');
         echo form_open(current_url(), $attributes);
-        ?>
-            <div class="alert alert-dismissible alert-danger infoalert">
-                회원 탈퇴를 위한 패스워드 입력페이지입니다.<br />
-                패스워드를 입력하시면 회원탈퇴가 정상적으로 진행됩니다.<br />
-                탈퇴한 회원정보는 복구할 수 없으므로, 신중히 선택해주시기 바랍니다.
-            </div>
+        ?>  
+            <section class="logout">
+            <h2>
+            <img src="<?php echo base_url('/assets/images/temp/stop.png') ?>" alt="stop">
+            
+                정말 탈퇴 하시겠습니까?
+                <br/>
+                <span>
+                회원 탈퇴 시 모든 정보가 삭제되며,<br/>
+                어떠한 경우에도 복구되지 않습니다.<br/>
+                <br/>
+                탈퇴 시 동일한 아이디, 이메일의 재가입은<br/> 
+                1개월 이내로는 불가능하며<br/>
+                사용하신 모든 내역정보가 소멸됩니다.
+                <br/>
+                <br/>
+                그래도 탈퇴 하시겠습니까?
+
+                </span>
+
+            
+             </h2>
+            </section>
             <ol class="askpassword">
                 <li>
                     <span>아이디</span>
@@ -50,7 +74,9 @@
                 </li>
             </ol>
         <?php echo form_close(); ?>
+       
     </div>
+
 </div>
 
 <script type="text/javascript">
