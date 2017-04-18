@@ -262,7 +262,7 @@ if (element('menu', $layout)) {
                 </div>          
               </div>
             </div>
-            <div data-u="thumb">'.html_escape(element('men_name', $mval)).'</div>
+            <div data-u="thumb"><!--'.html_escape(element('men_name', $mval)).'--></div>
           </div>
           ';
         }
@@ -274,7 +274,7 @@ if (element('menu', $layout)) {
 
 
     <!-- Thumbnail Navigator -->
-  <div data-u="thumbnavigator" class="jssort12"> 
+  <div data-u="thumbnavigator" class="jssort12" style="width:0px;height:0px"> 
     <!-- Thumbnail Item Skin Begin -->
     <div data-u="slides" style="cursor: default; top: 0px; left: 0px; border-left: 1px solid gray;">
       <div data-u="prototype" class="p">

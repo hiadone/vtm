@@ -281,8 +281,10 @@ if (element('menu', $layout)) {
             <?php } ?>
         </div>
         <?php if (element('is_admin', $view)) { ?>
-            <div class="pull-left">
-                <button type="button" class="btn btn-default btn-sm admin-manage-list"><i class="fa fa-cog big-fa"></i>관리</button>
+            <div class="pull-left mb10">
+                <a onClick="post_multi_action('multi_delete', '0', '선택하신 글들을 완전삭제하시겠습니까?');" class="btn btn-success btn-sm">선택삭제</a>
+
+                <!-- <button type="button" class="btn btn-default btn-sm admin-manage-list"><i class="fa fa-cog big-fa"></i>관리</button>
                 <div class="btn-admin-manage-layer admin-manage-layer-list">
                     <?php if (element('is_admin', $view) === 'super') { ?>
                         <div class="item" onClick="document.location.href='<?php echo admin_url('board/boards/write/' . element('brd_id', element('board', element('list', $view)))); ?>';"><i class="fa fa-cog"></i> 게시판설정</div>
@@ -298,7 +300,7 @@ if (element('menu', $layout)) {
                     <div class="item" onClick="post_multi_action('post_multi_blame_blind', '0', '선택하신 글들을 블라인드 해제 하시겠습니까?');"><i class="fa fa-exclamation-circle"></i> 블라인드해제</div>
                     <div class="item" onClick="post_multi_action('post_multi_blame_blind', '1', '선택하신 글들을 블라인드 처리 하시겠습니까?');"><i class="fa fa-exclamation-circle"></i> 블라인드처리</div>
                     <div class="item" onClick="post_multi_action('post_multi_trash', '', '선택하신 글들을 휴지통으로 이동하시겠습니까?');"><i class="fa fa-trash"></i> 휴지통으로</div>
-                </div>
+                </div> -->
             </div>
         <?php } ?>
          <?php if (element('write_url', element('list', $view))) { ?>

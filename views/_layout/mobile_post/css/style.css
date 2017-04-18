@@ -360,10 +360,10 @@ background-color: #c20e58;
 color:#fff;
 font-size:12px;
 padding: 3.5px;}
-.btn-default:hover,
+/*.btn-default:hover,
 .btn-default:focus {background-color: #e0e0e0;background-position: 0 -15px;}
 .btn-default:active,
-.btn-default.active {background-color: #e0e0e0;border-color: #dbdbdb;}
+.btn-default.active {background-color: #e0e0e0;border-color: #dbdbdb;}*/
 
 .input {border: 1px solid #231b26; ;outline: 0 none;padding: 3px 12px;background-color: #FFFFFF;background-image: none;border-radius: 5px;}
 
@@ -565,3 +565,10 @@ box-sizing: border-box;
 .alert-danger { color: #a94442; background-color: #f2dede; border-color: #ebccd1; }
 .alert-danger hr { border-top-color: #e4b9c0; }
 .alert-danger .alert-link { color: #843534; }
+
+
+.wrap .view_full_image {cursor:pointer;}
+.wrap .btn-admin-manage-layer { display:none;border:1px solid #ddd;position:absolute;background-color:#fff;z-index:99999; }
+.wrap .btn-admin-manage-layer div.item { height:23px;border-bottom:1px solid #ddd; cursor:pointer;padding-left:2px;padding-right:10px; }
+.wrap .btn-admin-manage-layer div.item { font:normal 11px 'dotum';line-height:23px; }
+.wrap .btn-admin-manage-layer div.item i { width:20px;text-align:center; }

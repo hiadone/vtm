@@ -39,6 +39,8 @@
                     </thead>
                     <tbody>
                     <?php
+                    $curentContents=0;
+
                     if (element('list', element('data', $view))) {
                         foreach (element('list', element('data', $view)) as $result) {
                     ?>
@@ -49,7 +51,15 @@
                                 <br />
                                 <input type="text" name="brd_mobile_name[<?php echo element(element('primary_key', $view), $result); ?>]" class="form-control" value="<?php echo html_escape(element('brd_mobile_name', $result)); ?>" />
                                 <br />
-                                <a href="<?php echo goto_url(board_url(element('brd_key', $result))); ?>" target="_blank"><?php echo board_url(element('brd_key', $result)); ?></a>
+                                <?php 
+                                if(element('brd_key', $result)=='vtn_review'){
+                                 ?>
+                                 <a href="<?php echo goto_url(board_url(element('brd_key', $result))); ?>" target="_blank"><?php echo board_url(element('brd_key', $result)); ?></a>
+                                <?php } else { ?>
+                                <a href="<?php echo base_url('/main?curentContents='.$curentContents)?>" target="_blank"><?php echo base_url('/main?curentContents='.$curentContents)?></a>
+
+                                
+                                <?php } ?>
                             </td>
                             <td>
                                 <select class="form-control" name="bgr_id[<?php echo element(element('primary_key', $view), $result); ?>]" >
@@ -98,6 +108,7 @@
                             <td><input type="checkbox" name="chk[]" class="list-chkbox" value="<?php echo element(element('primary_key', $view), $result); ?>" /></td>
                         </tr>
                     <?php
+                        $curentContents++;
                         }
                     }
                     if ( ! element('list', element('data', $view))) {

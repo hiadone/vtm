@@ -360,14 +360,15 @@ background-color: #c20e58;
 color:#fff;
 font-size:12px;
 padding: 3.5px;}
-.btn-default:hover,
+/*.btn-default:hover,
 .btn-default:focus {background-color: #e0e0e0;background-position: 0 -15px;}
 .btn-default:active,
-.btn-default.active {background-color: #e0e0e0;border-color: #dbdbdb;}
+.btn-default.active {background-color: #e0e0e0;border-color: #dbdbdb;}*/
 
-.input {border: 1px solid #231b26; height: 20px;outline: 0 none;padding: 3px 12px;background-color: #FFFFFF;background-image: none;border-radius: 5px;}
+.input {border: 1px solid #231b26; ;outline: 0 none;padding: 3px 12px;background-color: #FFFFFF;background-image: none;border-radius: 5px;}
+
 textarea.input{height:100px;}
-textarea.dhtmleditor {border: 1px solid #e5e6e7;outline: 0 none;padding: 2%;background-color: #FFFFFF;background-image: none;border-radius: 5px;width:96%;height:350px;}
+textarea.dhtmleditor {border: 1px solid #231b26;outline: 0 none;padding: 2%;background-color: #FFFFFF;background-image: none;border-radius: 5px;width:95%;height:350px;}
 select.input {height: 30px;}
 .form-text{padding-top: 4px;}
 .checkbox-group{padding-top: 5px;}
@@ -526,7 +527,7 @@ box-sizing: border-box;
 .media-comment {margin-bottom:10px;}
 .media-body .media-info {font-size: 11px;color: #666;padding-top: 5px;}
 .media-body .media-info span {padding-right: 10px;}
-	
+  
 .help-block {display: block;margin-top: 5px;color: #737373;font-size: 12px;}
 .nopost {text-align:center; padding:120px 0 !important; }
 

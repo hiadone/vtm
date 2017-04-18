@@ -20,7 +20,7 @@ class Managelayout extends CI_Controller
 
     function __construct()
     {
-        $this->css=array(base_url('assets/css/import.css'));
+        
     }
 
 
@@ -394,6 +394,29 @@ class Managelayout extends CI_Controller
                 $return .= '<script type="text/javascript" src="' . $val . '"></script>';
             }
         }
+        return $return;
+    }
+
+    /**
+     * footer 리턴합니다
+     */
+    function display_footer()
+    {
+        $return = '
+        <footer>
+            <p>
+                이 사이트는 베트남에 거주하는 한글을 사용하는<br/>
+                사용자들을 위한 성인전용 서비스이며, 미성년자의 출입을 금지합니다.
+            </p>
+            <ul>
+                <li><a href="'.document_url('provision').'" title="이용약관">이용약관</a></li>
+                <li><a href="'.document_url('privacy').'" title="개인정보 방침">개인정보 방침</a></li>
+                <li><a href="'.document_url('gps_info').'" title="위치정보">위치정보</a></li>
+                <li>'.mailto('reymonjung@gmail.com','고객센터').'</li>
+            </ul>
+
+            <h2>Copyright ⓒ Vietnam. All Rights Reserved </h2>
+        </footer>';
         return $return;
     }
 }

@@ -1,1 +1,1 @@
-a:3:{s:4:"time";i:1492390115;s:3:"ttl";i:86400;s:4:"data";a:7:{s:6:"brd_id";s:2:"49";s:6:"bgr_id";s:1:"4";s:7:"brd_key";s:11:"vtn_hotel_1";s:8:"brd_name";s:9:"하노이";s:15:"brd_mobile_name";s:0:"";s:9:"brd_order";s:2:"42";s:10:"brd_search";s:1:"1";}}
+a:3:{s:4:"time";i:1492415469;s:3:"ttl";i:86400;s:4:"data";a:7:{s:6:"brd_id";s:2:"49";s:6:"bgr_id";s:1:"4";s:7:"brd_key";s:9:"vtn_hotel";s:8:"brd_name";s:6:"호텔";s:15:"brd_mobile_name";s:0:"";s:9:"brd_order";s:2:"42";s:10:"brd_search";s:1:"1";}}

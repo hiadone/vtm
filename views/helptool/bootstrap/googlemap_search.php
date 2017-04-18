@@ -94,10 +94,12 @@ function getCenterLatLngText() {
 function centerChanged() {
     centerChangedLast = new Date();
     var latlng = getCenterLatLngText();
-    var loc = latlng.split(',');
+    var loc = latlng.split(',');    
     geocoder.geocode({latLng:map.getCenter()},reverseGeocodeResult);
+
     document.getElementById('lat').innerHTML = loc[0];
     document.getElementById('lng').innerHTML = loc[1];
+    return;
     document.getElementById('formatedAddress').innerHTML = '';
     currentReverseGeocodeResponse = null;
 }
@@ -152,19 +154,19 @@ function geocodeResult(results, status) {
                     </colgroup>
                     <tbody>
                         <tr>
-                            <th>검색</th>
+                            <th style="width:60px">검색</th>
                             <td>
                                 <input type="text" id="address" class="form-control" onKeyDown="if (event.keyCode ==13) {geocode();}" />
                                 <input type="hidden" id="map_lat" value="<?php echo $lat; ?>" />
                                 <input type="hidden" id="map_lng" value="<?php echo $lng; ?>" />
                                 <input type="hidden" id="map_zoom" value="<?php echo $zoom;?>" />
                             </td>
-                            <td><button type="button" class="btn btn-success" onclick="geocode()">찾기</button></td>
+                            <td style="width:100px"><button type="button" class="btn btn-success" onclick="geocode()">찾기</button></td>
                         </tr>
                         <tr>
                             <th>위치</th>
                             <td>
-                                <span id="formatedAddress"></span>
+                                <span id="formatedAddress"></span><br>
                                 (<span id="lat"></span>, <span id="lng"></span>, <span id="zoom_level"><?php echo $zoom; ?>)
                             </td>
                             <td></td>

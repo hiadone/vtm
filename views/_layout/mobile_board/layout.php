@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<?php echo $this->managelayout->display_css(); ?>
 <?php echo $this->managelayout->display_js(); ?>
 </head>
 <body <?php echo isset($view) ? element('body_script', $view) : ''; ?>>

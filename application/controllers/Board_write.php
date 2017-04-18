@@ -48,6 +48,8 @@ class Board_write extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         Events::trigger('before', $eventname);
 
+        
+        
         if (empty($brd_key)) {
             show_404();
         }
@@ -230,6 +232,12 @@ class Board_write extends CB_Controller
         }
 
         $view['view']['board_list'] = $board_list;
+
+        if(empty(get_cookie('region'))) $view['view']['region']=0;
+        else $view['view']['region'] = get_cookie('region');
+
+        
+        $view['view']['region_category'] = config_item('region_category');
 
         // 글 한개만 작성 가능
         if (element('use_only_one_post', $board) && $is_admin === false) {
@@ -670,6 +678,7 @@ class Board_write extends CB_Controller
             $page_name = str_replace($searchconfig, $replaceconfig, $page_name);
 
             $layout_dir = element('board_layout', $board) ? element('board_layout', $board) : $this->cbconfig->item('layout_board');
+            
             $mobile_layout_dir = element('board_mobile_layout', $board) ? element('board_mobile_layout', $board) : $this->cbconfig->item('mobile_layout_board');
             $use_sidebar = element('board_sidebar', $board) ? element('board_sidebar', $board) : $this->cbconfig->item('sidebar_board');
             $use_mobile_sidebar = element('board_mobile_sidebar', $board) ? element('board_mobile_sidebar', $board) : $this->cbconfig->item('mobile_sidebar_board');
@@ -734,6 +743,8 @@ class Board_write extends CB_Controller
                 'post_ip' => $this->input->ip_address(),
                 'brd_id' => element('brd_id', $board),
                 'post_parent' => $this->input->get('post_parent',null,0),
+                'region_category' => $this->input->post('region_category',null,1),
+                'post_main_4' => $this->input->post('post_main_4',null,1),
             );
 
             if ($mem_id) {
@@ -1348,6 +1359,7 @@ class Board_write extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['step1'] = Events::trigger('step1', $eventname);
 
+        $view['view']['region_category'] = config_item('region_category');
         /**
          * Validation 라이브러리를 가져옵니다
          */
@@ -1866,6 +1878,8 @@ class Board_write extends CB_Controller
                 'post_html' => $content_type,
                 'post_updated_datetime' => cdate('Y-m-d H:i:s'),
                 'post_update_mem_id' => $mem_id,
+                'region_category' => $this->input->post('region_category',null,1),
+                'post_main_4' => $this->input->post('post_main_4',null,0),
             );
 
             if ($is_post_name) {

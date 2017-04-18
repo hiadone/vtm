@@ -444,11 +444,11 @@ if (typeof(COMMON_JS) === 'undefined') {
         });
     }
 
-    $(document).on('mouseenter', '.admin-manage-post', function () {
+    $(document).on('click', '.admin-manage-post', function () {
         $manage_button = $(this);
-        $('.admin-manage-post-layer').css('top', $manage_button.position().top);
-        $('.admin-manage-post-layer').css('left', $manage_button.position().left - ($('.admin-manage-post-layer').width()-$manage_button.width()));
-        $('.admin-manage-post-layer').css('display', 'block');
+        $('.admin-manage-post-layer').css('top', $manage_button.position().top+25);
+        $('.admin-manage-post-layer').css('left', $manage_button.position().left-60);
+        $('.admin-manage-post-layer').toggle();
         $(document).on('mouseenter', '.admin-manage-post-layer .item', function () {
             $(this).css('background-color', '#DEDEDE');
         });
@@ -456,11 +456,11 @@ if (typeof(COMMON_JS) === 'undefined') {
             $(this).css('background-color', '#FFFFFF');
         });
     });
-    $(document).on('mouseenter', '.admin-manage-list', function () {
+    $(document).on('click', '.admin-manage-list', function () {
         $manage_button_list = $(this);
-        $('.admin-manage-layer-list').css('top', $manage_button_list.position().top);
+        $('.admin-manage-layer-list').css('top', $manage_button_list.position().top+25);
         $('.admin-manage-layer-list').css('left', $manage_button_list.position().left - ($('.admin-manage-layer-list').width()-$manage_button_list.width()));
-        $('.admin-manage-layer-list').css('display', 'block');
+        $('.admin-manage-layer-list').toggle();
         $(document).on('mouseenter', '.admin-manage-layer-list .item', function () {
             $(this).css('background-color', '#DEDEDE');
         });
@@ -468,11 +468,11 @@ if (typeof(COMMON_JS) === 'undefined') {
             $(this).css('background-color', '#FFFFFF');
         });
     });
-    $(document).on('mouseenter', '.admin-manage-comment', function () {
+    $(document).on('click', '.admin-manage-comment', function () {
         $manage_button_comment = $(this);
-        $('.admin-manage-layer-comment').css('top', $manage_button_comment.position().top);
-        $('.admin-manage-layer-comment').css('left', $manage_button_comment.position().left - ($('.admin-manage-layer-comment').width()-$manage_button_comment.width()));
-        $('.admin-manage-layer-comment').css('display', 'block');
+        $('.admin-manage-layer-comment').css('top', $manage_button_comment.position().top+25);
+       
+        $('.admin-manage-layer-comment').toggle();
         $(document).on('mouseenter', '.admin-manage-layer-comment .item', function () {
             $(this).css('background-color', '#DEDEDE');
         });
@@ -480,8 +480,8 @@ if (typeof(COMMON_JS) === 'undefined') {
             $(this).css('background-color', '#FFFFFF');
         });
     });
-    $(document).on('mouseleave', '.btn-admin-manage-layer', function () {
-        $(this).css('display', 'none');
+    $(document).on('click', '.btn-admin-manage-layer', function () {
+        //$(this).css('display', 'none');
     });
 
     // 쿠키 입력
@@ -646,7 +646,7 @@ if (typeof(COMMON_JS) === 'undefined') {
         f.submit();
     }
     function open_google_map() {
-        window.open(cb_url + '/helptool/googlemap_search' , 'win_map', 'left=100,top=100,width=720,height=660,scrollbars=1');
+        window.open(cb_url + '/helptool/googlemap_search' , 'win_map', 'left=100,top=100,width=520,height=660,scrollbars=1');
         return false;
     }
 

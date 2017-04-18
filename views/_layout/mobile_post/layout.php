@@ -21,8 +21,7 @@ if (element('menu', $layout)) {
     if (element(0, $menu)) {
         foreach (element(0, $menu) as $mkey => $mval) {
 
-        if(element('region', $view) > 0) $js_mem_link[]=element('men_link', $mval).'_'.element('region', $view); 
-        else $js_mem_link[]=element('men_link', $mval);
+        $js_mem_link[]=element('men_link', $mval);
         $js_swipe_contents[]="contents_".$mkey;
         }
     }
@@ -33,6 +32,7 @@ if (element('menu', $layout)) {
 <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" /> -->
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 <!-- <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.css" /> -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css') ?>" />
 <?php echo $this->managelayout->display_css(); ?>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -164,19 +164,8 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
     <!-- main end -->
 
     <!-- footer start -->
-    <footer>
-        <p>
-            이 사이트는 베트남에 거주하는 한글을 사용하는<br/>
-            사용자들을 위한 성인전용 서비스이며, 미성년자의 출입을 금지합니다.
-        </p>
-        <ul>
-            <li><a href="<?php echo document_url('provision'); ?>" title="이용약관">이용약관</a></li>
-            <li><a href="<?php echo document_url('privacy'); ?>" title="개인정보 취급방침">개인정보 취급방침</a></li>
-            <li><?php echo mailto('reymonjung@gmail.com','고객센터'); ?> </li>
-        </ul>
-
-        <h2>Copyright ⓒ Vietnam. All Rights Reserved </h2>
-    </footer>
+    <?php echo $this->managelayout->display_footer(); ?>
+    
     <!-- footer end -->
 </div>
 <?php 

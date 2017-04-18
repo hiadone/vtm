@@ -256,6 +256,7 @@ class Document extends CB_Controller
         );
         $view['layout'] = $this->managelayout->front($layoutconfig, $this->cbconfig->get_device_view_type());
         $this->data = $view;
+        
         $this->layout = element('layout_skin_file', element('layout', $view));
         $this->view = element('view_skin_file', element('layout', $view));
     }

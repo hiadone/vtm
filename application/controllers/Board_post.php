@@ -44,7 +44,7 @@ class Board_post extends CB_Controller
      * 게시판 목록입니다.
      */
     
-    public function lists($brd_key = 'vtn_karaoke_0')
+    public function lists($brd_key = 'vtn_karaoke')
     {
 
         // 이벤트 라이브러리를 로딩합니다
@@ -87,11 +87,8 @@ class Board_post extends CB_Controller
                 'group_id' => element('bgr_id', element('board', $list)),
             )
         );
-        $brd_key_arr=explode("_",$brd_key);
-        
 
-        if(count($brd_key_arr) > 1) $this->bgr_key=$brd_key_arr[0]."_".$brd_key_arr[1];
-        else $this->bgr_key=$brd_key;
+        $this->bgr_key=$brd_key;
         
         
         
@@ -157,7 +154,7 @@ class Board_post extends CB_Controller
         $page_name = str_replace($searchconfig, $replaceconfig, $page_name);
 
         $list_skin_file = element('use_gallery_list', element('board', $list)) ? 'gallerylist' : 'list';
-        $layout_dir = element('board_layout', element('board', $list)) ? element('board_layout', element('board', $list)) : $this->cbconfig->item('layout_board');
+        $layout_dir = element('board_layout', element('board', $list)) ? element('board_layout', element('board', $list)) : 'mobile_board';
         
         $mobile_layout_dir = element('board_mobile_layout', element('board', $list)) ? element('board_mobile_layout', element('board', $list)) : 'mobile_board';
         $use_sidebar = element('board_sidebar', element('board', $list)) ? element('board_sidebar', element('board', $list)) : $this->cbconfig->item('sidebar_board');
@@ -1210,30 +1207,35 @@ class Board_post extends CB_Controller
         $where_in=array();
         $where=array();
 
-        if(empty(get_cookie('region')) || get_cookie('region')===0){
-        //if(strpos($brd_key,'_0' )!==false){
-            $this->load->model('Board_model');
+        // if(empty(get_cookie('region')) || get_cookie('region')===0){
+        // //if(strpos($brd_key,'_0' )!==false){
+        //     $this->load->model('Board_model');
 
-            $brdidwhere = array(
-                    'bgr_id' => element('bgr_id', $board),
-                );
+        //     $brdidwhere = array(
+        //             'bgr_id' => element('bgr_id', $board),
+        //         );
 
-            $brdidarr = $this->Board_model
-                    ->get('', 'brd_id', $brdidwhere, '', '', 'brd_id', 'ASC');
+        //     $brdidarr = $this->Board_model
+        //             ->get('', 'brd_id', $brdidwhere, '', '', 'brd_id', 'ASC');
 
-            foreach ($brdidarr as $value) {
-                $brd_id_arr[] = $value['brd_id'];
+        //     foreach ($brdidarr as $value) {
+        //         $brd_id_arr[] = $value['brd_id'];
                
-            }
+        //     }
             
-            $where_in=array(
-                'brd_id' => $brd_id_arr,
-            );
-        } else {
-            $where = array(
-                'brd_id' => $this->board->item_key('brd_id', $brd_key),
-            );
-        }
+        //     $where_in=array(
+        //         'brd_id' => $brd_id_arr,
+        //     );
+
+        // } else {
+        //     $where = array(
+        //         'brd_id' => $this->board->item_key('brd_id', $brd_key),
+        //     );
+        // }
+
+        $where = array(
+            'brd_id' => $this->board->item_key('brd_id', $brd_key),
+        );
         
         if(strpos($brd_key,'_review' )!==false){
             $where = array(
@@ -1241,7 +1243,8 @@ class Board_post extends CB_Controller
             );   
         }
 
-        
+        if(!empty(get_cookie('region'))) $where['region_category'] = get_cookie('region');
+
         $where['post_del <>'] = 2;
         if (element('except_notice', $board)
             && $this->cbconfig->get_device_view_type() !== 'mobile') {
@@ -1255,10 +1258,137 @@ class Board_post extends CB_Controller
             $where['post.mem_id'] = $mem_id;
         }
 
+
+        $where['post_main_4'] = 1;
+        
+
         $category_id = (int) $this->input->get('category_id');
         if (empty($category_id) OR $category_id < 1) {
             $category_id = '';
         }
+        $main_result = $this->Post_model
+            ->get_post_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
+        
+
+        if (element('list', $main_result)) {
+            foreach (element('list', $main_result) as $key => $val) {
+
+               
+                $main_result['list'][$key]['post_url'] = post_url(element('brd_key', $board), element('post_id', $val));
+
+                $main_result['list'][$key]['meta'] = $meta
+                    = $this->Post_meta_model
+                    ->get_all_meta(element('post_id', $val));
+
+                $main_result['list'][$key]['extravars'] = $this->Post_extra_vars_model->get_all_meta(element('post_id', $val));
+
+                if ($this->cbconfig->get_device_view_type() === 'mobile') {
+                    $main_result['list'][$key]['title'] = element('mobile_subject_length', $board)
+                        ? cut_str(element('post_title', $val), element('mobile_subject_length', $board))
+                        : element('post_title', $val);
+                } else {
+                    $main_result['list'][$key]['title'] = element('subject_length', $board)
+                        ? cut_str(element('post_title', $val), element('subject_length', $board))
+                        : element('post_title', $val);
+                }
+                if (element('post_del', $val)) {
+                    $main_result['list'][$key]['title'] = '게시물이 삭제 되었습니다';
+                }
+                $is_blind = (element('blame_blind_count', $board) > 0 && element('post_blame', $val) >= element('blame_blind_count', $board)) ? true : false;
+                if ($is_blind) {
+                    $main_result['list'][$key]['title'] = '신고가 접수된 게시글입니다.';
+                }
+
+                if (element('mem_id', $val) >= 0) {
+                    $main_result['list'][$key]['display_name'] = display_username(
+                        element('post_userid', $val),
+                        element('post_nickname', $val),
+                        ($use_sideview_icon ? element('mem_icon', $val) : ''),
+                        ($use_sideview ? 'Y' : 'N')
+                    );
+                } else {
+                    $main_result['list'][$key]['display_name'] = '익명사용자';
+                }
+
+                $main_result['list'][$key]['display_datetime'] = display_datetime(
+                    element('post_datetime', $val),
+                    $list_date_style,
+                    $list_date_style_manual
+                );
+                $main_result['list'][$key]['category'] = '';
+                if (element('use_category', $board) && element('post_category', $val)) {
+                    $main_result['list'][$key]['category']
+                        = $this->Board_category_model
+                        ->get_category_info(element('brd_id', $val), element('post_category', $val));
+                }
+                if ($param->output()) {
+                    $main_result['list'][$key]['post_url'] .= '?' . $param->output();
+                }
+                
+                $main_result['list'][$key]['is_hot'] = false;
+
+                $hot_icon_day = ($this->cbconfig->get_device_view_type() === 'mobile')
+                    ? element('mobile_hot_icon_day', $board)
+                    : element('hot_icon_day', $board);
+
+                $hot_icon_hit = ($this->cbconfig->get_device_view_type() === 'mobile')
+                    ? element('mobile_hot_icon_hit', $board)
+                    : element('hot_icon_hit', $board);
+
+                if ($hot_icon_day && ( ctimestamp() - strtotime(element('post_datetime', $val)) <= $hot_icon_day * 86400)) {
+                    if ($hot_icon_hit && $hot_icon_hit <= element('post_hit', $val)) {
+                        $main_result['list'][$key]['is_hot'] = true;
+                    }
+                }
+                $main_result['list'][$key]['is_new'] = false;
+                $new_icon_hour = ($this->cbconfig->get_device_view_type() === 'mobile')
+                    ? element('mobile_new_icon_hour', $board)
+                    : element('new_icon_hour', $board);
+
+                if ($new_icon_hour && ( ctimestamp() - strtotime(element('post_datetime', $val)) <= $new_icon_hour * 3600)) {
+                    $main_result['list'][$key]['is_new'] = true;
+                }
+
+                $main_result['list'][$key]['is_mobile'] = (element('post_device', $val) === 'mobile') ? true : false;
+
+                $main_result['list'][$key]['thumb_url'] = '';
+                $main_result['list'][$key]['origin_image_url'] = '';
+                if (element('use_gallery_list', $board)) {
+                    if(config_item('use_file_storage') == "S3"){
+                        if (element('post_image', $val)) {
+                            $filewhere = array(
+                                'post_id' => element('post_id', $val),
+                                'pfi_is_image' => 1,
+                            );
+                            $file = $this->Post_file_model
+                                ->get_one('', '', $filewhere, '', '', 'pfi_id', 'ASC');
+                            $main_result['list'][$key]['origin_image_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $file); 
+                        } 
+                    } else {
+                        if (element('post_image', $val)) {
+                            $filewhere = array(
+                                'post_id' => element('post_id', $val),
+                                'pfi_is_image' => 1,
+                            );
+                            $file = $this->Post_file_model
+                                ->get_one('', '', $filewhere, '', '', 'pfi_id', 'ASC');
+                            $main_result['list'][$key]['thumb_url'] = thumb_url('post', element('pfi_filename', $file), $gallery_image_width, $gallery_image_height);
+                            $main_result['list'][$key]['origin_image_url'] = thumb_url('post', element('pfi_filename', $file));
+                        } else {
+                            $thumb_url = get_post_image_url(element('post_content', $val), $gallery_image_width, $gallery_image_height);
+                            $main_result['list'][$key]['thumb_url'] = $thumb_url
+                                ? $thumb_url
+                                : thumb_url('', '', $gallery_image_width, $gallery_image_height);
+
+                            $main_result['list'][$key]['origin_image_url'] = $thumb_url;
+                        }
+                    }
+                    
+                }
+            }
+        }
+
+        $where['post_main_4'] = 0;
         $result = $this->Post_model
             ->get_post_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
         $list_num = $result['total_rows'] - ($page - 1) * $per_page;
@@ -1386,6 +1516,7 @@ class Board_post extends CB_Controller
 
 
 
+        $return['main_data'] = $main_result;
         $return['data'] = $result;
         $return['notice_list'] = $noticeresult;
         if (empty($from_view)) {

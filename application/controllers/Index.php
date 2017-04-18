@@ -84,7 +84,7 @@ class Index extends CB_Controller
             'path' => 'index',
             'layout' => 'layout',
             'skin' => 'index',
-            'layout_dir' => $this->cbconfig->item('layout_main'),
+            'layout_dir' => 'mobile_index',
             'mobile_layout_dir' => 'mobile_index',
             'use_sidebar' => $this->cbconfig->item('sidebar_main'),
             'use_mobile_sidebar' => $this->cbconfig->item('mobile_sidebar_main'),

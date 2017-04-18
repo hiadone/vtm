@@ -57,8 +57,10 @@
         </section>
        
         <?php if (element('can_post_notice', element('post', $view)) OR element('can_post_secret', element('post', $view)) OR element('can_post_receive_email', element('post', $view))) { ?>
-            <li>
-                <span>옵션</span>
+        <section  style="text-align:center;">
+            <label class="text_title">
+                옵션
+            </label>
                 <?php if (element('can_post_notice', element('post', $view))) { ?>
                     <label class="checkbox-inline" for="post_notice_1">
                         <input type="checkbox" name="post_notice" id="post_notice_1" value="1" <?php echo set_checkbox('post_notice', '1', (element('post_notice', element('post', $view)) === '1' ? true : false)); ?> onChange="if (this.checked) {$('#post_notice_2').prop('disabled', true);} else {$('#post_notice_2').prop('disabled', false);}" <?php if (element('post_notice', element('post', $view)) === '2')echo "disabled='disabled'"; ?> /> 공지
@@ -77,7 +79,7 @@
                         <input type="checkbox" name="post_receive_email" id="post_receive_email" value="1" <?php echo set_checkbox('post_receive_email', '1', (element('post_receive_email', element('post', $view)) ? true : false)); ?> /> 답변메일받기
                     </label>
                 <?php } ?>
-            </li>
+        </section>
         <?php } ?>
         <?php if (element('use_category', element('board', $view))) { ?>
             <li>

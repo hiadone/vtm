@@ -1,7 +1,7 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 <?php echo element('headercontent', element('board', $view)); ?>
 
-<div class="info board">
+<div class="wrap info board">
     <h3><?php echo html_escape(element('board_name', element('board', $view))); ?> 글쓰기</h3>
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
@@ -45,6 +45,9 @@
                     </label>
                     <label class="checkbox-inline" for="post_notice_2">
                         <input type="checkbox" name="post_notice" id="post_notice_2" value="2" <?php echo set_checkbox('post_notice', '2', (element('post_notice', element('post', $view)) === '2' ? true : false)); ?> onChange="if (this.checked) {$('#post_notice_1').prop('disabled', true);} else {$('#post_notice_1').prop('disabled', false);}" <?php if (element('post_notice', element('post', $view)) === '1')echo "disabled='disabled'"; ?> /> 전체공지
+                    </label>
+                    <label class="checkbox-inline" for="post_main_4">
+                        <input type="checkbox" name="post_main_4" id="post_main_4" value="1" <?php echo set_checkbox('post_main_4', '1', (element('post_main_4', element('post', $view)) ? true : false)); ?> /> 메인 4 슬론
                     </label>
                 <?php } ?>
                 <?php if (element('can_post_secret', element('post', $view))) { ?>
@@ -91,6 +94,27 @@
                 </select>
             </li>
         <?php } ?>
+        <li>
+            <span>지역</span>
+            <select name="region_category" class="input">
+        <?php 
+        $return = '';
+        foreach(element('region_category', $view) as $key => $value){
+            if($key ===0) continue;
+            $return .= '<option value="' . $key. '"';
+            if ($key == element('region_category', element('post', $view))) {
+                $return .= 'selected="selected"';
+            } else if($key == get_cookie('region')) {
+                $return .= 'selected="selected"';
+            }
+
+             
+            $return .= '>' .html_escape($value) . '</option>';
+        }
+        echo $return;
+        ?>
+            </select>
+        </li>
         <?php
         if (element('extra_content', $view)) {
             foreach (element('extra_content', $view) as $key => $value) {
@@ -120,7 +144,11 @@
                 입력하실 수 있습니다.
             </div>
         <?php } ?>
-        <div class="form-group mb20">
+        <?php 
+        $form_group_style="";
+        if($this->cbconfig->get_device_type()!=='mobile' && element('use_dhtml', element('board', $view))) $form_group_style="style='width:740px;'";
+         ?>
+        <div class="form-group mb20" <?php echo $form_group_style ?>>
             <?php if ( ! element('use_dhtml', element('board', $view))) { ?>
                 <div class="btn-group pull-right mb10">
                     <button type="button" class="btn btn-default btn-sm" onClick="resize_textarea('post_content', 'down');"><i class="fa fa-plus fa-lg"></i></button>
@@ -177,7 +205,7 @@
                 <?php } ?>
             </div>
         <?php } ?>
-            <div class="table-bottom text-center mt20">
+            <div class="table-bottom text-center mb20">
                 <button type="button" class="btn btn-default btn-sm btn-history-back">취소</button>
                 <button type="submit" class="btn btn-success btn-sm">작성완료</button>
             </div>

@@ -261,7 +261,7 @@
 		color:#fff;
 		font-size:10px;
 		text-align: center;
-		line-height: 15px;
+		line-height: 15px
 		}
 
 	footer h2{
@@ -275,26 +275,22 @@
 		}
 
 	footer ul {
-		width:90%;
+		width:100%;
 		margin: 0 auto;
 		display: inline-block;
 		}
 
 	footer ul li{
-		width:28%;
+		width:25%;
 		float: left;
 		}
 
-	footer ul li:nth-child(1),footer ul li:nth-child(2){
+	footer ul li:nth-child(1),footer ul li:nth-child(2),footer ul li:nth-child(3){
 		border-right:1px solid #fff;
 		box-sizing: border-box;
 		text-align: center;
 		}
-
-	footer ul li:nth-child(2){
-		width:44%;
-		}
-
+		
 	footer ul li a{
 		color:#fff;
 		font-size:12px;
