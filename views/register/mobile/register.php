@@ -11,10 +11,11 @@
         <div class="table-box">
             <section class="title02">
                 <h2>회원가입 약관</h2>
+                <p>필 수 사 항</p>
             </section>
 
             <section class="agree">
-                <p><?php echo element('member_register_policy1', $view); ?></p>
+                <div class="document"><?php echo element('member_register_policy1', $view); ?></div>
                  
                 <div class="check">
                 <input type="checkbox" name="agree" id="agree" value="1" /> 
@@ -24,14 +25,27 @@
 
             <section class="title02">
             <h2>개인정보 수집 및 이용동의</h2>
-            
+            <p>필 수 사 항</p>
             </section>
 
             <section class="agree">
-                <p><?php echo element('member_register_policy2', $view); ?></p>
+                <div class="document"><?php echo element('member_register_policy2', $view); ?></div>
                 <div class="check">
                 <input type="checkbox" name="agree2" id="agree2" value="1" /> 
                 <label>개인정보취급방침안내의 내용에 동의합니다</label>
+                </div>
+            </section>
+
+            <section class="title02">
+            <h2>위치정보 수집 및 이용동의</h2>
+            <p>필 수 사 항</p>
+            </section>
+
+            <section class="agree">
+                <div class="document"><?php echo element('member_register_policy3', $view); ?></div>
+                <div class="check">
+                <input type="checkbox" name="agree3" id="agree3" value="1" /> 
+                <label>위치정보취급방침안내의 내용에 동의합니다</label>
                 </div>
             </section>
 
@@ -48,6 +62,7 @@ $(function() {
         rules: {
             agree: {required :true},
             agree2: {required :true}
+            agree3: {required :true}
         }
     });
 });

@@ -744,7 +744,7 @@ class Board_write extends CB_Controller
                 'brd_id' => element('brd_id', $board),
                 'post_parent' => $this->input->get('post_parent',null,0),
                 'region_category' => $this->input->post('region_category',null,1),
-                'post_main_4' => $this->input->post('post_main_4',null,1),
+                'post_main_4' => $this->input->post('post_main_4',null,0),
             );
 
             if ($mem_id) {

@@ -88,7 +88,8 @@ class Editorfileupload extends CB_Controller
                 );
                 $image_id = $this->Editor_image_model->insert($fileupdate);
 
-                $image_url = site_url(config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' . element('file_name', $filedata));
+                if(config_item('use_file_storage') == "S3") $image_url = $this->config->config['s3_url'].config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' .  element('file_name', $filedata);
+                else $image_url = site_url(config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' . element('file_name', $filedata));
                 $info = new stdClass();
                 $info->oriname = element('orig_name', $filedata);
                 $info->name = element('file_name', $filedata);
@@ -126,7 +127,10 @@ class Editorfileupload extends CB_Controller
                 // 이벤트가 존재하면 실행합니다
                 Events::trigger('delete_after', $eventname);
 
-                unlink($upload_path . $this->input->get('file'));
+                if(config_item('use_file_storage') == "S3")
+                    $this->aws->deleteObject($upload_path. $this->input->get('file'));
+                else unlink($upload_path . $this->input->get('file'));
+                echo $upload_path. $this->input->get('file');
                 $this->Editor_image_model->delete_where($where);
             }
         }
@@ -187,7 +191,8 @@ class Editorfileupload extends CB_Controller
                     'eim_ip' => $this->input->ip_address(),
                 );
                 $this->Editor_image_model->insert($fileupdate);
-                $image_url = site_url(config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' . element('file_name', $filedata));
+                if(config_item('use_file_storage') == "S3") $image_url = $this->config->config['s3_url'].config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' .  element('file_name', $filedata);
+                else $image_url = site_url(config_item('uploads_dir') . '/editor/' . cdate('Y') . '/' . cdate('m') . '/' . element('file_name', $filedata));
 
                 // 이벤트가 존재하면 실행합니다
                 Events::trigger('doupload_after', $eventname);

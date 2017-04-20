@@ -128,6 +128,7 @@ class Register extends CB_Controller
 
             $view['view']['member_register_policy1'] = $this->cbconfig->item('member_register_policy1');
             $view['view']['member_register_policy2'] = $this->cbconfig->item('member_register_policy2');
+            $view['view']['member_register_policy3'] = $this->cbconfig->item('member_register_policy3');
             $view['view']['canonical'] = site_url('register');
 
             // 이벤트가 존재하면 실행합니다

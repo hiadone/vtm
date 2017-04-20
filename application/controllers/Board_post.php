@@ -520,10 +520,11 @@ class Board_post extends CB_Controller
 
             if ($file && is_array($file)) {
                 foreach ($file as $key => $value) {
-                    if(config_item('use_file_storage') == "S3"){
-                        if (false) {
-                            $value['origin_image_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $value);
 
+                    if(config_item('use_file_storage') == "S3"){                        
+                        if (element('pfi_is_image', $value)) {
+
+                            $value['origin_image_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $value);
                             $value['thumb_image_url'] = $value['origin_image_url'];
                             //$value['thumb_image_url'] = thumb_url('post', element('pfi_filename', $value), $image_width);
                             $view['view']['file_image'][] = $value;
@@ -535,6 +536,7 @@ class Board_post extends CB_Controller
                             }
                         }
                     } else {
+                        
                         if (element('pfi_is_image', $value)) {
                             $value['origin_image_url'] = site_url(config_item('uploads_dir') . '/post/' . element('pfi_filename', $value));
                             $value['thumb_image_url'] = thumb_url('post', element('pfi_filename', $value), $image_width);
@@ -580,6 +582,7 @@ class Board_post extends CB_Controller
 
             if ($is_blind === false OR $is_admin !== false
                 OR (element('mem_id', $post) && abs(element('mem_id', $post)) === $mem_id)) {
+                
                 $view['view']['post']['content'] .= $file_player . $link_player
                     . display_html_content(
                         element('post_content', $post),
@@ -1267,7 +1270,7 @@ class Board_post extends CB_Controller
             $category_id = '';
         }
         $main_result = $this->Post_model
-            ->get_post_list($per_page, $offset, $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
+            ->get_post_list(4, $offset, $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
         
 
         if (element('list', $main_result)) {
@@ -1362,8 +1365,13 @@ class Board_post extends CB_Controller
                             );
                             $file = $this->Post_file_model
                                 ->get_one('', '', $filewhere, '', '', 'pfi_id', 'ASC');
-                            $main_result['list'][$key]['origin_image_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $file); 
-                        } 
+                            $main_result['list'][$key]['thumb_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $file); 
+                        } else {
+                            $thumb_url = get_post_image_url(element('post_content', $val), $gallery_image_width, $gallery_image_height);
+                            $result['list'][$key]['thumb_url'] = $thumb_url
+                                ? $thumb_url
+                                : thumb_url('', '', $gallery_image_width, $gallery_image_height);
+                        }
                     } else {
                         if (element('post_image', $val)) {
                             $filewhere = array(
@@ -1476,6 +1484,7 @@ class Board_post extends CB_Controller
 
                 $result['list'][$key]['thumb_url'] = '';
                 $result['list'][$key]['origin_image_url'] = '';
+
                 if (element('use_gallery_list', $board)) {
                     if(config_item('use_file_storage') == "S3"){
                         if (element('post_image', $val)) {
@@ -1485,8 +1494,14 @@ class Board_post extends CB_Controller
                             );
                             $file = $this->Post_file_model
                                 ->get_one('', '', $filewhere, '', '', 'pfi_id', 'ASC');
-                            $result['list'][$key]['origin_image_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $file); 
-                        } 
+                            $result['list'][$key]['thumb_url'] = $this->config->config['s3_url'] .config_item('uploads_dir'). '/post/' . element('pfi_filename', $file); 
+                        } else {
+                            $thumb_url = get_post_image_url(element('post_content', $val), $gallery_image_width, $gallery_image_height);
+                            $result['list'][$key]['thumb_url'] = $thumb_url
+                                ? $thumb_url
+                                : thumb_url('', '', $gallery_image_width, $gallery_image_height);
+                                
+                        }
                     } else {
                         if (element('post_image', $val)) {
                             $filewhere = array(

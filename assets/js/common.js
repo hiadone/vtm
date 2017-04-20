@@ -321,7 +321,8 @@ if (typeof(COMMON_JS) === 'undefined') {
         });
     }
 
-    function post_multi_action(action_type, flag, msg) {
+    function post_multi_action(action_type, flag, msg,contentsId) {
+        
         var href;
         if ( action_type == '') {
             return false;
@@ -334,7 +335,7 @@ if (typeof(COMMON_JS) === 'undefined') {
         $.ajax({
             url : href,
             type : 'post',
-            data :  $('#fboardlist').serialize() + '&csrf_test_name=' + cb_csrf_hash,
+            data :  $('#fboardlist'+contentsId).serialize() + '&csrf_test_name=' + cb_csrf_hash,
             dataType : 'json',
             success : function(data) {
                 if (data.error) {
@@ -650,8 +651,8 @@ if (typeof(COMMON_JS) === 'undefined') {
         return false;
     }
 
-    function all_boardlist_checked(flag) {
-        var f = document.fboardlist;
+    function all_boardlist_checked(flag,contentsId) {
+        var f =document.getElementById('fboardlist'+contentsId) ;
         for (var i = 0; i < f.length; i++) {
             if (f.elements[i].name === 'chk_post_id[]') {
                 f.elements[i].checked = flag;

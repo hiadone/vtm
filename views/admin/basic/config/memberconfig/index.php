@@ -113,6 +113,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">위치정보약관</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="5" name="member_register_policy3"><?php echo set_value('member_register_policy3', element('member_register_policy3', element('data', $view))); ?></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">회원가입시 레벨</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" name="register_level" id="register_level" value="<?php echo set_value('register_level', element('register_level', element('data', $view))); ?>" />

@@ -11,7 +11,7 @@
     </section>
 
     <?php if ($this->member->is_admin() === 'super') { ?>
-    <div class="pull-right">
+    <div class="pull-right mb10">
         <a href="<?php echo admin_url('page/document/write/' . element('doc_id', element('data', $view))); ?>" class="btn btn-danger btn-sm" target="_blank">내용수정</a>
     </div>
 <?php } ?>

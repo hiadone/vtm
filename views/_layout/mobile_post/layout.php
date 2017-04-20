@@ -13,6 +13,7 @@
 <?php if (element('canonical', $view)) { ?><link rel="canonical" href="<?php echo element('canonical', $view); ?>" /><?php } ?>
 
 <?php
+
 $js_mem_link="";
 $js_swipe_contents="";
 
@@ -27,12 +28,12 @@ if (element('menu', $layout)) {
     }
 }
 ?>
-
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css') ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo element('layout_skin_url', $layout); ?>/css/style.css" />
 <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" /> -->
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 <!-- <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.css" /> -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css') ?>" />
+
 <?php echo $this->managelayout->display_css(); ?>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -192,7 +193,12 @@ $(document).ready(function(){
     });
 
  
-
+    
+    if($("#region option:selected").text()){
+        $("#region").siblings("label").text($("#region option:selected").text());
+        $("label").css("color" , "#231b26");
+    }
+    
     // // 메인메뉴 의 높이가 자동 설정
     // var hei = $('.wrap > header .mainmenu ul').height() - 2;
 

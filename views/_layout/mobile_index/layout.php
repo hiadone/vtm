@@ -11,11 +11,12 @@
 <?php if (element('meta_author', $layout)) { ?><meta name="author" content="<?php echo html_escape(element('meta_author', $layout)); ?>"><?php } ?>
 <?php if (element('favicon', $layout)) { ?><link rel="shortcut icon" type="image/x-icon" href="<?php echo element('favicon', $layout); ?>" /><?php } ?>
 <?php if (element('canonical', $view)) { ?><link rel="canonical" href="<?php echo element('canonical', $view); ?>" /><?php } ?>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css') ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo element('layout_skin_url', $layout); ?>/css/style.css" />
 <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" /> -->
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 <!-- <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.css" /> -->
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css') ?>" />
+
 <?php echo $this->managelayout->display_css(); ?>
 <?php
 $js_mem_link="";
@@ -81,6 +82,21 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
         <!-- 지역선택하기 영역 -->  
             
         </h1>
+        <span style="visibility:hidden;">
+            <label for="select">지역선택하기</label>
+            <select id="region">
+        <?php
+        
+        if (element('region_category', $view)) {
+            foreach (element('region_category', $view) as $key => $value) {
+
+                if($key == element('region', $view)) echo '<option value='.site_url().' selected>'.$value.'</option>';
+                else echo '<option value='.site_url().'>'.$value.'</option>';
+            }
+        }
+        ?>
+            </select>
+        </span>
         <ul>
             <?php if ($this->member->is_member()) { ?>
                 <li><a href="<?php echo site_url('login/logout?url=' . urlencode(current_full_url())); ?>" title="로그아웃">로그아웃</a></li>

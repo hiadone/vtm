@@ -12,9 +12,11 @@
 .mypage .askpassword li>span {float: left;width: 25%;text-align: right;padding-right: 20px;margin-top: 8px;color: #000;font-weight: bold;font-size:11px;}
 
 .mypage .member_modify li {display: block;margin: 0px; clear: both; margin-bottom: 15px;}
-.mypage .member_modify li>span {margin-top: 8px;color: #000;font-weight: bold;}
+.mypage .member_modify li>span {float: left;width: 15%;text-align: right;padding-right: 20px;margin-top: 8px;color: #000;font-weight: bold;font-size:11px;}
 .mypage .member_modify textarea {width:90%; }
 
+.mypage .table thead{font-size:12px;font-weight: bold;}
+.mypage .table tbody{font-size:12px;}
 .mypage .table-top {overflow: hidden;padding-bottom: 10px;}
 .mypage .table-top input{margin-bottom: 0;margin-top: 0;}
 .mypage .table-top li{float: left;text-align: center;padding-right: 5px;}

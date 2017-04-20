@@ -20,7 +20,7 @@
         </table>
     </section>
 
-     <section class="title02">
+    <section class="title02">
         <h2>회원 비민번호 확인</h2>
     </section>
 

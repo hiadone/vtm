@@ -21,7 +21,7 @@
     </section>
 
     <section class="title02">
-        <h2>회원정보수정</h2>
+        <h2>회원 정보 수정</h2>
         <p><span>내 정보</span>를 확인&수정 하실 수 있습니다.</p>
     </section>
 

@@ -129,7 +129,7 @@ if (element('menu', $layout)) {
     
 
     <?php
-    $attributes = array('name' => 'fboardlist', 'id' => 'fboardlist');
+    $attributes = array('name' => 'fboardlist'.$contentsId, 'id' => 'fboardlist'.$contentsId);
     echo form_open('', $attributes);
     ?>
 
@@ -174,49 +174,38 @@ if (element('menu', $layout)) {
     }
     ?>
     <section class="title02">
-        <h2><?php echo $menuName?> - <span><?php echo html_escape(element(element('region', $view),element('region_category', $view)));?></span></h2>
-        <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소가 있습니다.</p>
+        <h2>업소정보 - <span><?php echo html_escape(element(element('region', $view),element('region_category', $view)));?></span></h2>
+        <p>총 <span><?php echo (count(element('list', element('main_data', element('list', $view))))+count(element('list', element('data', element('list', $view))))) ?>개</span>의 업소가 있습니다.</p>
     </section>
     <section class="store_list">
     <div class="table-image">
     <?php
     $i = 0;
     $open = false;
-    $cols = 2;
-    $gallery_percent=49;
+    $cols = element('gallery_cols', element('board', element('list', $view)));
+    
     if (element('list', element('data', element('list', $view)))) {
-
         foreach (element('list', element('data', element('list', $view))) as $result) {
-            if($i > 3) {
-                $cols=element('gallery_cols', element('board', element('list', $view)));
-                $gallery_percent=element('gallery_percent', element('board', element('list', $view)));
-            }
-
             if ($cols && $i % $cols === 0) {
-                echo '<ul class="list01 ">';
+                echo '<ul class="" style="background: url('.element('thumb_url', $result).') no-repeat left top;">';
                 $open = true;
             }
             $marginright = (($i+1)% $cols === 0) ? 0 : 2;
     ?>
-        <li class="gallery-box" style="width:<?php echo $gallery_percent; ?>%;margin-right:<?php echo $marginright;?>%;">
+        <li class="gallery-box" style="width:<?php echo element('gallery_percent', element('board', element('list', $view))); ?>%;margin-right:<?php echo $marginright;?>%;">
             <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /><?php } ?>
             <a href="<?php echo element('post_url', $result); ?>" title="<?php echo html_escape(element('title', $result)); ?>">
-            <figure>
-                <img src="<?php echo element('thumb_url', $result); ?>" alt="<?php echo html_escape(element('title', $result)); ?>" title="<?php echo html_escape(element('title', $result)); ?>"/>
-            
-                <figcaption>
-                    <h2 class="info_subject"><?php echo html_escape(element('title', $result)); ?></h2>
-                    
-                    <p class="sub_subject"><?php if(element('sub_subject',element('extravars', $result))) echo element('sub_subject',element('extravars', $result)); ?>
-                        <span>
-                            <?php if (element('open_time',element('extravars', $result))) { 
-                               echo  element('open_time',element('extravars', $result));
-                            }
-                            ?>
-                        </span>
-                    </p>
-                </figcaption>
-            </figure>
+            <h2>
+                <h2 >[<?php echo html_escape(element('bca_value',element('category', $result))); ?>]<?php echo html_escape(element('title', $result)); ?></h2>
+            </h2>
+            <p class="sub_subject"><?php if(element('sub_subject',element('extravars', $result))) echo element('sub_subject',element('extravars', $result)); ?>
+            </p>
+            <span>
+                <?php if (element('open_time',element('extravars', $result))) { 
+                   echo  element('open_time',element('extravars', $result));
+                }
+                ?>
+            </span>
 
             
             </a>
@@ -227,32 +216,10 @@ if (element('menu', $layout)) {
                     echo '</ul>';
                     $open = false;
                 }
-
-                if($i==4){
-
-                    echo '</div>
-                    </section>
-                    <section class="ad" style="margin-bottom:3%">
-                        <h4>ad</h4>
-                        '.banner("golf_list_banner_1").'
-                    </section>
-                    <section class="store_list02">
-                        <div class="table-image">
-                    ';
-                }
             }
         } else {
-
-            echo '<div class="table-answer nopost">내용이 없습니다</div>
-                    </div>
-                </section>';
-            echo '<section class="ad" style="margin-bottom:3%">
-                    <h4>ad</h4>
-                    '.banner("golf_list_banner_1").'
-                </section>
-                <section class="store_list02">
-                    <div class="table-image">
-                ';
+            echo '<div class="table-answer nopost">내용이 없습니다</div>';
+                    
         }
         if ($open) {
             echo '</ul>';
@@ -261,12 +228,71 @@ if (element('menu', $layout)) {
         ?>
         </div>
     </section>
+    <section class="ad" style="margin-bottom:3%">
+        <h4>ad</h4>
+        <?php echo banner("golf_list_banner_1") ?>
+    </section>
+    <section class="store_list02">
+    <div class="table-image">
+    <?php
+    $i = 0;
+    $open = false;
+    $cols = element('gallery_cols', element('board', element('list', $view)));
     
+    if (element('list', element('data', element('list', $view)))) {
+        foreach (element('list', element('data', element('list', $view))) as $result) {
+            if ($cols && $i % $cols === 0) {
+                echo '<ul class="mt20">';
+                $open = true;
+            }
+            $marginright = (($i+1)% $cols === 0) ? 0 : 2;
+    ?>
+        <li class="gallery-box" style="width:<?php echo element('gallery_percent', element('board', element('list', $view))); ?>%;margin-right:<?php echo $marginright;?>%;">
+            <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /><?php } ?>
+            <a href="<?php echo element('post_url', $result); ?>" title="<?php echo html_escape(element('title', $result)); ?>">
+            <div class="thumb_img">
+                <img src="<?php echo element('thumb_url', $result); ?>" alt="<?php echo html_escape(element('title', $result)); ?>" title="<?php echo html_escape(element('title', $result)); ?>" class='thumb_img'/>
+            </div>
+            <div class="info_subject">
+                    <h2 ><?php echo html_escape(element('title', $result)); ?></h2>
+                    
+                    <p class="sub_subject"><?php if(element('sub_subject',element('extravars', $result))) echo element('sub_subject',element('extravars', $result)); ?>
+                    </p>
+                    <span>
+                        <?php if (element('open_time',element('extravars', $result))) { 
+                           echo  element('open_time',element('extravars', $result));
+                        }
+                        ?>
+                    </span>
+            </div>
+
+            
+            </a>
+        </li>
+        <?php
+                $i++;
+                if ($cols && $i > 0 && $i % $cols === 0 && $open) {
+                    echo '</ul>';
+                    $open = false;
+                }
+            }
+        } else {
+            echo '<div class="table-answer nopost">내용이 없습니다</div>';
+                    
+        }
+        if ($open) {
+            echo '</ul>';
+            $open = false;
+        }
+        ?>
+        </div>
+    </section>
     <!-- 광고 배너 영역 -->
     <section class="ad">
         <h4>ad</h4>
         <?php echo banner("golf_list_banner_2") ?>
     </section>
+    <!-- ===== -->
     <?php echo form_close(); ?>
     <!-- ===== -->
     <div class="border_button">
@@ -278,7 +304,7 @@ if (element('menu', $layout)) {
         </div>
         <?php if (element('is_admin', $view)) { ?>
             <div class="pull-left mb10">
-                <a onClick="post_multi_action('multi_delete', '0', '선택하신 글들을 완전삭제하시겠습니까?');" class="btn btn-success btn-sm">선택삭제</a>
+                <a onClick="post_multi_action('multi_delete', '0', '선택하신 글들을 완전삭제하시겠습니까?','<?php echo $contentsId ?>');" class="btn btn-success btn-sm">선택삭제</a>
 
                 <!-- <button type="button" class="btn btn-default btn-sm admin-manage-list"><i class="fa fa-cog big-fa"></i>관리</button>
                 <div class="btn-admin-manage-layer admin-manage-layer-list">
@@ -315,7 +341,7 @@ if (element('highlight_keyword', element('list', $view))) {
     $this->managelayout->add_js(base_url('assets/js/jquery.highlight.js')); ?>
 <script type="text/javascript">
 //<![CDATA[
-$('#fboardlist').highlight([<?php echo element('highlight_keyword', element('list', $view));?>]);
+$('#fboardlist<?php echo $contentsId ?>').highlight([<?php echo element('highlight_keyword', element('list', $view));?>]);
 //]]>
 </script>
 <?php } ?>

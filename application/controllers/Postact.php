@@ -211,6 +211,7 @@ class Postact extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         Events::trigger('before', $eventname);
 
+        
         $post_ids = $this->input->post('chk_post_id');
         if (empty($post_ids)) {
             $result = array('error' => '선택된 게시물이 없습니다.');

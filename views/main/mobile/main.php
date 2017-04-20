@@ -79,7 +79,7 @@ $(document).ready(function() {
                       $('html , body').scrollTop('top' , '0');
                     });
 
-                    setTimeout( "reload_rg('"+js_swipe_contents[slideIndex]+"')", 100);
+                    setTimeout( "reload_rg('"+js_swipe_contents[slideIndex]+"')", 500);
                 },
                 error: function(xhr, status, error) { ; } 
             });
@@ -93,7 +93,7 @@ $(document).ready(function() {
 
             $("#mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
             $('html , body').scrollTop('top' , '0');
-            setTimeout( "reload_rg('"+js_swipe_contents[slideIndex]+"')", 100);
+            setTimeout( "reload_rg('"+js_swipe_contents[slideIndex]+"')", 500);
         }
 
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
 function reload_rg(val){
 
   //if(!val2) return;
-  console.log('val'+val);
+  console.log('val'+$('#'+val).height());
   $('#jssor_1').height($('#'+val).height());
   $('#jssor_1>div>div').height($('#'+val).height());
 

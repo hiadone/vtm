@@ -1,16 +1,17 @@
 <?php
     //구글지도
-    $lat = '37.566535';
-    $lng = '126.977969';
+    $lat = '21.028275';
+    $lng = '105.838706';
     $zoom = 14;
     $map_width = '100%';
     $map_height = '425px';
 ?>
+
 <style type="text/css">
 div#map { position: relative; overflow:hidden; }
 div#crosshair {position: absolute;top: 214px;height: 22px;width: 22px;left: 50%;margin-left: -10px;display: block;background-image: url('../img/crosshair.gif');background-position: center center;background-repeat: no-repeat;}
 </style>
-<script src="http://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&sensor=true&language=ko"></script>
+<script src="https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&sensor=true&language=ko"></script>
 <script type="text/javascript">
 var map;
 var geocoder;
@@ -179,7 +180,7 @@ function geocodeResult(results, status) {
                             <td></td>
                         </tr>
                         <tr>
-                            <td colspan=2 style="text-align:center"><button type="button" class="btn btn-primary" onclick="geocode_submit()">등록</button> <button type="button" class="btn btn-danger" onclick="self.close()">닫기</button>
+                            <td colspan=3 style="text-align:center"><button type="button" class="btn btn-primary" onclick="geocode_submit()">등록</button> <button type="button" class="btn btn-danger" onclick="self.close()">닫기</button>
                             </td>
                         </tr>
                     </tbody>

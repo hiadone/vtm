@@ -1,4 +1,4 @@
-<?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&sensor=true&language=ko'); 
+<?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&language=ko'); 
 
 $menuName="";
 
@@ -107,18 +107,18 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
         <tr>
           <td class="active">
             <figure>
-              <img src="<?php echo base_url('assets/images/temp/traffic01.png')?>" alt="traffic01">
+              <img src="<?php echo base_url('assets/images/temp/traffic02.png')?>" alt="traffic02">
               <figcaption>
-                자동차
+                대중교통
               </figcaption>
             </figure>
           </td>
 
           <td>
             <figure>
-              <img src="<?php echo base_url('assets/images/temp/traffic02.png')?>" alt="traffic02">
+              <img src="<?php echo base_url('assets/images/temp/traffic01.png')?>" alt="traffic01">
               <figcaption>
-                대중교통
+                자동차
               </figcaption>
             </figure>
           </td>
@@ -136,7 +136,7 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
 
         
         <div id="map-canvas" style="width: 100%; height: 300px;margin-bottom:10px"></div>
-        <div id="directionsPanel" style="width: 100%; height: 400px;margin-bottom:10px"></div>
+        <div id="directionsPanel" style="width: 100%; height: 100%;margin-bottom:10px"></div>
 </div>
  <!-- 광고 배너 영역 -->
   <section class="ad">
@@ -161,7 +161,8 @@ var lng= '<?php echo $lng ?>';
 var size_x = 50; // 마커로 사용할 이미지의 가로 크기
 var size_y = 50; // 마커로 사용할 이미지의 세로 크기  
 var geolocation_flag=false;
-
+var travelMode=google.maps.TravelMode.TRANSIT;
+var destination_;
  
       function navilocation()
       {
@@ -210,7 +211,7 @@ var geolocation_flag=false;
             var image = new google.maps.MarkerImage( 'https://d30y9cdsu7xlg0.cloudfront.net/png/462-200.png',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
 
             if(compa[0]=='내 위치'){
-              var image = new google.maps.MarkerImage( 'http://www.clker.com/cliparts/B/B/1/E/y/r/marker-pin-google.svg',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
+              var image = new google.maps.MarkerImage( 'https://www.clker.com/cliparts/B/B/1/E/y/r/marker-pin-google.svg',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
             }
             
             var bounds = new google.maps.LatLngBounds();
@@ -303,11 +304,11 @@ var geolocation_flag=false;
       }
 
       function onClickDistance(destination) {
-        
+        destination_=destination;
         var request = {
           origin:mapstart,
-          destination:destination,
-          travelMode: google.maps.TravelMode.DRIVING
+          destination:destination_,
+          travelMode: travelMode
         };
         directionsService.route(request, function(response, status) {
           if (status == google.maps.DirectionsStatus.OK) {
@@ -339,8 +340,8 @@ var geolocation_flag=false;
       text="An unknown error occurred." //알 수 없는 에러
       break;
     }
-    //alert(text);
-    geolocation_flag=true;
+    console.log(text);
+    geolocation_flag=false;
     vtn_marker.push(['내 위치',lat,lng]);
     initialize(lat,lng);
   }
@@ -350,57 +351,29 @@ var geolocation_flag=false;
     lat=position.coords.latitude
     lng=position.coords.longitude; //좌표를 "위도,경도" 형태로 만들어
 
+
     geolocation_flag=true;
     vtn_marker.push(['내 위치',lat,lng]);
     initialize(lat,lng);
   }
 
-      var neighborhoods = [
-  {lat: 52.511, lng: 13.447},
-  {lat: 52.549, lng: 13.422},
-  {lat: 52.497, lng: 13.396},
-  {lat: 52.517, lng: 13.394}
-];
+  
 
-var markers = [];
-var map;
+$('.method table tr td:nth-child(1)').click(function(){
 
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: {lat: 52.520, lng: 13.410}
-  });
-}
-
-function drop() {
-  clearMarkers();
-  for (var i = 0; i < neighborhoods.length; i++) {
-    addMarkerWithTimeout(neighborhoods[i], i * 200);
-  }
-}
-
-function addMarkerWithTimeout(position, timeout) {
-  window.setTimeout(function() {
-    markers.push(new google.maps.Marker({
-      position: position,
-      map: map,
-      animation: google.maps.Animation.DROP
-    }));
-  }, timeout);
-}
-
-function clearMarkers() {
-  for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null);
-  }
-  markers = [];
-}
+  travelMode=google.maps.TravelMode.TRANSIT;
+  if(destination_)  onClickDistance(destination_);
+  $('.method table tr td').removeClass('active');
+  $(this).addClass('active');
+});
 
 $('.method table tr td:nth-child(2)').click(function(){
-    alert('준비중입니다.');
-      //$('.method table tr td').removeClass('active');
-      //$(this).addClass('active');
-    });
+
+  travelMode=google.maps.TravelMode.DRIVING;
+  if(destination_)  onClickDistance(destination_);
+      $('.method table tr td').removeClass('active');
+      $(this).addClass('active');
+});
 
   // X 클릭시 돋보기 이미지로 변경
     $('.store table tr td img').click(function(){

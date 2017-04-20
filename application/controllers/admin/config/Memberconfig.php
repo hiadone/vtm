@@ -161,6 +161,11 @@ class Memberconfig extends CB_Controller
                 'rules' => 'trim',
             ),
             array(
+                'field' => 'member_register_policy3',
+                'label' => '위치정보약관',
+                'rules' => 'trim',
+            ),
+            array(
                 'field' => 'register_level',
                 'label' => '회원가입시레벨',
                 'rules' => 'trim|required|is_natural_no_zero|less_than_equal_to[1000]',
@@ -191,7 +196,7 @@ class Memberconfig extends CB_Controller
                 'password_specialchars_length', 'use_member_photo', 'member_photo_width',
                 'member_photo_height', 'use_member_icon', 'member_icon_width', 'member_icon_height',
                 'denied_nickname_list', 'denied_userid_list', 'denied_email_list', 'member_register_policy1',
-                'member_register_policy2', 'register_level');
+                'member_register_policy2','member_register_policy3', 'register_level');
             foreach ($array as $value) {
                 $savedata[$value] = $this->input->post($value, null, '');
             }
