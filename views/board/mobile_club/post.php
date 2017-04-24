@@ -202,7 +202,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
             <?php    if (element('delete_url', $view)) { ?>
                 <button type="button" class="btn btn-default btn-sm btn-one-delete" data-one-delete-url="<?php echo element('delete_url', $view); ?>">삭제</button>
             <?php } ?>
-                <a href="<?php echo site_url('main').'?curentContents='.$curentContents ?>" class="btn btn-default btn-sm">목록</a>
+                <a href="<?php echo site_url('main').'?curentContents='.$curentContents ?>" class="btn btn-default btn-sm">목 록</a>
             <?php if (element('search_list_url', $view)) { ?>
                     <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
             <?php } ?>
@@ -210,10 +210,10 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
                 <a href="<?php echo element('reply_url', $view); ?>" class="btn btn-default btn-sm">답변</a>
             <?php } ?>
             <?php if (element('prev_post', $view)) { ?>
-                <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">이전글</a>
+                <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">이전 글</a>
             <?php } ?>
             <?php if (element('next_post', $view)) { ?>
-                <a href="<?php echo element('url', element('next_post', $view)); ?>" class="btn btn-default btn-sm">다음글</a>
+                <a href="<?php echo element('url', element('next_post', $view)); ?>" class="btn btn-default btn-sm">다음 글</a>
             <?php } ?>
         </div>
         <?php if (element('write_url', $view)) { ?>
