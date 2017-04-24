@@ -52,8 +52,8 @@ if (element('menu', $layout)) {
     <section class="list">
         <p>총 <span><?php echo count(element('list', element('data', element('list', $view)))) ?>개</span>의 업소후기가 있습니다.</p>
     <?php if (element('write_url', element('list', $view))) { ?>
-        <div class="pull-right">
-            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+        <div style="text-align:right;">
+            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">후기쓰기</a>
         </div>
     <?php } ?>
     <div class="table-top">
@@ -218,7 +218,7 @@ if (element('menu', $layout)) {
     }
     ?>
 
-    <div class="table-image">
+    <div class=" mt10">
     <?php
     $i = 0;
     $open = false;
@@ -227,7 +227,7 @@ if (element('menu', $layout)) {
         foreach (element('list', element('data', element('list', $view))) as $result) {
 
             if ($cols && $i % $cols === 0) {
-                echo '<ul class="list02 mt10">';
+                echo '<ul class="list02 ">';
                 $open = true;
             }
             $marginright = (($i+1)% $cols === 0) ? 0 : 2;
@@ -240,7 +240,7 @@ if (element('menu', $layout)) {
            
                 <!-- <?php if (element('category', $result)) { ?><span class="label label-default">[<?php echo html_escape(element('bca_value', element('category', $result))); ?>]</span><?php } ?> -->
                 <h2 class="info_subject"> <?php echo html_escape(element('title', $result)); ?></h2>
-                <?php echo element('post_content', $result); ?>
+                <p><?php echo element('post_content', $result); ?></p>
                 <span>
                     작성일 : <?php echo element('display_datetime', $result); ?>
                 </span>
@@ -304,8 +304,8 @@ if (element('menu', $layout)) {
             </div>
         <?php } ?>
          <?php if (element('write_url', element('list', $view))) { ?>
-        <div class="pull-right">
-            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">글쓰기</a>
+        <div style="text-align:right;">
+            <a href="<?php echo element('write_url', element('list', $view)); ?>" class="btn btn-success btn-sm">후기쓰기</a>
         </div>
     <?php } ?>
     </div>

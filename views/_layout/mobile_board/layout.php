@@ -90,8 +90,8 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
             <select id="region">
         <?php
         
-        if (element('region_category', $view)) {
-            foreach (element('region_category', $view) as $key => $value) {
+        if (config_item('region_category')) {
+            foreach (config_item('region_category') as $key => $value) {
 
                 if($key == element('region', $view)) echo '<option value='.site_url().' selected>'.$value.'</option>';
                 else echo '<option value='.site_url().'>'.$value.'</option>';
@@ -207,7 +207,7 @@ $(document).ready(function(){
 
     if($("#region option:selected").text()){
         $("#region").siblings("label").text($("#region option:selected").text());
-        $("label").css("color" , "#231b26");
+        $("#region").siblings("label").css("color" , "#231b26");
     }
     
 

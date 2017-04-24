@@ -733,6 +733,16 @@ if (typeof(COMMON_JS) === 'undefined') {
         });
     }
 
+    function reload_rg(val){
+
+      //if(!val2) return;
+      console.log('val'+$('#'+val).height());
+      $('#jssor_1').height($('#'+val).height());
+      $('#jssor_1>div>div').height($('#'+val).height());
+
+
+    }
+
     $(document).on('click', '.notifications', function() {
         var display = $('.notifications-menu').css('display');
         if (display === 'none') {
@@ -946,6 +956,7 @@ if (typeof(COMMON_JS) === 'undefined') {
                 $("#"+id).html(data).promise().done(function(){
                   $("#div_ajax_load_image").fadeOut();
                   $('html , body').scrollTop('top' , '0');
+                  setTimeout( "reload_rg('"+js_swipe_contents[curnetIndex]+"')", 500);
                 });
             },
             error: function(xhr, status, error) { ; } 

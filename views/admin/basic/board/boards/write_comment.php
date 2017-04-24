@@ -38,6 +38,22 @@
             <input type="hidden" name="<?php echo element('primary_key', $view); ?>"    value="<?php echo element(element('primary_key', $view), element('data', $view)); ?>" />
             <div class="form-horizontal">
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">댓글 기능</label>
+                    <div class="col-sm-8">
+                        <label for="use_comment" class="checkbox-inline">
+                            <input type="checkbox" name="use_comment" id="use_comment" value="1" <?php echo set_checkbox('use_comment', '1', (element('use_comment', element('data', $view)) ? true : false)); ?> /> 사용합니다
+                        </label>
+                    </div>
+                    <div class="col-sm-2">
+                        <label for="grp_use_comment" class="checkbox-inline">
+                            <input type="checkbox" name="grp[use_comment]" id="grp_use_comment" value="1" /> 그룹적용
+                        </label>
+                        <label for="all_use_comment" class="checkbox-inline">
+                            <input type="checkbox" name="all[use_comment]" id="all_use_comment" value="1" /> 전체적용
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">댓글 목록수</label>
                     <div class="col-sm-8">
                         <input type="number" class="form-control" name="comment_count" value="<?php echo set_value('comment_count', element('comment_count', element('data', $view)) + 0); ?>" />개 댓글마다 페이지 넘김, 0이면 페이징 기능 사용하지 않음

@@ -33,7 +33,9 @@
         <?php } ?>
         <li>
             <span>제목</span>
-            <input type="text" class="input per95" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
+            <div class="input-div">
+            <input type="text" class="input per100" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
+            </div>
             
         </li>
         <?php if (element('can_post_notice', element('post', $view)) OR element('can_post_secret', element('post', $view)) OR element('can_post_receive_email', element('post', $view))) { ?>
@@ -96,10 +98,11 @@
         <?php } ?>
         <li>
             <span>지역</span>
+            <div class="input-div">
             <select name="region_category" class="input">
         <?php 
         $return = '';
-        foreach(element('region_category', $view) as $key => $value){
+        foreach(config_item('region_category') as $key => $value){
             if($key ===0) continue;
             $return .= '<option value="' . $key. '"';
             if ($key == element('region_category', element('post', $view))) {
@@ -114,6 +117,7 @@
         echo $return;
         ?>
             </select>
+            </div>
         </li>
         <?php
         if (element('extra_content', $view)) {
@@ -122,10 +126,12 @@
         ?>
             <li>
                 <span><?php echo element('display_name', $value); ?></span>
-                <?php echo element('input', $value); ?>
+                <div class="input-div">
                 <?php if(element('field_name', $value)=="google_map") {?>
-                    <button type="button" class="btn btn-sm btn-default" id="btn_google_map" onClick="open_google_map();" >지도검색</button>
+                    <button type="button" class="btn btn-sm btn-default pull-right" id="btn_google_map" onClick="open_google_map();" >지도검색</button>
                 <?php } ?>
+                <?php echo element('input', $value); ?>
+                </div>
             </li>
         <?php
             }

@@ -4,16 +4,16 @@
 if (element('list', element('data', $view))) {
     foreach (element('list', element('data', $view)) as $result) {
 ?>
-    <div class="media" id="comment_<?php echo element('cmt_id', $result); ?>" style="padding-left:<?php echo element('cmt_depth', $result); ?>px;">
+    <div class="media" id="comment_<?php echo element('cmt_id', $result); ?>" >
         <?php if (element('use_comment_profile', element('board', $view))) { ?>
             <div class="media-left">
                 <img class="media-object member-photo" src="<?php echo element('member_photo_url', $result); ?>" width="64" height="64" alt="<?php echo html_escape(element('cmt_nickname', $result)); ?>" title="<?php echo html_escape(element('cmt_nickname', $result)); ?>" />
             </div>
         <?php } ?>
-        <div class="media-body">
+        <div class="media-body" style="padding-left:<?php echo element('cmt_depth', $result); ?>px;">
             <div>
                 <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_comment_id[]" value="<?php echo element('cmt_id', $result); ?>" /><?php } ?>
-                <?php echo element('content', $result); ?>
+                └ <?php echo element('content', $result); ?>
             </div>
             <h4 class="media-heading">
                 <?php echo element('display_name', $result); ?> | 

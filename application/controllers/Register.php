@@ -112,6 +112,11 @@ class Register extends CB_Controller
                 'label' => '개인정보취급방침',
                 'rules' => 'trim|required',
             ),
+            array(
+                'field' => 'agree3',
+                'label' => '위치정보취급방침',
+                'rules' => 'trim|required',
+            ),
         );
         $this->form_validation->set_rules($config);
 

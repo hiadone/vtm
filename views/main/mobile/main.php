@@ -111,15 +111,7 @@ $(document).ready(function() {
 
 });
 
-function reload_rg(val){
 
-  //if(!val2) return;
-  console.log('val'+$('#'+val).height());
-  $('#jssor_1').height($('#'+val).height());
-  $('#jssor_1>div>div').height($('#'+val).height());
-
-
-}
 
 function swipedisable_rg(){
     //swipedisable(document.getElementById('bxslider'));
@@ -235,7 +227,7 @@ function swipedisable(el, callback){
 }
 </script>
 
-
+<div  id="div_ajax_load_image" style="position:fixed;display:block;top:0px;left:0px;width:100%;height:100%;z-index:9999;text-align:center;line-height:500px;"><img src="<?php echo base_url('assets/images/ajax-loader.gif') ?>" style="vertical-align:cmiddle;">  </div>
 <div id="jssor_1" style="height:2000px;">
 
   <div data-u="slides">

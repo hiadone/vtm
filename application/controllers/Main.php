@@ -70,7 +70,7 @@ class Main extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
 
-        $view['view']['region_category'] = config_item('region_category');
+        
         /**
          * 레이아웃을 정의합니다
          */

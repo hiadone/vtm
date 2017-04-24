@@ -87,8 +87,8 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
             <select id="region">
         <?php
         
-        if (element('region_category', $view)) {
-            foreach (element('region_category', $view) as $key => $value) {
+        if (config_item('region_category')) {
+            foreach (config_item('region_category') as $key => $value) {
 
                 if($key == element('region', $view)) echo '<option value='.site_url().' selected>'.$value.'</option>';
                 else echo '<option value='.site_url().'>'.$value.'</option>';

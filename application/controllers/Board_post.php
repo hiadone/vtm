@@ -118,7 +118,7 @@ class Board_post extends CB_Controller
         else $view['view']['region'] = get_cookie('region');
 
         
-        $view['view']['region_category'] = config_item('region_category');
+        
         
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
@@ -300,7 +300,7 @@ class Board_post extends CB_Controller
         else $view['view']['region'] = get_cookie('region');
 
 
-        $view['view']['region_category'] = config_item('region_category');
+        
 
         if ($print && ! element('use_print', $board)) {
             alert('이 게시판은 프린트 기능을 지원하지 않습니다');

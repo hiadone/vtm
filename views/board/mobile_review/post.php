@@ -95,14 +95,11 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
 
         <!-- 본문 내용 시작 -->
-        <div><?php echo element('content', element('post', $view)); ?></div>
+        <div class="document"><?php echo element('content', element('post', $view)); ?></div>
         <!-- 본문 내용 끝 -->
     </div>
     </section>
-    <section class="ad">
-        <h4>ad</h4>
-        <?php echo banner("review_post_banner_1") ?>
-    </section>
+    
     <?php if ( ! element('post_del', element('post', $view)) && (element('use_post_like', element('board', $view)) OR element('use_post_dislike', element('board', $view)))) { ?>
         <div class="recommand">
             <?php if (element('use_post_like', element('board', $view))) { ?>
@@ -142,12 +139,16 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
                 <?php
                     }
                 }
-                if (element('post_hide_comment', element('post', $view))) {
+                if (element('use_comment', element('board', $view))) {
+                    if (element('post_hide_comment', element('post', $view))) {
+                    ?>
+                        <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-comments"></i> 댓글감춤해제</div>
+                    <?php } else { ?>
+                        <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-comments"></i> 댓글감춤</div>
+                    <?php } 
+                }
                 ?>
-                    <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-comments"></i> 댓글감춤해제</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-comments"></i> 댓글감춤</div>
-                <?php } ?>
+
                 <?php if (element('post_notice', element('post', $view))) { ?>
                     <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-bullhorn"></i> 공지내림</div>
                 <?php } else { ?>
@@ -184,14 +185,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
 
     <div class="clearfix"></div>
 
-    <?php
-    if ( ! element('post_hide_comment', element('post', $view))) {
-    ?>
-        <div id="viewcomment"></div>
-    <?php
-        $this->load->view(element('view_skin_path', $layout) . '/comment_write');
-    }
-    ?>
+    
     <div class="border_button mt20 mb20">
         <div class="btn-group pull-left" role="group" aria-label="...">
             <?php if (element('modify_url', $view)) { ?>
@@ -216,10 +210,27 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
         <?php if (element('write_url', $view)) { ?>
             <div class="pull-right">
-                <a href="<?php echo element('write_url', $view); ?>" class="btn btn-success btn-sm">글쓰기</a>
+                <a href="<?php echo element('write_url', $view); ?>" class="btn btn-success btn-sm">후기쓰기</a>
             </div>
         <?php } ?>
     </div>
+
+    <?php
+    if (element('use_comment', element('board', $view))) {
+        if ( ! element('post_hide_comment', element('post', $view))) {
+        ?>
+        <section>
+            <div id="viewcomment"></div>
+        </section>
+        <?php
+            $this->load->view(element('view_skin_path', $layout) . '/comment_write');
+        }
+    }
+    ?>
+    <section class="ad">
+        <h4>ad</h4>
+        <?php echo banner("review_post_banner_1") ?>
+    </section>
 </div>
 
 <?php echo element('footercontent', element('board', $view)); ?>

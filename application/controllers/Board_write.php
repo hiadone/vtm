@@ -237,7 +237,7 @@ class Board_write extends CB_Controller
         else $view['view']['region'] = get_cookie('region');
 
         
-        $view['view']['region_category'] = config_item('region_category');
+        
 
         // 글 한개만 작성 가능
         if (element('use_only_one_post', $board) && $is_admin === false) {
@@ -1359,7 +1359,7 @@ class Board_write extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['step1'] = Events::trigger('step1', $eventname);
 
-        $view['view']['region_category'] = config_item('region_category');
+        
         /**
          * Validation 라이브러리를 가져옵니다
          */

@@ -441,6 +441,7 @@ class Boards extends CB_Controller
                 $metadata['upload_file_num'] = 2;
                 $metadata['mobile_upload_file_num'] = 2;
                 $metadata['upload_file_max_size'] = $upload_max_filesize;
+                $metadata['use_comment'] = 1;
                 $metadata['comment_count'] = 20;
                 $metadata['mobile_comment_count'] = 20;
                 $metadata['comment_page_count'] = 5;
@@ -1763,6 +1764,11 @@ class Boards extends CB_Controller
                 'rules' => 'trim|numeric',
             ),
             array(
+                'field' => 'use_comment',
+                'label' => '댓글 기능',
+                'rules' => 'trim|numeric',
+            ),
+            array(
                 'field' => 'comment_count',
                 'label' => '댓글 목록수',
                 'rules' => 'trim|required|numeric',
@@ -1894,7 +1900,7 @@ class Boards extends CB_Controller
             // 이벤트가 존재하면 실행합니다
             $view['view']['event']['formruntrue'] = Events::trigger('formruntrue', $eventname);
 
-            $array = array('comment_count', 'mobile_comment_count', 'comment_page_count',
+            $array = array('use_comment','comment_count', 'mobile_comment_count', 'comment_page_count',
                 'mobile_comment_page_count', 'use_comment_like', 'use_comment_dislike',
                 'use_comment_profile', 'use_mobile_comment_profile',
                 'always_show_comment_textarea', 'mobile_always_show_comment_textarea', 'comment_default_content',
