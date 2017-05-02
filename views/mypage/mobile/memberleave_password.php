@@ -1,28 +1,32 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
 <div class="wrap mypage">
+
+    <section class="title02">
+        <h2>회원탈퇴 하기</h2>
+        <p><span>회원탈퇴</span>를 하실 수 있습니다.</p>
+    </section>
+
     <section class="title">
-        <table>
+        <table style="width:90%;">
             <tr>
-                <td style="width:25%;" >
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
                     <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
                 </td>
-                <td style="width:25%;">
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
                     <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
                 </td>
-                <td style="width:25%;" >
-                    <a href="<?php echo site_url('membermodify'); ?>" >정보수정</a>
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
+                    <a href="<?php echo site_url('membermodify'); ?>">정보수정</a>
                 </td>
-                <td style="width:25%;" class="active">
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " class="active">
                    <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
                 </td>
             </tr>
         </table>
     </section>
 
-    <section class="title02">
-        <h2>회원 비민번호 확인</h2>
-    </section>
+
 
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
@@ -34,13 +38,12 @@
         $attributes = array('class' => 'form-horizontal', 'name' => 'fconfirmpassword', 'id' => 'fconfirmpassword', 'onsubmit' => 'return confirmleave()');
         echo form_open(current_url(), $attributes);
         ?>  
-            <section class="logout">
-            <h2>
+    <section class="logout">
+        <h2>
             <img src="<?php echo base_url('/assets/images/temp/stop.png') ?>" alt="stop">
-            
                 정말 탈퇴 하시겠습니까?
                 <br/>
-                <span>
+            <span>
                 회원 탈퇴 시 모든 정보가 삭제되며,<br/>
                 어떠한 경우에도 복구되지 않습니다.<br/>
                 <br/>
@@ -50,31 +53,26 @@
                 <br/>
                 <br/>
                 그래도 탈퇴 하시겠습니까?
-
-                </span>
-
-            
-             </h2>
-            </section>
+            </span>
+        </h2>
+    
             <ol class="askpassword">
                 <li>
-                    <span>아이디</span>
-                    <div class="form-text"><strong><?php echo $this->member->item('mem_userid'); ?></strong></div>
-                </li>
-                <li>
+                <div class="group">
                     <span>비밀번호</span>
-                    <input type="password" class="input px100" id="mem_password" name="mem_password" />
+                    <input type="password" class="input px100" id="mem_password" name="mem_password" style="position: absolute; top: 0; width:67%;" />
                     <button class="btn btn-primary" type="submit">확인</button>
-                </li>
-                <li>
-                    <div>
-                        <span class="fa fa-exclamation-circle"></span>
-                        외부로부터 회원님의 정보를 안전하게 보호하기 위해 비밀번호를 확인하셔야 합니다.
-                    </div>
+                </div>
                 </li>
             </ol>
         <?php echo form_close(); ?>
-       
+  </section>  
+  <section class="ad">
+        <h4>ad</h4>
+        <a href="http://cmy.secretvt.com/gotourl/banner/12" title="후기 배너 1">
+            <img src="http://cmy.secretvt.com/uploads/banner/2017/04/7c37264e5f4bd915c7ebdb7e6a8b89c4.png" class="cb_banner" id="cb_banner_12" alt="후기 배너 1" title="후기 배너 1">
+            </a>    
+    </section>   
     </div>
 
 </div>

@@ -3,55 +3,58 @@
 
 /*wrap */
 	.wrap{
-		padding-top:33%;
+		padding-top:30%;
 		}
 
 	.wrap02{
-		padding-top:18%;
+		padding-top:20%;
+		}
+
+	.wrap03{
+		padding-top:25%;
 		}
 /* ===== */
 
 /*header 의 지역선택하기 영역*/
-header span{
-		display: inline-block;
-		width:30%;
-		float:right;
-		position: relative;
-		text-align:left;
-		margin-top:3%;
-		border:1px solid #c20e58;
-		box-sizing: border-box;
-		font-weight: bold;
-		background:url('/assets/images/temp/search.png') no-repeat  92% center;
-		background-size:10%;
-		padding: 1%;
-		background-color: #fff;
-		margin-right: 3%;
-	}
+	header span{
+			display: inline-block;
+			width:30%;
+			float:right;
+			position: relative;
+			text-align:left;
+			margin-top:3%;
+			border:1px solid #c20e58;
+			box-sizing: border-box;
+			font-weight: bold;
+			background:url('/assets/images/temp/search.png') no-repeat  92% center;
+			background-size:10%;
+			padding: 1%;
+			background-color: #fff;
+			margin-right: 3%;
+		}
 
-header span label{
-		font-size:10px;
-		color:#231b26;
-	}
+	header span label{
+			font-size:10px;
+			color:#231b26;
+		}
 
-header span select{
-	width:100%;
-	position: absolute;
-	top:0;
-	left: 0;
-	background-color: transparent;
-	color: transparent;
-	border:0;
-	border-radius: 0;
-	outline: none
-	}
+	header span select{
+		width:100%;
+		position: absolute;
+		top:0;
+		left: 0;
+		background-color: transparent;
+		color: transparent;
+		border:0;
+		border-radius: 0;
+		outline: none
+		}
 
-header span select option{
-	color:#000;
-	outline: none;
-	}
-
-
+	header span select option{
+		color:#000;
+		outline: none;
+		}
+/* ===== */
 
 /*이미지 슬라이드 css*/
 		.slide{
@@ -281,7 +284,7 @@ header span select option{
 		width:100%;
 		}
 
-	.wrap section.ad:last-child{
+	section.ad:last-child{
 		margin-bottom:3%;
 		}
 /* ===== */	
@@ -329,12 +332,16 @@ header span select option{
 		}
 
 	.store_list ul li a figure figcaption p{
-		font-size: 13px;
-		padding-top: 1%;
-		line-height: 14px;
-		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-		white-space: normal; height: 2.1em; text-align: left; word-wrap: break-word; 
-		display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: normal;
+		height: 28px;
+		text-align: left;
+		word-wrap: break-word; 
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
 		}
 
 	.store_list ul li a figure figcaption span{
@@ -372,9 +379,15 @@ header span select option{
 		}
 
 	.store_list02 ul li a p{
-		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-		white-space: normal; height: 2.1em; text-align: left; word-wrap: break-word; 
-		display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: normal;
+		height: 28px;
+		text-align: left;
+		word-wrap: break-word; 
+		display: -webkit-box;
+		-webkit-line-clamp: 2; -webkit-box-orient: vertical;
 		}
 
 
@@ -418,7 +431,7 @@ header span select option{
 	#popup_layer > h2 , .enter > h2{
 		text-align:center;
 		line-height: 18px;
-		margin-bottom:5%
+		margin-bottom:3%
 		}
 
 	#popup_layer > h2 > span , .enter > h2 > span {
@@ -460,32 +473,13 @@ header span select option{
 
 	#popup_layer > .login > h3 , .enter > .id > h3{
 		display: inline-block;
-		font-size: 13px;
+		font-size: 12px;
 		position: absolute;
 		width: 25%;
 		height: 21px;
 		line-height:20px;
 		font-weight: bold;
-		}
-
-	#popup_layer > .login > div , .enter > .id > div {
-		width:70%;
-		height:22px;
-		float: right;
-		position: relative;
-		border:1px solid #838383;
-		box-sizing: border-box;
-		}
-
-	#popup_layer >.login > div > input , .enter > .id > div > input{
-		height:15px;
-		top:2px;
-		left:2px;
-		background-color: transparent;
-		border-radius: 0;
-		border:0;
-		outline: none;
-		width:95%;
+		top: 4px;
 		}
 
 	#popup_layer >.login > .submit_btn , .enter > .id > .submit_btn{
@@ -523,9 +517,6 @@ header span select option{
 		top: 2px;
 		}
 
-	#popup_layer > div:nth-child(4) , .enter > div:nth-child(4) {
-		text-align: center;
-		}
 
 	#popup_layer > div:nth-child(5){
 		height:25px;
@@ -567,13 +558,13 @@ header span select option{
 
 /*my_info01 영역*/
 	.my_info01{
-		margin-bottom:5%;
+		margin-bottom:3%;
 		}
 
 	.my_info01 table{
 		width:100%;
 		border:1px solid #ededed;
-		margin-bottom:3%;
+		margin-bottom: 3%;
 		}
 
 	.my_info01 table tr{
@@ -624,7 +615,7 @@ header span select option{
 		border:0;
 		font-weight: bold;
 		font-size:12px;
-		border-radius: 10px;
+		border-radius: 5px;
 		float: right;
 		outline: none;
 		}
@@ -677,12 +668,12 @@ header span select option{
 /*탈퇴하기 경고메시지 영역*/
 	.logout h2{
 		width:100%;
-		padding:3%;
-		border:1px solid #ededed;
 		box-sizing: border-box;
 		text-align:center;
 		font-size:18px;
 		color:rgb(194, 14, 88);
+		font-weight: bold;
+		margin-bottom: 3%;
 		}
 
 	.logout h2 img{
@@ -720,23 +711,22 @@ header span select option{
 		vertical-align: middle;
 		}
 
-	.agree div.document {
+	.content div.document {
 		width:100%;
-		min-height: 100px;
-		max-height: 300px;
 		border:1px solid #ededed;
 		padding:3%;
 		box-sizing: border-box;
 		overflow-y: scroll;
-		margin-bottom:3%;
-		font-size:11px;
-		padding-top: 1px;
+		font-size:13px;
 		line-height: 13px
 		}
 
 /* ===== */
 
 /*업소 정보의 이미지& 문구 */
+	.store{
+		margin-bottom: 0;
+	}
 	.store img{
 		
 		margin-bottom:0.5%;
@@ -781,9 +771,14 @@ header span select option{
 
 	.list ul li a p{
 		padding-left:2%;
-		overflow: hidden; text-overflow: ellipsis;
-		white-space: normal; height: 2.6em; text-align: left; word-wrap: break-word; 
-		display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: normal;
+		text-align: left;
+		word-wrap: break-word; 
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
 		}
 
 	.list ul li a span{
@@ -805,17 +800,18 @@ header span select option{
 		box-sizing: border-box;
 		display: inline-block;
 		background-color: #231b26;
-		border-radius: 15px;
+		border-radius: 10px;
 		}
 
 	.write figure img{
 		width: 10%;
 		float: left;
+		margin-left: 2.5%;
 		}
 
 	.write figure figcaption{
 		color:#fff;
-		width: 90%;
+		width: 87%;
 		font-size:14px;
 		padding-top: 3%;
 		display:inline-block; 
@@ -824,33 +820,37 @@ header span select option{
 	.write figure figcaption span{
 		float:right;
 		padding-top: 2%;
+		padding-right: 5%;
 		font-weight: normal;
+		font-size: 11px;
 		}
 
 	label.text_title {
 		float:left;
-		margin-right:3%;
+		margin-right:1%;
 		width:18%;
-		font-size:14px;
-		padding:1%;
-		padding-top:1.8%;
+		font-size:13px;
+		padding:7px 0 1%;
 		text-align: center;
 		background-color:#231b26;
 		box-sizing: border-box;
-		border-radius: 15px;
-		color:#fff; 
+		border-radius: 6px;
+		color:#fff;
+		height: 24px;
 		}
 
 	input.text_title{
-		width:77%;
-		margin-top: 1%;
-		padding:0.3% 0;
+		width:79%;
+		margin-top: 0.5%;
+		padding:0.5% 0;
 		border:1px solid #231b26;
 		outline: none;
 		background-color: #fff;
 		font-size: 12px;
 		box-sizing: border-box;
 		padding-left: 1%;
+		height: 22px;
+		float: right;
 		}
 
 	.textarea textarea{
@@ -980,53 +980,7 @@ header span select option{
 	}
 /* ===== */
 
-/*댓글작성하기 영역*/
-	section.reply{
-		margin-bottom:5%;
-		}
 
-	section.reply button{
-		width:25%;
-		margin-top:3.5%;
-		padding:0.5%;
-		text-align: center;
-		background-color: #231b26;
-		color:#fff;
-		border:0;
-		font-weight: bold;
-		font-size:12px;
-		border-radius: 10px;
-		float: right;
-		outline: none;
-		}
-	section.reply input{
-		width:74%;
-		margin-top:3%;
-		box-shadow: none;
-		box-sizing: border-box;
-		border-radius: 0;
-		padding:0.8% 0 0.8% 1%;
-		font-size:10px;
-		outline:none;
-		}
-	section.reply ul{
-		margin-top: 5%;
-		padding:0;
-	}
-
-	section.reply ul li{
-		padding:1.5% 0;
-		font-size:12px;
-		display: inline-block;
-		margin-bottom:3%;
-		border-bottom:1px solid #ededed;
-	}
-
-	section.reply ul span{
-		float:right;
-		margin-top:2%;
-	}
-/* ===== */
 
 
 /* boyoon 추가 css */
@@ -1044,5 +998,344 @@ header span select option{
 		float:right;
 	}
 
+/*css 추가*/
+
+	.agree{
+		margin-bottom: 8%;
+	}
+
+	.registerform{
+	width: 100%;
+	}
+	.registerform tr{
+		border-bottom:1px solid #ededed;
+	}
+	.registerform tr:last-child{
+		border-bottom: 0;
+	}
+
+	.registerform tr td:first-child{
+		border-right: 1px solid #ededed;
+		padding: 3.5% 0 2%;
+		box-sizing: border-box;
+		text-align: center;
+		font-size: 12px;
+		font-weight: bold;
+		width: 30%;
+		background-color: rgb(239, 208, 222);
+	}
+
+
+	.contents-view{
+		margin-bottom: 3%;
+	}
+
+	.btn-group{
+		float: right;
+	}
+	
+	.title03 {
+		margin-bottom: 0;
+	}
+
+	.title03 p{
+		font-size: 11px;
+		font-weight: bold;
+		display: inline-block;
+		float: right;
+		padding: 0;
+		line-height: 14px;
+	}
+
+	.title03 p span{
+		font-size: 13px;
+		color:#c20e58;
+		font-weight: bold;
+	}
+
+	.title03 h3{
+		font-size: 13px;
+		font-weight: bold;
+		display: inline-block;
+		float: left;
+		text-indent: 2%;
+		margin-top: 1px;
+	}
+	.enter{
+		margin-bottom: 5%;
+	}
+	.enter > .id > div{
+		width: 70%;
+		height: 22px;
+		float: right;
+		position: relative;
+		border:1px solid #838383;
+		box-sizing: border-box;
+	}
+
+	.enter > .id > div > input{
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		background-color: transparent !important;
+		border-radius: 0;
+		border:0;
+		outline: none;
+		width: 95%; 
+		padding: 0
+	}
+
+	.enter figure{
+		text-align: center;
+	}
+
+	.enter figure img{
+		width: 20%;
+	}
+
+	.enter .id input[type="checkbox"]{
+		margin: 0;
+		position: absolute;
+		left: 9%;
+	}
+
+	.enter .id label{
+		margin: 0;
+		position: absolute;
+		left: 21%;
+		top: 3px;
+	}
+
+	.table-bottom > button{
+		border:0;
+		border-radius:6px;
+		background-color: #231b26;
+		padding:1.8% 0 1%;
+		color:#fff;
+		width: 11%;
+		font-size: 13px;
+		font-family: 'Jeju Gothic', sans-serif;
+		margin-right: 1%; 
+	}
+
+	.table-bottom > button:last-child{
+		margin-right: 0;
+		width: 20%;
+	}
+
+	.form-group > label.error{
+		margin-top: 0;
+	}
+
+	.askpassword{
+		width: 70%;
+		margin: 0 auto;
+	}
+
+	.document{
+		width: 100%;
+		height: 200px;
+		border: 1px solid #ededed;
+		padding:3%;
+		box-sizing: border-box;
+		overflow-y: scroll;
+		margin-bottom: 3%; 
+	}
+
+	.document div{
+		font-size: 11px;
+		line-height: 13px;
+	}
+
+/*myinfo 영역 */
+	.myinfo figure{
+		width: 80%;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+
+	.myinfo figure img{
+		float: left;
+		width: 30%;
+		margin-right: 3%;
+	}
+
+	.myinfo figure figcaption{
+		width: 60%;
+		display: inline-block;
+		margin-top: 5.7%;
+	}
+
+	.myinfo figure figcaption h2{
+		font-size: 14px;
+		font-weight: bold;
+		color:#c20e58;
+	}
+
+	.myinfo figure figcaption p{
+		font-size: 11px;
+		padding: 1% 0 3%;
+		line-height: 14px;
+	}
+
+	.myinfo figure figcaption p span{
+		font-size: 11px;
+		font-weight:bold;
+	}
+
+	.myinfo figure figcaption figure{
+		padding: 0;
+	}
+
+	.myinfo figure figcaption figure img{
+		width: 24px;
+		height: 24px;
+		float: left;
+		margin: 0;
+	}
+
+	.myinfo figure figcaption figure figcaption{
+		display: inline-block;
+		width: 70%;
+		font-size: 12px;
+		font-weight: bold;
+		margin-top: 6.5%;
+	}
+
+	.myinfo button{
+		float: right;
+		margin-top: 15.5%;
+		border-radius: 7px;
+		border: 0;
+		outline: none;
+		background-color: #231b26;
+		color: #fff;
+		font-weight: bold;
+		padding: 1.5% 0 1.3%;
+		width: 20%;
+		font-size: 11px;
+	}
+
+	.myinfo button a{
+		font-weight: bold;
+		color:#fff;
+	}
+/* ===== */
+
+/*myinfo_02 영역 */
+	.myinfo_02 ul{
+		width: 98%;
+		margin: 0 auto;
+	}
+
+	.myinfo_02 ul li{
+		padding:1.5% 0;
+		border-bottom: 1px solid #ededed; 
+	}
+
+	.myinfo_02 ul li span{
+		width: 40%;
+		font-size: 12px;
+		font-weight: bold;
+		display: inline-block;
+		text-indent: 1.5%;
+	}
+
+	.myinfo_02 ul li p{
+		font-size: 12px;
+		width: 58%;
+		display: inline-block;
+		text-align:center;
+		padding-top: 1px;
+		line-height: 14px; 
+	}
+/* ===== */
+
+/*reply_02 영역 */
+		.reply_02 textarea{
+			width: 100%;
+			padding:2%;
+			box-sizing: border-box;
+			overflow: scroll;
+			height: 80px;
+			margin-top: 1.5%;
+			outline: none;
+			margin-bottom:2%;
+		}
+
+		.reply_02 button{
+			width: 15%;
+			float: right;
+			border:0;
+			border-radius: 0;
+			color:#fff;
+			background-color: #231b26;
+			font-family: 'Jeju Gothic', sans-serif;
+			border-radius: 5px;
+			padding: 1.5% 0 1%;
+		}
+
+		.reply_02 ul{
+			margin-top: 6%;
+		}
+
+		.reply_02 ul li{
+			display: inline-block;
+			width: 100%;
+			padding:1.5% 0;
+			box-sizing: border-box;
+			border-bottom: 1px solid #ededed;
+		}
+		.reply_02 ul li p{
+			word-break: break-all;
+			padding-left: 3%;
+			background: url(../images/temp/reply_02.png) no-repeat center left;
+			font-size: 12px;
+			background-size: 5%;
+			padding-left:4%;
+			box-sizing:border-box; 
+			margin-bottom:1.5%;
+		}
+		.reply_02 ul li  span{
+			float: right;
+			font-size: 10px;
+		}
+/* ===== */
+
+
+
+
+
+
+
+
+
+@media screen and (max-width:320px){
+
+.enter > .id > h3{
+	font-size: 11px;
+}
+
+.enter > .id{
+	font-size: 11px;
+}
+
+label.text_title{
+	font-size: 12px;
+}
+
+.table-bottom > button{
+	font-size: 12px;
+}
+
+.write figure figcaption{
+	font-size: 13px;
+}
+
+.write figure figcaption span{
+	font-size: 10px;
+}
+
 	
 
+}

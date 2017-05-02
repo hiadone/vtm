@@ -1,13 +1,13 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
 <div class="wrap findarea">
+
     <div class="table-box">
         <section class="title02">
-            <h2>계정 찾기</h2>
+            <h2>이메일 주소로 계정 찾기</h2>
         </section>
 
-        
-        <div class="table-body">
+        <section class="table-body">
             <div class=" ">
                 <?php
                 echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
@@ -16,10 +16,9 @@
                 echo form_open(current_full_url(), $attributes);
                 ?>
                     <input type="hidden" name="findtype" value="findidpw" />
-                    <h3>이메일 주소로 계정 찾기</h3>
-                    <p class="text">아이디/비밀번호는 가입시 등록한 메일 주소로 알려드립니다. 가입할 때 등록한 메일 주소를 입력하고 "ID/PW 찾기" 버튼을 클릭해주세요.</p>
+                    <p class="text">아이디/비밀번호는 가입시 등록한 메일 주소로 알려드립니다.<br/>가입할 때 등록한 메일 주소를 입력하고 "ID/PW 찾기"<br/>버튼을 클릭해주세요.</p>
                     <div class="group">
-                        <input type="email" name="idpw_email" id="idpw_email" class="input" placeholder="Email Address" />
+                        <input type="email" name="idpw_email" id="idpw_email" class="input" placeholder="Email Address" style="width:76%; position: absolute; top: 0; left: 0;" />
                         <button class="btn btn-black btn-sm" type="submit">ID/PW 찾기</button>
                     </div>
                 <?php
@@ -72,7 +71,7 @@
                 }
                 ?>
             </div>
-        </div>
+        </section>
         
     </div>
     <section class="ad">

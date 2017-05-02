@@ -33,7 +33,7 @@
             </li> -->
         <?php } else { ?>
        
-            <section class="write">
+            <section class="write" style="margin-bottom:5%;">
                 <figure>
                     <img src="<?php echo base_url('assets/images/temp/user.png');?>" alt="user">
                     <figcaption>
@@ -49,7 +49,7 @@
          ?>
         <?php } ?>
         
-        <section  style="text-align:center;">
+        <section  style="text-align:center; margin-bottom: 1.5%;">
             <label class="text_title">
                 제 목
             </label>
@@ -140,7 +140,7 @@
                 입력하실 수 있습니다.
             </div>
         <?php } ?>
-        <div class="form-group mb20">
+        <section class="form-group mb20">
             <!-- <?php if ( ! element('use_dhtml', element('board', $view))) { ?>
                 <div class="btn-group pull-right mb10">
                     <button type="button" class="btn btn-default btn-sm" onClick="resize_textarea('post_content', 'down');"><i class="fa fa-plus fa-lg"></i></button>
@@ -149,7 +149,7 @@
             <?php } ?> -->
 
             <?php echo display_dhtml_editor('post_content', set_value('post_content', element('post_content', element('post', $view))), $classname = 'dhtmleditor', $is_dhtml_editor = element('use_dhtml', element('board', $view)), $editor_type = $this->cbconfig->item('post_editor_type')); ?>
-        </div>
+        </section>
         <?php
         if (element('link_count', element('board', $view)) > 0) {
             $link_count = element('link_count', element('board', $view));
@@ -173,12 +173,13 @@
         ?>
 
            
-                <section class="filebox bs3-primary preview-image">                    
-                    <label for="input_file<?php echo $i+1; ?>" class="text_title">
-                        업로드<?php echo $i+1; ?>
-                    </label>
+                <section class="filebox bs3-primary preview-image" style="margin-bottom:1%;">                    
+
                     <input class="upload-name text_title" value="선택된 파일이 없습니다." disabled="disabled" >
                     <input type="file" id="input_file<?php echo $i+1; ?>" class="upload-hidden text_title" name="<?php echo $file_column; ?>">
+                    <label for="input_file<?php echo $i+1; ?>" class="text_title" style="margin-right: 3%;">
+                        업로드<!--<?php echo $i+1; ?>-->
+                    </label>
                     <?php if ($download_link) { ?>
                     <a href="<?php echo $download_link; ?>"><?php echo html_escape(element('pfi_originname', element($i, element('file', $view)))); ?></a>
                     <label for="<?php echo $del_column; ?>">
@@ -206,10 +207,10 @@
                 <?php } ?>
             </div>
         <?php } ?>
-            <div class="table-bottom text-center mb10">
-                <button type="button" class="btn btn-default btn-sm btn-history-back">취소</button>
-                <button type="submit" class="btn btn-success btn-sm">작성완료</button>
-            </div>
+             <section class="table-bottom text-center mb10"> 
+                <button type="button" class="btn btn-default btn-sm btn-history-back">취소</button> 
+                <button type="submit" class="btn btn-success btn-sm">작성완료</button> 
+            </section>
         </div>
     <?php echo form_close(); ?>
 </div>

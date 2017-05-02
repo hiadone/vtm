@@ -1,145 +1,58 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="wrap">
-    <div class="table-box">
+<div class="wrap02">
+
     <section class="title02">
             <h2>회원가입</h2>
             <p><span>*</span>는 필수입력 사항 입니다.</p>
-        </section>
-        <div class="table-body">
-            <?php
-            echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
-            echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
-            $attributes = array('class' => 'form-horizontal', 'name' => 'fregisterform', 'id' => 'fregisterform');
-            echo form_open_multipart(current_full_url(), $attributes);
-            ?>
-            <input type="hidden" name="mem_open_profile" id="mem_open_profile" value="1" >
-            <input type="hidden" name="mem_receive_email" id="mem_receive_email" value="1" >
-            <input type="hidden" name="mem_receive_sms" id="mem_receive_sms" value="1" >
-            <ol class="registerform">
-                <?php
-                foreach (element('html_content', $view) as $key => $value) {
-                ?>
-                    <li>
-                        <span><?php 
-                        if(element('required', $value)) echo '* ';
-                        echo element('display_name', $value); ?></span>
-                        <div class="form-text text-primary group">
-                            <?php echo element('input', $value); ?>
-                            <?php if (element('description', $value)) { ?>
-                                <p class="help-block"><?php echo element('description', $value); ?></p>
-                            <?php } ?>
-                        </div>
-                    </li>
-                <?php
-                }
-                if ($this->cbconfig->item('use_member_photo') && $this->cbconfig->item('member_photo_width') > 0 && $this->cbconfig->item('member_photo_height') > 0) {
-                ?>
-                    <li>
-                        <span>프로필사진</span>
-                        <div class="form-text text-primary group">
-                            <input type="file" name="mem_photo" id="mem_photo" />
-                            <p class="help-block">가로길이 : <?php echo number_format($this->cbconfig->item('member_photo_width')); ?>px, 세로길이 : <?php echo number_format($this->cbconfig->item('member_photo_height')); ?>px 에 최적화되어있습니다, gif, jpg, png 파일 업로드가 가능합니다</p>
-                        </div>
-                    </li>
-                <?php
-                }
-                if ($this->cbconfig->item('use_member_icon') && $this->cbconfig->item('member_icon_width') > 0 && $this->cbconfig->item('member_icon_height') > 0) {
-                ?>
-                    <li>
-                        <span>회원아이콘</span>
-                        <div class="form-text text-primary group">
-                            <input type="file" name="mem_icon" id="mem_icon" />
-                            <p class="help-block">가로길이 : <?php echo number_format($this->cbconfig->item('member_icon_width')); ?>px, 세로길이 : <?php echo number_format($this->cbconfig->item('member_icon_height')); ?>px 에 최적화되어있습니다, gif, jpg, png 파일 업로드가 가능합니다</p>
-                        </div>
-                    </li>
-                <?php
-                }
-                ?>
-                    <!-- <li>
-                        <span>정보공개</span>
-                        <div class="form-text text-primary group">
-                            <label for="mem_open_profile">
-                                <input type="checkbox" name="mem_open_profile" id="mem_open_profile" value="1" <?php echo set_checkbox('mem_open_profile', '1', true); ?> />
-                                다른분들이 나의 정보를 볼 수 있도록 합니다.
-                            </label>
-                            <?php
-                            if (element('open_profile_description', $view)) {
-                            ?>
-                                <p class="help-block"><?php echo element('open_profile_description', $view); ?></p>
-                            <?php
-                            }
-                            ?>
-                        </div>
-                    </li> -->
-                    <?php
-                    if ($this->cbconfig->item('use_note')) {
-                    ?>
-                        <li>
-                            <span>쪽지기능사용</span>
-                            <div class="form-text text-primary group">
-                                <div class="checkbox">
-                                    <label for="mem_use_note">
-                                        <input type="checkbox" name="mem_use_note" id="mem_use_note" value="1" <?php echo set_checkbox('mem_use_note', '1', true); ?> />
-                                        쪽지를 주고 받을 수 있습니다.
-                                    </label>
-                                    <?php
-                                    if (element('use_note_description', $view)) {
-                                    ?>
-                                        <p class="help-block"><?php echo element('use_note_description', $view); ?></p>
-                                    <?php
-                                    }
-                                    ?>
-                                </div>
-                            </div>
-                        </li>
-                    <?php
-                    }
-                    ?>
-                   <!--  <li>
-                        <span>이메일수신여부</span>
-                        <div class="form-text text-primary group">
-                            <div class="checkbox">
-                                <label for="mem_receive_email" >
-                                    <input type="checkbox" name="mem_receive_email" id="mem_receive_email" value="1" <?php echo set_checkbox('mem_receive_email', '1', true); ?> /> 수신
-                                </label>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <span>SMS 문자수신</span>
-                        <div class="form-text text-primary group">
-                            <div class="checkbox">
-                            <label for="mem_receive_sms">
-                                <input type="checkbox" name="mem_receive_sms" id="mem_receive_sms" value="1" <?php echo set_checkbox('mem_receive_sms', '1', true); ?> /> 수신
-                            </label>
-                            </div>
-                        </div>
-                    </li> -->
-                    <!-- <li>
-                        <?php if ($this->cbconfig->item('use_recaptcha')) { ?>
-                            <span></span>
-                            <div class="form-text text-primary group captcha" id="recaptcha"><button type="button" id="captcha"></button></div>
-                            <input type="hidden" name="recaptcha" />
-                        <?php } else { ?>
-                            <span><img src="<?php echo base_url('assets/images/preload.png'); ?>" width="160" height="40" id="captcha" alt="captcha" title="captcha" /></span>
-                            <div class="form-text text-primary group">
-                                <input type="text" name="captcha_key" id="captcha_key" class=" input px150" value="" />
-                                <p class="help-block">좌측에 보이는 문자를 입력해주세요</p>
-                            </div>
-                        <?php } ?>
-                    </li> -->
-                    <li>
-                        <span></span>
-                        <div class="group" style="text-align:right">
-                            <button type="submit" class="btn btn-success">회원가입</button>
-                            <a href="<?php echo site_url(); ?>" class="btn btn-default">취소</a>
-                        </div>
-                    </li>
-                </ol>
-            <?php echo form_close(); ?>
-        </div>
-    </div>
+    </section>
+
+<section class="my_info01">
+            <h4>회원가입 영역</h4>
+            <table>
+                <tbody><tr>
+                    <td><span>*</span> 아이디</td>
+                    <td>
+                        <input type="text" value="3자 이상 7자 이하의 영문 과 숫자" onclick="if(this.value=='3자 이상 7자 이하의 영문 과 숫자'){this.value=''}"> 
+                    </td>   
+                </tr>
+
+                <tr>
+                    <td><span>*</span> 닉네임</td>
+                    <td>
+                        <input type="text" value="3자 이상 7자 이하의 한글 과 영문" onclick="if(this.value=='3자 이상 7자 이하의 한글 과 영문'){this.value=''}">
+                    </td>   
+                </tr>
+
+                <tr>
+                    <td><span>*</span> 비밀번호</td>
+                    <td>
+                        <input type="text" value="6자 이상 20자 이하의 영문 과 숫자" onclick="if(this.value=='6자 이상 20자 이하의 영문 과 숫자'){this.value=''}">
+                    </td>   
+                </tr>
+
+                <tr>
+                    <td><span>*</span> 비밀번호<br>확인</td>
+                    <td>
+                        <input type="text" value="비밀번호를 다시 한 번 입력" onclick="if(this.value=='비밀번호를 다시 한 번 입력'){this.value=''}">
+                    </td>   
+                </tr>
+
+                <tr>
+                    <td><span>*</span> 이메일</td>
+                    <td>
+                        <input type="text" value="이메일 주소를 입력해 주세요" style="margin-bottom:3%;" onclick="if(this.value=='이메일 주소를 입력해 주세요'){this.value=''}">
+                        ※비밀번호 찾기 등에 이용되니 정확한<br>  이메일을 입력해 주세요.
+                    </td>   
+                </tr>
+            </tbody></table>
+            <button>회 원 가 입</button>
+</section>
+<section class="ad">
+        <h4>ad</h4>
+        <a href="https://dev.secretvt.com/gotourl/banner/15" title="가라오케 리스트 배너2"><img src="https://dev.secretvt.com/uploads/banner/2017/04/e1db3906bbf9b42353d10ed4c7ded3b3.png" class="cb_banner" id="cb_banner_15" alt="가라오케 리스트 배너2" title="가라오케 리스트 배너2"></a>
+</section>
+
 </div>
 
 <?php

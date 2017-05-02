@@ -1,9 +1,7 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 <?php    $this->managelayout->add_js(base_url('plugin/zeroclipboard/ZeroClipboard.js')); ?>
+
 <?php
-
-
-
 if (element('syntax_highlighter', element('board', $view)) OR element('comment_syntax_highlighter', element('board', $view))) {
     $this->managelayout->add_css(base_url('assets/js/syntaxhighlighter/styles/shCore.css'));
     $this->managelayout->add_css(base_url('assets/js/syntaxhighlighter/styles/shThemeMidnight.css'));
@@ -48,6 +46,12 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         <h2 class="bottom_02">[업소후기] <?php echo element('post_title', element('post',$view)) ?></h2>
         <table>
             <tr>
+             <td style="width:25%;" class="active">
+                    <a href="">
+                        <img src="<?php echo base_url('assets/images/temp/submenu13.png')?>" alt="sub01"> 
+                        업소후기
+                    </a>
+                </td>
                 <td style="width:25%;">
                     <a href="<?php echo element('list_url', $view); ?>">
                         <img src="<?php echo base_url('assets/images/temp/submenu09.png')?>" alt="sub01"> 
@@ -69,37 +73,60 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
             </tr>
         </table>
     </section>
+
+
     <section class="title02" style="border-bottom:0; margin:0">
         <h4>작성일</h4>
         <p>작성일 : <?php echo element('display_datetime', element('post', $view)); ?></p>
     </section>  
 
-    <section class="agree">
-  <!--   <ul>
-        <li><a href="<?php echo element('list_url', $view); ?>">목록보기</a></li>
-        <li><a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">위치확인</a></li>
-        <li><a href="">문자전송</a></li>
-        <li><a href="">전화하기</a></li>
-    </ul> -->
-    <div class="contents-view">
-        <div class="contents-view-img">
-            <?php
-            if (element('file_image', $view)) {
-                foreach (element('file_image', $view) as $key => $value) {
-            ?>
-                <img src="<?php echo element('thumb_image_url', $value); ?>" alt="<?php echo html_escape(element('pfi_originname', $value)); ?>" title="<?php echo html_escape(element('pfi_originname', $value)); ?>" class="view_full_image" data-origin-image-url="<?php echo element('origin_image_url', $value); ?>" style="max-width:100%;" />
-            <?php
+    <section class="content">
+       <!-- <ul>
+                <li><a href="<?php echo element('list_url', $view); ?>">목록보기</a></li>
+                <li><a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">위치확인</a></li>
+                <li><a href="">문자전송</a></li>
+                <li><a href="">전화하기</a></li>
+            </ul> -->
+        <div class="contents-view">
+            <div class="contents-view-img">
+                <?php
+                if (element('file_image', $view)) {
+                    foreach (element('file_image', $view) as $key => $value) {
+                ?>
+                    <img src="<?php echo element('thumb_image_url', $value); ?>" alt="<?php echo html_escape(element('pfi_originname', $value)); ?>" title="<?php echo html_escape(element('pfi_originname', $value)); ?>" class="view_full_image" data-origin-image-url="<?php echo element('origin_image_url', $value); ?>" style="max-width:100%;" />
+                <?php
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
+
+            <!-- 본문 내용 시작 -->
+            <div class="document"><?php echo element('content', element('post', $view)); ?></div>
+            <!-- 본문 내용 끝 -->
         </div>
 
-        <!-- 본문 내용 시작 -->
-        <div class="document"><?php echo element('content', element('post', $view)); ?></div>
-        <!-- 본문 내용 끝 -->
-    </div>
+        <div class="border_button">
+                <div class="btn-group" role="group" aria-label="...">
+                    <?php if (element('modify_url', $view)) { ?>
+                        <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
+                    <?php } ?>
+                    <?php    if (element('delete_url', $view)) { ?>
+                        <a href="<?php echo element('delete_url', $view); ?>" class="btn btn-default btn-sm">삭제</a>
+                    <?php } ?>
+                    <?php if (element('search_list_url', $view)) { ?>
+                            <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
+                    <?php } ?>
+                    <?php if (element('prev_post', $view)) { ?>
+                        <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">◀이전 글</a>
+                    <?php } ?>
+                    <?php if (element('next_post', $view)) { ?>
+                        <a href="<?php echo element('url', element('next_post', $view)); ?>" class="btn btn-default btn-sm">다음 글▶</a>
+                    <?php } ?>
+                </div>
+        </div>
     </section>
     
+
     <?php if ( ! element('post_del', element('post', $view)) && (element('use_post_like', element('board', $view)) OR element('use_post_dislike', element('board', $view)))) { ?>
         <div class="recommand">
             <?php if (element('use_post_like', element('board', $view))) { ?>
@@ -111,58 +138,6 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
     <?php } ?>
 
-    <div class="pull-right">
-        <?php if ( ! element('post_del', element('post', $view)) && element('use_scrap', element('board', $view))) { ?>
-            <button type="button" class="btn btn-black" id="btn-scrap" onClick="post_scrap('<?php echo element('post_id', element('post', $view)); ?>', 'post-scrap');">스크랩 <span class="post-scrap"><?php echo element('scrap_count', element('post', $view)) ? '+' . number_format(element('scrap_count', element('post', $view))) : ''; ?></span></button>
-        <?php } ?>
-        <?php if ( ! element('post_del', element('post', $view)) && element('use_blame', element('board', $view)) && ( ! element('blame_blind_count', element('board', $view)) OR element('post_blame', element('post', $view)) < element('blame_blind_count', element('board', $view)))) { ?>
-            <button type="button" class="btn btn-black" id="btn-blame" onClick="post_blame('<?php echo element('post_id', element('post', $view)); ?>', 'post-blame');">신고 <span class="post-blame"><?php echo element('post_blame', element('post', $view)) ? '+' . number_format(element('post_blame', element('post', $view))) : ''; ?></span></button>
-        <?php } ?>
-
-        <?php if ( ! element('post_del', element('post', $view)) && element('is_admin', $view)) { ?>
-            <button type="button" class="btn btn-default btn-sm admin-manage-post"><i class="fa fa-cog big-fa"></i>관리</button>
-            <div class="btn-admin-manage-layer admin-manage-post-layer">
-                <?php if (element('is_admin', $view) === 'super') { ?>
-                    <div class="item" onClick="post_copy('copy', '<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-files-o"></i> 복사하기</div>
-                    <div class="item" onClick="post_copy('move', '<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-arrow-right"></i> 이동하기</div>
-                <?php if (element('use_category', element('board', $view))) { ?>
-                    <div class="item" onClick="post_change_category('<?php echo element('post_id', element('post', $view)); ?>');"><i class="fa fa-tags"></i> 카테고리변경</div>
-                <?php
-                    }
-                }
-                if (element('use_post_secret', element('board', $view))) {
-                    if (element('post_secret', element('post', $view))) {
-                ?>
-                    <div class="item" onClick="post_action('post_secret', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-unlock"></i> 비밀글해제</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_secret', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-lock"></i> 비밀글로</div>
-                <?php
-                    }
-                }
-                if (element('use_comment', element('board', $view))) {
-                    if (element('post_hide_comment', element('post', $view))) {
-                    ?>
-                        <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-comments"></i> 댓글감춤해제</div>
-                    <?php } else { ?>
-                        <div class="item" onClick="post_action('post_hide_comment', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-comments"></i> 댓글감춤</div>
-                    <?php } 
-                }
-                ?>
-
-                <?php if (element('post_notice', element('post', $view))) { ?>
-                    <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-bullhorn"></i> 공지내림</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_notice', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-bullhorn"></i> 공지올림</div>
-                <?php } ?>
-                <?php if (element('post_blame', element('post', $view)) >= element('blame_blind_count', element('board', $view))) { ?>
-                    <div class="item" onClick="post_action('post_blame_blind', '<?php echo element('post_id', element('post', $view)); ?>', '0');"><i class="fa fa-exclamation-circle"></i> 블라인드해제</div>
-                <?php } else { ?>
-                    <div class="item" onClick="post_action('post_blame_blind', '<?php echo element('post_id', element('post', $view)); ?>', '1');"><i class="fa fa-exclamation-circle"></i> 블라인드처리</div>
-                <?php } ?>
-                <div class="item" onClick="post_action('post_trash', '<?php echo element('post_id', element('post', $view)); ?>', '', '이 글을 휴지통으로 이동하시겠습니까?');"><i class="fa fa-trash"></i> 휴지통으로</div>
-            </div>
-        <?php } ?>
-    </div>
 
     <?php
     if (element('use_sns_button', $view)) {
@@ -185,52 +160,62 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
 
     <div class="clearfix"></div>
 
-    
-    <div class="border_button mt20 mb20">
-        <div class="btn-group pull-left" role="group" aria-label="...">
-            <?php if (element('modify_url', $view)) { ?>
-                <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
-            <?php } ?>
-            <?php    if (element('delete_url', $view)) { ?>
-                <button type="button" class="btn btn-default btn-sm btn-one-delete" data-one-delete-url="<?php echo element('delete_url', $view); ?>">삭제</button>
-            <?php } ?>
-                <a href="<?php echo element('list_url', $view); ?>" class="btn btn-default btn-sm">목록</a>
-            <?php if (element('search_list_url', $view)) { ?>
-                    <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
-            <?php } ?>
-            <?php if (element('reply_url', $view)) { ?>
-                <a href="<?php echo element('reply_url', $view); ?>" class="btn btn-default btn-sm">답변</a>
-            <?php } ?>
-            <?php if (element('prev_post', $view)) { ?>
-                <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">이전글</a>
-            <?php } ?>
-            <?php if (element('next_post', $view)) { ?>
-                <a href="<?php echo element('url', element('next_post', $view)); ?>" class="btn btn-default btn-sm">다음글</a>
-            <?php } ?>
-        </div>
-        <?php if (element('write_url', $view)) { ?>
-            <div class="pull-right">
-                <a href="<?php echo element('write_url', $view); ?>" class="btn btn-success btn-sm">후기쓰기</a>
-            </div>
-        <?php } ?>
-    </div>
-
     <?php
     if (element('use_comment', element('board', $view))) {
         if ( ! element('post_hide_comment', element('post', $view))) {
-        ?>
-        <section>
-            <div id="viewcomment"></div>
-        </section>
-        <?php
+        
             $this->load->view(element('view_skin_path', $layout) . '/comment_write');
+            ?>
+            <section>
+                <div id="viewcomment"></div>
+            </section>
+        <?php
         }
     }
     ?>
+ 
+    <section class="reply_02">
+
+       <h2>댓글작성하기</h2>
+       <textarea maxlength="100"  onclick="if(this.value=='다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제제를 받을 수 있습니다.'){this.value=''}">다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제제를 받을 수 있습니다.</textarea> 
+       <span id="counter">###</span>
+           <script>
+                $(document).ready(function(){
+                    $(function() {
+                  $('.reply_02 > textarea').keyup(function (e){
+                      var content = $(this).val();
+                      $('#counter').html(content.length + '/100');
+                  });
+                  $('.reply_02 > textarea').keyup();
+                            });
+                    });
+            </script>
+       <button>
+           등 록
+       </button>
+
+       <ul>
+           <li>
+                <p>시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..
+                </p>
+                <span>닉네임 | 작성일: 2017 .00 . 00</span>
+            </li>
+            <li>
+                <p>시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..시크릿베트남 
+                </p>
+                <span>닉네임 | 작성일: 2017 .00 . 00</span>
+            </li>
+       </ul>
+    </section>
+
+
+
+
     <section class="ad">
         <h4>ad</h4>
         <?php echo banner("review_post_banner_1") ?>
     </section>
+
 </div>
 
 <?php echo element('footercontent', element('board', $view)); ?>

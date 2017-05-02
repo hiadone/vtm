@@ -2,30 +2,44 @@
 
 
 <div class="wrap mypage">
+
+    <section class="title02">
+        <h2>내정보 수정</h2>
+        <p><span>내정보</span>를 수정 하실 수 있습니다.</p>
+    </section>
+
     <section class="title">
-        <table>
+        <table style="width:90%;">
             <tr>
-                <td style="width:25%;" >
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
                     <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
                 </td>
-                <td style="width:25%;">
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
                     <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
                 </td>
-                <td style="width:25%;" <?php if (uri_string() === 'membermodify') { ?>class="active" <?php } ?>>
-                    <a href="<?php echo site_url('membermodify'); ?>" >정보수정</a>
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; " class="active">
+                    <a href="<?php echo site_url('membermodify'); ?>">정보수정</a>
                 </td>
-                <td style="width:25%;" <?php if (uri_string() === 'membermodify/memberleave') { ?>class="active" <?php } ?> >
+                <td style="width:25%; padding:2% 0; box-sizing: border-box; ">
                    <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
                 </td>
             </tr>
         </table>
     </section>
 
-    <section class="title02">
-        <h2>회원 비밀번호 확인</h2>
-    </section>
 
-    
+<section class="logout">
+    <h2>
+        <img src="http://cmy.secretvt.com/assets/images/temp/lock.png" alt="lock">
+            비밀번호를 한번 더 입력해 주세요.
+            <br>
+        <span>
+            외부로부터 회원님의 정보를<br>
+            안전하게 보호하기 위한 절차입니다.<br>
+            현재 사용하시고 있는 회원님의 비밀번호를<br>
+            한번 더 입력하여 주시기 바랍니다.
+        </span>
+    </h2>
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
     echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
@@ -34,24 +48,23 @@
     ?>
         <ol class="askpassword">
             <li>
-                <span>아이디</span>
-                <div class="form-text"><strong><?php echo $this->member->item('mem_userid'); ?></strong></div>
-            </li>
-            <li>
-                <span>비밀번호</span>
+                
                 <div class="group">
-                    <input type="password" class="input px100" id="mem_password" name="mem_password" />
+                    <span>비밀번호</span>
+                    <input type="password" class="input px100" id="mem_password" name="mem_password" style="position: absolute; top: 0; width:67%;" />
                     <button class="btn btn-primary" type="submit">확인</button>
                 </div>
             </li>
-            <li>
-                <div>
-                    <span class="fa fa-exclamation-circle"></span>
-                    외부로부터 회원님의 정보를 안전하게 보호하기 위해 비밀번호를 확인하셔야 합니다.
-                </div>
-            </li>
         </ol>
+</section>
     <?php echo form_close(); ?>
+
+        <section class="ad">
+        <h4>ad</h4>
+        <a href="http://cmy.secretvt.com/gotourl/banner/12" title="후기 배너 1">
+            <img src="http://cmy.secretvt.com/uploads/banner/2017/04/7c37264e5f4bd915c7ebdb7e6a8b89c4.png" class="cb_banner" id="cb_banner_12" alt="후기 배너 1" title="후기 배너 1">
+            </a>    
+    </section>
 </div>
 
 <script type="text/javascript">

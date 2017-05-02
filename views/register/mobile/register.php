@@ -1,6 +1,6 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="wrap">
+<div class="wrap02">
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
     echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
@@ -11,7 +11,7 @@
         <div class="table-box">
             <section class="title02">
                 <h2>회원가입 약관</h2>
-                <p>필 수 사 항</p>
+                <p><span>필 수 사 항</span></p>
             </section>
 
             <section class="agree">
@@ -25,7 +25,7 @@
 
             <section class="title02">
             <h2>개인정보 수집 및 이용동의</h2>
-            <p>필 수 사 항</p>
+            <p><span>필 수 사 항</span></p>
             </section>
 
             <section class="agree">
@@ -38,19 +38,19 @@
 
             <section class="title02">
             <h2>위치정보 수집 및 이용동의</h2>
-            <p>필 수 사 항</p>
+            <p><span>필 수 사 항</span></p>
             </section>
 
-            <section class="agree">
+            <section class="agree" style="margin-bottom: 3%">
                 <div class="document"><?php echo element('member_register_policy3', $view); ?></div>
                 <div class="check">
                 <input type="checkbox" name="agree3" id="agree3" value="1" /> 
                 <label>위치정보취급방침안내의 내용에 동의합니다</label>
                 </div>
             </section>
-
-           <button type="submit" class="btn btn-success pull-right">회원가입</button></li>
-                
+            <section>
+            <button type="submit" class="btn btn-success pull-right">회 원 가 입</button></li>
+            </section>  
         </div>
     <?php echo form_close(); ?>
 </div>

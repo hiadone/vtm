@@ -36,9 +36,6 @@ if (element('list', element('data', $view))) {
                             <a href="javascript:;" id="btn-blame" onClick="comment_blame('<?php echo element('cmt_id', $result); ?>', 'comment-blame-<?php echo element('cmt_id', $result); ?>');" title="신고하기"><i class="fa fa-bell fa-xs"></i><span class="comment-blame-<?php echo element('cmt_id', $result); ?>"><?php echo element('cmt_blame', $result) ? '+' . number_format(element('cmt_blame', $result)) : ''; ?></span></a>
                         <?php } ?>
 
-                        <?php if (element('can_reply', $result)) { ?>
-                            <a href="javascript:;" onClick="comment_box('<?php echo element('cmt_id', $result); ?>', 'c'); return false;">답변</a>
-                        <?php } ?>
                         <?php if (element('can_update', $result)) { ?>
                             <a href="javascript:;" onClick="comment_box('<?php echo element('cmt_id', $result); ?>', 'cu'); return false;">수정</a>
                         <?php } ?>
