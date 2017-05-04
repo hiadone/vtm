@@ -188,7 +188,7 @@ if (element('menu', $layout)) {
     ?>
     
     <?php if (element('is_admin', $view)) { ?>
-        <div><label for="all_boardlist_check"><input id="all_boardlist_check" onclick="if (this.checked) all_boardlist_checked(true); else all_boardlist_checked(false);" type="checkbox" /> 전체선택</label></div>
+        <div><label for="all_boardlist_check" class='label'><input id="all_boardlist_check" onclick="if (this.checked) all_boardlist_checked(true); else all_boardlist_checked(false);" type="checkbox" /> 전체선택</label></div>
     <?php } ?>
     
     <?php
@@ -249,7 +249,7 @@ if (element('menu', $layout)) {
             <a href="<?php echo element('post_url', $result); ?>" title="<?php echo html_escape(element('title', $result)); ?>">
            
                 <!-- <?php if (element('category', $result)) { ?><span class="label label-default">[<?php echo html_escape(element('bca_value', element('category', $result))); ?>]</span><?php } ?> -->
-                <h2 class="info_subject"> <?php echo html_escape(element('title', $result)); ?></h2>
+                <h2 class="info_subject">[업소후기] <?php echo html_escape(element('title', $result)); ?></h2>
                 <p><?php echo element('post_content', $result); ?></p>
                 <span>
                     작성일 : <?php echo element('display_datetime', $result); ?>
@@ -277,12 +277,44 @@ if (element('menu', $layout)) {
     
 
     </section>
+    <?php echo form_close(); ?>
+    <div class="border_button  mb20">
+        <div class="pull-left mr10">
+            <!-- <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a> -->
+            <?php if (element('search_list_url', element('list', $view))) { ?>
+                <a href="<?php echo element('search_list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">검색목록</a>
+            <?php } ?>
+        </div>
+        <?php if (element('is_admin', $view)) { ?>
+            <div class="pull-left mb10">
+                <a onClick="post_multi_action('multi_delete', '0', '선택하신 글들을 완전삭제하시겠습니까?');" class="btn btn-default btn-sm">선택삭제</a>
 
+                <!-- <button type="button" class="btn btn-default btn-sm admin-manage-list"><i class="fa fa-cog big-fa"></i>관리</button>
+                <div class="btn-admin-manage-layer admin-manage-layer-list">
+                    <?php if (element('is_admin', $view) === 'super') { ?>
+                        <div class="item" onClick="document.location.href='<?php echo admin_url('board/boards/write/' . element('brd_id', element('board', element('list', $view)))); ?>';"><i class="fa fa-cog"></i> 게시판설정</div>
+                        <div class="item" onClick="post_multi_copy('copy');"><i class="fa fa-files-o"></i> 복사하기</div>
+                        <div class="item" onClick="post_multi_copy('move');"><i class="fa fa-arrow-right"></i> 이동하기</div>
+                        <div class="item" onClick="post_multi_change_category();"><i class="fa fa-tags"></i> 카테고리변경</div>
+                    <?php } ?>
+                    <div class="item" onClick="post_multi_action('multi_delete', '0', '선택하신 글들을 완전삭제하시겠습니까?');"><i class="fa fa-trash-o"></i> 선택삭제하기</div>
+                    <div class="item" onClick="post_multi_action('post_multi_secret', '0', '선택하신 글들을 비밀글을 해제하시겠습니까?');"><i class="fa fa-unlock"></i> 비밀글해제</div>
+                    <div class="item" onClick="post_multi_action('post_multi_secret', '1', '선택하신 글들을 비밀글로 설정하시겠습니까?');"><i class="fa fa-lock"></i> 비밀글로</div>
+                    <div class="item" onClick="post_multi_action('post_multi_notice', '0', '선택하신 글들을 공지를 내리시겠습니까?');"><i class="fa fa-bullhorn"></i> 공지내림</div>
+                    <div class="item" onClick="post_multi_action('post_multi_notice', '1', '선택하신 글들을 공지로 등록 하시겠습니까?');"><i class="fa fa-bullhorn"></i> 공지올림</div>
+                    <div class="item" onClick="post_multi_action('post_multi_blame_blind', '0', '선택하신 글들을 블라인드 해제 하시겠습니까?');"><i class="fa fa-exclamation-circle"></i> 블라인드해제</div>
+                    <div class="item" onClick="post_multi_action('post_multi_blame_blind', '1', '선택하신 글들을 블라인드 처리 하시겠습니까?');"><i class="fa fa-exclamation-circle"></i> 블라인드처리</div>
+                    <div class="item" onClick="post_multi_action('post_multi_trash', '', '선택하신 글들을 휴지통으로 이동하시겠습니까?');"><i class="fa fa-trash"></i> 휴지통으로</div>
+                </div> -->
+            </div>
+        <?php } ?>
+         
+    </div>
+    <nav><?php echo element('paging', element('list', $view)); ?></nav>
     <section class="ad">
         <h4>ad</h4>
         <?php echo banner("karaoke_post_banner_1") ?>
     </section>
-    <?php echo form_close(); ?>
 </div>
 
 <?php echo element('footercontent', element('board', element('list', $view))); ?>

@@ -257,7 +257,7 @@ class Memberconfig extends CB_Controller
                 'name' => '아이디', 'field_type' => 'text', 'use' => true, 'disable_use' => true, 'open' => true, 'disable_open' => true, 'required' => true, 'disable_required' => true
             ),
             'mem_email' => array(
-                'name' => '이메일주소', 'field_type' => 'email', 'use' => true, 'disable_use' => true, 'open' => false, 'disable_open' => true, 'required' => true, 'disable_required' => true
+                'name' => '이메일', 'field_type' => 'email', 'use' => true, 'disable_use' => true, 'open' => false, 'disable_open' => true, 'required' => true, 'disable_required' => true
             ),
             'mem_password' => array(
                 'name' => '비밀번호', 'field_type' => 'password', 'use' => true, 'disable_use' => true, 'open' => false, 'disable_open' => true, 'required' => true, 'disable_required' => true

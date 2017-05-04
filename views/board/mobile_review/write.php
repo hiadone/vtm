@@ -56,31 +56,7 @@
             <input type="text" class="text_title input" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
         </section>
        
-        <?php if (element('can_post_notice', element('post', $view)) OR element('can_post_secret', element('post', $view)) OR element('can_post_receive_email', element('post', $view))) { ?>
-        <section  style="text-align:center;">
-            <label class="text_title">
-                옵션
-            </label>
-                <?php if (element('can_post_notice', element('post', $view))) { ?>
-                    <label class="checkbox-inline" for="post_notice_1">
-                        <input type="checkbox" name="post_notice" id="post_notice_1" value="1" <?php echo set_checkbox('post_notice', '1', (element('post_notice', element('post', $view)) === '1' ? true : false)); ?> onChange="if (this.checked) {$('#post_notice_2').prop('disabled', true);} else {$('#post_notice_2').prop('disabled', false);}" <?php if (element('post_notice', element('post', $view)) === '2')echo "disabled='disabled'"; ?> /> 공지
-                    </label>
-                    <label class="checkbox-inline" for="post_notice_2">
-                        <input type="checkbox" name="post_notice" id="post_notice_2" value="2" <?php echo set_checkbox('post_notice', '2', (element('post_notice', element('post', $view)) === '2' ? true : false)); ?> onChange="if (this.checked) {$('#post_notice_1').prop('disabled', true);} else {$('#post_notice_1').prop('disabled', false);}" <?php if (element('post_notice', element('post', $view)) === '1')echo "disabled='disabled'"; ?> /> 전체공지
-                    </label>
-                <?php } ?>
-                <?php if (element('can_post_secret', element('post', $view))) { ?>
-                    <label class="checkbox-inline" for="post_secret">
-                        <input type="checkbox" name="post_secret" id="post_secret" value="1" <?php echo set_checkbox('post_secret', '1', (element('post_secret', element('post', $view)) ? true : false)); ?> /> 비밀글
-                    </label>
-                <?php } ?>
-                <?php if (element('can_post_receive_email', element('post', $view))) { ?>
-                    <label class="checkbox-inline" for="post_receive_email">
-                        <input type="checkbox" name="post_receive_email" id="post_receive_email" value="1" <?php echo set_checkbox('post_receive_email', '1', (element('post_receive_email', element('post', $view)) ? true : false)); ?> /> 답변메일받기
-                    </label>
-                <?php } ?>
-        </section>
-        <?php } ?>
+       
         <?php if (element('use_category', element('board', $view))) { ?>
             <li>
                 <span>카테고리</span>
@@ -213,7 +189,7 @@
             </section>
         </div>
     <?php echo form_close(); ?>
-</div>
+
 
 <?php echo element('footercontent', element('board', $view)); ?>
 
@@ -221,7 +197,7 @@
     <h4>ad</h4>
     <?php echo banner("review_write_banner_1") ?>
 </section>
-
+</div>
 <script type="text/javascript">
 // 글자수 제한
 var char_min = parseInt(<?php echo element('post_min_length', element('board', $view)) + 0; ?>); // 최소

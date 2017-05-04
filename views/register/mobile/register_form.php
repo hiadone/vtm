@@ -1,60 +1,55 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
 <div class="wrap02">
-
     <section class="title02">
-            <h2>회원가입</h2>
-            <p><span>*</span>는 필수입력 사항 입니다.</p>
+        <h2>회원가입</h2>
+        <p><span>*</span>는 필수입력 사항 입니다.</p>
     </section>
+    <section class="my_info01">
+        <h4>회원가입 영역</h4>
+        
 
-<section class="my_info01">
-            <h4>회원가입 영역</h4>
-            <table>
-                <tbody><tr>
-                    <td><span>*</span> 아이디</td>
-                    <td>
-                        <input type="text" value="3자 이상 7자 이하의 영문 과 숫자" onclick="if(this.value=='3자 이상 7자 이하의 영문 과 숫자'){this.value=''}"> 
-                    </td>   
-                </tr>
-
-                <tr>
-                    <td><span>*</span> 닉네임</td>
-                    <td>
-                        <input type="text" value="3자 이상 7자 이하의 한글 과 영문" onclick="if(this.value=='3자 이상 7자 이하의 한글 과 영문'){this.value=''}">
-                    </td>   
-                </tr>
-
-                <tr>
-                    <td><span>*</span> 비밀번호</td>
-                    <td>
-                        <input type="text" value="6자 이상 20자 이하의 영문 과 숫자" onclick="if(this.value=='6자 이상 20자 이하의 영문 과 숫자'){this.value=''}">
-                    </td>   
-                </tr>
-
-                <tr>
-                    <td><span>*</span> 비밀번호<br>확인</td>
-                    <td>
-                        <input type="text" value="비밀번호를 다시 한 번 입력" onclick="if(this.value=='비밀번호를 다시 한 번 입력'){this.value=''}">
-                    </td>   
-                </tr>
-
-                <tr>
-                    <td><span>*</span> 이메일</td>
-                    <td>
-                        <input type="text" value="이메일 주소를 입력해 주세요" style="margin-bottom:3%;" onclick="if(this.value=='이메일 주소를 입력해 주세요'){this.value=''}">
-                        ※비밀번호 찾기 등에 이용되니 정확한<br>  이메일을 입력해 주세요.
-                    </td>   
-                </tr>
-            </tbody></table>
-            <button>회 원 가 입</button>
-</section>
+            <?php
+            echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
+            echo show_alert_message($this->session->flashdata('message'), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
+            $attributes = array('class' => 'form-horizontal', 'name' => 'fregisterform', 'id' => 'fregisterform');
+            echo form_open_multipart(current_full_url(), $attributes);
+            ?>
+            <input type="hidden" name="mem_open_profile" id="mem_open_profile" value="1" >
+            <input type="hidden" name="mem_receive_email" id="mem_receive_email" value="1" >
+            <input type="hidden" name="mem_receive_sms" id="mem_receive_sms" value="1" >
+            
+             <table>
+                <tbody>
+                <?php
+                foreach (element('html_content', $view) as $key => $value) {
+                ?>
+                    <tr>
+                        <td><span><?php 
+                        if(element('required', $value)) echo '* ';
+                        echo element('display_name', $value); ?></span></td>
+                        <td>
+                            <?php echo element('input', $value); ?>
+                            <?php if (element('description', $value)) { ?>
+                                <p class="help-block"><?php echo element('description', $value); ?></p>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php
+                }
+                ?>
+                </tbody>
+            </table>
+                <button type="submit" >회 원 가 입</button>
+                    
+            <?php echo form_close(); ?>
+        
+    </section>
+</div>
 <section class="ad">
         <h4>ad</h4>
-        <a href="https://dev.secretvt.com/gotourl/banner/15" title="가라오케 리스트 배너2"><img src="https://dev.secretvt.com/uploads/banner/2017/04/e1db3906bbf9b42353d10ed4c7ded3b3.png" class="cb_banner" id="cb_banner_15" alt="가라오케 리스트 배너2" title="가라오케 리스트 배너2"></a>
-</section>
-
-</div>
-
+        <?php echo banner("register_banner_1") ?>
+    </section>
 <?php
 $this->managelayout->add_css(base_url('assets/css/datepicker3.css'));
 $this->managelayout->add_js('http://dmaps.daum.net/map_js_init/postcode.v2.js');

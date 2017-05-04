@@ -582,10 +582,10 @@ class Board_write extends CB_Controller
                         } elseif (element('field_type', $value) === 'phone') {
                             $extra_content[$k]['input'] .= '<input type="text" id="' . element('field_name', $value) . '" name="' . element('field_name', $value) . '" class="form-control input validphone" value="' . set_value(element('field_name', $value)) . '" ' . $required . ' />';
                         } else {
-                            $extra_content[$k]['input'] .= '<input type="' . element('field_type', $value) . '" id="' . element('field_name', $value) . '" name="' . element('field_name', $value) . '" class="form-control input" value="' . set_value(element('field_name', $value)) . '" ' . $required . '/>';
+                            $extra_content[$k]['input'] .= '<input type="' . element('field_type', $value) . '" id="' . element('field_name', $value) . '" name="' . element('field_name', $value) . '" class="form-control input per75" value="' . set_value(element('field_name', $value)) . '" ' . $required . '/>';
                         }
                     } elseif (element('field_type', $value) === 'textarea') {
-                            $extra_content[$k]['input'] .= '<textarea id="' . element('field_name', $value) . '" name="' . element('field_name', $value) . '" class="form-control input" ' . $required . '>' . set_value(element('field_name', $value)) . '</textarea>';
+                            $extra_content[$k]['input'] .= '<textarea id="' . element('field_name', $value) . '" name="' . element('field_name', $value) . '" class="form-control input per75" ' . $required . '>' . set_value(element('field_name', $value)) . '</textarea>';
                     } elseif (element('field_type', $value) === 'radio') {
                         $extra_content[$k]['input'] .= '<div class="checkbox">';
                         $options = explode("\n", element('options', $value));

@@ -428,6 +428,7 @@ class Register extends CB_Controller
                         }
                         $config[] = $configbasic[$value['field_name']];
                         if ($key === 'mem_password') {
+                            //$configbasic['mem_password_re']['rules'] = $configbasic['mem_password_re']['rules'] . '|required';
                             $config[] = $configbasic['mem_password_re'];
                         }
                     }
@@ -688,8 +689,9 @@ class Register extends CB_Controller
                     if (element('field_name', $value) === 'mem_password') {
                         $k++;
                         $html_content[$k]['field_name'] = 'mem_password_re';
-                        $html_content[$k]['display_name'] = '비밀번호 확인';
-                        $html_content[$k]['input'] = '<input type="password" id="mem_password_re" name="mem_password_re" class="form-control input" minlength="' . $password_length . '" />';
+                        $html_content[$k]['display_name'] = '비밀번호<br>확인';
+                        $html_content[$k]['input'] = '<input type="password" id="mem_password_re" name="mem_password_re" class="form-control input" minlength="' . $password_length . '" required />';
+                        $html_content[$k]['required'] = 'required';
                     }
                     $k++;
                 }

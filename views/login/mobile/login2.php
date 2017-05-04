@@ -1,6 +1,6 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
-<div class="wrap02">
+<div class="wrap">
     <?php
         echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
         echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
@@ -10,9 +10,6 @@
     ?>
     <input type="hidden" name="url" value="<?php echo html_escape($this->input->get_post('url')); ?>" />
     <section class="enter">
-        <figure>
-        <img src="<?php echo base_url('assets/images/temp/lock.png') ?>" alt="lock">
-        </figure>
         <h2>
             <span>
                 알려드립니다.
@@ -34,15 +31,9 @@
 
         </div>
 
-        <div class="alert alert-dismissible alert-info autologinalert" style="display:none;">
-            자동로그인 기능사용시  다음번 접속시 부터는 별도의 입력 없이 로그인 됩니다.
-            단, 공공장소에서 이용 시 개인정보가 유출될 수 있으니 꼭 로그아웃을 해주세요.
-        </div>
-
         <div class="id">
-            <input type="checkbox" name="autologin" id="autologin" value="1" />
             <label for="autologin">
-                 아이디 / 패스워드 기억하기
+                <input type="checkbox" name="autologin" id="autologin" value="1" /> 아이디 / 패스워드 기억하기
             </label>
 
         </div>
@@ -51,7 +42,9 @@
             <div class="submit_btn"></div>
             <input type="submit" value="로 그 인">
         </div>
-
+        <div class="alert alert-dismissible alert-info autologinalert" style="display:none;">
+            자동로그인 기능을 사용하시면, 브라우저를 닫더라도 로그인이 계속 유지될 수 있습니다. 자동로그이 기능을 사용할 경우 다음 접속부터는 로그인할 필요가 없습니다. 단, 공공장소에서 이용 시 개인정보가 유출될 수 있으니 꼭 로그아웃을 해주세요.
+        </div>
 
         <div class="signup02">
             <p>

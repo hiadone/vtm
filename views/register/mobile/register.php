@@ -48,7 +48,7 @@
                 <label>위치정보취급방침안내의 내용에 동의합니다</label>
                 </div>
             </section>
-            <section>
+            <section class="my_info01">
             <button type="submit" class="btn btn-success pull-right">회 원 가 입</button></li>
             </section>  
         </div>

@@ -111,7 +111,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
                         <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
                     <?php } ?>
                     <?php    if (element('delete_url', $view)) { ?>
-                        <a href="<?php echo element('delete_url', $view); ?>" class="btn btn-default btn-sm">삭제</a>
+                        <a href="<?php echo element('delete_url', $view); ?>" class="btn btn-default btn-sm btn-one-delete">삭제</a>
                     <?php } ?>
                     <?php if (element('search_list_url', $view)) { ?>
                             <a href="<?php echo element('search_list_url', $view); ?>" class="btn btn-default btn-sm">검색목록</a>
@@ -162,11 +162,9 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
 
     <?php
     if (element('use_comment', element('board', $view))) {
-        if ( ! element('post_hide_comment', element('post', $view))) {
-        
-            $this->load->view(element('view_skin_path', $layout) . '/comment_write');
-            ?>
-            <section>
+        if ( ! element('post_hide_comment', element('post', $view))) { ?>
+            <section class="reply_02">
+                <div><?php   $this->load->view(element('view_skin_path', $layout) . '/comment_write'); ?></div>
                 <div id="viewcomment"></div>
             </section>
         <?php
@@ -174,39 +172,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
     }
     ?>
  
-    <section class="reply_02">
-
-       <h2>댓글작성하기</h2>
-       <textarea maxlength="100"  onclick="if(this.value=='다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제제를 받을 수 있습니다.'){this.value=''}">다른 사람의 권리를 침해하거나 명예를 훼손하는 게시물은 이용약관 및 관련 법률에 의해 제제를 받을 수 있습니다.</textarea> 
-       <span id="counter">###</span>
-           <script>
-                $(document).ready(function(){
-                    $(function() {
-                  $('.reply_02 > textarea').keyup(function (e){
-                      var content = $(this).val();
-                      $('#counter').html(content.length + '/100');
-                  });
-                  $('.reply_02 > textarea').keyup();
-                            });
-                    });
-            </script>
-       <button>
-           등 록
-       </button>
-
-       <ul>
-           <li>
-                <p>시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..
-                </p>
-                <span>닉네임 | 작성일: 2017 .00 . 00</span>
-            </li>
-            <li>
-                <p>시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..시크릿베트남 완전좋아요 ~~~ 꼭 한번 방문해보세요 ..시크릿베트남 
-                </p>
-                <span>닉네임 | 작성일: 2017 .00 . 00</span>
-            </li>
-       </ul>
-    </section>
+    
 
 
 

@@ -101,7 +101,7 @@
         <?php } ?>
         <li>
             <span>지역</span>
-            <select name="region_category" class="input">
+            <select name="region_category" class='input'>
         <?php 
         $return = '';
         foreach(config_item('region_category') as $key => $value){

@@ -652,7 +652,8 @@ if (typeof(COMMON_JS) === 'undefined') {
     }
 
     function all_boardlist_checked(flag,contentsId) {
-        var f =document.getElementById('fboardlist'+contentsId) ;
+        if(contentsId)  var f =document.getElementById('fboardlist'+contentsId) ;
+        else var f =document.getElementById('fboardlist') ;
         for (var i = 0; i < f.length; i++) {
             if (f.elements[i].name === 'chk_post_id[]') {
                 f.elements[i].checked = flag;

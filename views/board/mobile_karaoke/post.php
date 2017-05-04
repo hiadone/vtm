@@ -151,7 +151,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
                 <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
             <?php } ?>
             <?php    if (element('delete_url', $view)) { ?>
-                <a href="<?php echo element('delete_url', $view); ?>" class="btn btn-default btn-sm">삭제</a>
+                <a href="<?php echo element('delete_url', $view); ?>" class="btn btn-default btn-sm btn-one-delete">삭제</a>
             <?php } ?>
                 <a href="<?php echo site_url('main').'?curentContents='.$curentContents ?>" class="btn btn-default btn-sm">목 록</a>
             <?php if (element('search_list_url', $view)) { ?>
@@ -166,7 +166,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
         <?php if (element('write_url', $view)) { ?>
             <div class="pull-right">
-                <a href="<?php echo element('write_url', $view); ?>" class="btn btn-success btn-sm">글쓰기</a>
+                <a href="<?php echo element('write_url', $view); ?>" class="btn btn-default btn-sm">글쓰기</a>
             </div>
         <?php } ?>
     </div>

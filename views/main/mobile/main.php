@@ -1,6 +1,7 @@
 <?php $this->managelayout->add_js(base_url('assets/js/jssor.slider-22.1.8.mini.js')); ?>
 <script type="text/javascript">
-var curentContents=<?php echo $this->input->get('curentContents',null,0);?>;
+
+var curentContents=<?php echo empty($this->input->get('curentContents')) ? 0:$this->input->get('curentContents')  ;?>;
 var curnetIndex="";
 var flag = [true,true,true,true,true,true,true];
 
