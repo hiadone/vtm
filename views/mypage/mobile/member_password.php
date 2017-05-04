@@ -53,28 +53,17 @@
                     <span>비밀번호</span>
                     <input type="password" class="input px100" id="mem_password" name="mem_password" style="position: absolute; top: 0; width:67%;" />
                     <button class="btn btn-primary" type="submit">확인</button>
+                    
                 </div>
             </li>
         </ol>
 </section>
     <?php echo form_close(); ?>
 
-        <section class="ad">
+    <section class="ad">
         <h4>ad</h4>
-        <a href="http://cmy.secretvt.com/gotourl/banner/12" title="후기 배너 1">
-            <img src="http://cmy.secretvt.com/uploads/banner/2017/04/7c37264e5f4bd915c7ebdb7e6a8b89c4.png" class="cb_banner" id="cb_banner_12" alt="후기 배너 1" title="후기 배너 1">
-            </a>    
+        <?php echo banner("mypage_banner_1") ?>
     </section>
 </div>
 
-<script type="text/javascript">
-//<![CDATA[
-$(function() {
-    $('#fconfirmpassword').validate({
-        rules: {
-            mem_password : { required:true, minlength:4 }
-        }
-    });
-});
-//]]>
-</script>
+

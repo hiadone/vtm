@@ -8,23 +8,23 @@
     
     <section class="myinfo">
         <figure>
-            <img src="assets/images/temp/user02.png" alt="user">
+            <img src="<?php echo base_url('assets/images/temp/user02.png') ?>" alt="user">
             <figcaption>
                 <h2>
-                    사용자 아이디
+                    <?php echo html_escape($this->member->item('mem_userid')); ?>
                 </h2>
-                <p><span>"사용자닉네임" 님 안녕하세요</span></p>
+                <p><span>"<?php echo html_escape($this->member->item('mem_nickname')); ?>" 님 안녕하세요</span></p>
                 <figure>
-                    <img src="assets/images/temp/level.png" alt="user">
+                    <img src="<?php echo base_url('assets/images/temp/level.png') ?>" alt="user">
                     <figcaption>
-                        Level 01
+                        Level <?php echo html_escape($this->member->item('mem_level')); ?>
                     </figcaption>
                 </figure>
             </figcaption>
         </figure>
 
         <button>
-            <a href="http://dev.secretvt.com/membermodify">
+            <a href="<?php echo site_url('membermodify'); ?>">
                 정보수정
             </a>
         </button>
@@ -52,18 +52,16 @@
     
     <section class="myinfo_02">
         <ul>
-            <li><span>이메일 주소</span> <p>abdcdccdc@naver.com</p></li>
-            <li><span>닉 네 임 </span> <p>abdcdccdc</p></li>
-            <li><span>가 입 일</span> <p>2017.00.00 00:00:00</p></li>
-            <li><span>최근 로그인</span> <p>2017.00.00 00:00:00</p></li>
+            <li><span>이메일</span> <p><?php echo html_escape($this->member->item('mem_email')); ?></p></li>
+            <li><span>닉 네 임 </span> <p><?php echo html_escape($this->member->item('mem_nickname')); ?></p></li>
+            <li><span>가 입 일</span> <p><?php echo display_datetime($this->member->item('mem_register_datetime'), 'full'); ?></p></li>
+            <li><span>최근 로그인</span> <p><?php echo display_datetime($this->member->item('mem_lastlogin_datetime'), 'full'); ?></p></li>
         </ul>
     </section>
 
     <section class="ad">
         <h4>ad</h4>
-        <a href="http://cmy.secretvt.com/gotourl/banner/12" title="후기 배너 1">
-            <img src="http://cmy.secretvt.com/uploads/banner/2017/04/7c37264e5f4bd915c7ebdb7e6a8b89c4.png" class="cb_banner" id="cb_banner_12" alt="후기 배너 1" title="후기 배너 1">
-            </a>    
+        <?php echo banner("mypage_banner_1") ?>
     </section>
 
 </div>

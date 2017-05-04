@@ -9,23 +9,23 @@
     
     <section class="myinfo">
         <figure>
-            <img src="../assets/images/temp/user02.png" alt="user">
+            <img src="<?php echo base_url('assets/images/temp/user02.png') ?>" alt="user">
             <figcaption>
                 <h2>
-                    사용자 아이디
+                    <?php echo html_escape($this->member->item('mem_userid')); ?>
                 </h2>
-                <p><span>"사용자닉네임" 님 안녕하세요</span></p>
+                <p><span>"<?php echo html_escape($this->member->item('mem_nickname')); ?>" 님 안녕하세요</span></p>
                 <figure>
-                    <img src="../assets/images/temp/level.png" alt="user">
+                    <img src="<?php echo base_url('assets/images/temp/level.png') ?>" alt="user">
                     <figcaption>
-                        Level 01
+                        Level <?php echo html_escape($this->member->item('mem_level')); ?>
                     </figcaption>
                 </figure>
             </figcaption>
         </figure>
 
         <button>
-            <a href="http://dev.secretvt.com/membermodify">
+            <a href="<?php echo site_url('membermodify'); ?>">
                 정보수정
             </a>
         </button>
@@ -101,13 +101,12 @@
             ?>
             </tbody>
         </table>
-    </section>
+    
     <nav><?php echo element('paging', $view); ?></nav>
+    </section>
     <section class="ad">
         <h4>ad</h4>
-        <a href="http://cmy.secretvt.com/gotourl/banner/12" title="후기 배너 1">
-            <img src="http://cmy.secretvt.com/uploads/banner/2017/04/7c37264e5f4bd915c7ebdb7e6a8b89c4.png" class="cb_banner" id="cb_banner_12" alt="후기 배너 1" title="후기 배너 1">
-            </a>    
+        <?php echo banner("mypage_banner_1") ?>
     </section>
 
     
