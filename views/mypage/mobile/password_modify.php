@@ -33,7 +33,7 @@
         $attributes = array('class' => 'form-horizontal', 'name' => 'fchangepassword', 'id' => 'fchangepassword');
         echo form_open(current_url(), $attributes);
         ?>
-            <ol class="askpassword">
+            <ol class="change_password">
                 <li>
                     <span>아이디</span>
                     <div class="form-text"><strong><?php echo $this->member->item('mem_userid'); ?></strong></div>

@@ -28,10 +28,7 @@
 
 
 
-    <?php
-    echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
-    echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-warning"><button type="button" class="close alertclose" >&times;</button>', '</div>');
-    ?>
+    
     
     <div class="form-horizontal mt20">
         <?php
@@ -55,12 +52,15 @@
                 그래도 탈퇴 하시겠습니까?
             </span>
         </h2>
-    
-            <ol class="askpassword">
+        <?php
+        echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
+        echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-warning"><button type="button" class="close alertclose" >&times;</button>', '</div>');
+        ?>
+            <ol class="text-center">
                 <li>
                 <div class="group">
                     <span>비밀번호</span>
-                    <input type="password" class="input px100" id="mem_password" name="mem_password" style="position: absolute; top: 0; width:67%;" />
+                    <input type="password" class="input px150" id="mem_password" name="mem_password"  />
                     <button class="btn btn-primary" type="submit">확인</button>
                 </div>
                 </li>
@@ -69,23 +69,15 @@
   </section>  
   <section class="ad">
         <h4>ad</h4>
-        <a href="http://cmy.secretvt.com/gotourl/banner/12" title="후기 배너 1">
-            <img src="http://cmy.secretvt.com/uploads/banner/2017/04/7c37264e5f4bd915c7ebdb7e6a8b89c4.png" class="cb_banner" id="cb_banner_12" alt="후기 배너 1" title="후기 배너 1">
-            </a>    
-    </section>   
+        <?php echo banner("mypage_banner_1") ?>
+    </section>
     </div>
 
 </div>
 
 <script type="text/javascript">
 //<![CDATA[
-$(function() {
-    $('#fconfirmpassword').validate({
-        rules: {
-            mem_password : { required:true, minlength:4 }
-        }
-    });
-});
+
 function confirmleave() {
     if (confirm('정말 회원 탈퇴를 하시겠습니까? 탈퇴한 회원정보는 복구할 수 없으므로 신중히 선택하여주세요. 확인을 누르시면 탈퇴가 완료됩니다 ')) {
         return true;

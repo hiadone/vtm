@@ -46,12 +46,12 @@
     $attributes = array('name' => 'fconfirmpassword', 'id' => 'fconfirmpassword');
     echo form_open(current_url(), $attributes);
     ?>
-        <ol class="askpassword">
+        <ol class="text-center" >
             <li>
                 
                 <div class="group">
                     <span>비밀번호</span>
-                    <input type="password" class="input px100" id="mem_password" name="mem_password" style="position: absolute; top: 0; width:67%;" />
+                    <input type="password" class="input px150" id="mem_password" name="mem_password"/>
                     <button class="btn btn-primary" type="submit">확인</button>
                     
                 </div>

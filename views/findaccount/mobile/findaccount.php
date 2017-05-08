@@ -8,17 +8,20 @@
         </section>
 
         <section class="table-body">
-            <div class=" ">
+            <div >
                 <?php
-                echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
-                echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
                 $attributes = array('name' => 'findidpwform', 'id' => 'findidpwform');
                 echo form_open(current_full_url(), $attributes);
                 ?>
                     <input type="hidden" name="findtype" value="findidpw" />
                     <p class="text">아이디/비밀번호는 가입시 등록한 메일 주소로 알려드립니다.<br/>가입할 때 등록한 메일 주소를 입력하고 "ID/PW 찾기"<br/>버튼을 클릭해주세요.</p>
-                    <div class="group">
-                        <input type="email" name="idpw_email" id="idpw_email" class="input" placeholder="Email Address" style="width:76%; position: absolute; top: 0; left: 0;" />
+                <?php 
+                echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
+                echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
+                 ?>
+                    <div class="group text-center ">
+                    
+                        <input type="email" name="idpw_email" id="idpw_email" class="input" placeholder="Email Address" />
                         <button class="btn btn-black btn-sm" type="submit">ID/PW 찾기</button>
                     </div>
                 <?php
@@ -80,26 +83,4 @@
     </section>
 </div>
 
-<script type="text/javascript">
-//<![CDATA[
-$(function() {
-    $('#findidpwform').validate({
-        rules: {
-            idpw_email : { required:true, email:true }
-        }
-    });
-    $('#verifyemailform').validate({
-        rules: {
-            verify_email : { required:true, email:true }
-        }
-    });
-    $('#changeemailform').validate({
-        rules: {
-            change_userid : { required:true, minlength:3 },
-            change_password : { required:true, minlength:4 },
-            change_email : { required:true, email:true }
-        }
-    });
-});
-//]]>
-</script>
+

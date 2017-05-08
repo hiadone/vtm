@@ -33,7 +33,7 @@
         <?php } ?>
         <li>
             <span>제목</span>
-            <div class="input-div">
+            <div class="group">
             <input type="text" class="input per100" name="post_title" id="post_title" value="<?php echo set_value('post_title', element('post_title', element('post', $view))); ?>" />
             </div>
             
@@ -98,7 +98,7 @@
         <?php } ?>
         <li>
             <span>지역</span>
-            <div class="input-div">
+            <div class="group">
             <select name="region_category" class="input">
         <?php 
         $return = '';
@@ -126,10 +126,10 @@
         ?>
             <li>
                 <span><?php echo element('display_name', $value); ?></span>
-                <div class="input-div">
+                <div class="group">
                 
                 <?php if(element('field_name', $value)=="google_map") {?>
-                    <button type="button" class="btn btn-sm btn-default pull-right" id="btn_google_map" onClick="open_google_map();" >지도검색</button>
+                    <button type="button" class="btn btn-sm btn-default pull-right mr10" id="btn_google_map" onClick="open_google_map();" >지도검색</button>
                 <?php } ?>
                 <?php echo element('input', $value); ?>
                 </div>

@@ -1,5 +1,5 @@
 /**
-	board skin css
+    board skin css
 */
 
 .board .table{border-top: 2px solid #000;border-bottom: 1px solid #ccc;}
@@ -10,6 +10,7 @@
 .board .contents-view{ clear:both;}
 .board .contents-view-img img { display:block; max-width:100%; margin:0 auto 15px; border:0; height:auto; }
 #post-content {word-wrap: break-word;}
+#post-content p{line-height: 21px;}
 #post-content img {max-width:100%;}
 
 .board .fa-user{color:#626262;}
@@ -77,7 +78,7 @@
 .lucky .luckypoint{color:#E71A41;}
 
 .px70 {width:70px;}
-.px100 {width:66.2%;}
+.px100 {width:100px;}
 .px150 {width:150px;}
 .px400 {width:400px;}
 
@@ -107,7 +108,7 @@ textarea.post_content  {width:90%;height:350px;margin:0 20px;}
 
 #comment_write_box li {display: block;margin: 0px; clear: both; margin-bottom: 15px;}
 #comment_write_box  li>span {float: left;
-	width: 25%;text-align: right;padding-right: 20px;margin-top: 5px;color: #000;font-weight: bold;}
+    width: 25%;text-align: right;padding-right: 20px;margin-top: 5px;color: #000;font-weight: bold;}
 .comment_write_button_area {margin-top:20px;overflow:hidden;}
 
 .board .url-qrcode {position:relative;cursor:pointer;}
@@ -242,8 +243,9 @@ div.alert { font-size:11px;  line-height: 13px; text-align:center;}
   margin-bottom: 10px;
   
 }
+.btn {border:0; height: 23px; font-size: 12px; font-family:'Jeju Gothic', sans-serif; border-radius: 4px;  }
 
-.btn-primary {color: #fff; background-color: #c20e58; position:absolute; right: 0; border:0; height: 23px; font-size: 12px; font-family:'Jeju Gothic', sans-serif; border-radius: 4px;  }
+.btn-primary {color: #fff; background-color: #c20e58;}
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -381,6 +383,7 @@ fieldset[disabled] .btn-info:active,
 .btn-info[disabled].active,
 fieldset[disabled] .btn-info.active {background-color: #49b6d5;border-color: #49b6d5; }
 .btn-info .badge {color: #49b6d5;background-color: #fff;}
+.btn-success {color: #fff;background-color: #c20e58;  }
 .open .dropdown-toggle.btn-success {color: #fff;}
 .btn-success.disabled,
 .btn-success[disabled],
@@ -423,18 +426,9 @@ fieldset[disabled] .btn-silver.active {background-color: #b7c2c8;border-color: #
 .btn-silver .badge {color: #b7c2c8;background-color: #fff;}
 
 .btn-black {
-	color: #fff;
-	background-color:#c20e58;
-	height: 23px;
-	position: absolute;
-	top: 0;
-	right: 0;
-	border:0;
-	vertical-align: middle;
-	font-family: 'Jeju Gothic', sans-serif;
-	border-radius: 4px;
-	font-size: 12px;
-	}
+    color: #fff;
+    background-color:#c20e58;
+    }
 
 .open .dropdown-toggle.btn-black {color: #fff;background-color: #000;border-color: #000;}
 .btn-black.disabled,
@@ -487,15 +481,15 @@ font-weight: bold;}
 .btn-default.active {background-color: #e0e0e0;border-color: #dbdbdb;}*/
 
 .input {border: 1px solid #ededed;
-		outline: 0 none;
-		padding: 1% 0 1% 1.5%;
-		background-color: #FFFFFF;
-		background-image: none;
-		box-sizing: border-box;
-		
+        outline: 0 none;
+        padding: 1% 0 1% 1.5%;
+        background-color: #FFFFFF;
+        background-image: none;
+        box-sizing: border-box;
+        
 
-		height: 23px;
-		}
+        height: 23px;
+        }
 
 textarea.input{height:100px;}
 textarea.dhtmleditor {border: 1px solid #231b26; box-sizing:border-box; outline: 0 none; padding: 2%; background-color: #FFFFFF; background-image: none; width:100%; height:350px; overflow: scroll;}
@@ -528,7 +522,7 @@ select.input {height: 30px;}
 .label-danger[href]:focus {background-color: #c9302c;}
 
 .no_padding{padding: 0 !important;}
-.text-center {text-align:right ;}
+.text-center {text-align:center ;}
 .text-right {text-align: right;}
 small {font-size: 11px;padding-left: 10px;}
 
@@ -606,7 +600,7 @@ box-sizing: border-box;
 .thumbnail>img, .thumbnail a>img {margin-left: auto;margin-right: auto;display: block;max-width: 100%;}
 
 .register{width: 100%; margin: 0 auto;}
-.group{overflow:hidden; position: relative;}
+.group{overflow:hidden;}
 .checkbox{padding-top: 5px;}
 
 .modal{width:90%; margin: 30px auto;position: relative;background-color: #fff;border: 1px solid #ccc;border: 1px solid rgba(0,0,0,.2);border-radius: 6px;-webkit-box-shadow: 0 3px 9px rgba(0,0,0,.5);box-shadow: 0 3px 9px rgba(0,0,0,.5);background-clip: padding-box;outline: 0;}
