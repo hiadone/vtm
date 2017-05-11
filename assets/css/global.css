@@ -173,6 +173,7 @@
 		text-align:center;
 		margin-bottom:3%;
 		font-size:18px;
+		font-weight: bold;
 		}
 
 
@@ -183,7 +184,7 @@
 		}
 
 	.title table tr td{
-		width: 33%;
+		width: 25%;
 		border:1px solid #ededed;
 		font-size:11px;
 		text-align: center;
@@ -192,9 +193,10 @@
 		vertical-align: middle;
 		}
 
-	.title table tr td:nth-child(2){
+	/*.title table tr td:nth-child(2){
 		width:34%;
 		}
+	*/
 
 	.title table tr td img{
 		width:45%;
@@ -220,7 +222,7 @@
 		}
 
 	.title02 h2{
-		font-size:15px;
+		font-size:14px;
 		font-weight: bold;
 		display: inline-block;
 		}

@@ -75,7 +75,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
     </section>
 
 
-    <section class="title02" style="border-bottom:0; margin:0">
+    <section class="title02" style="border-bottom:0;">
         <h4>작성일</h4>
         <p>작성일 : <?php echo element('display_datetime', element('post', $view)); ?></p>
     </section>  

@@ -40,7 +40,7 @@
                 ?>
                 </tbody>
             </table>
-                <button type="submit" >회 원 가 입</button>
+                <button type="submit" style="width: 30%;" >회 원 가 입</button>
                     
             <?php echo form_close(); ?>
         

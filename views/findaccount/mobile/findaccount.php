@@ -5,24 +5,26 @@
     <div class="table-box">
         <section class="title02">
             <h2>이메일 주소로 계정 찾기</h2>
+            <p><span>ID/PW</span>를 찾을수 있습니다.</p>
         </section>
 
-        <section class="table-body">
+        <section class="table-body" style="margin-bottom: 6%;">
             <div >
+                <img src="../assets/images/temp/find_01.png" alt="find">
                 <?php
                 $attributes = array('name' => 'findidpwform', 'id' => 'findidpwform');
                 echo form_open(current_full_url(), $attributes);
                 ?>
                     <input type="hidden" name="findtype" value="findidpw" />
-                    <p class="text">아이디/비밀번호는 가입시 등록한 메일 주소로 알려드립니다.<br/>가입할 때 등록한 메일 주소를 입력하고 "ID/PW 찾기"<br/>버튼을 클릭해주세요.</p>
+                    <p class="text text_01" style="margin-bottom: 5%;">아이디/비밀번호는 가입시 등록한<br/> 메일 주소로 알려드립니다.<br/>가입할 때 등록한 메일 주소를 입력하고 <br/> "아이디/비밀번호 찾기"버튼을 클릭 해주세요.</p>
                 <?php 
                 echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
                 echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
                  ?>
                     <div class="group text-center ">
                     
-                        <input type="email" name="idpw_email" id="idpw_email" class="input" placeholder="Email Address" />
-                        <button class="btn btn-black btn-sm" type="submit">ID/PW 찾기</button>
+                        <input type="email" name="idpw_email" id="idpw_email" style="position: relative; top: 1px;" class="input input_01" placeholder="Email Address" />
+                        <button class="btn btn-black btn-sm find_btn" type="submit">ID/PW 찾기</button>
                     </div>
                 <?php
                 echo form_close();

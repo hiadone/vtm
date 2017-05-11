@@ -49,7 +49,7 @@
                 </div>
             </section>
             <section class="my_info01">
-            <button type="submit" class="btn btn-success pull-right">회 원 가 입</button></li>
+            <button type="submit" class="btn btn-success pull-right" style="width:30%;">회 원 가 입</button></li>
             </section>  
         </div>
     <?php echo form_close(); ?>

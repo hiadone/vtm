@@ -61,25 +61,25 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         <h2 class="bottom_02">[<?php echo "업소정보";//$menuName ?>] <?php echo element('post_title', element('post',$view)) ?></h2>
         <table>
             <tr>
-                <td style="width:25%;" class="active">
+                <td class="active">
                     <a href="<?php echo element('post_url', $view); ?>">
                         <img src="<?php echo base_url('assets/images/temp/submenu12.png')?>" alt="sub01"> 
                         업소정보
                     </a>
                 </td>
-                <td style="width:25%;">
+                <td>
                     <a href="<?php echo base_url('document/map/'.element('post_id', element('post', $view))); ?>">
                         <img src="<?php echo base_url('assets/images/temp/submenu10.png')?>" alt="sub02">
                         위치확인
                     </a>
                 </td>
-                <td style="width:25%;">
+                <td>
                     <a href="<?php echo base_url('/board/vtn_review?post_parent='.element('post_id', element('post', $view)))?>">
                         <img src="<?php echo base_url('assets/images/temp/submenu13.png')?>" alt="sub03">
                         업소후기
                     </a>
                 </td>
-                <td style="width:25%;">
+                <td>
                    <a href="tel:<?php echo $tel1 ?>">
                         <img src="<?php echo base_url('assets/images/temp/submenu11.png')?>" alt="sub04">
                         전화걸기
@@ -89,7 +89,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </table>
     </section>
     <section class="store">
-        <div class="contents-view">
+        <div class="contents-view" style="margin-bottom: 0;">
             <!-- <div class="contents-view-img">
                 <?php
                 if (element('file_image', $view)) {
@@ -145,7 +145,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
     <div class="clearfix"></div>
 
    
-    <div class="border_button mt20 mb20">
+    <div class="border_button mt20 mb20" style="padding:0 3%; float: right; margin-bottom:3%">
         <div class="btn-group pull-left" role="group" aria-label="...">
             <?php if (element('modify_url', $view)) { ?>
                 <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>

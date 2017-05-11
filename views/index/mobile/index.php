@@ -134,12 +134,12 @@
         </section>
 
     <!-- 광고 배너 영역 -->
-        <section class="ad">
+        <section class="ad" style="margin-bottom:0.5%">
             <h4>ad01</h4>
             <?php echo banner('index_banner_1'); ?>
         </section>
 
-        <section class="ad">
+        <section class="ad" style="margin-bottom:0.5%">
             <h4>ad02</h4>
             <?php echo banner('index_banner_2'); ?>
         </section>

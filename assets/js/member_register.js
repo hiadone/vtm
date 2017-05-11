@@ -15,6 +15,7 @@
                     response = true;
                 } else {
                     response = false;
+                    $.validator.addMethod('is_userid_available',false,'aaa');
                 }
             }
         });

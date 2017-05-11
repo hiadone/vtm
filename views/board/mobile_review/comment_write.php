@@ -48,7 +48,7 @@ if (element('can_comment_write', element('comment', $view)) OR element('show_tex
                     </div>
                 <?php } ?>
                 <div class="">
-                    <div class="">
+                    <div class="" style="display: inline-block; width: 100%;">
                         <button type="button" class="btn btn-danger btn-sm" id="cmt_btn_submit" onClick="<?php if ( ! element('can_comment_write', element('comment', $view))) {echo 'alert(\'' . html_escape(element('can_comment_write_message', element('comment', $view))) . '\');return false;"';} else { ?>add_comment(this.form, '<?php echo element('post_id', element('post', $view)); ?>');<?php } ?> ">등 록</button>
                     </div>
                     <div class="btn-group pull-right" role="group" aria-label="...">

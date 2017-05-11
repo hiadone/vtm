@@ -183,9 +183,9 @@
                 <?php } ?>
             </div>
         <?php } ?>
-             <section class="table-bottom text-center mb10"> 
-                <button type="button" class="btn btn-default btn-sm btn-history-back">취소</button> 
+             <section class="table-bottom text-center mb10" style="text-align: right;">            
                 <button type="submit" class="btn btn-success btn-sm">작성완료</button> 
+                <button type="button" class="btn btn-default btn-sm btn-history-back" style="font-weight: normal;">취소</button> 
             </section>
         </div>
     <?php echo form_close(); ?>

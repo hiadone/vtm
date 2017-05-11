@@ -218,7 +218,7 @@ if (element('menu', $layout)) {
             }
             $marginright = (($i+1)% $cols === 0) ? 0 : 2;
     ?>
-        <li class="gallery-box" style="width:49%;margin-right:<?php echo $marginright;?>%;">
+        <li class="gallery-box" >
             <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /><?php } ?>
             <a href="<?php echo element('post_url', $result); ?>" title="<?php echo html_escape(element('title', $result)); ?>">
             <figure>

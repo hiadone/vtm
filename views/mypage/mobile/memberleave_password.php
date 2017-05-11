@@ -8,18 +8,18 @@
     </section>
 
     <section class="title">
-        <table style="width:90%;">
+        <table class="main_01">
             <tr>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
+                <td>
                     <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
                 </td>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
-                    <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
+                <td>
+                    <a href="<?php echo site_url('mypage/post'); ?>">작성글</a>
                 </td>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; " >
+                <td>
                     <a href="<?php echo site_url('membermodify'); ?>">정보수정</a>
                 </td>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; " class="active">
+                <td class="active">
                    <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
                 </td>
             </tr>
@@ -37,7 +37,7 @@
         ?>  
     <section class="logout">
         <h2>
-            <img src="<?php echo base_url('/assets/images/temp/stop.png') ?>" alt="stop">
+            <img src="<?php echo base_url('/assets/images/temp/stop.png') ?>" alt="stop" style="width: 30%;">
                 정말 탈퇴 하시겠습니까?
                 <br/>
             <span>
@@ -58,10 +58,10 @@
         ?>
             <ol class="text-center">
                 <li>
-                <div class="group">
-                    <span>비밀번호</span>
-                    <input type="password" class="input px150" id="mem_password" name="mem_password"  />
-                    <button class="btn btn-primary" type="submit">확인</button>
+                <div class="group modify_01">
+                    <span class="modify_02">비밀번호</span>
+                    <input type="password" class="input px150 modify_03" id="mem_password" name="mem_password"  />
+                    <button class="btn btn-primary modify_04" type="submit">확인</button>
                 </div>
                 </li>
             </ol>

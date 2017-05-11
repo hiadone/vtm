@@ -3,7 +3,7 @@
 <div class="wrap mypage">
     <section class="title02">
         <h2>내 정보</h2>
-        <p><span>내 정보</span>를 확인&수정 하실 수 있습니다.</p>
+        <p><span>내 정보</span>를 확인 하실 수 있습니다.</p>
     </section>
     
     <section class="myinfo">
@@ -17,33 +17,33 @@
                 <figure>
                     <img src="<?php echo base_url('assets/images/temp/level.png') ?>" alt="user">
                     <figcaption>
-                        Level <?php echo html_escape($this->member->item('mem_level')); ?>
+                        하사 <?php echo html_escape($this->member->item('mem_level')); ?>
                     </figcaption>
                 </figure>
             </figcaption>
         </figure>
 
-        <button>
-            <a href="<?php echo site_url('membermodify'); ?>">
-                정보수정
+        <button style="height:23px">
+            <a href="" style="font-family: 'Jeju Gothic', sans-serif; font-weight: normal; ">
+                등급혜택 보기 
             </a>
         </button>
     </section>
 
 
     <section class="title">
-        <table style="width:90%;">
+        <table class="main_01">
             <tr>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; " class="active">
+                <td class="active">
                     <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
                 </td>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; ">
-                    <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
+                <td>
+                    <a href="<?php echo site_url('mypage/post'); ?>">작성글</a>
                 </td>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; ">
+                <td>
                     <a href="<?php echo site_url('membermodify'); ?>">정보수정</a>
                 </td>
-                <td style="width:25%; padding:2% 0; box-sizing: border-box; ">
+                <td>
                    <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
                 </td>
             </tr>

@@ -41,6 +41,140 @@ $lat = !empty($geo_arr[0]) ? $geo_arr[0] : '37.566535';
 $lng = !empty($geo_arr[1]) ? $geo_arr[1] : '126.977969';
 $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
 ?>
+<style>
+#directionsPanel{
+  margin-bottom: 3% !important;
+  padding: 0 3%;
+  box-sizing: border-box;
+}
+
+.adp{
+  font-family: 'Jeju Gothic', sans-serif;
+  font-size: 11px;
+  line-height: 14px;
+}
+
+.adp-warnbox{
+  margin: 0;
+  margin-bottom:3%;
+}
+
+.warnbox-c2,.warnbox-c1{
+  margin: 0;
+  background-color: transparent;
+  height: 0;
+}
+
+.warnbox-content{
+    margin: 0;
+    background-color: transparent;
+    padding: 0;
+}
+
+.adp table{
+  margin: 0;
+}
+
+.adp-placemark{
+  margin: 0;
+  margin-bottom:3%;
+  border:0;
+  background-color: transparent;
+  font-family:  'Jeju Gothic', sans-serif;
+}
+
+img.adp-marker{
+  width: 15px;
+  height: 25px;
+  margin-right: 5px;
+}
+
+ .adp-text{
+  vertical-align: middle;
+  font-family: 'Jeju Gothic', sans-serif;
+  font-size: 13px;
+ }
+
+ .adp-summary{ 
+  border-bottom:1px solid #ededed;
+  text-align:right;
+  padding:0;
+  padding-right: 2%;
+  padding-bottom: 0.5%; 
+ }
+
+  .adp-summary span{
+    font-size: 13px;
+  }
+
+  .adp-summary span:last-child{
+    color:#c20e58;
+  }
+
+  .adp > div:nth-child(3) > div:nth-child(2){
+    padding:1.5% 0;
+    padding-left: 5%;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .adp table{
+    width: 100%;
+  }
+
+  .adp-substep{
+    padding: 0;
+    border-top:0;
+  }
+
+  .adp-substep img{
+    width: 20px;
+    height: 20px;
+    top: 0;
+    margin-right: 3px;
+  }
+
+  .adp-substep > div > span{
+    margin-left: 0 !important;
+    font-size: 13px;
+    font-family: 'Jeju Gothic', sans-serif;
+    font-weight: normal;
+  }
+
+  .adp-details{
+    color:#c20e58;
+    padding-right: 2%;
+    text-align: right;
+  }
+
+  .adp-details > span{
+    font-weight: bold !important;
+  }
+
+  .adp-details > span > span{
+    font-size: 13px;
+  }
+
+  .adp > div:nth-child(3){
+    margin-bottom:3%;
+  }
+
+  .adp > div:nth-child(3) > div:nth-child(3){
+    padding: 1.5% 0;
+    border-bottom:1px solid #ededed;
+  }
+
+   .adp-legal {
+    text-align:right;
+    padding-right: 2%;
+    font-size: 10px;
+   }
+
+
+
+
+
+
+</style>
 <div class="wrap">
 
   <!-- title 영역 -->
@@ -135,7 +269,7 @@ $zoom = !empty($geo_arr[2]) ? $geo_arr[2] : 14;
 <div class="map">
 
         
-        <div id="map-canvas" style="width: 100%; height: 300px;margin-bottom:10px"></div>
+        <div id="map-canvas" style="width: 100%; height: 300px;margin-bottom:3%"></div>
         <div id="directionsPanel" style="width: 100%; height: 100%;margin-bottom:10px"></div>
 </div>
  <!-- 광고 배너 영역 -->

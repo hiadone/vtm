@@ -1,29 +1,32 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
 
 <div class="wrap mypage">
+
+    <section class="title02">
+        <h2>회원 정보 수정</h2>
+        <p><span>내 정보</span>를 수정 하실 수 있습니다.</p>
+    </section>
+
     <section class="title">
-        <table>
+        <table class="main_01">
             <tr>
-                <td style="width:25%;" >
+                <td>
                     <a href="<?php echo site_url('mypage'); ?>">내 정보</a>
                 </td>
-                <td style="width:25%;">
-                    <a href="<?php echo site_url('mypage/post'); ?>">나의 작성글</a>
+                <td>
+                    <a href="<?php echo site_url('mypage/post'); ?>">작성글</a>
                 </td>
-                <td style="width:25%;" class="active">
+                <td class="active">
                     <a href="<?php echo site_url('membermodify'); ?>" >정보수정</a>
                 </td>
-                <td style="width:25%;">
+                <td>
                    <a href="<?php echo site_url('membermodify/memberleave'); ?>">탈퇴하기</a>
                 </td>
             </tr>
         </table>
     </section>
 
-    <section class="title02">
-        <h2>회원 정보 수정</h2>
-        <p><span>내 정보</span>를 확인&수정 하실 수 있습니다.</p>
-    </section>
+
 
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
@@ -32,22 +35,22 @@
     $attributes = array('name' => 'fregisterform', 'id' => 'fregisterform');
     echo form_open_multipart(current_url(), $attributes);
     ?>
-        <ol class="member_modify">
+        <ol class="member_modify member_01">
             <li>
                 <span>아이디</span>
-                <div class="form-text text-primary"><strong><?php echo $this->member->item('mem_userid'); ?></strong></div>
+                <div class="form-text text-primary" style="text-align: left; padding-left: 25%;"><strong><?php echo $this->member->item('mem_userid'); ?></strong></div>
             </li>
             <li>
                 <span>패스워드</span>
-                <div class="form-text text-primary"><a href="<?php echo site_url('membermodify/password_modify'); ?>" class="btn btn-default" title="패스워드 변경">패스워드 변경</a></div>
+                <div class="form-text text-primary" style="text-align: left; padding-left: 25%;"><a href="<?php echo site_url('membermodify/password_modify'); ?>" class="btn btn-default" title="패스워드 변경">패스워드 변경</a></div>
             </li>
             <?php foreach (element('html_content', $view) as $key => $value) { ?>
                 <li>
                     <span><?php echo element('display_name', $value); ?></span>
-                    <div class="form-text text-primary group">
+                    <div class="form-text text-primary group" style="text-align:left; ">
                         <?php echo element('input', $value); ?>
                         <?php if (element('description', $value)) { ?>
-                            <p class="help-block"><?php echo element('description', $value); ?></p>
+                            <p class="help-block help_01" style="line-height: 13px;"><?php echo element('description', $value); ?></p>
                         <?php } ?>
                     </div>
                 </li>
@@ -137,9 +140,15 @@
                 </div>
             </li> -->
             <li style="text-align:right">
-                <button type="submit" class="btn btn-success">수정</button>
+                <button style="width:30%;" type="submit" class="btn btn-success">수 정 하 기</button>
             </li>
         </ol>
+
+    <section class="ad">
+        <h4>ad</h4>
+        <?php echo banner("mypage_banner_1") ?>
+    </section>
+
     <?php echo form_close(); ?>
 </div>
 
