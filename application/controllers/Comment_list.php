@@ -239,7 +239,7 @@ class Comment_list extends CB_Controller
                 $result['list'][$key]['can_reply'] = false;
                 if ( ! element('post_del', $post) && ! element('cmt_del', $val)) {
                     if ( ! element('mem_id', $val)) {
-                        $result['list'][$key]['can_delete'] = true;
+                        //$result['list'][$key]['can_delete'] = true;
                     }
                     if ($is_admin !== false
                         OR (element('mem_id', $val) && $mem_id === abs(element('mem_id', $val)))) {

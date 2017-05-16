@@ -18,9 +18,7 @@ if (element('list', element('data', $view))) {
                 <span>
                     <?php echo element('display_name', $result); ?> | 
                     작성일: <?php echo element('display_datetime', $result); ?>
-                    <?php if (element('display_ip', $result)) { ?>
-                        <span class="ip"><i class="fa fa-map-marker"></i> <?php echo element('display_ip', $result); ?></span>
-                    <?php } ?>
+                    
                     
                     <?php
                     if ( ! element('post_del', element('post', $view)) && ! element('cmt_del', $result)) {

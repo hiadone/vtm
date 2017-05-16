@@ -32,7 +32,7 @@
         <div class="table-box">
             <div class="table-body">
                 <div class="msg_content" style="text-align:center;">
-                        <img src="/assets/images/temp/check.png">
+                        <img src="<?php echo base_url('/assets/images/temp/check.png')?>">
                     <?php echo element('result_message', $view); ?>
                     <p class="btn_final final_01">
                         <a href="<?php echo site_url(); ?>"  style="color:#fff" class="btn btn-danger" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>">홈페이지로 이동

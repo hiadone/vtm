@@ -15,7 +15,7 @@
                     response = true;
                 } else {
                     response = false;
-                    $.validator.addMethod('is_userid_available',false,'aaa');
+                    $.validator.addMethod('is_userid_available',false,data.reason);
                 }
             }
         });
@@ -39,6 +39,7 @@
                     response = true;
                 } else {
                     response = false;
+                    $.validator.addMethod('is_email_available',false,data.reason);
                 }
             }
         });
@@ -62,6 +63,7 @@
                     response = true;
                 } else {
                     response = false;
+                    $.validator.addMethod('is_password_available',false,data.reason);
                 }
             }
         });
@@ -85,6 +87,7 @@
                     response = true;
                 } else {
                     response = false;
+                    $.validator.addMethod('is_nickname_available',false,data.reason);
                 }
             }
         });

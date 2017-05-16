@@ -21,7 +21,7 @@
                             </label>
                         </div>
                     </li>
-                    <li class="mt20">
+                    <li class="mt3per">
                         <p><strong>개인정보취급방침안내</strong></p>
                         <textarea class="input" rows="3" readonly="readonly"><?php echo html_escape(element('member_register_policy2', $view)); ?></textarea>
                         <div class="checkbox">

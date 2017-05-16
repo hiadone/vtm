@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-9 col-sm-offset-3 mt20">
+            <div class="col-sm-9 col-sm-offset-3 mt3per">
                 <a href="<?php echo site_url('membermodify'); ?>" class="btn btn-default btn-sm" title="회원정보 변경">회원정보 변경</a>
             </div>
         </div>

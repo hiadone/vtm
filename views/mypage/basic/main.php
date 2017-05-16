@@ -59,7 +59,7 @@
             <span>최근 로그인</span>
             <div class="form-text"><?php echo display_datetime($this->member->item('mem_lastlogin_datetime'), 'full'); ?></div>
         </li>
-        <li class="mt20">
+        <li class="mt3per">
             <span></span>
             <div class="group">
                 <a href="<?php echo site_url('membermodify'); ?>" class="btn btn-default btn-sm" title="회원정보 변경">회원정보 변경</a>

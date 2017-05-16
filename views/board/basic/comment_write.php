@@ -29,7 +29,7 @@ if (element('can_comment_write', element('comment', $view)) OR element('show_tex
                 <?php
                 if (element('is_comment_name', element('comment', $view))) {
                 ?>
-                    <div class="form-group mb20">
+                    <div class="form-group mb3per">
                         <label for="cmt_nickname">이름</label>
                         <input type="text" class="input" id="cmt_nickname" name="cmt_nickname" value="<?php echo set_value('cmt_nickname'); ?>" />
                         <label for="cmt_password">비밀번호</label>
@@ -68,7 +68,7 @@ if (element('can_comment_write', element('comment', $view)) OR element('show_tex
                 </div>
 
                 <?php if ($this->member->is_member() === false) { ?>
-                    <div class="form-inline passcord mt20">
+                    <div class="form-inline passcord mt3per">
                         <?php if ($this->cbconfig->item('use_recaptcha')) { ?>
                             <div class="captcha" id="recaptcha"></div>
                             <button type="button" id="captcha" style="display:none;"></button>

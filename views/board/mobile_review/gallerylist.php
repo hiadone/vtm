@@ -278,7 +278,7 @@ if (element('menu', $layout)) {
 
     </section>
     <?php echo form_close(); ?>
-    <div class="border_button  mb20">
+    <div class="border_button  mb3per">
         <div class="pull-left mr10">
             <!-- <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a> -->
             <?php if (element('search_list_url', element('list', $view))) { ?>

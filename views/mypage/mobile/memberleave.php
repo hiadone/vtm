@@ -35,7 +35,7 @@
     </div>
 
     <p class="btn_final" style="width: 30%;background-color: #231b26;padding:1.5% 0 1%;box-sizing:border-box;border-radius: 4px;outline: none;margin: 0 auto 10%;text-align: center;">
-                <a href="&lt;?php echo site_url(); ?&gt;" class="btn btn-danger" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>" style="color:#fff;">홈페이지로 이동</a>
+                <a href="<?php echo site_url(); ?>" class="btn btn-danger" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>" style="color:#fff;">홈페이지로 이동</a>
     </p>
 
         <section class="ad">

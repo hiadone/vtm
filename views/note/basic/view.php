@@ -11,7 +11,7 @@
         <li><a href="<?php echo site_url('note/write'); ?>" class="btn btn-default">쪽지 쓰기</a></li>
     </ul>
 
-    <div class="note-view mt20">
+    <div class="note-view mt3per">
         <div class="note-view-title">
             <?php echo html_escape(element('nte_title', element('data', $view))); ?> <small><?php echo element('display_name', element('data', $view)); ?>, <?php echo display_datetime(element('nte_datetime', element('data', $view)), 'full'); ?> </small>
         </div>

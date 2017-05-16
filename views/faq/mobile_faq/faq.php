@@ -50,7 +50,7 @@ if ( ! element('list', element('data', $view))) {
 <?php
 if ($this->member->is_admin() === 'super') {
 ?>
-    <div class="text-center mb20">
+    <div class="text-center mb3per">
         <a href="<?php echo admin_url('page/faq'); ?>?fgr_id=<?php echo element('fgr_id', element('faqgroup', $view)); ?>" class="btn btn-black btn-sm" target="_blank" title="FAQ 수정">FAQ 수정</a>
     </div>
 <?php

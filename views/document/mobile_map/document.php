@@ -1,3 +1,4 @@
+<?php $this->managelayout->add_css(base_url('assets/css/dialog.css')); ?>
 <?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&language=ko'); 
 
 $menuName="";
@@ -171,6 +172,11 @@ img.adp-marker{
 
 
 
+.popup_layer {position:absolute;border:1px solid #e9e9e9;background:#fff}
+.popup_layer_footer {height:30px;background:#4F4F4F;color:#fff;text-align:right}
+.popup_layer_footer div {;padding:6px 0px;border:0;background:#4F4F4F;color:#FFFFFF;font-size:15px;
+    font-weight: bold;}
+
 
 
 
@@ -218,17 +224,15 @@ img.adp-marker{
     <section class="store">
       <table>
         <tr>
-          <td class="border">
-            <span id="formatedAddress"></span></td>
+          <td class="border" >
+            <span id="formatedAddress" ></span></td>
             <!-- <input type="text" value="내위치 · 하노이시 하노이동"> 
             <img src="<?php echo base_url('assets/images/temp/clear.png')?>" alt="X"> -->
           </td>
-          <td rowspan="2">
-            길찾기
-          </td>
+          
         </tr>
         <tr>
-          <td><span id=""></span></td>
+          <td class='text-center'><span id="directionsAddress"></span></td>
         </tr>
       </table>
     </section>
@@ -239,7 +243,7 @@ img.adp-marker{
       <h4>찾아가는 방법</h4>
       <table>
         <tr>
-          <td class="active">
+          <td >
             <figure>
               <img src="<?php echo base_url('assets/images/temp/traffic02.png')?>" alt="traffic02">
               <figcaption>
@@ -248,11 +252,11 @@ img.adp-marker{
             </figure>
           </td>
 
-          <td>
+          <td class="active">
             <figure>
-              <img src="<?php echo base_url('assets/images/temp/traffic01.png')?>" alt="traffic01">
+              <img src="<?php echo base_url('assets/images/temp/google_map.png')?>" alt="google_map">
               <figcaption>
-                자동차
+                지 도
               </figcaption>
             </figure>
           </td>
@@ -270,7 +274,23 @@ img.adp-marker{
 
         
         <div id="map-canvas" style="width: 100%; height: 300px;margin-bottom:3%"></div>
-        <div id="directionsPanel" style="width: 100%; height: 100%;margin-bottom:10px"></div>
+        <div id="directionsPanel" style="width: 100%; height: 100%;margin-bottom:10px;display:none"></div>
+</div>
+<?php if (!get_cookie('popup_layer_gps')) { ?>
+<div id="dialog"  style="display:none">
+  <img src="<?php echo base_url('assets/images/temp/gps.png') ?>" alt="benefit" style="width:100%;display:block" >
+
+  <div class="popup_layer_footer" >
+  <div style="width:70%;" class="popup_layer_reject pull-left text-center" data-wrapper-id="popup_layer_gps">다시보지않기
+  </div>
+  <div style="width:30%" class="popup_layer_close pull-right text-center" >닫기
+  </div>
+            
+        </div>
+</div>
+<?php } ?>
+<div id="dialog2"  style="display:none">
+  <img src="<?php echo base_url('assets/images/temp/gps.png') ?>" alt="benefit" style="width:100%;display:block" >
 </div>
  <!-- 광고 배너 영역 -->
   <section class="ad">
@@ -292,8 +312,8 @@ var lat = '<?php echo $lat ?>';
 var lng= '<?php echo $lng ?>';
 // var lat = '37.558166';
 // var lng= '126.928016';
-var size_x = 50; // 마커로 사용할 이미지의 가로 크기
-var size_y = 50; // 마커로 사용할 이미지의 세로 크기  
+var size_x = 30; // 마커로 사용할 이미지의 가로 크기
+var size_y = 30; // 마커로 사용할 이미지의 세로 크기  
 var geolocation_flag=false;
 var travelMode=google.maps.TravelMode.TRANSIT;
 var destination_;
@@ -344,7 +364,7 @@ var destination_;
 
             var image = new google.maps.MarkerImage( 'https://d30y9cdsu7xlg0.cloudfront.net/png/462-200.png',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
 
-            if(compa[0]=='내 위치'){
+            if(compa[0]==='내 위치'){
               var image = new google.maps.MarkerImage( 'https://www.clker.com/cliparts/B/B/1/E/y/r/marker-pin-google.svg',new google.maps.Size(size_x, size_y),null,null,new google.maps.Size(size_x, size_y));
             }
             
@@ -371,6 +391,13 @@ var destination_;
                     // infowindow.setContent(this.content);
                     // infowindow.open(map, this);
                     onClickDistance(marker.position);
+
+                    if(marker.title !=='내 위치'){
+                      document.getElementById('directionsAddress').innerHTML = '';
+                      document.getElementById('directionsAddress').innerHTML = marker.title +' : ';
+                      geocoder.geocode({latLng:marker.position},directionsGeocodeResult);
+
+                    }
                 };
             })(marker, i, infowindow));
             // bounds.extend(marker.position);
@@ -430,10 +457,24 @@ var destination_;
               if (results.length === 0) {
                   document.getElementById('formatedAddress').innerHTML = 'None';
               } else {
-                  document.getElementById('formatedAddress').innerHTML = results[0].formatted_address;
+                  document.getElementById('formatedAddress').innerHTML = '내 위치 : '+ results[0].formatted_address;
               }
           } else {
               document.getElementById('formatedAddress').innerHTML = 'Error';
+          }
+      }
+
+      function directionsGeocodeResult(results, status) 
+      { 
+          
+          if (status === 'OK') {
+              if (results.length === 0) {
+                  document.getElementById('directionsAddress').innerHTML += 'None';
+              } else {
+                  document.getElementById('directionsAddress').innerHTML += results[0].formatted_address;
+              }
+          } else {
+              document.getElementById('directionsAddress').innerHTML += 'Error';
           }
       }
 
@@ -448,6 +489,7 @@ var destination_;
           if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
           } else {
+            $('#directionsPanel').html('');
             window.alert('해당 주소는 길찾기 서비스가 제공되지 않습니다.');
           }
         });
@@ -478,6 +520,11 @@ var destination_;
     geolocation_flag=false;
     vtn_marker.push(['내 위치',lat,lng]);
     initialize(lat,lng);
+
+    document.getElementById('directionsAddress').innerHTML = '';
+    document.getElementById('directionsAddress').innerHTML = '<?php echo element('post_title', element('post',$view)) ?> : ';
+    geocoder.geocode({latLng:new google.maps.LatLng('<?php echo $lat?>','<?php echo $lng?>')},directionsGeocodeResult);
+    $( "#dialog" ).dialog( "open" );
   }
 
   function showPosition(position)
@@ -489,35 +536,76 @@ var destination_;
     geolocation_flag=true;
     vtn_marker.push(['내 위치',lat,lng]);
     initialize(lat,lng);
+    onClickDistance(new google.maps.LatLng('<?php echo $lat?>','<?php echo $lng?>'));
+    document.getElementById('directionsAddress').innerHTML = '';
+    document.getElementById('directionsAddress').innerHTML = '<?php echo element('post_title', element('post',$view)) ?> : ';
+    geocoder.geocode({latLng:new google.maps.LatLng('<?php echo $lat?>','<?php echo $lng?>')},directionsGeocodeResult);
   }
 
   
 
 $('.method table tr td:nth-child(1)').click(function(){
 
-  travelMode=google.maps.TravelMode.TRANSIT;
-  if(destination_)  onClickDistance(destination_);
+  // travelMode=google.maps.TravelMode.TRANSIT;
+  // if(destination_)  onClickDistance(destination_);
   $('.method table tr td').removeClass('active');
   $(this).addClass('active');
+  $('#map-canvas').hide();
+  $('#directionsPanel').fadeIn();
+  if(!geolocation_flag) $( "#dialog2" ).dialog( "open" );
 });
 
 $('.method table tr td:nth-child(2)').click(function(){
 
-  travelMode=google.maps.TravelMode.DRIVING;
-  if(destination_)  onClickDistance(destination_);
-      $('.method table tr td').removeClass('active');
-      $(this).addClass('active');
+  // travelMode=google.maps.TravelMode.DRIVING;
+  // if(destination_)  onClickDistance(destination_);
+  $('.method table tr td').removeClass('active');
+  $(this).addClass('active');
+  $('#directionsPanel').hide();
+  $('#map-canvas').fadeIn();    
+      
 });
 
-  // X 클릭시 돋보기 이미지로 변경
-    $('.store table tr td img').click(function(){
-      if($(this).attr('src').indexOf('clear.png')){
-        $(this).attr('src' , '<?php echo base_url('assets/images/temp/find.png') ?>');
-        $('.store table tr td input').attr('value' , '');
-      }
-      else{
-        $(this).attr('src' , '<?php echo base_url('assets/images/temp/clear.png') ?>');
-        $('.store table tr td input').attr('value' , '내위치 · 하노이시 하노이동');
-      }
+
+
+$( "#dialog" ).dialog({
+  autoOpen: false,
+  modal : true,
+  
+  
+  hide: {
+    effect: "fade",
+    duration: 300
+  },
+  open: function() { jQuery('div.ui-widget-overlay').bind('click', function() { jQuery('#dialog').dialog('close'); }) }
+});
+
+$( "#dialog2" ).dialog({
+  autoOpen: false,
+  modal : true,
+  
+  
+  hide: {
+    effect: "fade",
+    duration: 300
+  },
+  open: function() { jQuery('div.ui-widget-overlay').bind('click', function() { jQuery('#dialog2').dialog('close'); }) }
+});
+
+
+$(document).on('click', '.popup_layer_reject', function() {
+        var cookie_name = $(this).attr('data-wrapper-id');
+        var cookie_expire = 100000;
+        $( "#dialog" ).dialog( "close" );
+        set_cookie(cookie_name, 1, cookie_expire, cb_cookie_domain);
     });
+  
+
+$( ".popup_layer_close" ).on( "click", function() {
+  $( "#dialog" ).dialog( "close" );
+});
+
+$( "#dialog2" ).on( "click", function() {
+  $( "#dialog2" ).dialog( "close" );
+});
 </script>

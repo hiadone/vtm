@@ -52,7 +52,7 @@
                 <p><strong>포인트</strong> :<a href="<?php echo site_url('mypage/point'); ?>" title="나의 포인트"><?php echo number_format($this->member->item('mem_point')); ?> 점</a></p>
             <?php } ?>
         </div>
-        <ul class="mt20">
+        <ul class="mt3per">
             <li><a href="javascript:;" onClick="open_profile('<?php echo $this->member->item('mem_userid'); ?>');" class="btn btn-default" title="나의 프로필">프로필</a></li>
             <li><a href="<?php echo site_url('mypage'); ?>" class="btn btn-default" title="마이페이지">마이페이지</a></li>
             <li><a href="<?php echo site_url('mypage/scrap'); ?>" class="btn btn-default" title="나의 스크랩">스크랩</a></li>

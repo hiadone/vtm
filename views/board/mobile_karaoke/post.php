@@ -145,8 +145,8 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
     <div class="clearfix"></div>
 
    
-    <div class="border_button mt20 mb20" style="padding:0 3%; float: right; margin-bottom:3%">
-        <div class="btn-group pull-left" role="group" aria-label="...">
+    <div class="border_button  mb3per">
+        <div class="btn-group pull-right" role="group" aria-label="...">
             <?php if (element('modify_url', $view)) { ?>
                 <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>
             <?php } ?>
@@ -165,7 +165,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
             <?php } ?>
         </div>
         <?php if (element('write_url', $view)) { ?>
-            <div class="pull-right">
+            <div class="pull-left">
                 <a href="<?php echo element('write_url', $view); ?>" class="btn btn-default btn-sm">글쓰기</a>
             </div>
         <?php } ?>

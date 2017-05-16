@@ -173,7 +173,7 @@
     if (element('list', element('data', element('list', $view)))) {
         foreach (element('list', element('data', element('list', $view))) as $result) {
             if ($cols && $i % $cols === 0) {
-                echo '<ul class="mt20">';
+                echo '<ul class="mt3per">';
                 $open = true;
             }
             $marginright = (($i+1)% $cols === 0) ? 0 : 2;

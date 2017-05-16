@@ -118,7 +118,7 @@
                 입력하실 수 있습니다.
             </div>
         <?php } ?>
-        <div class="form-group mb20">
+        <div class="form-group mb3per">
             <?php if ( ! element('use_dhtml', element('board', $view))) { ?>
                 <div class="btn-group pull-right mb10">
                     <button type="button" class="btn btn-default btn-sm" onClick="resize_textarea('post_content', 'down');"><i class="fa fa-plus fa-lg"></i></button>
@@ -164,7 +164,7 @@
         }
         ?>
         <?php if ($this->member->is_member() === false) { ?>
-            <div class="well text-center mt20">
+            <div class="well text-center mt3per">
                 <?php if ($this->cbconfig->item('use_recaptcha')) { ?>
                     <div class="captcha" id="recaptcha"><button type="button" id="captcha"></button></div>
                     <input type="hidden" name="recaptcha" />
@@ -175,7 +175,7 @@
                 <?php } ?>
             </div>
         <?php } ?>
-            <div class="table-bottom text-center mt20">
+            <div class="table-bottom text-center mt3per">
                 <button type="button" class="btn btn-default btn-sm btn-history-back">취소</button>
                 <button type="submit" class="btn btn-success btn-sm">작성완료</button>
             </div>

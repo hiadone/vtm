@@ -201,7 +201,7 @@
         </table>
     <?php echo form_close(); ?>
 
-    <div class="table-bottom mt20">
+    <div class="table-bottom mt3per">
         <div class="pull-left mr10">
             <a href="<?php echo element('list_url', element('list', $view)); ?>" class="btn btn-default btn-sm">목록</a>
             <?php if (element('search_list_url', element('list', $view))) { ?>

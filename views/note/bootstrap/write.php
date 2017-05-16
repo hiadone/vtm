@@ -16,7 +16,7 @@
             <a href="<?php echo site_url('note/write'); ?>" class="btn btn-default active">쪽지 쓰기</a>
         </div>
     </div>
-    <div class="form-horizontal mt20">
+    <div class="form-horizontal mt3per">
         <?php
         echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
         echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');

@@ -27,7 +27,7 @@
     </section>
 
 
-    <div class="mt20" style="width:94%; margin:0 auto 3%;">
+    <div class="mt3per" style="width:94%; margin:0 auto 3%;">
         <?php
         echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
         echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');

@@ -4,7 +4,7 @@
 
 <div class="board">
     <h3><?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?></h3>
-    <div class="row mb20">
+    <div class="row mb3per">
         <div class="col-xs-6 form-inline">
             <?php if ( ! element('access_list', element('board', element('list', $view))) && element('use_rss_feed', element('board', element('list', $view)))) { ?>
                 <a href="<?php echo rss_url(element('brd_key', element('board', element('list', $view)))); ?>" class="btn btn-danger btn-sm" title="<?php echo html_escape(element('board_name', element('board', element('list', $view)))); ?> RSS 보기"><i class="fa fa-rss"></i></a>

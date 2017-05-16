@@ -50,7 +50,7 @@
         </div>
     </form>
 </div>
-<ul class="nav nav-tabs mt20">
+<ul class="nav nav-tabs mt3per">
 <?php
 if (element('board_rows', $view)) {
 ?>
@@ -64,7 +64,7 @@ if (element('board_rows', $view)) {
 }
 ?>
 </ul>
-<div class="media-box mt20" id="searchresult">
+<div class="media-box mt3per" id="searchresult">
 <?php
 if (element('list', element('data', $view))) {
     foreach (element('list', element('data', $view)) as $result) {

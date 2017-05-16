@@ -1,5 +1,6 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
-
+<?php $this->managelayout->add_css(base_url('assets/css/dialog.css')); ?>
+</head>
 <div class="wrap mypage">
     <section class="title02">
         <h2>내 정보</h2>
@@ -17,17 +18,18 @@
                 <figure>
                     <img src="<?php echo base_url('assets/images/temp/level.png') ?>" alt="user">
                     <figcaption>
-                        하사 <?php echo html_escape($this->member->item('mem_level')); ?>
+                        하사 <?php //echo html_escape($this->member->item('mem_level')); ?>
                     </figcaption>
                 </figure>
             </figcaption>
         </figure>
 
-        <button style="height:23px">
-            <a href="" style="font-family: 'Jeju Gothic', sans-serif; font-weight: normal; ">
+        <button style="height:23px;font-family: 'Jeju Gothic', sans-serif; font-weight: normal; " id="opener">
                 등급혜택 보기 
-            </a>
         </button>
+        <div id="dialog"  style="display:none">
+            <img src="<?php echo base_url('assets/images/temp/benefit.png') ?>" alt="benefit" style="width:100%" >
+        </div>
     </section>
 
 
@@ -65,3 +67,30 @@
     </section>
 
 </div>
+<script type="text/javascript">
+
+$( "#dialog" ).dialog({
+  autoOpen: false,
+  modal : true,
+  
+  show: {
+    effect: "blind",
+    duration: 200
+  },
+  hide: {
+    effect: "fade",
+    duration: 300
+  },
+  open: function() { jQuery('div.ui-widget-overlay').bind('click', function() { jQuery('#dialog').dialog('close'); }) }
+});
+
+$( "#opener" ).on( "click", function() {
+  $( "#dialog" ).dialog( "open" );
+});
+$( "#dialog" ).on( "click", function() {
+  $( "#dialog" ).dialog( "close" );
+});
+
+</script>
+
+

@@ -14,7 +14,7 @@
     <?php
     echo validation_errors('<div class="alert alert-warning" role="alert">', '</div>');
     echo show_alert_message(element('message', $view), '<div class="alert alert-auto-close alert-dismissible alert-info"><button type="button" class="close alertclose" >&times;</button>', '</div>');
-    $attributes = array('class' => 'mt20', 'name' => 'fnote', 'id' => 'fnote');
+    $attributes = array('class' => 'mt3per', 'name' => 'fnote', 'id' => 'fnote');
     echo form_open_multipart(current_full_url(), $attributes);
     ?>
         <ol>

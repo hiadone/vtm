@@ -1,5 +1,5 @@
 <h3>현재 접속자</h3>
-<table class="table table-hover mt20">
+<table class="table table-hover mt3per">
     <thead>
         <tr>
             <th>번호</th>

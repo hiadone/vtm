@@ -26,7 +26,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         <?php if (element('category', element('post', $view))) { ?>[<?php echo html_escape(element('bca_value', element('category', element('post', $view)))); ?>] <?php } ?>
         <?php echo html_escape(element('post_title', element('post', $view))); ?>
     </h3>
-    <ul class="information mb20">
+    <ul class="information mb3per">
         <li><?php echo element('display_name', element('post', $view)); ?></li>
         <li><i class="fa fa-comments"></i> <?php echo number_format(element('post_comment_count', element('post', $view))); ?></li>
         <li><i class="fa fa-eye"></i> <?php echo number_format(element('post_hit', element('post', $view))); ?></li>
@@ -138,7 +138,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
     <?php } ?>
 
-    <div class="pull-right mt20 mb20">
+    <div class="pull-right mt3per mb3per">
         <?php if ( ! element('post_del', element('post', $view)) && element('use_scrap', element('board', $view))) { ?>
             <button type="button" class="btn btn-black" id="btn-scrap" onClick="post_scrap('<?php echo element('post_id', element('post', $view)); ?>', 'post-scrap');">스크랩 <span class="post-scrap"><?php echo element('scrap_count', element('post', $view)) ? '+' . number_format(element('scrap_count', element('post', $view))) : ''; ?></span></button>
         <?php } ?>
@@ -216,7 +216,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         $this->load->view(element('view_skin_path', $layout) . '/comment_write');
     }
     ?>
-    <div class="border_button mt20 mb20">
+    <div class="border_button mt3per mb3per">
         <div class="btn-group pull-left" role="group" aria-label="...">
             <?php if (element('modify_url', $view)) { ?>
                 <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>

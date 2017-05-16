@@ -220,7 +220,7 @@ var cookie_prefix = "<?php echo config_item('cookie_prefix'); ?>";
             <div class="row">
 
                 <?php if (element('use_sidebar', $layout)) {?>
-                    <div class="col-md-9 col-sm-8 col-xs-12 mb20">
+                    <div class="col-md-9 col-sm-8 col-xs-12 mb3per">
                 <?php } ?>
 
                 <!-- 본문 시작 -->

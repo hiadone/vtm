@@ -30,7 +30,7 @@
 
     
     
-    <div class="form-horizontal mt20">
+    <div class="form-horizontal mt3per">
         <?php
         $attributes = array('class' => 'form-horizontal', 'name' => 'fconfirmpassword', 'id' => 'fconfirmpassword', 'onsubmit' => 'return confirmleave()');
         echo form_open(current_url(), $attributes);

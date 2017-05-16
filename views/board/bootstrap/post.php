@@ -125,7 +125,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
         </div>
     <?php } ?>
 
-    <div class="pull-right mb20">
+    <div class="pull-right mb3per">
         <?php if ( ! element('post_del', element('post', $view)) && element('use_scrap', element('board', $view))) { ?>
             <button type="button" class="btn btn-black btn-sm" id="btn-scrap" onClick="post_scrap('<?php echo element('post_id', element('post', $view)); ?>', 'post-scrap');">스크랩 <span class="post-scrap"><?php echo element('scrap_count', element('post', $view)) ? '+' . number_format(element('scrap_count', element('post', $view))) : ''; ?></span></button>
         <?php } ?>
@@ -204,7 +204,7 @@ if (element('syntax_highlighter', element('board', $view)) OR element('comment_s
     }
     ?>
 
-    <div class="border_button mt20 mb20">
+    <div class="border_button mt3per mb3per">
         <div class="btn-group pull-left" role="group" aria-label="...">
             <?php if (element('modify_url', $view)) { ?>
                 <a href="<?php echo element('modify_url', $view); ?>" class="btn btn-default btn-sm">수정</a>

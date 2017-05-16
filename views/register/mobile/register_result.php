@@ -8,7 +8,7 @@
             <h2>회원가입을 축하합니다</h2>
         </section>
 
-    <div class="msg_content mt20" style="text-align:center; font-size: 15px; line-height: 19px;">
+    <div class="msg_content mt3per" style="text-align:center; font-size: 15px; line-height: 19px;">
         <img src="../assets/images/temp/cong.png" alt="congratulation" style="width: 45%; margin-bottom: 0%">
         <b class="text-primary"><?php echo html_escape($this->session->flashdata('nickname')); ?></b>님의 Secret Vietnam 회원가입을<br/> 진심으로 축하드립니다. <br />
             <?php echo $this->session->flashdata('email_auth_message'); ?> 
