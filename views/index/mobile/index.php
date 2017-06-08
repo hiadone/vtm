@@ -39,6 +39,10 @@
                 autoDelay:0, // 자동 재생 전 대기 시간 설정
                 hideControlOnEnd: false, //첫번째 슬라이드 일경우 이전 버튼 삭제, 마지막 슬라이드 일 경우 다음 버튼 삭제 단, infiniteLoop: false 일 경우만 사용 가능.
                 infiniteLoop: true,//마지막에 도달 했을시, 첫페이지로 갈 것인가 멈출것인가
+
+                onSliderLoad: function(){
+                    $('section.slide').css('visibility','visible');
+                }
             });              
         });
 </script>
@@ -47,7 +51,7 @@
 
 
     <!-- 이미지 슬라이드 영역 -->
-        <section class="slide">
+        <section class="slide" style="visibility: hidden;">
             <h4>슬라이드 영역</h4>
                 <ul >
                     <?php echo banner('index_bxslider','order',3,'<li>','</li>'); ?>
