@@ -130,7 +130,7 @@ class Editorfileupload extends CB_Controller
                 if(config_item('use_file_storage') == "S3")
                     $this->aws->deleteObject($upload_path. $this->input->get('file'));
                 else unlink($upload_path . $this->input->get('file'));
-                echo $upload_path. $this->input->get('file');
+                
                 $this->Editor_image_model->delete_where($where);
             }
         }
