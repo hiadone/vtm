@@ -326,7 +326,7 @@
 		margin-bottom:2%;
 		font-size: 13px;
 		font-weight: bold;
-
+		height: 0.9em;
 		white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -339,6 +339,7 @@
 	.store_list ul li a figure figcaption p{
 		white-space: nowrap;
 		overflow: hidden;
+		margin-bottom:5%;
 		text-overflow: ellipsis;
 		white-space: normal;
 		height: 1.3em;
