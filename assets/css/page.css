@@ -341,11 +341,11 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: normal;
-		height: 28px;
+		height: 1.3em;
 		text-align: left;
 		word-wrap: break-word; 
 		display: -webkit-box;
-		-webkit-line-clamp: 2;
+		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
 		font-size: 11px;
 		padding-top: 1px;
