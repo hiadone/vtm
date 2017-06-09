@@ -326,6 +326,14 @@
 		margin-bottom:2%;
 		font-size: 13px;
 		font-weight: bold;
+
+		white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-wrap: break-word; 
+        display: -webkit-box;
+        -webkit-line-clamp: 1; -webkit-box-orient: vertical;
 		}
 
 	.store_list ul li a figure figcaption p{

@@ -194,8 +194,14 @@ $(document).ready(function(){
 
     Cookies.set('region',$(this).children('option:selected').index(), { expires: 1 },cb_cookie_domain);
        // set_cookie("region", '11', 0, cb_cookie_domain);     
-//       alert(js_mem_link[curnetIndex]);   
-       location.href=$(this).val()+"/main?curentContents="+curnetIndex;
+//       alert(js_mem_link[curnetIndex]);  
+
+        <?php if(isset($menuNum)){?>
+            location.href=$(this).val()+"/main?curentContents=<?php echo $menuNum ?>";
+        <?php } else { ?> 
+            location.href=$(this).val()+"/main?curentContents="+curnetIndex;
+        <?php } ?>
+        
     });
 
     $("header .mainmenu ul li").click(function(){
