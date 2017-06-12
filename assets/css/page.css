@@ -324,16 +324,18 @@
 	.store_list ul li a figure figcaption h2{
 		color:rgb(194, 14, 88);
 		margin-bottom:2%;
-		font-size: 13px;
+		/*font-size: 13px;*/
 		font-weight: bold;
-		height: 0.9em;
-		white-space: nowrap;
+		height: 0.97em;
+		/*white-space: nowrap;*/
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
-        word-wrap: break-word; 
+        /*word-wrap: break-word; 
         display: -webkit-box;
         -webkit-line-clamp: 1; -webkit-box-orient: vertical;
+        */
+        padding-top:2%;
 		}
 
 	.store_list ul li a figure figcaption p{
@@ -397,6 +399,7 @@
 		color:rgb(194, 14, 88);
 		font-size: 13px;
 		font-weight: bold;
+		line-height: 16px;
 		}
 
 	.store_list02 ul li a p{
