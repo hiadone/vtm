@@ -78,9 +78,10 @@ $(document).ready(function() {
                       $("#div_ajax_load_image").fadeOut();
                       $("#mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
                       
+                      if(slideIndex == 0 || slideIndex == 5){
                       var position = $("header nav ul li:nth-child("+(slideIndex+1)+")").offset(); // 위치값을 변수로 설정
                       $('header nav').animate({scrollLeft : position.left});
-
+                    }
                       $('html , body').scrollTop('top' , '0');
                     });
 
@@ -97,8 +98,10 @@ $(document).ready(function() {
         } else {
 
             $("#mainmenu ul li:nth-child("+(slideIndex+1)+")").addClass('active');
+            if(slideIndex == 0 || slideIndex == 5){
             var position = $("header nav ul li:nth-child("+(slideIndex+1)+")").offset(); // 위치값을 변수로 설정
             $('header nav').animate({scrollLeft : position.left});
+          }
             $('html , body').scrollTop('top' , '0');
             setTimeout( "reload_rg('"+js_swipe_contents[slideIndex]+"')", 500);
         }

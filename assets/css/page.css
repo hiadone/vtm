@@ -326,7 +326,7 @@
 		margin-bottom:2%;
 		/*font-size: 13px;*/
 		font-weight: bold;
-		height: 0.97em;
+		height: 0.96em;
 		/*white-space: nowrap;*/
         overflow: hidden;
         text-overflow: ellipsis;
@@ -407,7 +407,7 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: normal;
-		height: 28px;
+		height: 20px;
 		text-align: left;
 		word-wrap: break-word; 
 		display: -webkit-box;
