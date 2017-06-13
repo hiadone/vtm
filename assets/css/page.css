@@ -3,7 +3,7 @@
 
 /*wrap */
 	.wrap{
-		padding-top:30%;
+		padding-top:35%;
 		}
 
 	.wrap02{
@@ -378,6 +378,10 @@
 		box-sizing: border-box;
 		border:1px solid #ededed;
 		margin-bottom:1.5%;
+		padding:5%;
+		padding-left: 42%;
+		padding-top:3%;
+		padding-bottom:3%;
 		/*background: url(../images/photo02.png) no-repeat left top;
 		background-size: 38.5%*/
 		}
@@ -387,26 +391,28 @@
 		}
 
 	.store_list02 ul li a{
-		padding:2%;
-		padding-left: 41%;
+		/*padding:2%;
+		padding-left: 41%;*/
 		display:inline-block;
 		width:100%;
 		box-sizing: border-box;
 		}
 
 	.store_list02 ul li a h2{
-		margin-bottom:3%;
+		margin-bottom:12%;
 		color:rgb(194, 14, 88);
-		font-size: 13px;
+		font-size: 15px;
 		font-weight: bold;
 		line-height: 16px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
 		}
 
 	.store_list02 ul li a p{
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space: normal;
 		height: 20px;
 		text-align: left;
 		word-wrap: break-word; 
@@ -420,8 +426,8 @@
 
 	.store_list02 ul li a span{
 		float: right;
-		margin-top:3%;
-		font-size: 10px;
+		/*margin-top:3%;*/
+		font-size: 11px;
 		font-weight: bold;
 		}
 /* ===== */
