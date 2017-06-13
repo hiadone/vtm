@@ -383,7 +383,7 @@
 		/*padding-top:3%;
 		padding-bottom:3%;*/
 		position: relative;
-		background-size: 33% !important;
+		background-size: 33% 100% !important;
 
 		/*background: url(../images/photo02.png) no-repeat left top;
 		background-size: 38.5%*/
