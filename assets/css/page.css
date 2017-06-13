@@ -378,12 +378,21 @@
 		box-sizing: border-box;
 		border:1px solid #ededed;
 		margin-bottom:1.5%;
-		padding:5%;
-		padding-left: 42%;
-		padding-top:3%;
-		padding-bottom:3%;
+		padding:2%;
+		padding-left: 35%;
+		/*padding-top:3%;
+		padding-bottom:3%;*/
+		position: relative;
+		background-size: 33% !important;
+
 		/*background: url(../images/photo02.png) no-repeat left top;
 		background-size: 38.5%*/
+		}
+
+		.store_list02 ul li input{
+			position: absolute;
+			top: 0;
+			left: 0;
 		}
 
 	.store_list02 ul li:last-child{
@@ -399,9 +408,9 @@
 		}
 
 	.store_list02 ul li a h2{
-		margin-bottom:12%;
+		margin-bottom:3%;
 		color:rgb(194, 14, 88);
-		font-size: 15px;
+		font-size: 14px;
 		font-weight: bold;
 		line-height: 16px;
 		text-overflow: ellipsis;
@@ -427,7 +436,7 @@
 	.store_list02 ul li a span{
 		float: right;
 		/*margin-top:3%;*/
-		font-size: 11px;
+		font-size: 10px;
 		font-weight: bold;
 		}
 /* ===== */
