@@ -192,7 +192,10 @@ $(document).ready(function(){
        location.href=$(this).val()+"/main?curentContents=<?php echo $menuNum ?>";
     });
 
- 
+     <?php if(isset($menuNum) && $menuNum===5){?>
+    var position = $("header nav ul li:nth-child("+(<?php echo $menuNum ?>+1)+")").offset(); // 위치값을 변수로 설정
+    $('header nav').animate({scrollLeft : position.left});
+    <?php } ?>
     
     if($("#region option:selected").text()){
         $("#region").siblings("label").text($("#region option:selected").text());

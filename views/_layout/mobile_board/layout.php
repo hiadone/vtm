@@ -203,7 +203,10 @@ $(document).ready(function(){
         <?php } ?>
         
     });
-
+    <?php if(isset($menuNum) && $menuNum===5){?>
+    var position = $("header nav ul li:nth-child("+(<?php echo $menuNum ?>+1)+")").offset(); // 위치값을 변수로 설정
+    $('header nav').animate({scrollLeft : position.left});
+    <?php } ?>
     $("header .mainmenu ul li").click(function(){
 
         $('div.c').eq($(this).index()).click();        

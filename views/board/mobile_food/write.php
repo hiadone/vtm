@@ -152,7 +152,7 @@
         <?php } ?>
         <?php 
         $form_group_style="";
-        if($this->cbconfig->get_device_type()!=='mobile' && element('use_dhtml', element('board', $view))) $form_group_style="style='width:740px;'";
+        // if($this->cbconfig->get_device_type()!=='mobile' && element('use_dhtml', element('board', $view))) $form_group_style="style='width:740px;'";
          ?>
         <div class="form-group mb3per" <?php echo $form_group_style ?>>
             <?php if ( ! element('use_dhtml', element('board', $view))) { ?>
