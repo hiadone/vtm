@@ -378,12 +378,12 @@
 		box-sizing: border-box;
 		border:1px solid #ededed;
 		margin-bottom:1.5%;
-		padding:2%;
-		padding-left: 35%;
+		padding:3.7%;
+		padding-left: 36.7%;
 		/*padding-top:3%;
 		padding-bottom:3%;*/
 		position: relative;
-		background-size: 33% 100% !important;
+		background-size: 33% !important;
 
 		/*background: url(../images/photo02.png) no-repeat left top;
 		background-size: 38.5%*/
@@ -416,6 +416,7 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
+		padding-top: 3px;
 		}
 
 	.store_list02 ul li a p{
