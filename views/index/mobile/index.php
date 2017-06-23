@@ -47,9 +47,27 @@
         });
 </script>
 
+<script>
+    $(document).ready(function(){
+        $('.footer_02 > nav > ul > li:first-child').click(function(){
+            $('.footer_02 > nav > ul > li:nth-child(2)').toggle();
+            $('html,body').animate({scrollTop : $(document).height()} , 400);
+            if( $('.footer_02 > nav > ul > li:nth-child(2)').css('display') === 'list-item'){
+                $('.footer_02 > nav > ul > li:first-child span').css('transform' , 'rotate(45deg)');
+            }
+
+            else{
+                $('.footer_02 > nav > ul > li:first-child span').css('transform' , 'rotate(0deg)');
+            }
+        });
+
+        $('.footer_02 nav ul li:last-child').click(function(){
+            $('html,body').animate({scrollTop : 0} ,400);
+        });
+});
+</script>
+
 <div class="wrap02">
-
-
     <!-- 이미지 슬라이드 영역 -->
         <section class="slide" style="visibility: hidden;">
             <h4>슬라이드 영역</h4>
@@ -134,6 +152,45 @@
                         </figure>
                     </a>
                 </li>
+
+                <li>
+                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
+                        <figure>
+                            <img src="<?php echo base_url('assets/images/temp/main_07.png'); ?>" alt="main_07">
+                            <figcaption>
+                                <h2>여행정보</h2>
+                                <p>여행기사부터 코스정보까지 한곳에</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
+                        <figure>
+                            <img src="<?php echo base_url('assets/images/temp/main_08.png'); ?>" alt="main_0">
+                            <figcaption>
+                                <h2>베트남 소식</h2>
+                                <p>다양한 정보를 현지에서 전달</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
+                        <figure>
+                            <img src="<?php echo base_url('assets/images/temp/main_09.png'); ?>" alt="main_0">
+                            <figcaption>
+                                <h2>추천 업소</h2>
+                                <p>
+                                    이번달 가장 많이 찾아주신 업소 소개</p>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </li>
+
+
             </ul>
         </section>
 
@@ -152,5 +209,54 @@
             <h4>ad03</h4>
             <?php echo banner('index_banner_3'); ?>
         </section>
-    <!-- ========= --> 
+    
+    <!-- contect 영역 -->
+    <section class="footer_02">
+       <nav>
+           <ul>
+               <li>
+                   CONTECT US
+                   <span>+</span>
+               </li>
+
+               <li>
+                   <ul>
+                       <li>
+                            <a href="tel::012-5623-2580" style="background:url(/assets/images/temp/tel.png) no-repeat right center; display: inline-block; width: 100%; background-size: 9%; ">
+                                Telephone<br/>
+                                012-5623-2580
+                            </a>
+                        </li>
+
+                       <li>
+                            <a href="mailto:hcm0179@naver.com" style="background:url(/assets/images/temp/mail.png) no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
+                                E-Mail<br/>
+                                hcm0179@naver.com
+                            </a>
+                        </li>
+                       <li style="background:url(/assets/images/temp/talk.png) no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
+                            Kakao Talk<br/>
+                            ID : HCM7942
+                       </li>
+                   </ul>
+               </li>
+
+               <li>
+                    <a href="https://play.google.com/store/apps/details?id=com.secretvt">
+                        <figure>
+                            <figcaption>
+                                DOWNLOAD US APP
+                            </figcaption>
+                            <img src="/assets/images/temp/down.png" alt="download">
+                        </figure>
+                        
+                    </a>
+               </li>
+
+               <li>
+                    ▲<br/>TOP
+                </li>
+           </ul>
+       </nav> 
+    </section>
 </div>
