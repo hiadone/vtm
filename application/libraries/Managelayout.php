@@ -403,6 +403,54 @@ class Managelayout extends CI_Controller
     function display_footer()
     {
         $return = '
+        <section class="footer_02">
+           <nav>
+               <ul>
+                   <li>
+                       CONTECT US
+                       <span>+</span>
+                   </li>
+
+                   <li>
+                       <ul>
+                           <li>
+                                <a href="tel::012-5623-2580" style="background:url(\''.base_url('/assets/images/temp/tel.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%; ">
+                                    Telephone<br/>
+                                    012-5623-2580
+                                </a>
+                            </li>
+
+                           <li>
+                                <a href="mailto:hcm0179@naver.com" style="background:url(\''.base_url('/assets/images/temp/mail.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
+                                    E-Mail<br/>
+                                    hcm0179@naver.com
+                                </a>
+                            </li>
+                           <li style="background:url(\''.base_url('/assets/images/temp/talk.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
+                                Kakao Talk<br/>
+                                ID : HCM7942
+                           </li>
+                       </ul>
+                   </li>
+
+                   <li>
+                        <a href="https://play.google.com/store/apps/details?id=com.secretvt">
+                            <figure>
+                                <figcaption>
+                                    DOWNLOAD US APP
+                                </figcaption>
+                                <img src="/assets/images/temp/down.png" alt="download">
+                            </figure>
+                            
+                        </a>
+                   </li>
+
+                   <li>
+                        ▲<br/>TOP
+                    </li>
+               </ul>
+           </nav> 
+        </section>
         <footer>
             
             <ul>
@@ -418,7 +466,21 @@ class Managelayout extends CI_Controller
             </p>
 
             <h2>Copyright ⓒ Vietnam. All Rights Reserved </h2>
-        </footer>';
+        </footer>
+
+        <div id="dialog_talk"  style="display:none;background:#fff">
+            <div>
+                <img src="'.base_url('assets/images/temp/talk_popup.png').'" alt="benefit" style="width:100%;display:block" >
+                복사하기 <input id="clip_target" type="text" value="HCM7942" class="input px150" style="" >
+            </div>
+            <div class="popup_layer_footer" >
+                <div style="width:50%;" class="popup_layer_close pull-left text-center" >닫기
+                </div>
+                <div style="width:50%" class="popup_layer_copy pull-right text-center" data-wrapper-id="popup_layer_talk">확인
+                </div>
+            </div>
+        </div>
+        ';
         return $return;
     }
 }

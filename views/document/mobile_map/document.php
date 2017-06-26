@@ -1,4 +1,3 @@
-<?php $this->managelayout->add_css(base_url('assets/css/dialog.css')); ?>
 <?php    $this->managelayout->add_js('https://maps.google.com/maps/api/js?v=3.3&key=AIzaSyC5C3WnSgg9h4otykkgKNuBI49zUsOBe9U&language=ko'); 
 
 $menuName="";
@@ -172,10 +171,7 @@ img.adp-marker{
 
 
 
-.popup_layer {position:absolute;border:1px solid #e9e9e9;background:#fff}
-.popup_layer_footer {height:30px;background:#4F4F4F;color:#fff;text-align:right}
-.popup_layer_footer div {;padding:6px 0px;border:0;background:#4F4F4F;color:#FFFFFF;font-size:15px;
-    font-weight: bold;}
+
 
 
 
@@ -281,16 +277,19 @@ img.adp-marker{
   <img src="<?php echo base_url('assets/images/temp/gps.png') ?>" alt="benefit" style="width:100%;display:block" >
 
   <div class="popup_layer_footer" >
-  <div style="width:70%;" class="popup_layer_reject pull-left text-center" data-wrapper-id="popup_layer_gps">다시보지않기
+    <div style="width:70%;" class="popup_layer_reject pull-left text-center" data-wrapper-id="popup_layer_gps">다시보지않기
+    </div>
+    <div style="width:30%" class="popup_layer_close pull-right text-center" >닫기
+    </div>
   </div>
-  <div style="width:30%" class="popup_layer_close pull-right text-center" >닫기
-  </div>
-            
-        </div>
 </div>
 <?php } ?>
 <div id="dialog2"  style="display:none">
   <img src="<?php echo base_url('assets/images/temp/gps.png') ?>" alt="benefit" style="width:100%;display:block" >
+
+  <div class="popup_layer_footer" >
+    <div style="width:100%" class="popup_layer_close pull-right text-center" >닫기</div>
+  </div>
 </div>
  <!-- 광고 배너 영역 -->
   <section class="ad">

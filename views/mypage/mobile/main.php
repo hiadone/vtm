@@ -1,5 +1,5 @@
 <?php $this->managelayout->add_css(element('view_skin_url', $layout) . '/css/style.css'); ?>
-<?php $this->managelayout->add_css(base_url('assets/css/dialog.css')); ?>
+
 </head>
 <div class="wrap mypage">
     <section class="title02">
@@ -74,7 +74,7 @@ $( "#dialog" ).dialog({
   modal : true,
   
   show: {
-    effect: "blind",
+    effect: "fade",
     duration: 200
   },
   hide: {

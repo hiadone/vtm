@@ -3,7 +3,7 @@
 
 var curentContents=<?php echo empty($this->input->get('curentContents')) ? 0:$this->input->get('curentContents')  ;?>;
 var curnetIndex="";
-var flag = [true,true,true,true,true,true,true];
+var flag = [true,true,true,true,true,true,true,true];
 
 
 $(document).ready(function() { 
