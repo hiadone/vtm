@@ -361,6 +361,8 @@
 		white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 		font-size: 10px;
 		font-weight: bold;
+		padding-top: 3px;
+
 		}
 
 	.store_list02 > .table-image > ul{
