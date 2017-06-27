@@ -1,0 +1,392 @@
+@charset "utf-8";
+/* page */
+
+/*footer 영역*/
+    .footer > nav > ul > li{
+        width: 100%;
+        padding:8px 3.5% 10px 5%;
+        box-sizing: border-box;
+        height: 30px;
+        border-bottom:1px solid #fff;
+    }
+
+    .footer > nav > ul > li,
+    .footer > nav > ul > li > a{
+        color:#fff;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .footer > nav > ul > li:first-child > span{
+        float: right;
+        font-size: 18px;
+        position: relative;
+        top:-3px;
+    }
+
+    .footer > nav > ul > li:nth-child(2){
+        display: none;
+        height: 100%;
+        padding:0;
+    }
+
+    .footer > nav > ul > li:nth-child(3){
+        width: 90%;
+        float: left;
+        border-right: 1px solid #fff;
+        box-sizing: border-box;
+    }
+
+    .footer > nav > ul > li:nth-child(3) > a > figure > figcaption{
+        display: inline;
+    }
+
+    .footer > nav > ul > li:nth-child(3) > a > figure > img{
+        float: right;
+        width: 17px;
+        position: relative;
+        top: -3px;
+    }
+
+    .footer > nav > ul > li:nth-child(4){
+        width: 10%;
+        float: right;
+        text-align: center;
+        padding:3px 0 4px;
+        font-size: 11px;
+    }
+
+/*footer 확장  영역*/
+
+    .footer{
+        width: 100%;
+        background-color:#001c44;
+        display: inline-block;
+        border-bottom:1px solid #fff;
+    }
+
+    .footer > nav > ul > li:nth-child(2) > ul > li{
+        height: 52px;
+        padding:10px 10% 10px;
+        box-sizing: border-box;
+    }
+
+    .footer > nav > ul > li:nth-child(2) > ul > li:nth-child(2){
+        padding:0 10% 0;
+        height: 35px;
+    }
+
+    .footer > nav > ul > li:nth-child(2) > ul > li > a,
+    .footer > nav > ul > li:nth-child(2) > ul > li {
+        color:#fff;
+        line-height: 17px;
+        font-size: 12px;
+    }
+
+    .footer > nav > ul > li:nth-child(2) > ul > li > a > figure > figcaption,
+    .footer > nav > ul > li:nth-child(2) > ul > li > figure > figcaption{
+        display: inline;
+        float: left;
+    }
+
+    .footer > nav > ul > li:nth-child(2) > ul > li > a > figure > img,
+    .footer > nav > ul > li:nth-child(2) > ul > li > figure > img{
+        width: 30px;
+        float: right;
+    }
+
+
+
+/*content 영역*/
+    /*이미지 슬라이드 css*/
+        .bx-wrapper {
+            position: relative;
+            margin: 0 auto 5%;
+            padding: 0;
+            *zoom: 1;
+        }
+
+        .bx-wrapper img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .bx-wrapper ul{padding:0;}
+
+
+        /** THEME
+        ===================================*/
+
+        .bx-wrapper .bx-viewport {
+            /*fix other elements on the page moving (on Chrome)*/
+            -webkit-transform: translatez(0);
+            -moz-transform: translatez(0);
+                -ms-transform: translatez(0);
+                -o-transform: translatez(0);
+                transform: translatez(0);
+        }
+
+        .bx-wrapper .bx-pager,
+        .bx-wrapper .bx-controls-auto {
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+        }
+
+        /* LOADER */
+
+        .bx-wrapper .bx-loading {
+            min-height: 50px;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+        }
+
+        /* 라운드 pager */
+
+        .bx-wrapper .bx-pager {
+            text-align: center;
+            font-size: .85em;
+            font-family: Arial;
+            font-weight: bold;
+            color: #666;
+        }
+
+        .bx-wrapper .bx-pager .bx-pager-item,
+        .bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+            display: inline-block;
+            *zoom: 1;
+            *display: inline;
+        }
+
+        /*pager 관련 css*/
+        .bx-wrapper .bx-pager.bx-default-pager a {
+            background: #666;
+            text-indent: -9999px;
+            display: block;
+            width: 8px;
+            height: 8px;
+            margin: 0 5px;
+            outline: 0;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        /*선택되 pager의 배경 색상 지정*/
+        .bx-wrapper .bx-pager.bx-default-pager a:hover,
+        .bx-wrapper .bx-pager.bx-default-pager a.active {
+            background: #001c44;
+        }
+
+        .img_slide{
+            margin-bottom:5%;
+        }
+        /*이미지 슬라이드 타이틀*/
+        .content h2{
+        font-size: 8px;
+        line-height: 10px;
+        color:#747474;
+        text-align:center;
+        width: 80%;
+        margin: 0 auto 5%;
+        }
+
+    /*메인페이지의 대 메뉴 리스트 css*/
+        .content nav{
+            display: inline-block;
+            margin-bottom: 3%;
+            padding:0 3%;
+            box-sizing: border-box;
+        }
+
+        .content nav ul li{
+            width:32%;
+            margin-right: 2%;
+            float: left;
+        }
+
+        .content nav ul li:nth-child(3n){
+            margin-right: 0;
+        }
+
+        .content nav ul li:nth-child(1),
+        .content nav ul li:nth-child(2),
+        .content nav ul li:nth-child(3){
+            margin-bottom:1%;
+        }
+
+        .content nav ul li figure{
+            position: relative;
+        }
+
+        .content nav ul li figure img{
+            border-radius: 5px;
+        }
+
+        .content nav ul li figure figcaption{
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            color:#fff;
+            font-size: 12px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #000
+        }
+
+/*content 01 영역*/
+    /*타이틀 영역*/
+        .content01 h2{
+            width: 100%;
+            text-align: center;
+            margin-bottom: 5%;
+            font-weight: bold;
+        }
+
+        .content01 h2 span{
+            display: block;
+            font-size: 10px;
+            margin-bottom:1.5%;
+            color:#ec2229;
+        }
+
+        .content01 p{
+            text-align:center;
+            font-size: 11px;
+            line-height: 13px;
+            color:#5d5d5d;
+            margin-bottom:5%;
+        }
+
+    /*리스트 2*2영역*/
+        .content01 ul{
+            display: inline-block;
+            padding: 0 3%;
+            box-sizing: border-box;
+        }
+
+        .content01 ul li {
+            width: 49.5%;
+            margin-right:1%;
+            float: left; 
+        }
+
+        .content01 ul li:nth-child(2n){
+            margin-right: 0
+        }
+
+        .content01 ul li h3{
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 3%;
+            padding:0 5%;
+            box-sizing: border-box;
+            color:#ec2229;
+        }
+
+        .content01 ul li p{
+            text-align:left;
+            padding:0 5%;
+        }
+
+        .content01 ul li img{
+            border-radius: 8px;
+            border:1px solid #ededed;
+            box-sizing: border-box;
+            margin-bottom: 3%;
+        }
+
+    /* 리스트 1*5 영역 */
+        .content01 ol{
+            display: inline-block;
+            padding:0 3%;
+            box-sizing: border-box;
+            width: 100%;
+            margin-bottom:3%;
+        }
+
+        .content01 ol li{
+            margin-bottom:1.5%;
+        }
+
+        .content01 ol li:last-child{
+            margin-bottom:0;
+        }
+
+        .content01 ol li img{
+            width: 35%;
+            border-radius: 5px;
+            margin-right: 3%;
+            float: left;
+        }
+
+        .content01 ol li figure{
+            position: relative;
+        }
+
+        .content01 ol li figcaption{
+            display: inline-block;
+            width: 62%;
+            height: 65px;
+            position: absolute;
+            margin:  auto 0;
+            top: 0;
+            bottom:0;
+        }
+
+        .content01 ol li figcaption h3{
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom:3%;
+        }
+
+        .content01 ol li figcaption p{
+            margin-bottom:0;
+            text-align:left;
+        }
+
+        .content01 ol li figcaption p span{
+            display: inline-block;
+            width: 100%;
+            text-align: right;
+            font-weight: bold;
+            font-size: 10px;
+            margin-top: 3%;
+        }
+
+
+
+/*미디어 쿼리 영역*/
+
+/*width:320px (Iphone 4 해상도) 모바일*/
+	@media screen and (max-width:320px){
+        .main_menu02{
+            height: 23px;
+        }
+
+        .main_menu02 ul li a{
+            font-size: 13px;
+            padding:4px 0; 
+        }
+
+        .content01 ol li figcaption{
+            height: 45px;
+        }
+
+        .content01 ol li figcaption p span{
+            display: none;
+        }
+	}
+
+/*width:414px 이상일 경우 PC*/
+    @media screen and (min-width:414px){
+        .main_menu02 ul{
+            width: 100%;
+        }
+        .wrap01{
+            border:1px solid #ededed;
+        }
+    }
