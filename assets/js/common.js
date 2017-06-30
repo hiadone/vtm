@@ -75,7 +75,7 @@ if (typeof(COMMON_JS) === 'undefined') {
                 // if(successful) answer.innerHTML = 'Copied!'; 
                 // else answer.innerHTML = 'Unable to copy!'; 
             } catch (err) { 
-                alert('이 브라우저는 지원하지 않습니다.') 
+                alert('이 브라우저는 지원하지 않습니다.') ;
             }
 
             $( ".popup_layer_close" ).on( "click", function() {
