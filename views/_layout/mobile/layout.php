@@ -278,6 +278,7 @@ $(document).ready(function(){
 
     $("#mainmenu ul li").click(function(){
 
+        if(pageing) pageing=1;
         $('div.c').eq($(this).index()).click();        
 
       //  setTimeout( "reload_rg('"+js_swipe_contents[$(this).index()]+"')", 500);

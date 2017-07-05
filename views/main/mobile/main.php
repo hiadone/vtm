@@ -4,7 +4,7 @@
 var curentContents=<?php echo empty($this->input->get('curentContents')) ? 0:$this->input->get('curentContents')  ;?>;
 var curnetIndex="";
 var flag = [true,true,true,true,true,true,true,true];
-
+var pageing=<?php echo $this->input->get('page', null, 1)?>;
 
 $(document).ready(function() { 
     var jssor_1_options = {
@@ -43,6 +43,7 @@ $(document).ready(function() {
 
         if(!fromIndex && !slideIndex) return ;
 
+
         if(curentContents) {
             slideIndex=curentContents;
             curentContents='';
@@ -51,14 +52,14 @@ $(document).ready(function() {
         curnetIndex=slideIndex;
         $('html, body').animate({scrollTop : 0});
         $("#mainmenu ul li:nth-child("+(fromIndex+1)+")").removeClass('active');
-
+        
         if(flag[slideIndex]){
             flag[slideIndex]=false;
             
             $.ajax({
                 type: "GET", 
                 async: true,
-                data: {mem_link:js_mem_link[slideIndex]},
+                data: {mem_link:js_mem_link[slideIndex],page:pageing},
                 url: js_mem_link[slideIndex], 
                 cache: false,
                 beforeSend: function () {
@@ -184,7 +185,7 @@ function swipedetect(el, callback){
    }, false)
 
    touchsurface.addEventListener('touchend', function(e){
-
+    if(pageing) pageing=1;
     var touchobj = e.changedTouches[0]
     distX = touchobj.pageX - startX // get horizontal dist traveled by finger while in contact with surface
     distY = touchobj.pageY - startY // get vertical dist traveled by finger while in contact with surface
