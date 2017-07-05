@@ -279,9 +279,9 @@ if (element('menu', $layout)) {
             }
             $marginright = (($i+1)% $cols === 0) ? 0 : 2;
     ?>
-        <li class="gallery-box" style="width:<?php echo element('gallery_percent', element('board', element('list', $view))); ?>%;margin-right:<?php echo $marginright;?>%;background: url('<?php echo element('thumb_url', $result)?>') no-repeat left top;background-size: 38.5%;">
+        <li class="gallery-box" style="width:<?php echo element('gallery_percent', element('board', element('list', $view))); ?>%;margin-right:<?php echo $marginright;?>%;background: url('<?php echo element('thumb_url', $result)?>') no-repeat left top;background-size: 38.5%;" onClick="location.href='<?php echo element('post_url', $result); ?>'">
             <?php if (element('is_admin', $view)) { ?><input type="checkbox" name="chk_post_id[]" value="<?php echo element('post_id', $result); ?>" /><?php } ?>
-            <a href="<?php echo element('post_url', $result); ?>" title="<?php echo html_escape(element('title', $result)); ?>">
+            <a>
             
             <h2 >[<?php echo html_escape(element('bca_value',element('category', $result))); ?>]<?php echo html_escape(element('title', $result)); ?></h2>
             

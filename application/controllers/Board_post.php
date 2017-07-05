@@ -1078,6 +1078,8 @@ class Board_post extends CB_Controller
          */
         $param =& $this->querystring;
         $page = (((int) $this->input->get('page')) > 0) ? ((int) $this->input->get('page')) : 1;
+
+        
         $order_by_field = element('order_by_field', $board)
             ? element('order_by_field', $board)
             : 'post_num, post_reply';
@@ -1270,7 +1272,7 @@ class Board_post extends CB_Controller
             $category_id = '';
         }
         $main_result = $this->Post_model
-            ->get_post_list(4, $offset, $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
+            ->get_post_list(4, '', $where, $category_id, $findex, $sfield, $skeyword,'',$where_in);
         
 
         if (element('list', $main_result)) {
@@ -1648,7 +1650,10 @@ class Board_post extends CB_Controller
         /**
          * 페이지네이션을 생성합니다
          */
-        $config['base_url'] = board_url($brd_key) . '?' . $param->replace('page');
+
+        if($brd_key==='vtn_review') $config['base_url'] = board_url($brd_key) . '?' . $param->replace('page');
+        else $config['base_url'] = 'main?' . $param->replace('page');
+        
         $config['total_rows'] = $result['total_rows'];
         $config['per_page'] = $per_page;
         if ($this->cbconfig->get_device_view_type() === 'mobile') {
