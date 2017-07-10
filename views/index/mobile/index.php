@@ -47,13 +47,7 @@
         });
 </script>
 
-<script>
-    $(document).ready(function(){
-        $('.footer_02 nav ul li:last-child').click(function(){
-            $('html,body').animate({scrollTop : 0} ,400);
-        });
-});
-</script>
+
 
 <div class="wrap02">
     <!-- 이미지 슬라이드 영역 -->
@@ -62,6 +56,7 @@
                 <ul >
                     <?php echo banner('index_bxslider','order',3,'<li>','</li>'); ?>
                 </ul>
+           
         </section>
 
     <!-- 대메뉴 리스트 영역 -->
@@ -141,7 +136,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
+                    <a href="<?php echo site_url('main').'?curentContents=6' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_07.png'); ?>" alt="main_07">
                             <figcaption>
@@ -153,11 +148,11 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
+                    <a href="<?php echo site_url('main').'?curentContents=7' ?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_08.png'); ?>" alt="main_0">
                             <figcaption>
-                                <h2>베트남 소식</h2>
+                                <h2>베남정보</h2>
                                 <p>다양한 정보를 현지에서 전달</p>
                             </figcaption>
                         </figure>
@@ -165,7 +160,7 @@
                 </li>
 
                 <li>
-                    <a href="<?php echo site_url('main').'?curentContents=5' ?>">
+                    <a href="<?php echo site_url('post/77?mem_link=%2Fboard%2Fvtn_food&_=1498196309032')?>">
                         <figure>
                             <img src="<?php echo base_url('assets/images/temp/main_09.png'); ?>" alt="main_0">
                             <figcaption>
@@ -182,12 +177,12 @@
         </section>
 
     <!-- 광고 배너 영역 -->
-        <section class="ad">
+        <section class="ad" style="margin-bottom:0.5%">
             <h4>ad01</h4>
             <?php echo banner('index_banner_1'); ?>
         </section>
 
-        <section class="ad">
+        <section class="ad" style="margin-bottom:0.5%">
             <h4>ad02</h4>
             <?php echo banner('index_banner_2'); ?>
         </section>
@@ -197,54 +192,6 @@
             <?php echo banner('index_banner_3'); ?>
         </section>
     
-    <!-- contect 영역-->
-        <section class="footer_02">
-           <nav>
-               <ul>
-                   <li>
-                       CONTECT US
-                       <span>+</span>
-                   </li>
-
-                   <li>
-                       <ul>
-                           <li>
-                                <a href="tel::012-5623-2580" style="background:url(/assets/images/temp/tel.png) no-repeat right center; display: inline-block; width: 100%; background-size: 9%; ">
-                                    Telephone<br/>
-                                    012-5623-2580
-                                </a>
-                            </li>
-
-                           <li>
-                                <a href="mailto:hcm0179@naver.com" style="background:url(/assets/images/temp/mail.png) no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
-                                    E-Mail<br/>
-                                    hcm0179@naver.com
-                                </a>
-                            </li>
-                           <li style="background:url(/assets/images/temp/talk.png) no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
-                                Kakao Talk<br/>
-                                ID : HCM7942
-                           </li>
-                       </ul>
-                   </li>
-
-                   <li>
-                        <a href="https://play.google.com/store/apps/details?id=com.secretvt">
-                            <figure>
-                                <figcaption>
-                                    DOWNLOAD US APP
-                                </figcaption>
-                                <img src="/assets/images/temp/down.png" alt="download">
-                            </figure>
-                            
-                        </a>
-                   </li>
-
-                   <li>
-                        ▲<br/>TOP
-                    </li>
-               </ul>
-           </nav> 
-        </section>
-
+    <!-- contect 영역 -->
+    
 </div>
