@@ -79,11 +79,14 @@ class Index extends CB_Controller
         $meta_keywords = $this->cbconfig->item('site_meta_keywords_main');
         $meta_author = $this->cbconfig->item('site_meta_author_main');
         $page_name = $this->cbconfig->item('site_page_name_main');
-
+        if($this->input->get('skin')){
+            $skin = $this->input->get('skin');
+        } else $skin = 'index';
+        
         $layoutconfig = array(
             'path' => 'index',
             'layout' => 'layout',
-            'skin' => 'index',
+            'skin' => $skin,
             'layout_dir' => 'mobile_index',
             'mobile_layout_dir' => 'mobile_index',
             'use_sidebar' => $this->cbconfig->item('sidebar_main'),
