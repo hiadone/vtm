@@ -46,9 +46,6 @@
             });              
         });
 </script>
-
-
-
 <div class="wrap02">
     <!-- 이미지 슬라이드 영역 -->
         <section class="slide" style="visibility: hidden;">
@@ -192,6 +189,23 @@
             <?php echo banner('index_banner_3'); ?>
         </section>
     
-    <!-- contect 영역 -->
+    <!-- notice & event 영역 -->
+        <section class="notice">
+            <ul>
+                <li>
+                    <a href="http://cmy.secretvt.com/?skin=index2">
+                        <h3>공지사항</h3>
+                        <p>시크릿 베트남에서 알려드립니다. </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://cmy.secretvt.com/?skin=index3">
+                        <h3>이벤트</h3>
+                        <p>다양한 이벤트를 만나보세요.</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
     
 </div>
