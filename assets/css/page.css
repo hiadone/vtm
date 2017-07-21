@@ -1817,6 +1817,7 @@
     }
     .event_list ul li a figure img{
         margin-bottom: 5%;
+        width: 100%;
     }
     .event_list ul li a figure figcaption h3{
         font-size: 12px;
