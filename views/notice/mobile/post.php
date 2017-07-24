@@ -19,7 +19,7 @@
         <p>작성일 : <?php echo element('display_datetime', $view); ?></p>
     </section>
 
-    <section class="store">
+    <section class="content">
         <div class="contents-view" style="margin-bottom: 0;">
             <!-- 본문 내용 시작 -->
             <div id="post-content"><?php echo element('noti_content', element('data', $view)); ?></div>
