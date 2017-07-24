@@ -194,6 +194,9 @@
             <?php echo banner('index_banner','order',1,3); ?>
         </section>
     
+    <?php 
+    if(element('noti_title',element('0',element('notice_result', $view))) || element('eve_title',element('0',element('event_result', $view)))){
+    ?>
     <!-- notice & event 영역 -->
         <section class="notice">
             <ul>
@@ -220,6 +223,6 @@
                 <?php }?>
             </ul>
         </section>
-
+    <?php }?>
     
 </div>
