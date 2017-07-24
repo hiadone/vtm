@@ -527,6 +527,9 @@ if ( ! function_exists('banner')) {
 
         if ($result) {
             foreach ($result as $key => $val) {
+                if(element('ban_activated', $val)!=='1'){
+                    continue;
+                }
                 if ($CI->cbconfig->get_device_view_type() === 'mobile'
                     && element('ban_device', $val) === 'pc') {
                     continue;

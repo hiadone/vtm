@@ -56,10 +56,9 @@
            
         </section>
 
-        <section class="ad" style="margin-bottom:0.5%">
-            <h4>ad01</h4>
-            <?php echo banner('index_banner','order',1); ?>
-        </section>
+            <?php echo banner('index_banner','order',1,0,'<section class="ad" style="margin-bottom:0.5%">
+            <h4>ad01</h4>','</section>'); ?>
+        
 
     <!-- 대메뉴 리스트 영역 -->
         <section class="main_list">
@@ -179,20 +178,19 @@
         </section>
 
     <!-- 광고 배너 영역 -->
-        <section class="ad" style="margin-bottom:0.5%">
-            <h4>ad02</h4>
-            <?php echo banner('index_banner','order',1,1); ?>
-        </section>
+        
+        <?php echo banner('index_banner','order',1,1,'<section class="ad" style="margin-bottom:0.5%">
+        <h4>ad02</h4>','</section>'); ?>
 
-        <section class="ad" style="margin-bottom:0.5%">
-            <h4>ad03</h4>
-            <?php echo banner('index_banner','order',1,2); ?>
-        </section>
+    
+        <?php echo banner('index_banner','order',1,2,'<section class="ad" style="margin-bottom:0.5%">
+        <h4>ad03</h4>','</section>'); ?>
+    
 
-        <section class="ad">
-            <h4>ad04</h4>
-            <?php echo banner('index_banner','order',1,3); ?>
-        </section>
+    
+        <?php echo banner('index_banner','order',1,3,'<section class="ad">
+        <h4>ad04</h4>','</section>'); ?>
+        
     
     <?php 
     if(element('noti_title',element('0',element('notice_result', $view))) || element('eve_title',element('0',element('event_result', $view)))){

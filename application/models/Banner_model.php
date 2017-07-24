@@ -53,7 +53,7 @@ class Banner_model extends CB_Model
         if ( ! $result = $this->cache->get($cachename)) {
             $this->db->from($this->_table);
             $this->db->where('bng_name', $position);
-            $this->db->where('ban_activated', 1);
+            // $this->db->where('ban_activated', 1);
             $this->db->group_start();
             $this->db->where(array('ban_start_date <=' => cdate('Y-m-d')));
             $this->db->or_where(array('ban_start_date' => null));
