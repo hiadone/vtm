@@ -169,3 +169,32 @@ if ( ! function_exists('document_url')) {
         return site_url(config_item('uri_segment_document') . '/' . $key);
     }
 }
+
+
+
+/**
+ * 일반 게시판 목록 주소를 return 합니다
+ */
+if ( ! function_exists('document_board_url')) {
+    function document_board_url($key = '')
+    {
+        $key = trim($key, '/');
+        return site_url($key . '/lists/');
+    }
+}
+
+
+if ( ! function_exists('document_post_url')) {
+    function document_post_url($key = '', $post_id = '')
+    {
+        $key = trim($key, '/');
+        $post_id = trim($post_id, '/');
+
+        $post_url = '';
+       
+        $post_url = site_url($key. '/' . config_item('uri_segment_post') . '/' . $post_id);
+        
+        return $post_url;
+    }
+}
+

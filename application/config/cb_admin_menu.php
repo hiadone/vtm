@@ -38,6 +38,8 @@ $config['admin_page_menu'] = array(
 			'faqgroup'                      => array('FAQ관리', ''),
 			'faq'                                => array('FAQ 내용', '', 'hide'),
 			'banner'                          => array('배너관리', ''),
+			'notice'                          => array('공지관리', ''),
+			'event'                          => array('이벤트관리', ''),
 		),
 	),
 	'member'                               => array(

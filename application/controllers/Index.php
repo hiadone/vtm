@@ -18,7 +18,7 @@ class Index extends CB_Controller
     /**
      * 모델을 로딩합니다
      */
-    protected $models = array('Board');
+    protected $models = array('Board','Event','Notice');
 
     /**
      * 헬퍼를 로딩합니다
@@ -71,6 +71,26 @@ class Index extends CB_Controller
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
 
+        
+        $notiwhere = array(
+                'noti_activated' => 1,
+            );
+
+        $notice_result = $this->Notice_model
+            ->get('', '', $notiwhere, 1, '', 'noti_id', 'desc');
+
+        $view['view']['notice_result'] = $notice_result;
+        $view['view']['notice_url'] = document_post_url('notice',element('noti_id',element('0',$notice_result)));
+
+        $evewhere = array(
+                'eve_activated' => 1,
+            );
+
+        $event_result = $this->Event_model
+            ->get('', '', $evewhere, 1, '', 'eve_id', 'desc');
+
+        $view['view']['event_result'] = $event_result;
+        $view['view']['event_url'] = document_post_url('event',element('eve_id',element('0',$event_result)));
         /**
          * 레이아웃을 정의합니다
          */

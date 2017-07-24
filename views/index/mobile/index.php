@@ -51,9 +51,14 @@
         <section class="slide" style="visibility: hidden;">
             <h4>슬라이드 영역</h4>
                 <ul >
-                    <?php echo banner('index_bxslider','order',3,'<li>','</li>'); ?>
+                    <?php echo banner('index_bxslider','order',3,0,'<li>','</li>'); ?>
                 </ul>
            
+        </section>
+
+        <section class="ad" style="margin-bottom:0.5%">
+            <h4>ad01</h4>
+            <?php echo banner('index_banner','order',1); ?>
         </section>
 
     <!-- 대메뉴 리스트 영역 -->
@@ -175,35 +180,44 @@
 
     <!-- 광고 배너 영역 -->
         <section class="ad" style="margin-bottom:0.5%">
-            <h4>ad01</h4>
-            <?php echo banner('index_banner_1'); ?>
+            <h4>ad02</h4>
+            <?php echo banner('index_banner','order',1,1); ?>
         </section>
 
         <section class="ad" style="margin-bottom:0.5%">
-            <h4>ad02</h4>
-            <?php echo banner('index_banner_2'); ?>
+            <h4>ad03</h4>
+            <?php echo banner('index_banner','order',1,2); ?>
         </section>
 
         <section class="ad">
-            <h4>ad03</h4>
-            <?php echo banner('index_banner_3'); ?>
+            <h4>ad04</h4>
+            <?php echo banner('index_banner','order',1,3); ?>
         </section>
     
     <!-- notice & event 영역 -->
         <section class="notice">
             <ul>
+                <?php 
+                if(element('noti_title',element('0',element('notice_result', $view)))){
+                ?>
+                
                 <li>
-                    <a href="http://cmy.secretvt.com/?skin=index2">
+                    <a href="<?php echo element('notice_url', $view) ?>">
                         <h3>공지사항</h3>
-                        <p>시크릿 베트남에서 알려드립니다. </p>
+                        <p><?php echo element('noti_title',element('0',element('notice_result', $view))) ?></p>
                     </a>
                 </li>
+                <?php }?>
+                <?php 
+                if(element('eve_title',element('0',element('event_result', $view)))){
+                ?>
                 <li>
-                    <a href="http://cmy.secretvt.com/?skin=index3">
+                    <a href="<?php echo element('event_url', $view) ?>">
                         <h3>이벤트</h3>
-                        <p>다양한 이벤트를 만나보세요.</p>
+                        <p><?php echo element('eve_title',element('0',element('event_result', $view))) ?></p>
                     </a>
                 </li>
+                <?php }?>
             </ul>
         </section>
 

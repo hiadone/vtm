@@ -39,8 +39,8 @@ class Banner_model extends CB_Model
     }
 
 
-    public function get_banner($position = '', $type = '', $limit = '')
-    {
+    public function get_banner($position = '', $type = '', $limit = '', $offset = 0)
+    {   
         if (empty($position)) {
             return;
         }
@@ -75,7 +75,8 @@ class Banner_model extends CB_Model
             shuffle($result);
         }
         if ($limit) {
-            $result = array_slice($result, 0, $limit);
+            $result = array_slice($result, $offset, $limit);
+
         }
         return $result;
     }

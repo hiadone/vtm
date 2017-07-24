@@ -490,7 +490,7 @@ if ( ! function_exists('banner_image_url')) {
  * 배너 출력하기
  */
 if ( ! function_exists('banner')) {
-    function banner($position = '', $type = 'rand', $limit = 1, $start_tag = '', $end_tag = '')
+    function banner($position = '', $type = 'rand', $limit = 1, $offset = 0,$start_tag = '', $end_tag = '')
     {
 
         /**
@@ -523,7 +523,7 @@ if ( ! function_exists('banner')) {
         $html = '';
 
         $CI->load->model('Banner_model');
-        $result = $CI->Banner_model->get_banner($position, $type, $limit);
+        $result = $CI->Banner_model->get_banner($position, $type, $limit,$offset);
 
         if ($result) {
             foreach ($result as $key => $val) {
@@ -1354,5 +1354,22 @@ if ( ! function_exists('check_cache_dir')) {
             }
         }
         return true;
+    }
+}
+
+
+/**
+ * 이벤트 이미지 가져오기
+ */
+if ( ! function_exists('event_image_url')) {
+    function event_image_url($img = '', $width = '', $height = '')
+    {
+        if (empty($img)) {
+            return false;
+        }
+        is_numeric($width) OR $width = '';
+        is_numeric($height) OR $height = '';
+
+        return thumb_url('event', $img, $width, $height);
     }
 }
