@@ -9,6 +9,11 @@
 <?php if (element('meta_description', $layout)) { ?><meta name="description" content="<?php echo html_escape(element('meta_description', $layout)); ?>"><?php } ?>
 <?php if (element('meta_keywords', $layout)) { ?><meta name="keywords" content="<?php echo html_escape(element('meta_keywords', $layout)); ?>"><?php } ?>
 <?php if (element('meta_author', $layout)) { ?><meta name="author" content="<?php echo html_escape(element('meta_author', $layout)); ?>"><?php } ?>
+<meta property="og:type" content="website">
+<meta property="og:title" content="시크릿베트남">
+<meta property="og:description" content="베트남 소식 및 업소정보 제공! 예약 및 길찾기 지원">
+<meta property="og:image" content="https://secretvt.com/assets/images/temp/logo.png">
+<meta property="og:url" content="https://secretvt.com">
 <?php if (element('favicon', $layout)) { ?><link rel="shortcut icon" type="image/x-icon" href="<?php echo element('favicon', $layout); ?>" /><?php } ?>
 <?php if (element('canonical', $view)) { ?><link rel="canonical" href="<?php echo element('canonical', $view); ?>" /><?php } ?>
 
