@@ -407,7 +407,7 @@ class Managelayout extends CI_Controller
            <nav>
                <ul>
                    <li>
-                       CONTECT US
+                       고객센터
                        <span>+</span>
                    </li>
 
@@ -421,7 +421,7 @@ class Managelayout extends CI_Controller
                             </li>
 
                            <li>
-                                <a href="mailto:hcm0179@naver.com" style="background:url(\''.base_url('/assets/images/temp/mail.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
+                                <a href="mailto:vinadone@gmail.com" style="background:url(\''.base_url('/assets/images/temp/mail.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
                                     E-Mail<br/>
                                     hcm0179@naver.com
                                 </a>
@@ -437,7 +437,7 @@ class Managelayout extends CI_Controller
                         <a href="https://play.google.com/store/apps/details?id=com.secretvt">
                             <figure>
                                 <figcaption>
-                                    DOWNLOAD US APP
+                                    구글 앱 다운로드
                                 </figcaption>
                                 <img src="/assets/images/temp/down.png" alt="download">
                             </figure>
