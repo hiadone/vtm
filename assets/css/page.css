@@ -1696,14 +1696,15 @@
     	border:1px solid #ededed;
     	border-left: 0;
     	border-right: 0;
+    	background-color: #fff;
     }
 
     .notice ul li{
-        width: 96%;
+        
         height: 20px;
         padding:1.5%;
         border-bottom: 1px solid #ededed;
-        background-color: #fff;
+        
     }
 
     .notice ul li:last-child{
