@@ -1699,7 +1699,7 @@
     }
 
     .notice ul li{
-        width: 100%;
+        width: 96%;
         height: 20px;
         padding:1.5%;
         border-bottom: 1px solid #ededed;
@@ -1817,7 +1817,6 @@
     }
     .event_list ul li a figure img{
         margin-bottom: 5%;
-        width: 100%;
     }
     .event_list ul li a figure figcaption h3{
         font-size: 12px;
