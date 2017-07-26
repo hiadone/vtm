@@ -423,7 +423,7 @@ class Managelayout extends CI_Controller
                            <li>
                                 <a href="mailto:vinadone@gmail.com" style="background:url(\''.base_url('/assets/images/temp/mail.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
                                     E-Mail<br/>
-                                    hcm0179@naver.com
+                                    vinadone@gmail.com
                                 </a>
                             </li>
                            <li style="background:url(\''.base_url('/assets/images/temp/talk.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
