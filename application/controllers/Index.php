@@ -66,7 +66,8 @@ class Index extends CB_Controller
         $view['view']['canonical'] = site_url();
 
         if(empty(get_cookie('region'))) $view['view']['region']=0;
-        else $view['view']['region'] = get_cookie('region');
+        else $view['view']['region'] = 0;
+        // else $view['view']['region'] = get_cookie('region');
 
         // 이벤트가 존재하면 실행합니다
         $view['view']['event']['before_layout'] = Events::trigger('before_layout', $eventname);
