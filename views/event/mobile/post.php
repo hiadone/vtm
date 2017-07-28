@@ -39,6 +39,9 @@
    
     <div class="border_button  mb3per">
         <div class="btn-group pull-right" role="group" aria-label="...">
+            <?php if ($this->member->is_admin() === 'super') { ?>
+                <a href="<?php echo admin_url('page/event/write/' . element('eve_id', element('data', $view))); ?>" class="btn btn-default btn-sm" target="_blank">수 정</a>
+            <?php } ?>
                 <a href="<?php echo element('list_url', $view); ?>" class="btn btn-default btn-sm">목 록</a>
             <?php if (element('prev_post', $view)) { ?>
                 <a href="<?php echo element('url', element('prev_post', $view)); ?>" class="btn btn-default btn-sm">◀이전 글</a>
