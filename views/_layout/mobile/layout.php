@@ -101,17 +101,8 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
             <a href="<?php echo site_url(); ?>" title="<?php echo html_escape($this->cbconfig->item('site_title'));?>"><?php echo $this->cbconfig->item('site_logo'); ?>
             </a>
         </h1>
-        <ul>
-            <?php if ($this->member->is_member()) { ?>
-                <li><a href="<?php echo site_url('login/logout?url=' . urlencode(current_full_url())); ?>" title="로그아웃">로그아웃</a></li>
-                <li><a href="<?php echo site_url('mypage'); ?>" title="My Page">My Page</a></li>
-            <?php } else { ?>
-                <li><a href="<?php echo site_url('login?url=' . urlencode(current_full_url())); ?>" title="로그인">로그인</a></li>
-                <li><a href="<?php echo site_url('register'); ?>" title="회원가입">회원가입</a></li>
-            <?php } ?>
-        </ul>
-        <!-- 지역선택하기 영역 -->  
-        <span>
+
+         <span style="visibility:hidden;">
             <label for="select">지역선택하기</label>
             <select id="region">
         <?php
@@ -126,6 +117,17 @@ var js_swipe_contents = <?php echo json_encode($js_swipe_contents)?>;
         ?>
             </select>
         </span>
+        <ul>
+            <?php if ($this->member->is_member()) { ?>
+                <li><a href="<?php echo site_url('login/logout?url=' . urlencode(current_full_url())); ?>" title="로그아웃">로그아웃</a></li>
+                <li><a href="<?php echo site_url('mypage'); ?>" title="My Page">My Page</a></li>
+            <?php } else { ?>
+                <li><a href="<?php echo site_url('login?url=' . urlencode(current_full_url())); ?>" title="로그인">로그인</a></li>
+                <li><a href="<?php echo site_url('register'); ?>" title="회원가입">회원가입</a></li>
+            <?php } ?>
+        </ul>
+        <!-- 지역선택하기 영역 -->  
+       
      
         
 
