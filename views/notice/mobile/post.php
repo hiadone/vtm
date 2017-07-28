@@ -22,7 +22,7 @@
     <section class="content">
         <div class="contents-view" style="margin-bottom: 0;">
             <!-- 본문 내용 시작 -->
-            <div id="post-content"><?php echo element('noti_content', element('data', $view)); ?></div>
+            <div id="post-content"><?php echo element('content', element('data', $view)); ?></div>
             <!-- 본문 내용 끝 -->
         </div>
     </section>

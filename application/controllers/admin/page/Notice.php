@@ -316,7 +316,7 @@ class Notice extends CB_Controller
             $noti_top = $this->input->post('noti_top') ? $this->input->post('noti_top') : 0;
             $noti_width = $this->input->post('noti_width') ? $this->input->post('noti_width') : 0;
             $noti_height = $this->input->post('noti_height') ? $this->input->post('noti_height') : 0;
-            $content_type = $this->cbconfig->item('use_notice_dhtml') ? 1 : 0;
+            $content_type = $this->cbconfig->item('use_document_dhtml') ? 1 : 0;
             $noti_page = $this->input->post('noti_page') ? $this->input->post('noti_page') : 0;
             $noti_disable_hours = $this->input->post('noti_disable_hours') ? $this->input->post('noti_disable_hours') : 0;
             $noti_activated = $this->input->post('noti_activated') ? $this->input->post('noti_activated') : 0;
@@ -337,7 +337,7 @@ class Notice extends CB_Controller
                 'noti_content' => $this->input->post('noti_content', null, ''),
                 'noti_content_html_type' => $content_type,
             );
-
+            
             /**
              * 게시물을 수정하는 경우입니다
              */

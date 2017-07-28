@@ -373,7 +373,7 @@ class Event extends CB_Controller
             $eve_top = $this->input->post('eve_top') ? $this->input->post('eve_top') : 0;
             $eve_width = $this->input->post('eve_width') ? $this->input->post('eve_width') : 0;
             $eve_height = $this->input->post('eve_height') ? $this->input->post('eve_height') : 0;
-            $content_type = $this->cbconfig->item('use_event_dhtml') ? 1 : 0;
+            $content_type = $this->cbconfig->item('use_document_dhtml') ? 1 : 0;
             $eve_page = $this->input->post('eve_page') ? $this->input->post('eve_page') : 0;
             $eve_disable_hours = $this->input->post('eve_disable_hours') ? $this->input->post('eve_disable_hours') : 0;
             $eve_activated = $this->input->post('eve_activated') ? $this->input->post('eve_activated') : 0;

@@ -246,6 +246,15 @@ class Notice extends CB_Controller
             $view['view']['display_datetime'] = display_datetime(
                     element('noti_datetime', $getdata)
                 );
+
+
+            
+
+            $view['view']['data']['content'] = display_html_content(
+                        element('noti_content', $getdata),
+                        element('noti_content_html_type', $getdata)
+                    );
+
             $view['view']['document_board_url'] = document_board_url('event');
             
             $view['view']['next_post'] = '';

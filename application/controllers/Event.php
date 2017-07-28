@@ -275,6 +275,14 @@ class Event extends CB_Controller
             $view['view']['display_datetime'] = display_datetime(
                     element('eve_datetime', $getdata)
                 );
+
+
+            $view['view']['data']['content'] = display_html_content(
+                        element('eve_content', $getdata),
+                        element('eve_content_html_type', $getdata),
+                    );
+
+
             $view['view']['document_board_url'] = document_board_url('notice');
             
             $view['view']['next_post'] = '';
