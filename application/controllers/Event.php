@@ -279,7 +279,7 @@ class Event extends CB_Controller
 
             $view['view']['data']['content'] = display_html_content(
                         element('eve_content', $getdata),
-                        element('eve_content_html_type', $getdata),
+                        element('eve_content_html_type', $getdata)
                     );
 
 
