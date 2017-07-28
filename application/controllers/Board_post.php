@@ -115,7 +115,8 @@ class Board_post extends CB_Controller
         $view['view']['board_list'] = $board_list;
 
         if(empty(get_cookie('region'))) $view['view']['region']=0;
-        else $view['view']['region'] = get_cookie('region');
+        else $view['view']['region'] = 0;
+        // else $view['view']['region'] = get_cookie('region');
 
         
         
@@ -297,8 +298,8 @@ class Board_post extends CB_Controller
         }
 
         if(empty(get_cookie('region'))) $view['view']['region']=0;
-        else $view['view']['region'] = get_cookie('region');
-
+        else $view['view']['region'] = 0;
+        // else $view['view']['region'] = get_cookie('region');
 
         
 
