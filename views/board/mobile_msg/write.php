@@ -48,7 +48,7 @@
                         <input type="checkbox" name="post_notice" id="post_notice_2" value="2" <?php echo set_checkbox('post_notice', '2', (element('post_notice', element('post', $view)) === '2' ? true : false)); ?> onChange="if (this.checked) {$('#post_notice_1').prop('disabled', true);} else {$('#post_notice_1').prop('disabled', false);}" <?php if (element('post_notice', element('post', $view)) === '1')echo "disabled='disabled'"; ?> /> 전체공지
                     </label>
                     <label class="checkbox-inline" for="post_main_4">
-                        <input type="checkbox" name="post_main_4" id="post_main_4" value="1" <?php echo set_checkbox('post_main_4', '1', (element('post_main_4', element('post', $view)) ? true : false)); ?> /> 메인 4 슬론
+                        <input type="checkbox" name="post_main_4" id="post_main_4" value="1" <?php echo set_checkbox('post_main_4', '1', (element('post_main_4', element('post', $view)) ? true : false)); ?> /> 메인 4 슬롯
                     </label>
                 <?php } ?>
                 <?php if (element('can_post_secret', element('post', $view))) { ?>
@@ -63,6 +63,13 @@
                 <?php } ?>
             </li>
         <?php } ?>
+        <li>
+            <span>슬롯 정렬</span>
+            <div class="group">
+            <input type="number" class="input px70" name="post_main_order" id="post_main_order" value="<?php echo set_value('post_main_order', element('post_main_order', element('post', $view))+ 0); ?>" />
+            </div>
+            
+        </li>
         <?php if (element('use_category', element('board', $view))) { ?>
             <li>
                 <span>카테고리</span>
@@ -297,6 +304,7 @@ $(function() {
     $('#fwrite').validate({
         rules: {
             post_title: {required :true, minlength:2, maxlength:60},
+            post_main_order: {number:true },
             post_content : {<?php echo (element('use_dhtml', element('board', $view))) ? 'required_' . $this->cbconfig->item('post_editor_type') : 'required'; ?> : true }
 <?php if (element('is_post_name', element('post', $view))) { ?>
             , post_nickname: {required :true, minlength:2, maxlength:20}

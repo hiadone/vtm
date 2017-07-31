@@ -22,7 +22,7 @@ class Post_model extends CB_Model
      */
     public $primary_key = 'post_id'; // 사용되는 테이블의 프라이머리키
 
-    public $allow_order = array('post_num, post_reply', 'post_datetime desc', 'post_datetime asc', 'post_hit desc', 'post_hit asc', 'post_comment_count desc', 'post_comment_count asc', 'post_comment_updated_datetime desc', 'post_comment_updated_datetime asc', 'post_like desc', 'post_like asc', 'post_id desc');
+    public $allow_order = array('post_num, post_reply', 'post_datetime desc', 'post_datetime asc', 'post_hit desc', 'post_hit asc', 'post_comment_count desc', 'post_comment_count asc', 'post_comment_updated_datetime desc', 'post_comment_updated_datetime asc', 'post_like desc', 'post_like asc', 'post_id desc','(case when post_main_order=0 then 999 else post_main_order end),post_num, post_reply');
 
     function __construct()
     {
@@ -42,7 +42,9 @@ class Post_model extends CB_Model
      */
     public function get_post_list($limit = '', $offset = '', $where = '', $category_id = '', $orderby = '', $sfield = '', $skeyword = '', $sop = 'OR',$where_in='')
     {
+
         if ( ! in_array(strtolower($orderby), $this->allow_order)) {
+
             $orderby = 'post_num, post_reply';
         }
 
@@ -138,6 +140,8 @@ class Post_model extends CB_Model
         }
 
         $this->db->order_by($orderby);
+
+
         if ($limit) {
             $this->db->limit($limit, $offset);
         }
@@ -589,5 +593,15 @@ class Post_model extends CB_Model
         $row['post_num'] = (isset($row['post_num'])) ? $row['post_num'] : 0;
         $post_num = $row['post_num'] - 1;
         return $post_num;
+    }
+
+    public function max_post_main_order()
+    {
+        $this->db->select_max('post_main_order');
+        $result = $this->db->get($this->_table);
+        $row = $result->row_array();
+        $row['max_post_main_order'] = (isset($row['post_main_order'])) ? $row['post_main_order'] : 0;
+        $max_post_main_order = $row['max_post_main_order'] + 1;
+        return $max_post_main_order;
     }
 }

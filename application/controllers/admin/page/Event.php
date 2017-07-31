@@ -258,6 +258,11 @@ class Event extends CB_Controller
                 'rules' => 'trim|required|numeric',
             ),
             array(
+                'field' => 'eve_order',
+                'label' => '정렬순서',
+                'rules' => 'trim|required|numeric|is_natural',
+            ),
+            array(
                 'field' => 'eve_content',
                 'label' => '이벤트내용',
                 'rules' => 'trim|required',
@@ -377,6 +382,7 @@ class Event extends CB_Controller
             $eve_page = $this->input->post('eve_page') ? $this->input->post('eve_page') : 0;
             $eve_disable_hours = $this->input->post('eve_disable_hours') ? $this->input->post('eve_disable_hours') : 0;
             $eve_activated = $this->input->post('eve_activated') ? $this->input->post('eve_activated') : 0;
+            $eve_order = $this->input->post('eve_order') ? $this->input->post('eve_order') : 0;
 
             $updatedata = array(
                 'eve_title' => $this->input->post('eve_title', null, ''),
@@ -393,6 +399,7 @@ class Event extends CB_Controller
                 'eve_activated' => $eve_activated,
                 'eve_content' => $this->input->post('eve_content', null, ''),
                 'eve_content_html_type' => $content_type,
+                'eve_order' => $eve_order,
             );
 
             if ($this->input->post('eve_image_del')) {

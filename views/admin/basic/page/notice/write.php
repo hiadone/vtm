@@ -82,6 +82,13 @@
                     </div>
                 </div> -->
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">정렬순서</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="noti_order" value="<?php echo set_value('noti_order', element('noti_order', element('data', $view)) + 0); ?>" />
+                        <div class="help-inline">정렬 순서가 작은 값이 먼저 출력됩니다</div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">공지활성화</label>
                     <div class="col-sm-10">
                         <label class="radio-inline" for="noti_activated_1">
@@ -124,6 +131,7 @@ $(function() {
             // noti_page: 'required',
             // noti_disable_hours: { required:true, number:true },
             noti_activated: 'required',
+            noti_order: { number:true },
             noti_content : {<?php echo ($this->cbconfig->item('use_popup_dhtml')) ? 'required_' . $this->cbconfig->item('popup_editor_type') : 'required'; ?> : true }
         }
     });

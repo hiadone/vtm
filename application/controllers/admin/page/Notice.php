@@ -255,6 +255,11 @@ class Notice extends CB_Controller
                 'rules' => 'trim|required|numeric',
             ),
             array(
+                'field' => 'noti_order',
+                'label' => '정렬순서',
+                'rules' => 'trim|required|numeric|is_natural',
+            ),
+            array(
                 'field' => 'noti_content',
                 'label' => '팝업내용',
                 'rules' => 'trim|required',
@@ -320,6 +325,7 @@ class Notice extends CB_Controller
             $noti_page = $this->input->post('noti_page') ? $this->input->post('noti_page') : 0;
             $noti_disable_hours = $this->input->post('noti_disable_hours') ? $this->input->post('noti_disable_hours') : 0;
             $noti_activated = $this->input->post('noti_activated') ? $this->input->post('noti_activated') : 0;
+            $noti_order = $this->input->post('noti_order') ? $this->input->post('noti_order') : 0;
 
             $updatedata = array(
                 'noti_title' => $this->input->post('noti_title', null, ''),
@@ -336,6 +342,7 @@ class Notice extends CB_Controller
                 'noti_activated' => $noti_activated,
                 'noti_content' => $this->input->post('noti_content', null, ''),
                 'noti_content_html_type' => $content_type,
+                'noti_order' => $noti_order,
             );
             
             /**

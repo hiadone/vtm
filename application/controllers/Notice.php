@@ -73,8 +73,8 @@ class Notice extends CB_Controller
             'noti_end_date' => $param->sort('noti_end_date', 'asc'),
             'noti_activated' => $param->sort('noti_activated', 'asc'),
         );
-        $findex = $this->input->get('findex') ? $this->input->get('findex') : $this->{$this->modelname}->primary_key;
-        $forder = $this->input->get('forder', null, 'desc');
+        $findex = '(CASE WHEN noti_order=0 THEN -999 ELSE noti_order END),noti_id';
+        $forder = 'desc';
         $sfield = $this->input->get('sfield', null, '');
         $skeyword = $this->input->get('skeyword', null, '');
 
@@ -86,7 +86,7 @@ class Notice extends CB_Controller
          */
         $this->{$this->modelname}->allow_search_field = array('noti_id', 'noti_title', 'noti_content'); // 검색이 가능한 필드
         $this->{$this->modelname}->search_field_equal = array('noti_id'); // 검색중 like 가 아닌 = 검색을 하는 필드
-        $this->{$this->modelname}->allow_order_field = array('noti_title', 'noti_device', 'noti_start_date', 'noti_end_date', 'noti_activated'); // 정렬이 가능한 필드
+        $this->{$this->modelname}->allow_order_field = array('noti_title', 'noti_id', 'noti_start_date', 'noti_end_date', 'noti_activated','(CASE WHEN noti_order=0 THEN -999 ELSE noti_order END),noti_id'); // 정렬이 가능한 필드
 
         $where = array();
         

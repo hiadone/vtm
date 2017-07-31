@@ -300,6 +300,8 @@ class Board_write extends CB_Controller
             = element('use_post_receive_email', $board) ? true : false;
         $view['view']['post']['post_parent'] = $this->input->get('post_parent',null,0);
 
+        $view['view']['post']['post_main_order'] = $this->Post_model->max_post_main_order();
+
         if(strpos(element('brd_key', $board),'_review' )!==false){
 
            $post_parent=$this->Post_model->get_one($this->input->get('post_parent', null, 0));
@@ -745,6 +747,7 @@ class Board_write extends CB_Controller
                 'post_parent' => $this->input->get('post_parent',null,0),
                 'region_category' => $this->input->post('region_category',null,1),
                 'post_main_4' => $this->input->post('post_main_4',null,0),
+                'post_main_order' => $this->input->post('post_main_order',null,0),
             );
 
             if ($mem_id) {
@@ -1880,6 +1883,7 @@ class Board_write extends CB_Controller
                 'post_update_mem_id' => $mem_id,
                 'region_category' => $this->input->post('region_category',null,1),
                 'post_main_4' => $this->input->post('post_main_4',null,0),
+                'post_main_order' => $this->input->post('post_main_order',null,0),
             );
 
             if ($is_post_name) {
@@ -2089,6 +2093,14 @@ class Board_write extends CB_Controller
 
             $this->Post_model->update($this->input->post($primary_key), $updatedata);
 
+            if($this->input->post('post_main_order',null,0) > 0){
+                $field='post_main_order';
+                $main_order_update[$field.'>=']=$this->input->post('post_main_order',null,0);
+                $main_order_update['post_id !=']=$post_id;
+                $this->Post_model->db->set($field, $field . '+' . 1, false);
+                $this->Post_model->db->where($main_order_update);
+                $this->Post_model->db->update($this->Post_model->_table);
+            }
             // 네이버 신디케이션 보내기
             if ( ! element('post_secret', $updatedata)) {
                 $this->_naver_syndi($post_id, $board, '수정');

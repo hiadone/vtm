@@ -98,6 +98,13 @@
                     </div>
                 </div> -->
                 <div class="form-group">
+                    <label class="col-sm-2 control-label">정렬순서</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" name="eve_order" value="<?php echo set_value('eve_order', element('eve_order', element('data', $view)) + 0); ?>" />
+                        <div class="help-inline">정렬 순서가 작은 값이 먼저 출력됩니다</div>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-sm-2 control-label">이벤트활성화</label>
                     <div class="col-sm-10">
                         <label class="radio-inline" for="eve_activated_1">
@@ -140,6 +147,7 @@ $(function() {
             // eve_page: 'required',
             // eve_disable_hours: { required:true, number:true },
             eve_activated: 'required',
+            eve_order: { number:true },
             eve_content : {<?php echo ($this->cbconfig->item('use_popup_dhtml')) ? 'required_' . $this->cbconfig->item('popup_editor_type') : 'required'; ?> : true }
         }
     });

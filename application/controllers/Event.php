@@ -73,8 +73,9 @@ class Event extends CB_Controller
             'eve_end_date' => $param->sort('eve_end_date', 'asc'),
             'eve_activated' => $param->sort('eve_activated', 'asc'),
         );
-        $findex = $this->input->get('findex') ? $this->input->get('findex') : $this->{$this->modelname}->primary_key;
-        $forder = $this->input->get('forder', null, 'desc');
+
+        $findex = '(CASE WHEN eve_order=0 THEN -999 ELSE eve_order END),eve_id';
+        $forder = 'desc';
         $sfield = $this->input->get('sfield', null, '');
         $skeyword = $this->input->get('skeyword', null, '');
 
@@ -86,7 +87,7 @@ class Event extends CB_Controller
          */
         $this->{$this->modelname}->allow_search_field = array('eve_id', 'eve_title', 'eve_content'); // 검색이 가능한 필드
         $this->{$this->modelname}->search_field_equal = array('eve_id'); // 검색중 like 가 아닌 = 검색을 하는 필드
-        $this->{$this->modelname}->allow_order_field = array('eve_title', 'eve_device', 'eve_start_date', 'eve_end_date', 'eve_activated'); // 정렬이 가능한 필드
+        $this->{$this->modelname}->allow_order_field = array('eve_title', 'noti_id', 'eve_start_date', 'eve_end_date', 'eve_activated','(CASE WHEN eve_order=0 THEN -999 ELSE eve_order END),eve_id'); // 정렬이 가능한 필드
 
         $where = array();
         
