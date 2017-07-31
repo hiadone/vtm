@@ -428,7 +428,7 @@ class Managelayout extends CI_Controller
                             </li>
                            <li style="background:url(\''.base_url('/assets/images/temp/talk.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%;">
                                 Kakao Talk<br/>
-                                ID : HCM7942
+                                ID : eco0322
                            </li>
                        </ul>
                    </li>
@@ -471,7 +471,7 @@ class Managelayout extends CI_Controller
         <div id="dialog_talk"  style="display:none;background:#fff">
             <div>
                 <img src="'.base_url('assets/images/temp/talk_popup.png').'" alt="benefit" style="width:100%;display:block" >
-                복사하기 <input id="clip_target" type="text" value="HCM7942" class="input px150" style="" >
+                복사하기 <input id="clip_target" type="text" value="eco0322" class="input px150" style="" >
             </div>
             <div class="popup_layer_footer" >
                 <div style="width:50%;" class="popup_layer_close pull-left text-center" >닫기
