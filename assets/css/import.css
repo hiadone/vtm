@@ -2,7 +2,7 @@
 /* import */
 @import url(../css/dialog.css);
 @import url(../css/reset.css);
-@import url(../css/global.css);
-@import url(../css/page.css);
-@import url(../css/style.css);
+@import url(../css/global.css?ver=0.1);
+@import url(../css/page.css?ver=0.1);
+@import url(../css/style.css?ver=0.1);
 @import url(../css/jejugothic.css);
