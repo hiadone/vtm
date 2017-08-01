@@ -302,6 +302,7 @@ class Board_write extends CB_Controller
 
         $view['view']['post']['max_post_main_order'] = $this->Post_model->max_post_order(element('brd_id', $board),'main');
         $view['view']['post']['max_post_order'] = $this->Post_model->max_post_order(element('brd_id', $board));
+        $view['view']['post']['post_order'] = $this->Post_model->max_post_order(element('brd_id', $board));
 
         if(strpos(element('brd_key', $board),'_review' )!==false){
 
