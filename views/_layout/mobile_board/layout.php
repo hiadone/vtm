@@ -33,7 +33,7 @@ if (element('menu', $layout)) {
     }
 }
 ?>
-<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css?ver=0.1') ?>" />
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/import.css') ?>" />
 <link rel="stylesheet" type="text/css" href="<?php echo element('layout_skin_url', $layout); ?>/css/style.css" />
 <!-- <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/earlyaccess/nanumgothic.css" /> -->
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
