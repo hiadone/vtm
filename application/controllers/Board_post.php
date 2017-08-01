@@ -1273,7 +1273,7 @@ class Board_post extends CB_Controller
             $category_id = '';
         }
         $main_result = $this->Post_model
-            ->get_post_list(4, '', $where, $category_id, '(CASE WHEN post_main_order=0 THEN 999 ELSE post_main_order END),post_num, post_reply', $sfield, $skeyword,'',$where_in);
+            ->get_post_list(4, '', $where, $category_id, '(CASE WHEN post_order=0 THEN 999 ELSE post_order END),post_num, post_reply', $sfield, $skeyword,'',$where_in);
         
 
         if (element('list', $main_result)) {
