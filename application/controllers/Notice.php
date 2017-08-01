@@ -148,7 +148,7 @@ class Notice extends CB_Controller
          * 어드민 레이아웃을 정의합니다
          */
         $layout_dir = 'mobile_index';
-        $mobile_layout_dir = $this->cbconfig->item('mobile_index');
+        $mobile_layout_dir = 'mobile_index';
         $use_sidebar = $this->cbconfig->item('sidebar_board');
         $use_mobile_sidebar = $this->cbconfig->item('mobile_sidebar_board');
         $skin_dir = $this->cbconfig->item('skin_board');
