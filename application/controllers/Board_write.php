@@ -2101,7 +2101,8 @@ class Board_write extends CB_Controller
             
             if($this->input->post('post_order',null,0) > 0){
                 $field='post_order';
-                $post_order_update[$field.'>=']=$this->input->post($field,null,0);
+                $post_order_update[$field.'<']=element('post_order', $post);
+                $post_order_update[$field.'!=']=0;
                 $post_order_update['post_id !=']=$post_id;
                 $post_order_update['brd_id']=element('brd_id', $post);
                 if(!empty($this->input->post('post_main_4',null,0))) $post_order_update['post_main_4']=1;
@@ -2131,7 +2132,7 @@ class Board_write extends CB_Controller
             $param =& $this->querystring;
             $redirecturl = post_url(element('brd_key', $board), $this->input->post($primary_key)) . '?' . $param->output();
 
-            redirect($redirecturl);
+           redirect($redirecturl);
         }
     }
 

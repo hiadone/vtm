@@ -22,7 +22,7 @@ class Post_model extends CB_Model
      */
     public $primary_key = 'post_id'; // 사용되는 테이블의 프라이머리키
 
-    public $allow_order = array('post_num, post_reply', 'post_datetime desc', 'post_datetime asc', 'post_hit desc', 'post_hit asc', 'post_comment_count desc', 'post_comment_count asc', 'post_comment_updated_datetime desc', 'post_comment_updated_datetime asc', 'post_like desc', 'post_like asc', 'post_id desc','(case when post_main_order=0 then 999 else post_main_order end),post_num, post_reply');
+    public $allow_order = array('post_num, post_reply', 'post_datetime desc', 'post_datetime asc', 'post_hit desc', 'post_hit asc', 'post_comment_count desc', 'post_comment_count asc', 'post_comment_updated_datetime desc', 'post_comment_updated_datetime asc', 'post_like desc', 'post_like asc', 'post_id desc','(case when post_order=0 then 999 else post_order end),post_num, post_reply');
 
     function __construct()
     {

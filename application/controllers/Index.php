@@ -78,20 +78,29 @@ class Index extends CB_Controller
             );
 
         $notice_result = $this->Notice_model
-            ->get('', '', $notiwhere, 1, '', '(CASE WHEN noti_order=0 THEN 999 ELSE noti_order END)', 'asc');
-
+            ->get('', '', $notiwhere, 1, 0, 'noti_id', 'desc');
+        
         $view['view']['notice_result'] = $notice_result;
         $view['view']['notice_url'] = document_board_url('notice');
+
+        if (( ctimestamp() - strtotime(element('noti_datetime', element(0,$notice_result))) <= 3 * 3600)) {
+
+                    $view['view']['notice']['is_new'] = true;
+                }
 
         $evewhere = array(
                 'eve_activated' => 1,
             );
 
         $event_result = $this->Event_model
-            ->get('', '', $evewhere, 1, '', '(CASE WHEN eve_order=0 THEN 999 ELSE eve_order END)', 'desc');
+            ->get('', '', $evewhere, 1, 0, 'eve_id', 'desc');
 
         $view['view']['event_result'] = $event_result;
         $view['view']['event_url'] = document_board_url('event');
+        if (( ctimestamp() - strtotime(element('eve_datetime', element(0,$event_result))) <= 3 * 3600)) {
+            
+                    $view['view']['event']['is_new'] = true;
+                }
         /**
          * 레이아웃을 정의합니다
          */

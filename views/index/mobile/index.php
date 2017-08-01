@@ -205,7 +205,13 @@
                 <li>
                     <a href="<?php echo element('notice_url', $view) ?>">
                         <h3>공지사항</h3>
-                        <p><?php echo element('noti_title',element('0',element('notice_result', $view))) ?></p>
+                        <p>시크릿베트남에서 알려드립니다.
+                        <?php 
+                        if(!element('is_new',element('notice', $view))){
+                        ?>
+                            <img src="<?php echo base_url('/assets/images/temp/new.png')?>" style="width:13px;vertical-align: middle;">
+                        <?php }?>
+                        </p>
                     </a>
                 </li>
                 <?php }?>
@@ -215,7 +221,13 @@
                 <li>
                     <a href="<?php echo element('event_url', $view) ?>">
                         <h3>이벤트</h3>
-                        <p><?php echo element('eve_title',element('0',element('event_result', $view))) ?></p>
+                        <p>시크릿베트남의 다양한 이벤트를 만나보세요
+                        <?php 
+                        if(element('is_new',element('event', $view))){
+                        ?>
+                            <img src="<?php echo base_url('/assets/images/temp/new.png')?>" style="width:13px;vertical-align: middle;">
+                        <?php }?>
+                        </p>
                     </a>
                 </li>
                 <?php }?>
