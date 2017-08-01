@@ -1390,6 +1390,8 @@ abstract class CI_DB_query_builder extends CI_DB_driver {
 		// ORDER BY usage is often problematic here (most notably
 		// on Microsoft SQL Server) and ultimately unnecessary
 		// for selecting COUNT(*) ...
+
+		
 		if ( ! empty($this->qb_orderby))
 		{
 			$orderby = $this->qb_orderby;

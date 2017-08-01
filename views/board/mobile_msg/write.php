@@ -66,9 +66,8 @@
         <li>
             <span>슬롯 정렬</span>
             <div class="group">
-            <input type="number" class="input px70" name="post_main_order" id="post_main_order" value="<?php echo set_value('post_main_order', element('post_main_order', element('post', $view))+ 0); ?>" />
+            <input type="number" class="input px70" name="post_order" id="post_order" value="<?php echo set_value('post_order', element('post_order', element('post', $view))+ 0); ?>" />
             </div>
-            
         </li>
         <?php if (element('use_category', element('board', $view))) { ?>
             <li>
@@ -304,7 +303,7 @@ $(function() {
     $('#fwrite').validate({
         rules: {
             post_title: {required :true, minlength:2, maxlength:60},
-            post_main_order: {number:true },
+            post_order: {number:true,max:<?php echo empty(element('post_main_4', element('post', $view))) ? element('max_post_order', element('post', $view)) : element('max_post_main_order', element('post', $view)) ?>},
             post_content : {<?php echo (element('use_dhtml', element('board', $view))) ? 'required_' . $this->cbconfig->item('post_editor_type') : 'required'; ?> : true }
 <?php if (element('is_post_name', element('post', $view))) { ?>
             , post_nickname: {required :true, minlength:2, maxlength:20}
@@ -328,7 +327,17 @@ $(function() {
         }
     });
 });
-
+$('#post_main_4').click(function(){
+    if($(this).is(":checked")){
+        $('#post_order').val(<?php echo empty(element('post_main_4', element('post', $view))) ? element('max_post_main_order', element('post', $view)) : element('post_order', element('post', $view)) ?>);
+        // $('#post_order').rules( "remove", "post_order");
+        $('#post_order').rules( "add", {max:<?=element('max_post_main_order', element('post', $view))?>} );
+    } else {
+        $('#post_order').val(<?php echo empty(element('post_main_4', element('post', $view))) ? element('post_order', element('post', $view)) : element('max_post_order', element('post', $view)) ?>);
+        // $('#fwrite').rules( "remove", "post_order" );
+        $('#post_order').rules( "add", {max:<?=element('max_post_order', element('post', $view))?>} );
+    }
+});
 <?php if (element('has_tempsave', $view)) { ?>get_tempsave(cb_board); <?php } ?>
 <?php if ( ! element('post_id', element('post', $view))) { ?>window.onbeforeunload = function () { auto_tempsave(cb_board); } <?php } ?>
 //]]>
