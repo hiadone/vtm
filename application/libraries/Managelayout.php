@@ -414,9 +414,9 @@ class Managelayout extends CI_Controller
                    <li>
                        <ul>
                            <li>
-                                <a href="tel::012-5623-2580" style="background:url(\''.base_url('/assets/images/temp/tel.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%; ">
+                                <a href="tel::+8416-8639-1004" style="background:url(\''.base_url('/assets/images/temp/tel.png').'\') no-repeat right center; display: inline-block; width: 100%; background-size: 9%; ">
                                     Telephone<br/>
-                                    012-5623-2580
+                                    +8416-8639-1004
                                 </a>
                             </li>
 
